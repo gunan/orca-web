@@ -1,8 +1,8 @@
 # Orca Web
 
-A self-hosted web interface that runs the **real OrcaSlicer CLI** on your server. Upload an STL, OBJ, or 3MF model, choose a print intent, and download generated G-code—no Selkies, VNC, or streamed desktop required.
+A self-hosted, desktop-class workspace that runs the **real OrcaSlicer CLI** on your server. Arrange an STL, OBJ, or 3MF model on the build plate, choose printer and filament presets, tune process settings, and download generated G-code—no Selkies, VNC, or streamed desktop required.
 
-> **Project stage:** This is the first end-to-end vertical slice, not yet a replacement for every desktop control. It proves the durable architecture and core upload → native slicing → download workflow. Printer/filament preset import and the full parameter editor are the next milestones.
+The responsive workspace mirrors OrcaSlicer's Prepare/Preview/Device/Project layout, object and plate management, transform tools, printer/filament/process selection, advanced settings, native slicing status, and G-code delivery. Slicing stays server-side so model data remains on infrastructure you control.
 
 ## Architecture
 
@@ -41,9 +41,12 @@ Application state is stored in the `orca-data` volume and the site is exposed on
 |---|---|---|
 | `GET` | `/api/health` | Liveness and configured slicer |
 | `GET` | `/api/profiles` | Available print intents |
+| `GET` | `/api/presets` | Available printer and filament presets |
+| `GET` | `/api/jobs` | Persistent slicing job history |
 | `POST` | `/api/jobs` | Multipart upload (`model`, `profile`) |
 | `GET` | `/api/jobs/:id` | Poll job status |
 | `GET` | `/api/jobs/:id/download` | Download completed G-code |
+| `DELETE` | `/api/jobs/:id` | Remove a completed job and its output |
 
 Uploads are limited to 500 MB and to `.stl`, `.obj`, and `.3mf` filenames. Output download names are sanitized. For production, also configure upload limits in your reverse proxy and isolate the service from untrusted networks.
 
@@ -59,10 +62,6 @@ npm run test:e2e    # real browser upload/slice/download journey
 
 Install the Playwright browser once with `npx playwright install chromium` if it is not already present.
 
-## Roadmap
+## Production considerations
 
-1. Import and select OrcaSlicer printer, filament, and process presets.
-2. Read model metadata and provide WebGL placement/orientation tools.
-3. Expose expert overrides generated from upstream option schemas.
-4. Add authentication, per-user projects, job cancellation, and queue concurrency limits.
-5. Preview G-code layers and send finished jobs to networked printers.
+Authentication and multi-user isolation are deployment concerns and are intentionally not built in. Put the service behind an authenticated HTTPS reverse proxy. Device control requires a printer-specific network bridge; generated G-code can always be downloaded from the Preview workspace.

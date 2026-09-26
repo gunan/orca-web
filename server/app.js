@@ -1,6 +1,6 @@
 import express from 'express';
 import multer from 'multer';
-import { mkdir, unlink } from 'node:fs/promises';
+import { mkdir, unlink, writeFile } from 'node:fs/promises';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
@@ -14,6 +14,10 @@ export const profiles = [
   { id: 'detail', name: 'Fine detail', layerHeight: '0.12 mm', description: 'Sharper surfaces and small features' },
   { id: 'draft', name: 'Fast draft', layerHeight: '0.28 mm', description: 'Quick prototypes with fewer layers' }
 ];
+export const presets = {
+  printers: ['Bambu Lab X1 Carbon 0.4 nozzle', 'Generic Klipper 0.4 nozzle', 'Prusa MK4 0.4 nozzle'],
+  filaments: ['Generic PLA', 'Generic PETG', 'Generic ABS']
+};
 
 export async function createApp(options = {}) {
   const dataDir = options.dataDir || process.env.DATA_DIR || path.resolve('data');
@@ -32,6 +36,8 @@ export async function createApp(options = {}) {
 
   app.get('/api/health', (_req, res) => res.json({ status: 'ok', slicer: binary }));
   app.get('/api/profiles', (_req, res) => res.json(profiles));
+  app.get('/api/presets', (_req, res) => res.json(presets));
+  app.get('/api/jobs', (_req, res) => res.json(store.list()));
   app.post('/api/jobs', upload.single('model'), async (req, res) => {
     if (!req.file) return res.status(400).json({ error: 'A valid STL, OBJ, or 3MF model is required' });
     const profile = profiles.find(item => item.id === req.body.profile);
@@ -40,20 +46,33 @@ export async function createApp(options = {}) {
       return res.status(400).json({ error: 'Select a valid slicing profile' });
     }
     const id = crypto.randomUUID();
-    const job = { id, filename: req.file.originalname, profile: profile.id, status: 'queued', createdAt: new Date().toISOString() };
+    let settings = {};
+    try { settings = req.body.settings ? JSON.parse(req.body.settings) : {}; }
+    catch { await unlink(req.file.path); return res.status(400).json({ error: 'Settings must be valid JSON' }); }
+    if (!settings || Array.isArray(settings) || typeof settings !== 'object') {
+      await unlink(req.file.path); return res.status(400).json({ error: 'Settings must be an object' });
+    }
+    const safeSettings = Object.fromEntries(Object.entries(settings).filter(([key, value]) => /^[a-z][a-z0-9_]*$/i.test(key) && ['string', 'number', 'boolean'].includes(typeof value)));
+    const job = { id, filename: req.file.originalname, profile: profile.id, printer: req.body.printer || null, filament: req.body.filament || null, settings: safeSettings, status: 'queued', createdAt: new Date().toISOString() };
     await store.set(job);
     res.status(202).json(job);
     const output = path.join(dataDir, 'jobs', `${id}.gcode`);
     queueMicrotask(async () => {
       await store.set({ ...job, status: 'slicing' });
+      let profilePath = path.join(here, 'profiles', `${profile.id}.json`);
       try {
-        const profilePath = path.join(here, 'profiles', `${profile.id}.json`);
+        if (Object.keys(safeSettings).length) {
+          profilePath = path.join(dataDir, 'uploads', `${id}.json`);
+          const base = { layer_height: profile.layerHeight.replace(' mm', ''), initial_layer_print_height: '0.20' };
+          await writeFile(profilePath, JSON.stringify({ ...base, ...safeSettings }));
+        }
         await sliceModel({ binary, input: req.file.path, output, profilePath });
         await store.set({ ...job, status: 'ready', completedAt: new Date().toISOString() });
       } catch (error) {
         await store.set({ ...job, status: 'failed', error: error.message });
       } finally {
         await unlink(req.file.path).catch(() => {});
+        if (profilePath?.startsWith(path.join(dataDir, 'uploads'))) await unlink(profilePath).catch(() => {});
       }
     });
   });
@@ -66,6 +85,14 @@ export async function createApp(options = {}) {
     if (!job || job.status !== 'ready') return res.status(404).json({ error: 'G-code is not available' });
     const name = `${path.parse(job.filename).name}.gcode`.replace(/[^a-zA-Z0-9._-]/g, '_');
     res.download(path.join(dataDir, 'jobs', `${job.id}.gcode`), name);
+  });
+  app.delete('/api/jobs/:id', async (req, res) => {
+    const job = store.get(req.params.id);
+    if (!job) return res.status(404).json({ error: 'Job not found' });
+    if (['queued', 'slicing'].includes(job.status)) return res.status(409).json({ error: 'An active job cannot be deleted' });
+    await unlink(path.join(dataDir, 'jobs', `${job.id}.gcode`)).catch(() => {});
+    await store.delete(job.id);
+    return res.status(204).end();
   });
   app.use(express.static(path.resolve(here, '../dist')));
   app.get('*splat', (_req, res) => res.sendFile(path.resolve(here, '../dist/index.html')));
