@@ -21,5 +21,7 @@ export class JobStore {
 
   async set(job) { this.jobs.set(job.id, job); await this.persist(); return job; }
   get(id) { return this.jobs.get(id); }
+  list() { return [...this.jobs.values()].sort((a, b) => b.createdAt.localeCompare(a.createdAt)); }
+  async delete(id) { const existed = this.jobs.delete(id); if (existed) await this.persist(); return existed; }
   async persist() { await writeFile(this.index, JSON.stringify([...this.jobs.values()], null, 2)); }
 }
