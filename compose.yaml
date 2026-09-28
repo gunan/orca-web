@@ -5,10 +5,13 @@ services:
       - "3000:3000"
     environment:
       ORCA_SLICER_BIN: /opt/orca/OrcaSlicer
+      ORCA_RESOURCES_DIR: /opt/orca/resources
     volumes:
       - orca-data:/data
-      # Provide the OrcaSlicer Linux binary from your host.
+      # Provide a compatible Linux binary and matching resources.
+      # Its required shared libraries must also be available inside the image.
       - ${ORCA_SLICER_BIN:?Set ORCA_SLICER_BIN to the host binary}:/opt/orca/OrcaSlicer:ro
+      - ${ORCA_RESOURCES_DIR:?Set ORCA_RESOURCES_DIR to the matching resources folder}:/opt/orca/resources:ro
     restart: unless-stopped
     healthcheck:
       test: ["CMD", "node", "-e", "fetch('http://localhost:3000/api/health').then(r=>{if(!r.ok)process.exit(1)})"]

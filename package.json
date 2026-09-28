@@ -9,13 +9,31 @@
     "start": "node server/index.js",
     "test": "node --test tests/unit/*.test.js tests/integration/*.test.js",
     "test:e2e": "playwright test",
-    "check": "npm run test && npm run build && npm run test:e2e"
+    "check": "npm test && npm run parity:check && npm run build && npm run test:e2e",
+    "test:native": "node --test --test-concurrency=2 tests/native/*.test.js",
+    "parity:export": "node scripts/parity-report.js --write",
+    "parity:check": "node scripts/parity-report.js --check",
+    "parity:settings": "node scripts/export-native-settings.js",
+    "test:e2e:native": "playwright test --config playwright.native.config.js",
+    "test:native:gui": "node --test tests/native-gui/*.test.js",
+    "build:native:emboss": "python3 native/emboss-worker/scripts/build.py",
+    "build:native:images": "node scripts/build-native-images.mjs",
+    "build:native:gcode": "python3 native/gcode-worker/scripts/build.py",
+    "build:native:prusa": "node scripts/build-native-prusa.mjs",
+    "build:native:arrange": "node scripts/build-native-arrange.mjs",
+    "build:native:config": "python3 native/config-worker/scripts/build.py"
   },
   "dependencies": {
+    "clipper-lib": "6.4.2",
     "express": "^5.1.0",
+    "fast-xml-parser": "^5.11.1",
+    "fflate": "^0.8.3",
     "multer": "^2.0.2",
+    "occt-import-js": "^0.0.23",
+    "opentype.js": "^2.0.0",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "three": "^0.186.1"
   },
   "devDependencies": {
     "@playwright/test": "^1.55.1",
@@ -23,5 +41,7 @@
     "concurrently": "^9.2.1",
     "vite": "^7.1.7"
   },
-  "engines": { "node": ">=20" }
+  "engines": {
+    "node": ">=20"
+  }
 }
