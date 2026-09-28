@@ -1,0 +1,3050 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "source": "src/slic3r/GUI/Gizmos/GizmoObjectManipulation.cpp",
+  "sourceSha256": "b513e1e5d154d6611c64646e8f8e5bc6f9a5ffa21605e45e40aa20a043328a07",
+  "generatorSha256": "eca6ede45ccfbd2fefa0eb84d360587692a74a9c7ab758be5560f79c50099804",
+  "referenceSha256": "e37b3bc1c8613d9936d06bc7b3c67d3f024c78f7013daeec28604855e550d5da",
+  "binarySha256": "b162b4f28c329802b4e310c3de06228774f5546a5f16d43a6f11a43b3ad7943a",
+  "cases": [
+    {
+      "name": "metric-0-invalid-cache",
+      "input": {
+        "imperial": false,
+        "valid": false,
+        "position": [
+          0.0,
+          25.4,
+          -50.8
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.0,
+          25.4,
+          50.8
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": -50.8
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [],
+        "position": [
+          0.0,
+          25.4,
+          -50.8
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.0,
+          25.4,
+          50.8
+        ]
+      }
+    },
+    {
+      "name": "metric-0-valid",
+      "input": {
+        "imperial": false,
+        "valid": true,
+        "position": [
+          0.0,
+          25.4,
+          -50.8
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.0,
+          25.4,
+          50.8
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": -50.8
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [
+          {
+            "axis": 0,
+            "key": "position",
+            "value": 0.0
+          },
+          {
+            "axis": 1,
+            "key": "position",
+            "value": 25.4
+          },
+          {
+            "axis": 2,
+            "key": "position",
+            "value": -50.8
+          },
+          {
+            "axis": 0,
+            "key": "rotation",
+            "value": 0.0
+          },
+          {
+            "axis": 1,
+            "key": "rotation",
+            "value": 25.4
+          },
+          {
+            "axis": 2,
+            "key": "rotation",
+            "value": -50.8
+          },
+          {
+            "axis": 0,
+            "key": "absolute_rotation",
+            "value": 0.0
+          },
+          {
+            "axis": 1,
+            "key": "absolute_rotation",
+            "value": 25.4
+          },
+          {
+            "axis": 2,
+            "key": "absolute_rotation",
+            "value": -50.8
+          },
+          {
+            "axis": 0,
+            "key": "scale",
+            "value": 0.0
+          },
+          {
+            "axis": 1,
+            "key": "scale",
+            "value": 25.4
+          },
+          {
+            "axis": 2,
+            "key": "scale",
+            "value": -50.8
+          },
+          {
+            "axis": 0,
+            "key": "size",
+            "value": 0.0
+          },
+          {
+            "axis": 1,
+            "key": "size",
+            "value": 25.4
+          },
+          {
+            "axis": 2,
+            "key": "size",
+            "value": -50.8
+          }
+        ],
+        "position": [
+          0.0,
+          25.4,
+          -50.8
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.0,
+          25.4,
+          50.8
+        ]
+      }
+    },
+    {
+      "name": "metric-1-invalid-cache",
+      "input": {
+        "imperial": false,
+        "valid": false,
+        "position": [
+          1.0,
+          123.456789,
+          -0.0001
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          1.0,
+          123.456789,
+          0.0001
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": -0.0001
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [],
+        "position": [
+          1.0,
+          123.456789,
+          -0.0001
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          1.0,
+          123.456789,
+          0.0001
+        ]
+      }
+    },
+    {
+      "name": "metric-1-valid",
+      "input": {
+        "imperial": false,
+        "valid": true,
+        "position": [
+          1.0,
+          123.456789,
+          -0.0001
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          1.0,
+          123.456789,
+          0.0001
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": -0.0001
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [
+          {
+            "axis": 0,
+            "key": "position",
+            "value": 1.0
+          },
+          {
+            "axis": 1,
+            "key": "position",
+            "value": 123.456789
+          },
+          {
+            "axis": 2,
+            "key": "position",
+            "value": -0.0001
+          },
+          {
+            "axis": 0,
+            "key": "rotation",
+            "value": 1.0
+          },
+          {
+            "axis": 1,
+            "key": "rotation",
+            "value": 123.456789
+          },
+          {
+            "axis": 2,
+            "key": "rotation",
+            "value": -0.0001
+          },
+          {
+            "axis": 0,
+            "key": "absolute_rotation",
+            "value": 1.0
+          },
+          {
+            "axis": 1,
+            "key": "absolute_rotation",
+            "value": 123.456789
+          },
+          {
+            "axis": 2,
+            "key": "absolute_rotation",
+            "value": -0.0001
+          },
+          {
+            "axis": 0,
+            "key": "scale",
+            "value": 1.0
+          },
+          {
+            "axis": 1,
+            "key": "scale",
+            "value": 123.456789
+          },
+          {
+            "axis": 2,
+            "key": "scale",
+            "value": -0.0001
+          },
+          {
+            "axis": 0,
+            "key": "size",
+            "value": 1.0
+          },
+          {
+            "axis": 1,
+            "key": "size",
+            "value": 123.456789
+          },
+          {
+            "axis": 2,
+            "key": "size",
+            "value": -0.0001
+          }
+        ],
+        "position": [
+          1.0,
+          123.456789,
+          -0.0001
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          1.0,
+          123.456789,
+          0.0001
+        ]
+      }
+    },
+    {
+      "name": "metric-2-invalid-cache",
+      "input": {
+        "imperial": false,
+        "valid": false,
+        "position": [
+          2540.0,
+          1e-06,
+          -254000.0
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          2540.0,
+          1e-06,
+          254000.0
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": -254000.0
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [],
+        "position": [
+          2540.0,
+          1e-06,
+          -254000.0
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          2540.0,
+          1e-06,
+          254000.0
+        ]
+      }
+    },
+    {
+      "name": "metric-2-valid",
+      "input": {
+        "imperial": false,
+        "valid": true,
+        "position": [
+          2540.0,
+          1e-06,
+          -254000.0
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          2540.0,
+          1e-06,
+          254000.0
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": -254000.0
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [
+          {
+            "axis": 0,
+            "key": "position",
+            "value": 2540.0
+          },
+          {
+            "axis": 1,
+            "key": "position",
+            "value": 1e-06
+          },
+          {
+            "axis": 2,
+            "key": "position",
+            "value": -254000.0
+          },
+          {
+            "axis": 0,
+            "key": "rotation",
+            "value": 2540.0
+          },
+          {
+            "axis": 1,
+            "key": "rotation",
+            "value": 1e-06
+          },
+          {
+            "axis": 2,
+            "key": "rotation",
+            "value": -254000.0
+          },
+          {
+            "axis": 0,
+            "key": "absolute_rotation",
+            "value": 2540.0
+          },
+          {
+            "axis": 1,
+            "key": "absolute_rotation",
+            "value": 1e-06
+          },
+          {
+            "axis": 2,
+            "key": "absolute_rotation",
+            "value": -254000.0
+          },
+          {
+            "axis": 0,
+            "key": "scale",
+            "value": 2540.0
+          },
+          {
+            "axis": 1,
+            "key": "scale",
+            "value": 1e-06
+          },
+          {
+            "axis": 2,
+            "key": "scale",
+            "value": -254000.0
+          },
+          {
+            "axis": 0,
+            "key": "size",
+            "value": 2540.0
+          },
+          {
+            "axis": 1,
+            "key": "size",
+            "value": 1e-06
+          },
+          {
+            "axis": 2,
+            "key": "size",
+            "value": -254000.0
+          }
+        ],
+        "position": [
+          2540.0,
+          1e-06,
+          -254000.0
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          2540.0,
+          1e-06,
+          254000.0
+        ]
+      }
+    },
+    {
+      "name": "metric-3-invalid-cache",
+      "input": {
+        "imperial": false,
+        "valid": false,
+        "position": [
+          0.005,
+          99.995,
+          1.005
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.005,
+          99.995,
+          1.005
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": 1.005
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [],
+        "position": [
+          0.005,
+          99.995,
+          1.005
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.005,
+          99.995,
+          1.005
+        ]
+      }
+    },
+    {
+      "name": "metric-3-valid",
+      "input": {
+        "imperial": false,
+        "valid": true,
+        "position": [
+          0.005,
+          99.995,
+          1.005
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.005,
+          99.995,
+          1.005
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": 1.005
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [
+          {
+            "axis": 0,
+            "key": "position",
+            "value": 0.005
+          },
+          {
+            "axis": 1,
+            "key": "position",
+            "value": 99.995
+          },
+          {
+            "axis": 2,
+            "key": "position",
+            "value": 1.005
+          },
+          {
+            "axis": 0,
+            "key": "rotation",
+            "value": 0.005
+          },
+          {
+            "axis": 1,
+            "key": "rotation",
+            "value": 99.995
+          },
+          {
+            "axis": 2,
+            "key": "rotation",
+            "value": 1.005
+          },
+          {
+            "axis": 0,
+            "key": "absolute_rotation",
+            "value": 0.005
+          },
+          {
+            "axis": 1,
+            "key": "absolute_rotation",
+            "value": 99.995
+          },
+          {
+            "axis": 2,
+            "key": "absolute_rotation",
+            "value": 1.005
+          },
+          {
+            "axis": 0,
+            "key": "scale",
+            "value": 0.005
+          },
+          {
+            "axis": 1,
+            "key": "scale",
+            "value": 99.995
+          },
+          {
+            "axis": 2,
+            "key": "scale",
+            "value": 1.005
+          },
+          {
+            "axis": 0,
+            "key": "size",
+            "value": 0.005
+          },
+          {
+            "axis": 1,
+            "key": "size",
+            "value": 99.995
+          },
+          {
+            "axis": 2,
+            "key": "size",
+            "value": 1.005
+          }
+        ],
+        "position": [
+          0.005,
+          99.995,
+          1.005
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.005,
+          99.995,
+          1.005
+        ]
+      }
+    },
+    {
+      "name": "imperial-0-invalid-cache",
+      "input": {
+        "imperial": true,
+        "valid": false,
+        "position": [
+          0.0,
+          25.4,
+          -50.8
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.0,
+          25.4,
+          50.8
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": -50.8
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [],
+        "position": [
+          0.0,
+          0.9999999989799999,
+          -1.9999999979599998
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.0,
+          0.9999999989799999,
+          1.9999999979599998
+        ]
+      }
+    },
+    {
+      "name": "imperial-0-valid",
+      "input": {
+        "imperial": true,
+        "valid": true,
+        "position": [
+          0.0,
+          25.4,
+          -50.8
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.0,
+          25.4,
+          50.8
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": -50.8
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 0.0
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 25.4
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": -50.8
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [
+          {
+            "axis": 0,
+            "key": "position",
+            "value": 0.0
+          },
+          {
+            "axis": 1,
+            "key": "position",
+            "value": 645.16
+          },
+          {
+            "axis": 2,
+            "key": "position",
+            "value": -1290.32
+          },
+          {
+            "axis": 0,
+            "key": "rotation",
+            "value": 0.0
+          },
+          {
+            "axis": 1,
+            "key": "rotation",
+            "value": 25.4
+          },
+          {
+            "axis": 2,
+            "key": "rotation",
+            "value": -50.8
+          },
+          {
+            "axis": 0,
+            "key": "absolute_rotation",
+            "value": 0.0
+          },
+          {
+            "axis": 1,
+            "key": "absolute_rotation",
+            "value": 25.4
+          },
+          {
+            "axis": 2,
+            "key": "absolute_rotation",
+            "value": -50.8
+          },
+          {
+            "axis": 0,
+            "key": "scale",
+            "value": 0.0
+          },
+          {
+            "axis": 1,
+            "key": "scale",
+            "value": 25.4
+          },
+          {
+            "axis": 2,
+            "key": "scale",
+            "value": -50.8
+          },
+          {
+            "axis": 0,
+            "key": "size",
+            "value": 0.0
+          },
+          {
+            "axis": 1,
+            "key": "size",
+            "value": 645.16
+          },
+          {
+            "axis": 2,
+            "key": "size",
+            "value": -1290.32
+          }
+        ],
+        "position": [
+          0.0,
+          0.9999999989799999,
+          -1.9999999979599998
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.0,
+          0.9999999989799999,
+          1.9999999979599998
+        ]
+      }
+    },
+    {
+      "name": "imperial-1-invalid-cache",
+      "input": {
+        "imperial": true,
+        "valid": false,
+        "position": [
+          1.0,
+          123.456789,
+          -0.0001
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          1.0,
+          123.456789,
+          0.0001
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": -0.0001
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [],
+        "position": [
+          0.0393700787,
+          4.860503498979294,
+          -3.93700787e-06
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.0393700787,
+          4.860503498979294,
+          3.93700787e-06
+        ]
+      }
+    },
+    {
+      "name": "imperial-1-valid",
+      "input": {
+        "imperial": true,
+        "valid": true,
+        "position": [
+          1.0,
+          123.456789,
+          -0.0001
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          1.0,
+          123.456789,
+          0.0001
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": -0.0001
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 1.0
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 123.456789
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": -0.0001
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [
+          {
+            "axis": 0,
+            "key": "position",
+            "value": 25.4
+          },
+          {
+            "axis": 1,
+            "key": "position",
+            "value": 3135.8024406
+          },
+          {
+            "axis": 2,
+            "key": "position",
+            "value": -0.00254
+          },
+          {
+            "axis": 0,
+            "key": "rotation",
+            "value": 1.0
+          },
+          {
+            "axis": 1,
+            "key": "rotation",
+            "value": 123.456789
+          },
+          {
+            "axis": 2,
+            "key": "rotation",
+            "value": -0.0001
+          },
+          {
+            "axis": 0,
+            "key": "absolute_rotation",
+            "value": 1.0
+          },
+          {
+            "axis": 1,
+            "key": "absolute_rotation",
+            "value": 123.456789
+          },
+          {
+            "axis": 2,
+            "key": "absolute_rotation",
+            "value": -0.0001
+          },
+          {
+            "axis": 0,
+            "key": "scale",
+            "value": 1.0
+          },
+          {
+            "axis": 1,
+            "key": "scale",
+            "value": 123.456789
+          },
+          {
+            "axis": 2,
+            "key": "scale",
+            "value": -0.0001
+          },
+          {
+            "axis": 0,
+            "key": "size",
+            "value": 25.4
+          },
+          {
+            "axis": 1,
+            "key": "size",
+            "value": 3135.8024406
+          },
+          {
+            "axis": 2,
+            "key": "size",
+            "value": -0.00254
+          }
+        ],
+        "position": [
+          0.0393700787,
+          4.860503498979294,
+          -3.93700787e-06
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.0393700787,
+          4.860503498979294,
+          3.93700787e-06
+        ]
+      }
+    },
+    {
+      "name": "imperial-2-invalid-cache",
+      "input": {
+        "imperial": true,
+        "valid": false,
+        "position": [
+          2540.0,
+          1e-06,
+          -254000.0
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          2540.0,
+          1e-06,
+          254000.0
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": -254000.0
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [],
+        "position": [
+          99.999999898,
+          3.93700787e-08,
+          -9999.999989799999
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          99.999999898,
+          3.93700787e-08,
+          9999.999989799999
+        ]
+      }
+    },
+    {
+      "name": "imperial-2-valid",
+      "input": {
+        "imperial": true,
+        "valid": true,
+        "position": [
+          2540.0,
+          1e-06,
+          -254000.0
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          2540.0,
+          1e-06,
+          254000.0
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": -254000.0
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 2540.0
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 1e-06
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": -254000.0
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [
+          {
+            "axis": 0,
+            "key": "position",
+            "value": 64516.0
+          },
+          {
+            "axis": 1,
+            "key": "position",
+            "value": 2.5399999999999997e-05
+          },
+          {
+            "axis": 2,
+            "key": "position",
+            "value": -6451600.0
+          },
+          {
+            "axis": 0,
+            "key": "rotation",
+            "value": 2540.0
+          },
+          {
+            "axis": 1,
+            "key": "rotation",
+            "value": 1e-06
+          },
+          {
+            "axis": 2,
+            "key": "rotation",
+            "value": -254000.0
+          },
+          {
+            "axis": 0,
+            "key": "absolute_rotation",
+            "value": 2540.0
+          },
+          {
+            "axis": 1,
+            "key": "absolute_rotation",
+            "value": 1e-06
+          },
+          {
+            "axis": 2,
+            "key": "absolute_rotation",
+            "value": -254000.0
+          },
+          {
+            "axis": 0,
+            "key": "scale",
+            "value": 2540.0
+          },
+          {
+            "axis": 1,
+            "key": "scale",
+            "value": 1e-06
+          },
+          {
+            "axis": 2,
+            "key": "scale",
+            "value": -254000.0
+          },
+          {
+            "axis": 0,
+            "key": "size",
+            "value": 64516.0
+          },
+          {
+            "axis": 1,
+            "key": "size",
+            "value": 2.5399999999999997e-05
+          },
+          {
+            "axis": 2,
+            "key": "size",
+            "value": -6451600.0
+          }
+        ],
+        "position": [
+          99.999999898,
+          3.93700787e-08,
+          -9999.999989799999
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          99.999999898,
+          3.93700787e-08,
+          9999.999989799999
+        ]
+      }
+    },
+    {
+      "name": "imperial-3-invalid-cache",
+      "input": {
+        "imperial": true,
+        "valid": false,
+        "position": [
+          0.005,
+          99.995,
+          1.005
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.005,
+          99.995,
+          1.005
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": 1.005
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [],
+        "position": [
+          0.0001968503935,
+          3.9368110196065,
+          0.03956692909349999
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.0001968503935,
+          3.9368110196065,
+          0.03956692909349999
+        ]
+      }
+    },
+    {
+      "name": "imperial-3-valid",
+      "input": {
+        "imperial": true,
+        "valid": true,
+        "position": [
+          0.005,
+          99.995,
+          1.005
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.005,
+          99.995,
+          1.005
+        ],
+        "edits": [
+          {
+            "key": "position",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "position",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "position",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "rotation",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "rotation",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "rotation",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "absolute_rotation",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "scale",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "scale",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "scale",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "size",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "size",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "size",
+            "axis": 2,
+            "value": 1.005
+          },
+          {
+            "key": "unknown",
+            "axis": 0,
+            "value": 0.005
+          },
+          {
+            "key": "unknown",
+            "axis": 1,
+            "value": 99.995
+          },
+          {
+            "key": "unknown",
+            "axis": 2,
+            "value": 1.005
+          }
+        ]
+      },
+      "expected": {
+        "absolute_rotation": [
+          360.0,
+          -0.1,
+          12.345
+        ],
+        "edits": [
+          {
+            "axis": 0,
+            "key": "position",
+            "value": 0.127
+          },
+          {
+            "axis": 1,
+            "key": "position",
+            "value": 2539.873
+          },
+          {
+            "axis": 2,
+            "key": "position",
+            "value": 25.526999999999997
+          },
+          {
+            "axis": 0,
+            "key": "rotation",
+            "value": 0.005
+          },
+          {
+            "axis": 1,
+            "key": "rotation",
+            "value": 99.995
+          },
+          {
+            "axis": 2,
+            "key": "rotation",
+            "value": 1.005
+          },
+          {
+            "axis": 0,
+            "key": "absolute_rotation",
+            "value": 0.005
+          },
+          {
+            "axis": 1,
+            "key": "absolute_rotation",
+            "value": 99.995
+          },
+          {
+            "axis": 2,
+            "key": "absolute_rotation",
+            "value": 1.005
+          },
+          {
+            "axis": 0,
+            "key": "scale",
+            "value": 0.005
+          },
+          {
+            "axis": 1,
+            "key": "scale",
+            "value": 99.995
+          },
+          {
+            "axis": 2,
+            "key": "scale",
+            "value": 1.005
+          },
+          {
+            "axis": 0,
+            "key": "size",
+            "value": 0.127
+          },
+          {
+            "axis": 1,
+            "key": "size",
+            "value": 2539.873
+          },
+          {
+            "axis": 2,
+            "key": "size",
+            "value": 25.526999999999997
+          }
+        ],
+        "position": [
+          0.0001968503935,
+          3.9368110196065,
+          0.03956692909349999
+        ],
+        "rotation": [
+          15.0,
+          -90.0,
+          0.001
+        ],
+        "scale": [
+          1.0,
+          0.01,
+          1000.0
+        ],
+        "size": [
+          0.0001968503935,
+          3.9368110196065,
+          0.03956692909349999
+        ]
+      }
+    }
+  ]
+}

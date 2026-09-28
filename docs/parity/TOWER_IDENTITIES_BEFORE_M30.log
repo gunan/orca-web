@@ -1,0 +1,152 @@
+✖ tower request keeps distinct native models: family token equals a standalone group key (5.797916ms)
+✖ tower request keeps distinct native models: standalone group precedes a colliding family token (0.36775ms)
+✖ tower request keeps distinct native models: long plate and object IDs compose beyond the worker bound (0.386208ms)
+✖ tower request keeps distinct native models: escaped group IDs exceed the bound only after JSON encoding (0.456042ms)
+✖ tower request keeps distinct native models: multibyte group IDs exceed the worker byte bound (9.927666ms)
+✖ tower request keeps distinct native models: multibyte family token exceeds the worker byte bound (0.726125ms)
+✖ tower request keeps distinct native models: user family token collides with an allocated worker ID (0.294334ms)
+✖ tower request keeps distinct native models: allocated worker ID skips an existing user family token (0.263125ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 0
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 182.982209
+
+✖ failing tests:
+
+test at tests/unit/native-tower-identity-before.diagnostic.mjs:5:37
+✖ tower request keeps distinct native models: family token equals a standalone group key (5.797916ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 2
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m30-tower-identity-stage/tests/unit/native-tower-identity-before.diagnostic.mjs:6:165)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.start (node:internal/test_runner/test:1003:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/unit/native-tower-identity-before.diagnostic.mjs:5:37
+✖ tower request keeps distinct native models: standalone group precedes a colliding family token (0.36775ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 2
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m30-tower-identity-stage/tests/unit/native-tower-identity-before.diagnostic.mjs:6:165)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/unit/native-tower-identity-before.diagnostic.mjs:5:37
+✖ tower request keeps distinct native models: long plate and object IDs compose beyond the worker bound (0.386208ms)
+  Error: Invalid prime tower identity
+      at identity (file:///private/tmp/orca-implementation/m30-tower-identity-stage/shared/native-prime-tower-before.mjs:10:114)
+      at prepareNativePrimeTower (file:///private/tmp/orca-implementation/m30-tower-identity-stage/shared/native-prime-tower-before.mjs:42:23)
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m30-tower-identity-stage/tests/unit/native-tower-identity-before.diagnostic.mjs:6:77)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at tests/unit/native-tower-identity-before.diagnostic.mjs:5:37
+✖ tower request keeps distinct native models: escaped group IDs exceed the bound only after JSON encoding (0.456042ms)
+  Error: Invalid prime tower identity
+      at identity (file:///private/tmp/orca-implementation/m30-tower-identity-stage/shared/native-prime-tower-before.mjs:10:114)
+      at prepareNativePrimeTower (file:///private/tmp/orca-implementation/m30-tower-identity-stage/shared/native-prime-tower-before.mjs:42:23)
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m30-tower-identity-stage/tests/unit/native-tower-identity-before.diagnostic.mjs:6:77)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at tests/unit/native-tower-identity-before.diagnostic.mjs:5:37
+✖ tower request keeps distinct native models: multibyte group IDs exceed the worker byte bound (9.927666ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(Buffer.byteLength(id)<=256)
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m30-tower-identity-stage/tests/unit/native-tower-identity-before.diagnostic.mjs:7:112)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/unit/native-tower-identity-before.diagnostic.mjs:5:37
+✖ tower request keeps distinct native models: multibyte family token exceeds the worker byte bound (0.726125ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(Buffer.byteLength(id)<=256)
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m30-tower-identity-stage/tests/unit/native-tower-identity-before.diagnostic.mjs:7:112)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests/unit/native-tower-identity-before.diagnostic.mjs:5:37
+✖ tower request keeps distinct native models: user family token collides with an allocated worker ID (0.294334ms)
+  Error: Invalid prime tower identity
+      at identity (file:///private/tmp/orca-implementation/m30-tower-identity-stage/shared/native-prime-tower-before.mjs:10:114)
+      at prepareNativePrimeTower (file:///private/tmp/orca-implementation/m30-tower-identity-stage/shared/native-prime-tower-before.mjs:42:23)
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m30-tower-identity-stage/tests/unit/native-tower-identity-before.diagnostic.mjs:6:77)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at tests/unit/native-tower-identity-before.diagnostic.mjs:5:37
+✖ tower request keeps distinct native models: allocated worker ID skips an existing user family token (0.263125ms)
+  Error: Invalid prime tower identity
+      at identity (file:///private/tmp/orca-implementation/m30-tower-identity-stage/shared/native-prime-tower-before.mjs:10:114)
+      at prepareNativePrimeTower (file:///private/tmp/orca-implementation/m30-tower-identity-stage/shared/native-prime-tower-before.mjs:42:23)
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m30-tower-identity-stage/tests/unit/native-tower-identity-before.diagnostic.mjs:6:77)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)

@@ -1,0 +1,27 @@
+[WebServer] (node:56968) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 18 tests using 1 worker
+
+(node:56992) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/camera-fit-orientation.spec.js:10:56 › Prepare Fit and Zoom to bed preserve the current Perspective viewing axes and Undo history (9.4s)
+  ✓   2 tests/e2e/camera-fit-orientation.spec.js:10:56 › Prepare Fit and Zoom to bed preserve the current Orthographic viewing axes and Undo history (9.6s)
+  ✓   3 tests/e2e/camera-fit-orientation.spec.js:15:1 › Fit toolpaths preserves a user orbit and pan while fitting the visible preview without slicing again (8.7s)
+  ✓   4 tests/e2e/prime-tower-camera.spec.js:29:56 › Fit waits for replacement tower bounds in Perspective and retains the chosen view (1.8s)
+  ✓   5 tests/e2e/prime-tower-camera.spec.js:29:56 › Fit waits for replacement tower bounds in Orthographic and retains the chosen view (2.2s)
+  ✓   6 tests/e2e/prime-tower-camera.spec.js:39:45 › a user orbit supersedes a pending Fit without a late camera jump (4.7s)
+  ✓   7 tests/e2e/prime-tower-camera.spec.js:39:45 › a user pan supersedes a pending Fit without a late camera jump (4.2s)
+  ✓   8 tests/e2e/prime-tower-camera.spec.js:39:45 › a user zoom supersedes a pending Fit without a late camera jump (2.1s)
+  ✓   9 tests/e2e/prime-tower-camera.spec.js:44:1 › Zoom to bed supersedes a pending object Fit (1.7s)
+  ✓  10 tests/e2e/prime-tower-camera.spec.js:47:1 › failed preview clears the pending Fit before a later successful refresh (2.3s)
+  ✓  11 tests/e2e/prime-tower-camera.spec.js:50:1 › disabling the tower cancels a pending Fit and its delayed response (2.2s)
+  ✓  12 tests/e2e/prime-tower-camera.spec.js:54:1 › superseded geometry cannot satisfy Fit; the newest valid preview does (2.2s)
+  ✓  13 tests/e2e/prime-tower-camera.spec.js:57:1 › a fit queued for the previous plate cannot impose its view on the next plate (2.0s)
+  ✓  14 tests/e2e/prime-tower-camera.spec.js:60:1 › camera movement before the first tower response also cancels automatic fitting (1.9s)
+  ✓  15 tests/e2e/prime-tower-camera.spec.js:64:56 › a pending manual Fit preserves custom Perspective orientation after replacement tower geometry arrives (5.3s)
+  ✓  16 tests/e2e/prime-tower-camera.spec.js:64:56 › a pending manual Fit preserves custom Orthographic orientation after replacement tower geometry arrives (5.8s)
+  ✓  17 tests/e2e/prime-tower-fit-lifecycle.spec.js:14:43 › Fit uses newly committed tower geometry before passive effects replace the ready scene (642ms)
+  ✓  18 tests/e2e/prime-tower-fit-lifecycle.spec.js:14:43 › Fit uses newly committed tower geometry before passive effects replace the loading scene (776ms)
+
+  18 passed (1.1m)

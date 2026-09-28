@@ -1,0 +1,151 @@
+[WebServer] (node:5490) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:5671) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 ../m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:13:1 › native multipart Yes retains relative heights as one model, preserves current presets and participates in one Undo (11.2s)
+(node:6031) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 ../m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:14:37 › multipart No keeps separate objects and grounds each independently (6.6s)
+(node:6067) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 ../m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:14:37 › multipart Escape keeps separate objects and grounds each independently (6.1s)
+(node:6122) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 ../m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:15:1 › explicit geometry Open asks discard before multipart, then exports one two-volume object at full height (30.1s)
+
+
+  1) ../m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:13:1 › native multipart Yes retains relative heights as one model, preserves current presets and participates in one Undo 
+
+    Error: expect(locator).toContainText(expected) failed
+
+    Locator: getByRole('dialog', { name: 'Multi-part object detected' })
+    Expected substring: "several objects positioned at multiple heights"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toContainText" getByRole('dialog', { name: 'Multi-part object detected' }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Multi-part object detected' })
+
+
+      11 | async function start(page){await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByRole('button',{name:'Preferences',exact:true}).click();const d=page.getByRole('dialog',{name:'Preferences'});await d.getByLabel('Load behaviour').selectOption('load_geometry_only');await d.getByRole('button',{name:'Close',exact:true}).click();}
+      12 | async function save(page){const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Save project',exact:true}).click();return parseProject(await readFile(await(await pending).path(),'utf8'));}
+    > 13 | test('native multipart Yes retains relative heights as one model, preserves current presets and participates in one Undo',async({page},info)=>{await start(page);await page.getByLabel('Layer height',{exact:true}).fill('0.25');await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toContainText('several objects positioned at multiple heights');await expect(page.getByRole('dialog')).toHaveCount(1);await expect(page.getByLabel('position X',{exact:true})).toBeDisabled();await page.keyboard.press('Control+z');await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.screenshot({path:info.outputPath('native-multipart-choice.png')});await dialog(page).getByRole('button',{name:'Yes',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const p=await save(page),added=p.objects.slice(1);expect(added).toHaveLength(2);expect(new Set(added.map(o=>o.native.groupId)).size).toBe(1);expect(sceneBounds(added).size[2]).toBe(40);expect(added.map(o=>o.name)).toEqual(['Bottom','Top']);expect(p.overrides.layer_height).toBe('0.25');await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByRole('button',{name:'Redo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);});
+         |                                                                                                                                                                                                                                                                                                                                                                                             ^
+      14 | for(const action of ['No','Escape'])test(`multipart ${action} keeps separate objects and grounds each independently`,async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toBeVisible();if(action==='Escape')await page.keyboard.press('Escape');else await dialog(page).getByRole('button',{name:'No',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const p=await save(page);expect(p.objects).toHaveLength(2);expect(new Set(p.objects.map(o=>o.native.groupId)).size).toBe(2);expect(p.objects.map(o=>meshBounds(o).min[2])).toEqual([0,0]);});
+      15 | test('explicit geometry Open asks discard before multipart, then exports one two-volume object at full height',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('Open Orca Web project').setInputFiles(file());await expect(dialog(page)).toHaveCount(0);await page.getByRole('button',{name:'Discard changes',exact:true}).click();await dialog(page).getByRole('button',{name:'Yes',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByRole('button',{name:'Project',exact:true}).click();const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Export native project',exact:true}).click();const p=importNative3MF(await readFile(await(await pending).path()));expect(p.objects).toHaveLength(2);expect(new Set(p.objects.map(o=>o.native.groupId)).size).toBe(1);expect(sceneBounds(p.objects).size[2]).toBe(40);});
+      16 | test('linked instances and an existing multi-volume model do not trigger the multipart object question',async({page})=>{await start(page);for(const parts of [1,2]){const loaded=page.waitForResponse(r=>r.url().endsWith('/api/projects/import')&&r.request().method()==='POST');await page.getByLabel('Choose a 3D model').setInputFiles(file(fixture({parts})));expect((await loaded).status()).toBe(200);await expect(page.getByRole('dialog')).toHaveCount(0);}const p=await save(page);expect(p.objects).toHaveLength(6);expect(new Set(p.objects.map(o=>o.native.instanceFamily)).size).toBe(2);});
+        at /private/tmp/orca-implementation/m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:13:381
+
+    Error Context: test-results/m47-focused/multipart-import-native-mu-4d280-nd-participates-in-one-Undo/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m47-focused/multipart-import-native-mu-4d280-nd-participates-in-one-Undo/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m47-focused/multipart-import-native-mu-4d280-nd-participates-in-one-Undo/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) ../m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:14:37 › multipart No keeps separate objects and grounds each independently 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog', { name: 'Multi-part object detected' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog', { name: 'Multi-part object detected' }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Multi-part object detected' })
+
+
+      12 | async function save(page){const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Save project',exact:true}).click();return parseProject(await readFile(await(await pending).path(),'utf8'));}
+      13 | test('native multipart Yes retains relative heights as one model, preserves current presets and participates in one Undo',async({page},info)=>{await start(page);await page.getByLabel('Layer height',{exact:true}).fill('0.25');await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toContainText('several objects positioned at multiple heights');await expect(page.getByRole('dialog')).toHaveCount(1);await expect(page.getByLabel('position X',{exact:true})).toBeDisabled();await page.keyboard.press('Control+z');await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.screenshot({path:info.outputPath('native-multipart-choice.png')});await dialog(page).getByRole('button',{name:'Yes',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const p=await save(page),added=p.objects.slice(1);expect(added).toHaveLength(2);expect(new Set(added.map(o=>o.native.groupId)).size).toBe(1);expect(sceneBounds(added).size[2]).toBe(40);expect(added.map(o=>o.name)).toEqual(['Bottom','Top']);expect(p.overrides.layer_height).toBe('0.25');await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByRole('button',{name:'Redo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);});
+    > 14 | for(const action of ['No','Escape'])test(`multipart ${action} keeps separate objects and grounds each independently`,async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toBeVisible();if(action==='Escape')await page.keyboard.press('Escape');else await dialog(page).getByRole('button',{name:'No',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const p=await save(page);expect(p.objects).toHaveLength(2);expect(new Set(p.objects.map(o=>o.native.groupId)).size).toBe(2);expect(p.objects.map(o=>meshBounds(o).min[2])).toEqual([0,0]);});
+         |                                                                                                                                                                                                                                                    ^
+      15 | test('explicit geometry Open asks discard before multipart, then exports one two-volume object at full height',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('Open Orca Web project').setInputFiles(file());await expect(dialog(page)).toHaveCount(0);await page.getByRole('button',{name:'Discard changes',exact:true}).click();await dialog(page).getByRole('button',{name:'Yes',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByRole('button',{name:'Project',exact:true}).click();const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Export native project',exact:true}).click();const p=importNative3MF(await readFile(await(await pending).path()));expect(p.objects).toHaveLength(2);expect(new Set(p.objects.map(o=>o.native.groupId)).size).toBe(1);expect(sceneBounds(p.objects).size[2]).toBe(40);});
+      16 | test('linked instances and an existing multi-volume model do not trigger the multipart object question',async({page})=>{await start(page);for(const parts of [1,2]){const loaded=page.waitForResponse(r=>r.url().endsWith('/api/projects/import')&&r.request().method()==='POST');await page.getByLabel('Choose a 3D model').setInputFiles(file(fixture({parts})));expect((await loaded).status()).toBe(200);await expect(page.getByRole('dialog')).toHaveCount(0);}const p=await save(page);expect(p.objects).toHaveLength(6);expect(new Set(p.objects.map(o=>o.native.instanceFamily)).size).toBe(2);});
+      17 | for(const theme of ['light','dark'])test(`multipart ${theme} dialog uses native warning dimensions, choice buttons and fits compact windows`,async({page},info)=>{await page.setViewportSize({width:520,height:720});await page.addInitScript(value=>localStorage.setItem('orca-web-theme',value),theme);await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toBeVisible();await expect(dialog(page).getByRole('img',{name:'Warning'})).toHaveAttribute('src','/native-dialogs/exclamation.svg');const image=await dialog(page).getByRole('img',{name:'Warning'}).boundingBox();expect(image.width).toBe(64);expect(image.height).toBe(64);const yes=dialog(page).getByRole('button',{name:'Yes',exact:true});await expect(yes).toBeFocused();await expect(yes).toHaveCSS('background-color','rgb(0, 150, 136)');await expect(yes).toHaveCSS('border-radius','4px');expect((await yes.boundingBox()).width).toBeGreaterThanOrEqual(100);const box=await dialog(page).boundingBox();expect(box.x).toBeGreaterThanOrEqual(0);expect(box.x+box.width).toBeLessThanOrEqual(520);await page.screenshot({path:info.outputPath(`native-multipart-${theme}-compact.png`)});await dialog(page).getByRole('button',{name:'No',exact:true}).click();await expect(dialog(page)).toHaveCount(0);});
+        at /private/tmp/orca-implementation/m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:14:244
+
+    Error Context: test-results/m47-focused/multipart-import-multipart-52abb--grounds-each-independently/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m47-focused/multipart-import-multipart-52abb--grounds-each-independently/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m47-focused/multipart-import-multipart-52abb--grounds-each-independently/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) ../m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:14:37 › multipart Escape keeps separate objects and grounds each independently 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog', { name: 'Multi-part object detected' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog', { name: 'Multi-part object detected' }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Multi-part object detected' })
+
+
+      12 | async function save(page){const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Save project',exact:true}).click();return parseProject(await readFile(await(await pending).path(),'utf8'));}
+      13 | test('native multipart Yes retains relative heights as one model, preserves current presets and participates in one Undo',async({page},info)=>{await start(page);await page.getByLabel('Layer height',{exact:true}).fill('0.25');await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toContainText('several objects positioned at multiple heights');await expect(page.getByRole('dialog')).toHaveCount(1);await expect(page.getByLabel('position X',{exact:true})).toBeDisabled();await page.keyboard.press('Control+z');await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.screenshot({path:info.outputPath('native-multipart-choice.png')});await dialog(page).getByRole('button',{name:'Yes',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const p=await save(page),added=p.objects.slice(1);expect(added).toHaveLength(2);expect(new Set(added.map(o=>o.native.groupId)).size).toBe(1);expect(sceneBounds(added).size[2]).toBe(40);expect(added.map(o=>o.name)).toEqual(['Bottom','Top']);expect(p.overrides.layer_height).toBe('0.25');await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByRole('button',{name:'Redo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);});
+    > 14 | for(const action of ['No','Escape'])test(`multipart ${action} keeps separate objects and grounds each independently`,async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toBeVisible();if(action==='Escape')await page.keyboard.press('Escape');else await dialog(page).getByRole('button',{name:'No',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const p=await save(page);expect(p.objects).toHaveLength(2);expect(new Set(p.objects.map(o=>o.native.groupId)).size).toBe(2);expect(p.objects.map(o=>meshBounds(o).min[2])).toEqual([0,0]);});
+         |                                                                                                                                                                                                                                                    ^
+      15 | test('explicit geometry Open asks discard before multipart, then exports one two-volume object at full height',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('Open Orca Web project').setInputFiles(file());await expect(dialog(page)).toHaveCount(0);await page.getByRole('button',{name:'Discard changes',exact:true}).click();await dialog(page).getByRole('button',{name:'Yes',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByRole('button',{name:'Project',exact:true}).click();const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Export native project',exact:true}).click();const p=importNative3MF(await readFile(await(await pending).path()));expect(p.objects).toHaveLength(2);expect(new Set(p.objects.map(o=>o.native.groupId)).size).toBe(1);expect(sceneBounds(p.objects).size[2]).toBe(40);});
+      16 | test('linked instances and an existing multi-volume model do not trigger the multipart object question',async({page})=>{await start(page);for(const parts of [1,2]){const loaded=page.waitForResponse(r=>r.url().endsWith('/api/projects/import')&&r.request().method()==='POST');await page.getByLabel('Choose a 3D model').setInputFiles(file(fixture({parts})));expect((await loaded).status()).toBe(200);await expect(page.getByRole('dialog')).toHaveCount(0);}const p=await save(page);expect(p.objects).toHaveLength(6);expect(new Set(p.objects.map(o=>o.native.instanceFamily)).size).toBe(2);});
+      17 | for(const theme of ['light','dark'])test(`multipart ${theme} dialog uses native warning dimensions, choice buttons and fits compact windows`,async({page},info)=>{await page.setViewportSize({width:520,height:720});await page.addInitScript(value=>localStorage.setItem('orca-web-theme',value),theme);await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toBeVisible();await expect(dialog(page).getByRole('img',{name:'Warning'})).toHaveAttribute('src','/native-dialogs/exclamation.svg');const image=await dialog(page).getByRole('img',{name:'Warning'}).boundingBox();expect(image.width).toBe(64);expect(image.height).toBe(64);const yes=dialog(page).getByRole('button',{name:'Yes',exact:true});await expect(yes).toBeFocused();await expect(yes).toHaveCSS('background-color','rgb(0, 150, 136)');await expect(yes).toHaveCSS('border-radius','4px');expect((await yes.boundingBox()).width).toBeGreaterThanOrEqual(100);const box=await dialog(page).boundingBox();expect(box.x).toBeGreaterThanOrEqual(0);expect(box.x+box.width).toBeLessThanOrEqual(520);await page.screenshot({path:info.outputPath(`native-multipart-${theme}-compact.png`)});await dialog(page).getByRole('button',{name:'No',exact:true}).click();await expect(dialog(page)).toHaveCount(0);});
+        at /private/tmp/orca-implementation/m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:14:244
+
+    Error Context: test-results/m47-focused/multipart-import-multipart-f81d2--grounds-each-independently/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m47-focused/multipart-import-multipart-f81d2--grounds-each-independently/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m47-focused/multipart-import-multipart-f81d2--grounds-each-independently/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) ../m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:15:1 › explicit geometry Open asks discard before multipart, then exports one two-volume object at full height 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('dialog', { name: 'Multi-part object detected' }).getByRole('button', { name: 'Yes', exact: true })
+
+
+      13 | test('native multipart Yes retains relative heights as one model, preserves current presets and participates in one Undo',async({page},info)=>{await start(page);await page.getByLabel('Layer height',{exact:true}).fill('0.25');await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toContainText('several objects positioned at multiple heights');await expect(page.getByRole('dialog')).toHaveCount(1);await expect(page.getByLabel('position X',{exact:true})).toBeDisabled();await page.keyboard.press('Control+z');await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.screenshot({path:info.outputPath('native-multipart-choice.png')});await dialog(page).getByRole('button',{name:'Yes',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const p=await save(page),added=p.objects.slice(1);expect(added).toHaveLength(2);expect(new Set(added.map(o=>o.native.groupId)).size).toBe(1);expect(sceneBounds(added).size[2]).toBe(40);expect(added.map(o=>o.name)).toEqual(['Bottom','Top']);expect(p.overrides.layer_height).toBe('0.25');await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByRole('button',{name:'Redo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);});
+      14 | for(const action of ['No','Escape'])test(`multipart ${action} keeps separate objects and grounds each independently`,async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toBeVisible();if(action==='Escape')await page.keyboard.press('Escape');else await dialog(page).getByRole('button',{name:'No',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const p=await save(page);expect(p.objects).toHaveLength(2);expect(new Set(p.objects.map(o=>o.native.groupId)).size).toBe(2);expect(p.objects.map(o=>meshBounds(o).min[2])).toEqual([0,0]);});
+    > 15 | test('explicit geometry Open asks discard before multipart, then exports one two-volume object at full height',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('Open Orca Web project').setInputFiles(file());await expect(dialog(page)).toHaveCount(0);await page.getByRole('button',{name:'Discard changes',exact:true}).click();await dialog(page).getByRole('button',{name:'Yes',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByRole('button',{name:'Project',exact:true}).click();const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Export native project',exact:true}).click();const p=importNative3MF(await readFile(await(await pending).path()));expect(p.objects).toHaveLength(2);expect(new Set(p.objects.map(o=>o.native.groupId)).size).toBe(1);expect(sceneBounds(p.objects).size[2]).toBe(40);});
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                          ^
+      16 | test('linked instances and an existing multi-volume model do not trigger the multipart object question',async({page})=>{await start(page);for(const parts of [1,2]){const loaded=page.waitForResponse(r=>r.url().endsWith('/api/projects/import')&&r.request().method()==='POST');await page.getByLabel('Choose a 3D model').setInputFiles(file(fixture({parts})));expect((await loaded).status()).toBe(200);await expect(page.getByRole('dialog')).toHaveCount(0);}const p=await save(page);expect(p.objects).toHaveLength(6);expect(new Set(p.objects.map(o=>o.native.instanceFamily)).size).toBe(2);});
+      17 | for(const theme of ['light','dark'])test(`multipart ${theme} dialog uses native warning dimensions, choice buttons and fits compact windows`,async({page},info)=>{await page.setViewportSize({width:520,height:720});await page.addInitScript(value=>localStorage.setItem('orca-web-theme',value),theme);await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toBeVisible();await expect(dialog(page).getByRole('img',{name:'Warning'})).toHaveAttribute('src','/native-dialogs/exclamation.svg');const image=await dialog(page).getByRole('img',{name:'Warning'}).boundingBox();expect(image.width).toBe(64);expect(image.height).toBe(64);const yes=dialog(page).getByRole('button',{name:'Yes',exact:true});await expect(yes).toBeFocused();await expect(yes).toHaveCSS('background-color','rgb(0, 150, 136)');await expect(yes).toHaveCSS('border-radius','4px');expect((await yes.boundingBox()).width).toBeGreaterThanOrEqual(100);const box=await dialog(page).boundingBox();expect(box.x).toBeGreaterThanOrEqual(0);expect(box.x+box.width).toBeLessThanOrEqual(520);await page.screenshot({path:info.outputPath(`native-multipart-${theme}-compact.png`)});await dialog(page).getByRole('button',{name:'No',exact:true}).click();await expect(dialog(page)).toHaveCount(0);});
+      18 |
+        at /private/tmp/orca-implementation/m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:15:458
+
+    Error Context: test-results/m47-focused/multipart-import-explicit--cbbd2-olume-object-at-full-height/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m47-focused/multipart-import-explicit--cbbd2-olume-object-at-full-height/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m47-focused/multipart-import-explicit--cbbd2-olume-object-at-full-height/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    ../m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:13:1 › native multipart Yes retains relative heights as one model, preserves current presets and participates in one Undo 
+    ../m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:14:37 › multipart No keeps separate objects and grounds each independently 
+    ../m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:14:37 › multipart Escape keeps separate objects and grounds each independently 
+    ../m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:15:1 › explicit geometry Open asks discard before multipart, then exports one two-volume object at full height 

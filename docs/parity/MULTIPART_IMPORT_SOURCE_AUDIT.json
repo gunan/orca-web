@@ -1,0 +1,39 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "baseline": "OrcaSlicer2.4.2 macOS",
+  "sourceSha256": {
+    "src/libslic3r/Model.cpp": "abc47399040b295f1eed8ad53f7ddd7b45eb324616cd8e57ea5d188b7d9ea894",
+    "src/slic3r/GUI/Plater.cpp": "dbeee2a69d8955dd8e42efa8943a553b3c231232ce7f0cf0496575aed78daf3a",
+    "src/slic3r/GUI/MsgDialog.cpp": "3beedcfe6e7be14163cea31aae0e7308668f7125d960b3bf7394ab8f9f6f2dba",
+    "src/slic3r/GUI/MsgDialog.hpp": "c3abf44e5dac47984e0f644281c270b547c8a03cc658d14b19591b6ba428f702",
+    "src/slic3r/GUI/Widgets/Button.cpp": "7d7f18896a28e7d0d5e5282ae05f7e20777305d0669ecc9d402b7404b93225b2",
+    "src/slic3r/GUI/Widgets/Button.hpp": "8b66372722161410c042704ee6da3073e6e8f964c5b22d9103516b7fbbc7a96e"
+  },
+  "observations": [
+    {
+      "file": "src/libslic3r/Model.cpp",
+      "lines": "752\u2013829",
+      "behavior": "Original multipart detection uses multiple ModelObjects, at most one volume/config key before first differing minimumZ atEPSILON1e-4. Early acceptance precedes inspection of later objects. Conversion uses volume-major then instance-major order, applies full instance*volume transforms and assigns volume extruder before object fallback. A new ModelObject omits former object-level config/ranges/profile/brim/cut identity."
+    },
+    {
+      "file": "src/slic3r/GUI/Plater.cpp",
+      "lines": "6735\u20136745,7040\u20137117",
+      "behavior": "Geometry loading asks Multi-part object detected with Yes/No before grounding. Yes creates a new object with no instances; insertion centers all volumes, creates a default instance and grounds normal geometry. No and dialog dismissal follow separate-object grounding."
+    },
+    {
+      "file": "src/slic3r/GUI/MsgDialog.cpp",
+      "lines": "28\u201382,201\u2013219,392\u2013407",
+      "behavior": "Warning uses installed exclamation.svg at64px; logo left25px/gap20px, top20px. Yes takes focus and Confirm styling; No regular. Buttons gap10px, minimum100x32, padding12x8,radius4,font14. Current browser title/chrome/metrics remain partial."
+    }
+  ],
+  "reference": "tests/fixtures/native-multipart-import-reference.json",
+  "referenceScope": "49 original predicate cases and3 original conversion cases using affine/config/name adapters, zero origin_translation; no archive parser or arbitrary native GUI acceptance.",
+  "remaining": [
+    "Only supported Orca/Prusa structured geometry paths currently offer the question; generic3MF/AMF and mixed-file workflows remain open.",
+    "Object-origin translation and every native archive/volume metadata variant still need matched desktop acceptance.",
+    "Native title chrome, warning color mapping/dark metrics and platform typography are not fully verified.",
+    "Small-unit detection and >10/>10000 XY oversize choices are separately inventoried for implementation.",
+    "Mac locked at last native inspection.",
+    "Zero-volume model removal uses native volume<1e-10 before small-unit/multipart checks and is separately inventoried."
+  ]
+}

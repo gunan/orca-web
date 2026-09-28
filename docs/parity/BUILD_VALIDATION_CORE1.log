@@ -1,0 +1,22 @@
+
+> orca-web@0.1.0 build
+> vite build
+
+vite v7.3.6 building client environment for production...
+transforming...
+[plugin vite:resolve] Module "path" has been externalized for browser compatibility, imported by "/Users/gunan/workspace/orca-web/node_modules/occt-import-js/dist/occt-import-js.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.
+[plugin vite:resolve] Module "crypto" has been externalized for browser compatibility, imported by "/Users/gunan/workspace/orca-web/node_modules/occt-import-js/dist/occt-import-js.js". See https://vite.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility for more details.
+✓ 369 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                               0.46 kB │ gzip:     0.31 kB
+dist/assets/step-worker-B7djZQRY.js          59.58 kB
+dist/assets/occt-import-js-BhHfLpto.wasm  7,604.03 kB │ gzip: 3,091.63 kB
+dist/assets/index-oUMyb9pm.css               83.27 kB │ gzip:    16.55 kB
+dist/assets/index-CGoUcDEU.js             2,660.26 kB │ gzip:   715.22 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 2.11s

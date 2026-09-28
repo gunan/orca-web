@@ -1,0 +1,77 @@
+import { test, expect } from '@playwright/test';
+test('browser-generated temperature calibration reaches the real native job pipeline with an effective layer schedule', async ({ page, request }, testInfo) => {
+  const health = await (await request.get('/api/health')).json();
+  expect(health.engine.version).toMatch(/^OrcaSlicer-2\.4\.2\b/);
+  await page.goto('/'); await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();
+  await page.getByRole('button',{name:'Calibration',exact:true}).click();
+  await page.getByRole('menuitem',{name:'Generate calibration…',exact:true}).click();
+  await page.getByLabel('Calibration end',{exact:true}).fill('225');
+  const preparation=page.waitForResponse(response=>response.url().endsWith('/api/calibrations/prepare'));
+  await page.getByRole('button',{name:'Generate calibration',exact:true}).click();
+  const prepared=await preparation;expect(prepared.status(),await prepared.text()).toBe(200);
+  const body=await prepared.json();expect(body.objects).toHaveLength(1);expect(body.calibration.token).toMatch(/^[a-f0-9]{64}$/);
+  await expect(page.getByRole('dialog',{name:'Calibration',exact:true})).not.toBeVisible();
+  await expect(page.getByLabel('Layer height',{exact:true})).toBeDisabled();
+  await expect(page.getByRole('button',{name:'Slice model',exact:true})).toBeEnabled();
+  await page.screenshot({path:testInfo.outputPath('temperature-calibration-prepare.png')});
+  const submission=page.waitForResponse(response=>response.url().endsWith('/api/jobs')&&response.request().method()==='POST');
+  await page.getByRole('button',{name:'Slice model',exact:true}).click();
+  const submitted=await submission;expect(submitted.status(),await submitted.text()).toBe(202);
+  const job=await submitted.json();expect(job.calibration.mode).toBe('temperature');
+  await expect(page.getByText('Ready to print')).toBeVisible({timeout:90000});
+  const result=await(await request.get(`/api/jobs/${job.id}`)).json();
+  expect(result.calibrationSummary.layers).toBe(100);
+  const gcode=await(await request.get(`/api/jobs/${job.id}/download`)).text();
+  const commands=gcode.split('\n').filter(line=>line.includes('; Orca Web calibration temperature'));
+  expect(commands).toHaveLength(100);expect(commands[0]).toMatch(/^M104 S230 /);expect(commands.at(-1)).toMatch(/^M104 S225 /);
+  expect(gcode).toContain('nozzle_temperature = 230');
+  await page.screenshot({path:testInfo.outputPath('temperature-calibration-preview.png')});
+  await page.getByRole('button',{name:'Prepare',exact:true}).click();
+  await page.getByLabel('position X',{exact:true}).fill('10');
+  await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();
+  await expect(page.locator('.editor-notice')).toContainText('Calibration cleared');
+});
+
+test('native flow specimens slice through the browser and an explicit result choice saves a new filament', async({page,request},testInfo)=>{
+  const errors=[];page.on('pageerror',error=>errors.push(error.message));
+  let releaseHotend,hotendPending=false;const hotendGate=new Promise(resolve=>releaseHotend=resolve);
+  await page.route('**/api/jobs/*/hotend',async route=>{const response=await route.fetch();hotendPending=true;await hotendGate;await route.fulfill({response}).catch(()=>{});});
+  const health=await(await request.get('/api/health')).json();expect(health.engine.version).toMatch(/^OrcaSlicer-2\.4\.2\b/);
+  await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();
+  await page.getByRole('button',{name:'Calibration',exact:true}).click();await page.getByRole('menuitem',{name:'Generate calibration…',exact:true}).click();
+  await page.getByLabel('Calibration test').selectOption('flow-ratio');await page.getByLabel('Calibration flow method').selectOption('coarse');await page.getByLabel('Calibration top pattern').selectOption('monotonic');
+  const preparing=page.waitForResponse(response=>response.url().endsWith('/api/calibrations/prepare'));
+  await page.getByRole('button',{name:'Generate calibration',exact:true}).click();const response=await preparing;expect(response.status(),await response.text()).toBe(200);const prepared=await response.json();expect(prepared.objects).toHaveLength(9);
+  await expect(page.locator('.scene-object-row')).toHaveCount(9);await page.screenshot({path:testInfo.outputPath('flow-ratio-prepare.png')});
+  const submitting=page.waitForResponse(response=>response.url().endsWith('/api/jobs/calibration'));
+  await page.getByRole('button',{name:'Slice model',exact:true}).click();const submitted=await submitting;expect(submitted.status(),await submitted.text()).toBe(202);const job=await submitted.json();expect(job.calibration.mode).toBe('flow-ratio');expect(job.nativeProject.objectCount).toBe(9);
+  await expect(page.getByText('Ready to print')).toBeVisible({timeout:90000});const gcode=await(await request.get(`/api/jobs/${job.id}/download`)).text();expect(gcode).toMatch(/generated by OrcaSlicer/i);expect(gcode).not.toMatch(/test adapter|test fixture/i);expect(gcode).toContain('flowrate_');expect(gcode).toMatch(/^G1 .*E[0-9]/m);
+  const ready=await(await request.get(`/api/jobs/${job.id}`)).json();expect(ready.calibrationSummary.mode).toBe('flow-ratio');await page.screenshot({path:testInfo.outputPath('flow-ratio-preview.png')});
+  await expect(page.getByRole('img',{name:'3D G-code toolpaths'})).toHaveAttribute('data-processor','native');
+  await expect.poll(()=>hotendPending).toBe(true);
+  // This exercises an explicit fixture choice; it is not a physical measurement.
+  await page.getByRole('button',{name:'Calibration',exact:true}).click();await page.getByRole('menuitem',{name:'Save calibration result…',exact:true}).click();const dialog=page.getByRole('dialog',{name:'Save flow calibration result'});
+  await expect(dialog.getByRole('button',{name:'Save calibrated filament',exact:true})).toBeDisabled();const specimen=prepared.plan.specimens.find(item=>item.modifier===5);
+  await dialog.getByLabel('Best flow specimen').selectOption(specimen.objectId);await dialog.getByLabel('Calibrated filament name').fill(`Browser flow fixture ${Date.now()}`);
+  const saving=page.waitForResponse(response=>response.url().endsWith('/api/calibrations/result'));await dialog.getByRole('button',{name:'Save calibrated filament',exact:true}).click();const saved=await saving;expect(saved.status(),await saved.text()).toBe(201);const result=await saved.json();expect(result.result.flowRatio).toBeCloseTo(prepared.plan.flow.baseFlow*1.05,6);
+  await expect(dialog).not.toBeVisible();await expect(page.getByRole('heading',{name:'No slicing result'})).toBeVisible();releaseHotend();await page.getByRole('button',{name:'Prepare',exact:true}).click();await expect(page.getByLabel('Filament',{exact:true})).toHaveValue(result.preset.id);await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();
+  const source=await(await request.get(`/api/presets/custom/source/filament/${result.preset.id}`)).json();expect(Number(source.preset.filament_flow_ratio[0])).toBeCloseTo(result.result.flowRatio,6);expect(errors).toEqual([]);
+});
+
+for(const mode of ['vfa','max-volumetric-speed']) test(`browser ${mode} creates a bound model and runs the native speed schedule`,async({page,request})=>{
+ await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();
+ await page.getByRole('button',{name:'Calibration',exact:true}).click();await page.getByRole('menuitem',{name:'Generate calibration…',exact:true}).click();
+ await page.getByLabel('Calibration test').selectOption(mode);
+ await page.getByLabel('Calibration start',{exact:true}).fill(mode==='vfa'?'40':'5');
+ await page.getByLabel('Calibration end',{exact:true}).fill(mode==='vfa'?'60':'5.5');
+ await page.getByLabel('Calibration step',{exact:true}).fill(mode==='vfa'?'20':'.5');
+ const preparation=page.waitForResponse(response=>response.url().endsWith('/api/calibrations/prepare'));
+ await page.getByRole('button',{name:'Generate calibration',exact:true}).click();const preparedResponse=await preparation;
+ expect(preparedResponse.status(),await preparedResponse.text()).toBe(200);const prepared=await preparedResponse.json();expect(prepared.objects).toHaveLength(1);expect(prepared.calibration.mode).toBe(mode);
+ await expect(page.getByRole('dialog',{name:'Calibration',exact:true})).toHaveCount(0);
+ const submission=page.waitForResponse(response=>response.url().endsWith('/api/jobs')&&response.request().method()==='POST');
+ await page.getByRole('button',{name:'Slice model',exact:true}).click();const submitted=await submission;expect(submitted.status(),await submitted.text()).toBe(202);const job=await submitted.json();
+ await expect(page.getByText('Ready to print')).toBeVisible({timeout:90000});
+ const ready=await(await request.get(`/api/jobs/${job.id}`)).json();expect(ready.calibrationSummary.mode).toBe(mode);expect(ready.calibrationSummary.changedMoves).toBeGreaterThan(0);expect(ready.calibrationSummary.timeEstimate).toBe('unavailable-after-speed-calibration');
+ const gcode=await(await request.get(`/api/jobs/${job.id}/download`)).text();expect(gcode).toMatch(/generated by OrcaSlicer/i);expect(gcode).not.toMatch(/test adapter|test fixture/i);expect(gcode).toMatch(/^G1 .*E[0-9]/m);expect(gcode).not.toMatch(/^M73\b|^; estimated printing time/m);expect(gcode).toMatch(/^; filament used \[g\]/m);
+});

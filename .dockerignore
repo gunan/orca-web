@@ -4,3 +4,16 @@ data
 .git
 test-results
 playwright-report
+
+.native-cache
+native/build
+docs
+tests
+.env
+.env.*
+**/*.log
+**/__pycache__
+**/*.pyc
+.DS_Store
+.codex
+.agents

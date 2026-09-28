@@ -1,0 +1,322 @@
+[WebServer] (node:82811) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 8 tests using 1 worker
+
+(node:82817) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:7:1 › recent projects preserve MRU order, deduplicate identical copies and reopen the saved geometry after reload (6.2s)
+(node:82892) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:8:1 › history preferences prune immediately, persist, disable at zero and stay outside model Undo (6.1s)
+(node:83028) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:9:1 › per-item removal and File-menu reopen operate on the same persisted recent history (6.1s)
+(node:83086) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:10:1 › STL and STEP recent imports are opt-in; reopening a model appends real geometry (30.1s)
+(node:83284) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  5 ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:11:1 › invalid and cancelled project opens never enter history or replace the current project (6.3s)
+(node:83292) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  6 ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:12:1 › failed recent-copy writes leave the imported project usable and roll back its metadata (6.3s)
+(node:83304) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  7 ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:13:1 › missing recent copies report a recoverable error without discarding edited geometry (6.3s)
+(node:83318) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  8 ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:14:1 › another tab receives recent changes and compact cards remain keyboard operable (6.3s)
+
+
+  1) ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:7:1 › recent projects preserve MRU order, deduplicate identical copies and reopen the saved geometry after reload 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('main', { name: 'Home', exact: true }).getByRole('listitem')
+    Expected: 1
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('main', { name: 'Home', exact: true }).getByRole('listitem') with timeout 5000ms
+      - waiting for getByRole('main', { name: 'Home', exact: true }).getByRole('listitem')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      3 | async function goHome(p){await p.getByRole('button',{name:'Home',exact:true}).click();await expect(home(p)).toBeVisible();}
+      4 | async function prefs(p,action){await p.getByRole('button',{name:'Preferences',exact:true}).click();const d=p.getByRole('dialog',{name:'Preferences'});await action(d);await d.getByRole('button',{name:'Close',exact:true}).click();}
+    > 5 | async function fixture(p){await p.goto('/');await p.getByRole('button',{name:'Prepare',exact:true}).click();await expect(p.getByLabel('Layer height',{exact:true})).toBeEnabled();await p.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await expect(p.locator('.scene-object-row')).toHaveCount(1);await p.getByRole('button',{name:'Project',exact:true}).click();const ready=p.waitForEvent('download');await p.locator('.project-actions').getByRole('button',{name:'Save project',exact:true}).click();const bytes=await fs.readFile(await(await ready).path());await goHome(p);await expect(rows(p)).toHaveCount(1);await home(p).getByRole('button',{name:'Clear all',exact:true}).click();await expect(rows(p)).toHaveCount(0);return bytes;}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+      6 | async function open(p,name,bytes){await p.getByLabel('Open Orca Web project').setInputFiles({name,mimeType:'application/json',buffer:bytes});await expect(p.getByLabel('Layer height',{exact:true})).toBeVisible();await goHome(p);await expect(home(p).getByRole('button',{name:`Open ${name}`,exact:true})).toBeVisible();}
+      7 | test('recent projects preserve MRU order, deduplicate identical copies and reopen the saved geometry after reload',async({page})=>{const bytes=await fixture(page);await open(page,'A.json',bytes);await open(page,'B.json',bytes);await open(page,'A.json',bytes);await expect(rows(page).locator('.recent-open span')).toHaveText(['A.json','B.json']);await page.reload();await goHome(page);await expect(rows(page)).toHaveCount(2);await home(page).getByRole('button',{name:'Open B.json',exact:true}).click();await expect(page.getByTestId('object-dimensions')).toContainText('20 × 20 × 20');await goHome(page);await expect(rows(page).locator('.recent-open span')).toHaveText(['B.json','A.json']);await expect(home(page)).toContainText('Browser copies. Changes to the original files are not included.');});
+      8 | test('history preferences prune immediately, persist, disable at zero and stay outside model Undo',async({page})=>{const bytes=await fixture(page);for(const name of['A.json','B.json','C.json'])await open(page,name,bytes);await prefs(page,async d=>{await expect(d.getByLabel('Maximum recent files')).toHaveValue('18');await d.getByLabel('Maximum recent files').fill('2');await d.getByLabel('Maximum recent files').press('Enter');});await expect(rows(page).locator('.recent-open span')).toHaveText(['C.json','B.json']);await page.getByRole('button',{name:'Prepare',exact:true}).click();await page.getByLabel('position X',{exact:true}).fill('40');await prefs(page,async d=>{await d.getByLabel('Maximum recent files').fill('0');await d.getByLabel('Maximum recent files').press('Enter');});await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).not.toHaveValue('40');await goHome(page);await expect(rows(page)).toHaveCount(0);await page.reload();await prefs(page,d=>expect(d.getByLabel('Maximum recent files')).toHaveValue('0'));await page.getByLabel('Open Orca Web project').setInputFiles({name:'disabled.json',mimeType:'application/json',buffer:bytes});await expect(page.locator('.scene-object-row')).toHaveCount(1);await goHome(page);await expect(rows(page)).toHaveCount(0);});
+        at fixture (/private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:5:646)
+        at /private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:7:144
+
+    Error Context: test-results/m44-focused/recent-files-recent-projec-5ee42-saved-geometry-after-reload/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m44-focused/recent-files-recent-projec-5ee42-saved-geometry-after-reload/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m44-focused/recent-files-recent-projec-5ee42-saved-geometry-after-reload/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:8:1 › history preferences prune immediately, persist, disable at zero and stay outside model Undo 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('main', { name: 'Home', exact: true }).getByRole('listitem')
+    Expected: 1
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('main', { name: 'Home', exact: true }).getByRole('listitem') with timeout 5000ms
+      - waiting for getByRole('main', { name: 'Home', exact: true }).getByRole('listitem')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      3 | async function goHome(p){await p.getByRole('button',{name:'Home',exact:true}).click();await expect(home(p)).toBeVisible();}
+      4 | async function prefs(p,action){await p.getByRole('button',{name:'Preferences',exact:true}).click();const d=p.getByRole('dialog',{name:'Preferences'});await action(d);await d.getByRole('button',{name:'Close',exact:true}).click();}
+    > 5 | async function fixture(p){await p.goto('/');await p.getByRole('button',{name:'Prepare',exact:true}).click();await expect(p.getByLabel('Layer height',{exact:true})).toBeEnabled();await p.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await expect(p.locator('.scene-object-row')).toHaveCount(1);await p.getByRole('button',{name:'Project',exact:true}).click();const ready=p.waitForEvent('download');await p.locator('.project-actions').getByRole('button',{name:'Save project',exact:true}).click();const bytes=await fs.readFile(await(await ready).path());await goHome(p);await expect(rows(p)).toHaveCount(1);await home(p).getByRole('button',{name:'Clear all',exact:true}).click();await expect(rows(p)).toHaveCount(0);return bytes;}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+      6 | async function open(p,name,bytes){await p.getByLabel('Open Orca Web project').setInputFiles({name,mimeType:'application/json',buffer:bytes});await expect(p.getByLabel('Layer height',{exact:true})).toBeVisible();await goHome(p);await expect(home(p).getByRole('button',{name:`Open ${name}`,exact:true})).toBeVisible();}
+      7 | test('recent projects preserve MRU order, deduplicate identical copies and reopen the saved geometry after reload',async({page})=>{const bytes=await fixture(page);await open(page,'A.json',bytes);await open(page,'B.json',bytes);await open(page,'A.json',bytes);await expect(rows(page).locator('.recent-open span')).toHaveText(['A.json','B.json']);await page.reload();await goHome(page);await expect(rows(page)).toHaveCount(2);await home(page).getByRole('button',{name:'Open B.json',exact:true}).click();await expect(page.getByTestId('object-dimensions')).toContainText('20 × 20 × 20');await goHome(page);await expect(rows(page).locator('.recent-open span')).toHaveText(['B.json','A.json']);await expect(home(page)).toContainText('Browser copies. Changes to the original files are not included.');});
+      8 | test('history preferences prune immediately, persist, disable at zero and stay outside model Undo',async({page})=>{const bytes=await fixture(page);for(const name of['A.json','B.json','C.json'])await open(page,name,bytes);await prefs(page,async d=>{await expect(d.getByLabel('Maximum recent files')).toHaveValue('18');await d.getByLabel('Maximum recent files').fill('2');await d.getByLabel('Maximum recent files').press('Enter');});await expect(rows(page).locator('.recent-open span')).toHaveText(['C.json','B.json']);await page.getByRole('button',{name:'Prepare',exact:true}).click();await page.getByLabel('position X',{exact:true}).fill('40');await prefs(page,async d=>{await d.getByLabel('Maximum recent files').fill('0');await d.getByLabel('Maximum recent files').press('Enter');});await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).not.toHaveValue('40');await goHome(page);await expect(rows(page)).toHaveCount(0);await page.reload();await prefs(page,d=>expect(d.getByLabel('Maximum recent files')).toHaveValue('0'));await page.getByLabel('Open Orca Web project').setInputFiles({name:'disabled.json',mimeType:'application/json',buffer:bytes});await expect(page.locator('.scene-object-row')).toHaveCount(1);await goHome(page);await expect(rows(page)).toHaveCount(0);});
+        at fixture (/private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:5:646)
+        at /private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:8:128
+
+    Error Context: test-results/m44-focused/recent-files-history-prefe-8dbe1-and-stay-outside-model-Undo/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m44-focused/recent-files-history-prefe-8dbe1-and-stay-outside-model-Undo/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m44-focused/recent-files-history-prefe-8dbe1-and-stay-outside-model-Undo/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:9:1 › per-item removal and File-menu reopen operate on the same persisted recent history 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('main', { name: 'Home', exact: true }).getByRole('listitem')
+    Expected: 1
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('main', { name: 'Home', exact: true }).getByRole('listitem') with timeout 5000ms
+      - waiting for getByRole('main', { name: 'Home', exact: true }).getByRole('listitem')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      3 | async function goHome(p){await p.getByRole('button',{name:'Home',exact:true}).click();await expect(home(p)).toBeVisible();}
+      4 | async function prefs(p,action){await p.getByRole('button',{name:'Preferences',exact:true}).click();const d=p.getByRole('dialog',{name:'Preferences'});await action(d);await d.getByRole('button',{name:'Close',exact:true}).click();}
+    > 5 | async function fixture(p){await p.goto('/');await p.getByRole('button',{name:'Prepare',exact:true}).click();await expect(p.getByLabel('Layer height',{exact:true})).toBeEnabled();await p.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await expect(p.locator('.scene-object-row')).toHaveCount(1);await p.getByRole('button',{name:'Project',exact:true}).click();const ready=p.waitForEvent('download');await p.locator('.project-actions').getByRole('button',{name:'Save project',exact:true}).click();const bytes=await fs.readFile(await(await ready).path());await goHome(p);await expect(rows(p)).toHaveCount(1);await home(p).getByRole('button',{name:'Clear all',exact:true}).click();await expect(rows(p)).toHaveCount(0);return bytes;}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+      6 | async function open(p,name,bytes){await p.getByLabel('Open Orca Web project').setInputFiles({name,mimeType:'application/json',buffer:bytes});await expect(p.getByLabel('Layer height',{exact:true})).toBeVisible();await goHome(p);await expect(home(p).getByRole('button',{name:`Open ${name}`,exact:true})).toBeVisible();}
+      7 | test('recent projects preserve MRU order, deduplicate identical copies and reopen the saved geometry after reload',async({page})=>{const bytes=await fixture(page);await open(page,'A.json',bytes);await open(page,'B.json',bytes);await open(page,'A.json',bytes);await expect(rows(page).locator('.recent-open span')).toHaveText(['A.json','B.json']);await page.reload();await goHome(page);await expect(rows(page)).toHaveCount(2);await home(page).getByRole('button',{name:'Open B.json',exact:true}).click();await expect(page.getByTestId('object-dimensions')).toContainText('20 × 20 × 20');await goHome(page);await expect(rows(page).locator('.recent-open span')).toHaveText(['B.json','A.json']);await expect(home(page)).toContainText('Browser copies. Changes to the original files are not included.');});
+      8 | test('history preferences prune immediately, persist, disable at zero and stay outside model Undo',async({page})=>{const bytes=await fixture(page);for(const name of['A.json','B.json','C.json'])await open(page,name,bytes);await prefs(page,async d=>{await expect(d.getByLabel('Maximum recent files')).toHaveValue('18');await d.getByLabel('Maximum recent files').fill('2');await d.getByLabel('Maximum recent files').press('Enter');});await expect(rows(page).locator('.recent-open span')).toHaveText(['C.json','B.json']);await page.getByRole('button',{name:'Prepare',exact:true}).click();await page.getByLabel('position X',{exact:true}).fill('40');await prefs(page,async d=>{await d.getByLabel('Maximum recent files').fill('0');await d.getByLabel('Maximum recent files').press('Enter');});await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).not.toHaveValue('40');await goHome(page);await expect(rows(page)).toHaveCount(0);await page.reload();await prefs(page,d=>expect(d.getByLabel('Maximum recent files')).toHaveValue('0'));await page.getByLabel('Open Orca Web project').setInputFiles({name:'disabled.json',mimeType:'application/json',buffer:bytes});await expect(page.locator('.scene-object-row')).toHaveCount(1);await goHome(page);await expect(rows(page)).toHaveCount(0);});
+        at fixture (/private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:5:646)
+        at /private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:9:119
+
+    Error Context: test-results/m44-focused/recent-files-per-item-remo-eda95-me-persisted-recent-history/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m44-focused/recent-files-per-item-remo-eda95-me-persisted-recent-history/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m44-focused/recent-files-per-item-remo-eda95-me-persisted-recent-history/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:10:1 › STL and STEP recent imports are opt-in; reopening a model appends real geometry 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.check: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('dialog', { name: 'Preferences' }).getByLabel('Add STL/STEP files to recent files list')
+
+
+       8 | test('history preferences prune immediately, persist, disable at zero and stay outside model Undo',async({page})=>{const bytes=await fixture(page);for(const name of['A.json','B.json','C.json'])await open(page,name,bytes);await prefs(page,async d=>{await expect(d.getByLabel('Maximum recent files')).toHaveValue('18');await d.getByLabel('Maximum recent files').fill('2');await d.getByLabel('Maximum recent files').press('Enter');});await expect(rows(page).locator('.recent-open span')).toHaveText(['C.json','B.json']);await page.getByRole('button',{name:'Prepare',exact:true}).click();await page.getByLabel('position X',{exact:true}).fill('40');await prefs(page,async d=>{await d.getByLabel('Maximum recent files').fill('0');await d.getByLabel('Maximum recent files').press('Enter');});await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).not.toHaveValue('40');await goHome(page);await expect(rows(page)).toHaveCount(0);await page.reload();await prefs(page,d=>expect(d.getByLabel('Maximum recent files')).toHaveValue('0'));await page.getByLabel('Open Orca Web project').setInputFiles({name:'disabled.json',mimeType:'application/json',buffer:bytes});await expect(page.locator('.scene-object-row')).toHaveCount(1);await goHome(page);await expect(rows(page)).toHaveCount(0);});
+       9 | test('per-item removal and File-menu reopen operate on the same persisted recent history',async({page})=>{const bytes=await fixture(page);await open(page,'A.json',bytes);await open(page,'B.json',bytes);await home(page).getByRole('button',{name:'Remove B.json from recent files'}).click();await expect(rows(page)).toHaveCount(1);await page.getByRole('button',{name:'File',exact:true}).click();await page.getByRole('menuitem',{name:'Recent files ▸'}).click();await page.getByRole('menu',{name:'Recent files',exact:true}).getByRole('menuitem',{name:'A.json',exact:true}).click();await expect(page.locator('.scene-object-row')).toHaveCount(1);await goHome(page);await home(page).getByRole('button',{name:'Clear all',exact:true}).click();await expect(rows(page)).toHaveCount(0);await page.reload();await goHome(page);await expect(rows(page)).toHaveCount(0);await expect(home(page).getByText('No recent files',{exact:true})).toBeVisible();});
+    > 10 | test('STL and STEP recent imports are opt-in; reopening a model appends real geometry',async({page})=>{await page.goto('/');await page.getByRole('button',{name:'Prepare',exact:true}).click();await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();const input=page.getByLabel('Choose a 3D model');await input.setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await goHome(page);await expect(rows(page)).toHaveCount(0);await prefs(page,d=>d.getByLabel('Add STL/STEP files to recent files list').check());await input.setInputFiles(new URL('../fixtures/occt-cube.step',import.meta.url).pathname);await expect(page.locator('.scene-object-row')).toHaveCount(2);await goHome(page);await expect(rows(page)).toHaveCount(1);await home(page).getByRole('button',{name:'Open occt-cube.step',exact:true}).click();await expect(page.locator('.scene-object-row')).toHaveCount(3);await input.setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await goHome(page);await expect(rows(page).locator('.recent-open span')).toHaveText(['cube.stl','occt-cube.step']);});
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+      11 | test('invalid and cancelled project opens never enter history or replace the current project',async({page})=>{const bytes=await fixture(page);await page.getByRole('button',{name:'Prepare',exact:true}).click();await page.getByLabel('position X',{exact:true}).fill('37');await page.getByLabel('Open Orca Web project').setInputFiles({name:'cancelled.json',mimeType:'application/json',buffer:bytes});await page.getByRole('dialog',{name:'Unsaved project changes'}).getByRole('button',{name:'Keep editing'}).click();await expect(page.getByLabel('position X',{exact:true})).toHaveValue('37');await page.getByLabel('Open Orca Web project').setInputFiles({name:'invalid.json',mimeType:'application/json',buffer:Buffer.from('{}')});await expect(page.getByRole('alert')).toBeVisible();await goHome(page);await expect(rows(page)).toHaveCount(0);});
+      12 | test('failed recent-copy writes leave the imported project usable and roll back its metadata',async({page})=>{const bytes=await fixture(page);await page.evaluate(()=>{const original=IDBObjectStore.prototype.put;IDBObjectStore.prototype.put=function(...args){if(this.name==='files')throw new DOMException('Test storage quota','QuotaExceededError');return original.apply(this,args);};});await page.getByLabel('Open Orca Web project').setInputFiles({name:'quota.json',mimeType:'application/json',buffer:bytes});await expect(page.locator('.scene-object-row')).toHaveCount(1);await goHome(page);await expect(home(page).getByRole('alert')).toContainText('Test storage quota');await expect(rows(page)).toHaveCount(0);await page.reload();await goHome(page);await expect(rows(page)).toHaveCount(0);});
+      13 | test('missing recent copies report a recoverable error without discarding edited geometry',async({page})=>{const bytes=await fixture(page);await open(page,'missing.json',bytes);await page.evaluate(()=>new Promise((resolve,reject)=>{const r=indexedDB.open('orca-web-recent-files-v1',1);r.onsuccess=()=>{const db=r.result,t=db.transaction('files','readwrite');t.objectStore('files').clear();t.oncomplete=()=>{db.close();resolve();};t.onabort=()=>reject(t.error);};}));await page.getByRole('button',{name:'Prepare',exact:true}).click();await page.getByLabel('position X',{exact:true}).fill('39');await goHome(page);await home(page).getByRole('button',{name:'Open missing.json',exact:true}).click();await expect(page.getByRole('alert')).toContainText('copy is no longer available');await page.getByRole('button',{name:'Prepare',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).toHaveValue('39');});
+        at action (/private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:10:533)
+        at prefs (/private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:4:157)
+        at /private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:10:457
+
+    Error Context: test-results/m44-focused/recent-files-STL-and-STEP--eec58-model-appends-real-geometry/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m44-focused/recent-files-STL-and-STEP--eec58-model-appends-real-geometry/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m44-focused/recent-files-STL-and-STEP--eec58-model-appends-real-geometry/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:11:1 › invalid and cancelled project opens never enter history or replace the current project 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('main', { name: 'Home', exact: true }).getByRole('listitem')
+    Expected: 1
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('main', { name: 'Home', exact: true }).getByRole('listitem') with timeout 5000ms
+      - waiting for getByRole('main', { name: 'Home', exact: true }).getByRole('listitem')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      3 | async function goHome(p){await p.getByRole('button',{name:'Home',exact:true}).click();await expect(home(p)).toBeVisible();}
+      4 | async function prefs(p,action){await p.getByRole('button',{name:'Preferences',exact:true}).click();const d=p.getByRole('dialog',{name:'Preferences'});await action(d);await d.getByRole('button',{name:'Close',exact:true}).click();}
+    > 5 | async function fixture(p){await p.goto('/');await p.getByRole('button',{name:'Prepare',exact:true}).click();await expect(p.getByLabel('Layer height',{exact:true})).toBeEnabled();await p.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await expect(p.locator('.scene-object-row')).toHaveCount(1);await p.getByRole('button',{name:'Project',exact:true}).click();const ready=p.waitForEvent('download');await p.locator('.project-actions').getByRole('button',{name:'Save project',exact:true}).click();const bytes=await fs.readFile(await(await ready).path());await goHome(p);await expect(rows(p)).toHaveCount(1);await home(p).getByRole('button',{name:'Clear all',exact:true}).click();await expect(rows(p)).toHaveCount(0);return bytes;}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+      6 | async function open(p,name,bytes){await p.getByLabel('Open Orca Web project').setInputFiles({name,mimeType:'application/json',buffer:bytes});await expect(p.getByLabel('Layer height',{exact:true})).toBeVisible();await goHome(p);await expect(home(p).getByRole('button',{name:`Open ${name}`,exact:true})).toBeVisible();}
+      7 | test('recent projects preserve MRU order, deduplicate identical copies and reopen the saved geometry after reload',async({page})=>{const bytes=await fixture(page);await open(page,'A.json',bytes);await open(page,'B.json',bytes);await open(page,'A.json',bytes);await expect(rows(page).locator('.recent-open span')).toHaveText(['A.json','B.json']);await page.reload();await goHome(page);await expect(rows(page)).toHaveCount(2);await home(page).getByRole('button',{name:'Open B.json',exact:true}).click();await expect(page.getByTestId('object-dimensions')).toContainText('20 × 20 × 20');await goHome(page);await expect(rows(page).locator('.recent-open span')).toHaveText(['B.json','A.json']);await expect(home(page)).toContainText('Browser copies. Changes to the original files are not included.');});
+      8 | test('history preferences prune immediately, persist, disable at zero and stay outside model Undo',async({page})=>{const bytes=await fixture(page);for(const name of['A.json','B.json','C.json'])await open(page,name,bytes);await prefs(page,async d=>{await expect(d.getByLabel('Maximum recent files')).toHaveValue('18');await d.getByLabel('Maximum recent files').fill('2');await d.getByLabel('Maximum recent files').press('Enter');});await expect(rows(page).locator('.recent-open span')).toHaveText(['C.json','B.json']);await page.getByRole('button',{name:'Prepare',exact:true}).click();await page.getByLabel('position X',{exact:true}).fill('40');await prefs(page,async d=>{await d.getByLabel('Maximum recent files').fill('0');await d.getByLabel('Maximum recent files').press('Enter');});await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).not.toHaveValue('40');await goHome(page);await expect(rows(page)).toHaveCount(0);await page.reload();await prefs(page,d=>expect(d.getByLabel('Maximum recent files')).toHaveValue('0'));await page.getByLabel('Open Orca Web project').setInputFiles({name:'disabled.json',mimeType:'application/json',buffer:bytes});await expect(page.locator('.scene-object-row')).toHaveCount(1);await goHome(page);await expect(rows(page)).toHaveCount(0);});
+        at fixture (/private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:5:646)
+        at /private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:11:123
+
+    Error Context: test-results/m44-focused/recent-files-invalid-and-c-53171-replace-the-current-project/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m44-focused/recent-files-invalid-and-c-53171-replace-the-current-project/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m44-focused/recent-files-invalid-and-c-53171-replace-the-current-project/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:12:1 › failed recent-copy writes leave the imported project usable and roll back its metadata 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('main', { name: 'Home', exact: true }).getByRole('listitem')
+    Expected: 1
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('main', { name: 'Home', exact: true }).getByRole('listitem') with timeout 5000ms
+      - waiting for getByRole('main', { name: 'Home', exact: true }).getByRole('listitem')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      3 | async function goHome(p){await p.getByRole('button',{name:'Home',exact:true}).click();await expect(home(p)).toBeVisible();}
+      4 | async function prefs(p,action){await p.getByRole('button',{name:'Preferences',exact:true}).click();const d=p.getByRole('dialog',{name:'Preferences'});await action(d);await d.getByRole('button',{name:'Close',exact:true}).click();}
+    > 5 | async function fixture(p){await p.goto('/');await p.getByRole('button',{name:'Prepare',exact:true}).click();await expect(p.getByLabel('Layer height',{exact:true})).toBeEnabled();await p.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await expect(p.locator('.scene-object-row')).toHaveCount(1);await p.getByRole('button',{name:'Project',exact:true}).click();const ready=p.waitForEvent('download');await p.locator('.project-actions').getByRole('button',{name:'Save project',exact:true}).click();const bytes=await fs.readFile(await(await ready).path());await goHome(p);await expect(rows(p)).toHaveCount(1);await home(p).getByRole('button',{name:'Clear all',exact:true}).click();await expect(rows(p)).toHaveCount(0);return bytes;}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+      6 | async function open(p,name,bytes){await p.getByLabel('Open Orca Web project').setInputFiles({name,mimeType:'application/json',buffer:bytes});await expect(p.getByLabel('Layer height',{exact:true})).toBeVisible();await goHome(p);await expect(home(p).getByRole('button',{name:`Open ${name}`,exact:true})).toBeVisible();}
+      7 | test('recent projects preserve MRU order, deduplicate identical copies and reopen the saved geometry after reload',async({page})=>{const bytes=await fixture(page);await open(page,'A.json',bytes);await open(page,'B.json',bytes);await open(page,'A.json',bytes);await expect(rows(page).locator('.recent-open span')).toHaveText(['A.json','B.json']);await page.reload();await goHome(page);await expect(rows(page)).toHaveCount(2);await home(page).getByRole('button',{name:'Open B.json',exact:true}).click();await expect(page.getByTestId('object-dimensions')).toContainText('20 × 20 × 20');await goHome(page);await expect(rows(page).locator('.recent-open span')).toHaveText(['B.json','A.json']);await expect(home(page)).toContainText('Browser copies. Changes to the original files are not included.');});
+      8 | test('history preferences prune immediately, persist, disable at zero and stay outside model Undo',async({page})=>{const bytes=await fixture(page);for(const name of['A.json','B.json','C.json'])await open(page,name,bytes);await prefs(page,async d=>{await expect(d.getByLabel('Maximum recent files')).toHaveValue('18');await d.getByLabel('Maximum recent files').fill('2');await d.getByLabel('Maximum recent files').press('Enter');});await expect(rows(page).locator('.recent-open span')).toHaveText(['C.json','B.json']);await page.getByRole('button',{name:'Prepare',exact:true}).click();await page.getByLabel('position X',{exact:true}).fill('40');await prefs(page,async d=>{await d.getByLabel('Maximum recent files').fill('0');await d.getByLabel('Maximum recent files').press('Enter');});await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).not.toHaveValue('40');await goHome(page);await expect(rows(page)).toHaveCount(0);await page.reload();await prefs(page,d=>expect(d.getByLabel('Maximum recent files')).toHaveValue('0'));await page.getByLabel('Open Orca Web project').setInputFiles({name:'disabled.json',mimeType:'application/json',buffer:bytes});await expect(page.locator('.scene-object-row')).toHaveCount(1);await goHome(page);await expect(rows(page)).toHaveCount(0);});
+        at fixture (/private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:5:646)
+        at /private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:12:123
+
+    Error Context: test-results/m44-focused/recent-files-failed-recent-40da6--and-roll-back-its-metadata/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m44-focused/recent-files-failed-recent-40da6--and-roll-back-its-metadata/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m44-focused/recent-files-failed-recent-40da6--and-roll-back-its-metadata/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:13:1 › missing recent copies report a recoverable error without discarding edited geometry 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('main', { name: 'Home', exact: true }).getByRole('listitem')
+    Expected: 1
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('main', { name: 'Home', exact: true }).getByRole('listitem') with timeout 5000ms
+      - waiting for getByRole('main', { name: 'Home', exact: true }).getByRole('listitem')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      3 | async function goHome(p){await p.getByRole('button',{name:'Home',exact:true}).click();await expect(home(p)).toBeVisible();}
+      4 | async function prefs(p,action){await p.getByRole('button',{name:'Preferences',exact:true}).click();const d=p.getByRole('dialog',{name:'Preferences'});await action(d);await d.getByRole('button',{name:'Close',exact:true}).click();}
+    > 5 | async function fixture(p){await p.goto('/');await p.getByRole('button',{name:'Prepare',exact:true}).click();await expect(p.getByLabel('Layer height',{exact:true})).toBeEnabled();await p.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await expect(p.locator('.scene-object-row')).toHaveCount(1);await p.getByRole('button',{name:'Project',exact:true}).click();const ready=p.waitForEvent('download');await p.locator('.project-actions').getByRole('button',{name:'Save project',exact:true}).click();const bytes=await fs.readFile(await(await ready).path());await goHome(p);await expect(rows(p)).toHaveCount(1);await home(p).getByRole('button',{name:'Clear all',exact:true}).click();await expect(rows(p)).toHaveCount(0);return bytes;}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+      6 | async function open(p,name,bytes){await p.getByLabel('Open Orca Web project').setInputFiles({name,mimeType:'application/json',buffer:bytes});await expect(p.getByLabel('Layer height',{exact:true})).toBeVisible();await goHome(p);await expect(home(p).getByRole('button',{name:`Open ${name}`,exact:true})).toBeVisible();}
+      7 | test('recent projects preserve MRU order, deduplicate identical copies and reopen the saved geometry after reload',async({page})=>{const bytes=await fixture(page);await open(page,'A.json',bytes);await open(page,'B.json',bytes);await open(page,'A.json',bytes);await expect(rows(page).locator('.recent-open span')).toHaveText(['A.json','B.json']);await page.reload();await goHome(page);await expect(rows(page)).toHaveCount(2);await home(page).getByRole('button',{name:'Open B.json',exact:true}).click();await expect(page.getByTestId('object-dimensions')).toContainText('20 × 20 × 20');await goHome(page);await expect(rows(page).locator('.recent-open span')).toHaveText(['B.json','A.json']);await expect(home(page)).toContainText('Browser copies. Changes to the original files are not included.');});
+      8 | test('history preferences prune immediately, persist, disable at zero and stay outside model Undo',async({page})=>{const bytes=await fixture(page);for(const name of['A.json','B.json','C.json'])await open(page,name,bytes);await prefs(page,async d=>{await expect(d.getByLabel('Maximum recent files')).toHaveValue('18');await d.getByLabel('Maximum recent files').fill('2');await d.getByLabel('Maximum recent files').press('Enter');});await expect(rows(page).locator('.recent-open span')).toHaveText(['C.json','B.json']);await page.getByRole('button',{name:'Prepare',exact:true}).click();await page.getByLabel('position X',{exact:true}).fill('40');await prefs(page,async d=>{await d.getByLabel('Maximum recent files').fill('0');await d.getByLabel('Maximum recent files').press('Enter');});await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).not.toHaveValue('40');await goHome(page);await expect(rows(page)).toHaveCount(0);await page.reload();await prefs(page,d=>expect(d.getByLabel('Maximum recent files')).toHaveValue('0'));await page.getByLabel('Open Orca Web project').setInputFiles({name:'disabled.json',mimeType:'application/json',buffer:bytes});await expect(page.locator('.scene-object-row')).toHaveCount(1);await goHome(page);await expect(rows(page)).toHaveCount(0);});
+        at fixture (/private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:5:646)
+        at /private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:13:120
+
+    Error Context: test-results/m44-focused/recent-files-missing-recen-89862--discarding-edited-geometry/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m44-focused/recent-files-missing-recen-89862--discarding-edited-geometry/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m44-focused/recent-files-missing-recen-89862--discarding-edited-geometry/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8) ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:14:1 › another tab receives recent changes and compact cards remain keyboard operable 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  getByRole('main', { name: 'Home', exact: true }).getByRole('listitem')
+    Expected: 1
+    Received: 0
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" getByRole('main', { name: 'Home', exact: true }).getByRole('listitem') with timeout 5000ms
+      - waiting for getByRole('main', { name: 'Home', exact: true }).getByRole('listitem')
+        14 × locator resolved to 0 elements
+           - unexpected value "0"
+
+
+      3 | async function goHome(p){await p.getByRole('button',{name:'Home',exact:true}).click();await expect(home(p)).toBeVisible();}
+      4 | async function prefs(p,action){await p.getByRole('button',{name:'Preferences',exact:true}).click();const d=p.getByRole('dialog',{name:'Preferences'});await action(d);await d.getByRole('button',{name:'Close',exact:true}).click();}
+    > 5 | async function fixture(p){await p.goto('/');await p.getByRole('button',{name:'Prepare',exact:true}).click();await expect(p.getByLabel('Layer height',{exact:true})).toBeEnabled();await p.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await expect(p.locator('.scene-object-row')).toHaveCount(1);await p.getByRole('button',{name:'Project',exact:true}).click();const ready=p.waitForEvent('download');await p.locator('.project-actions').getByRole('button',{name:'Save project',exact:true}).click();const bytes=await fs.readFile(await(await ready).path());await goHome(p);await expect(rows(p)).toHaveCount(1);await home(p).getByRole('button',{name:'Clear all',exact:true}).click();await expect(rows(p)).toHaveCount(0);return bytes;}
+        |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ^
+      6 | async function open(p,name,bytes){await p.getByLabel('Open Orca Web project').setInputFiles({name,mimeType:'application/json',buffer:bytes});await expect(p.getByLabel('Layer height',{exact:true})).toBeVisible();await goHome(p);await expect(home(p).getByRole('button',{name:`Open ${name}`,exact:true})).toBeVisible();}
+      7 | test('recent projects preserve MRU order, deduplicate identical copies and reopen the saved geometry after reload',async({page})=>{const bytes=await fixture(page);await open(page,'A.json',bytes);await open(page,'B.json',bytes);await open(page,'A.json',bytes);await expect(rows(page).locator('.recent-open span')).toHaveText(['A.json','B.json']);await page.reload();await goHome(page);await expect(rows(page)).toHaveCount(2);await home(page).getByRole('button',{name:'Open B.json',exact:true}).click();await expect(page.getByTestId('object-dimensions')).toContainText('20 × 20 × 20');await goHome(page);await expect(rows(page).locator('.recent-open span')).toHaveText(['B.json','A.json']);await expect(home(page)).toContainText('Browser copies. Changes to the original files are not included.');});
+      8 | test('history preferences prune immediately, persist, disable at zero and stay outside model Undo',async({page})=>{const bytes=await fixture(page);for(const name of['A.json','B.json','C.json'])await open(page,name,bytes);await prefs(page,async d=>{await expect(d.getByLabel('Maximum recent files')).toHaveValue('18');await d.getByLabel('Maximum recent files').fill('2');await d.getByLabel('Maximum recent files').press('Enter');});await expect(rows(page).locator('.recent-open span')).toHaveText(['C.json','B.json']);await page.getByRole('button',{name:'Prepare',exact:true}).click();await page.getByLabel('position X',{exact:true}).fill('40');await prefs(page,async d=>{await d.getByLabel('Maximum recent files').fill('0');await d.getByLabel('Maximum recent files').press('Enter');});await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).not.toHaveValue('40');await goHome(page);await expect(rows(page)).toHaveCount(0);await page.reload();await prefs(page,d=>expect(d.getByLabel('Maximum recent files')).toHaveValue('0'));await page.getByLabel('Open Orca Web project').setInputFiles({name:'disabled.json',mimeType:'application/json',buffer:bytes});await expect(page.locator('.scene-object-row')).toHaveCount(1);await goHome(page);await expect(rows(page)).toHaveCount(0);});
+        at fixture (/private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:5:646)
+        at /private/tmp/orca-implementation/m44-recent-files-stage/tests/e2e/recent-files.spec.js:14:128
+
+    Error Context: test-results/m44-focused/recent-files-another-tab-r-d6d05-ds-remain-keyboard-operable/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m44-focused/recent-files-another-tab-r-d6d05-ds-remain-keyboard-operable/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m44-focused/recent-files-another-tab-r-d6d05-ds-remain-keyboard-operable/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  8 failed
+    ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:7:1 › recent projects preserve MRU order, deduplicate identical copies and reopen the saved geometry after reload 
+    ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:8:1 › history preferences prune immediately, persist, disable at zero and stay outside model Undo 
+    ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:9:1 › per-item removal and File-menu reopen operate on the same persisted recent history 
+    ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:10:1 › STL and STEP recent imports are opt-in; reopening a model appends real geometry 
+    ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:11:1 › invalid and cancelled project opens never enter history or replace the current project 
+    ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:12:1 › failed recent-copy writes leave the imported project usable and roll back its metadata 
+    ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:13:1 › missing recent copies report a recoverable error without discarding edited geometry 
+    ../m44-recent-files-stage/tests/e2e/recent-files.spec.js:14:1 › another tab receives recent changes and compact cards remain keyboard operable 

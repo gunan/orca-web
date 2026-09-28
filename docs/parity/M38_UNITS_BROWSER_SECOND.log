@@ -1,0 +1,79 @@
+[WebServer] (node:44733) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:44739) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/manipulation-units.spec.js:8:1 › Prepare positions and dimensions switch units without changing geometry, settings or Undo (1.3s)
+  ✘  2 tests/e2e/manipulation-units.spec.js:17:1 › inch position edits commit millimeters, leave angle and scale units unchanged, and survive save/reopen and Undo (2.2s)
+(node:44814) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/e2e/manipulation-units.spec.js:27:1 › inch edits of a joint selection preserve millimeter spacing and native-sized saved geometry (1.7s)
+(node:44864) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 tests/e2e/native-display-preferences.spec.js:4:1 › native Units labels apply immediately, persist after reload, and leave project settings intact (1.4s)
+  ✓  5 tests/e2e/native-display-preferences.spec.js:13:1 › invalid stored Units fall back to metric and storage failures retain a visible session-only change (733ms)
+  ✓  6 tests/e2e/native-display-preferences.spec.js:17:1 › Preferences shortcut respects focused text inputs and an already open dialog (731ms)
+
+
+  1) tests/e2e/manipulation-units.spec.js:17:1 › inch position edits commit millimeters, leave angle and scale units unchanged, and survive save/reopen and Undo 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 0
+    Received: 9.536743306171047e-8
+
+      21 |  await page.getByLabel('Open Orca Web project').setInputFiles({name:'Inches.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(saved))});await expect(page.getByRole('dialog',{name:'Importing project'})).toHaveCount(0);
+      22 |  await expect(page.getByLabel('position X',{exact:true})).toHaveValue('1.25');await page.getByLabel('position Z',{exact:true}).fill('0.25');
+    > 23 |  await page.getByRole('button',{name:'Drop to bed',exact:true}).click();expect(meshBounds((await save(page)).objects[0]).min[2]).toBe(0);
+         |                                                                                                                                  ^
+      24 |  await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position Z',{exact:true})).toHaveValue('0.25');expect((await save(page)).objects[0].position[2]).toBe(6.35);
+      25 | });
+      26 |
+        at /private/tmp/orca-implementation/m38-transform-units-stage/tests/e2e/manipulation-units.spec.js:23:130
+
+    Error Context: test-results/m38-focused/manipulation-units-inch-po-94ed7-urvive-save-reopen-and-Undo/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m38-focused/manipulation-units-inch-po-94ed7-urvive-save-reopen-and-Undo/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m38-focused/manipulation-units-inch-po-94ed7-urvive-save-reopen-and-Undo/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/manipulation-units.spec.js:27:1 › inch edits of a joint selection preserve millimeter spacing and native-sized saved geometry 
+
+    Error: expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 25.4
+    Received: -115
+
+    Expected precision:    10
+    Expected difference: < 0.00000000005
+    Received difference:   140.4
+
+      32 |   // Mesh bounds use Float32 world vertices; compare the exact representable bounds.
+      33 |   expect(actual.min[0]).toBe(Math.fround(bounds[i].min[0]+25.4));expect(actual.max[0]).toBe(Math.fround(bounds[i].max[0]+25.4));
+    > 34 |   expect(after.objects[i].position[0]-before.objects[i].position[0]).toBeCloseTo(25.4,10);
+         |                                                                      ^
+      35 |  }
+      36 |  await page.getByRole('button',{name:'Undo',exact:true}).click();expect((await save(page)).objects).toEqual(before.objects);
+      37 | });
+        at /private/tmp/orca-implementation/m38-transform-units-stage/tests/e2e/manipulation-units.spec.js:34:70
+
+    Error Context: test-results/m38-focused/manipulation-units-inch-ed-3e7c2-native-sized-saved-geometry/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m38-focused/manipulation-units-inch-ed-3e7c2-native-sized-saved-geometry/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m38-focused/manipulation-units-inch-ed-3e7c2-native-sized-saved-geometry/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests/e2e/manipulation-units.spec.js:17:1 › inch position edits commit millimeters, leave angle and scale units unchanged, and survive save/reopen and Undo 
+    tests/e2e/manipulation-units.spec.js:27:1 › inch edits of a joint selection preserve millimeter spacing and native-sized saved geometry 
+  4 passed (9.9s)

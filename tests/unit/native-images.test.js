@@ -1,0 +1,24 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {mkdtemp,writeFile,rm,readdir,readFile} from 'node:fs/promises';import {tmpdir} from 'node:os';import path from 'node:path';
+import {createNativeImageWorker,IMAGE_WORKER_ID,validateNativeCoverSurface} from '../../server/native-images.js';
+import {extractBoundedZip} from '../../shared/import-limits.js';
+const archive=extractBoundedZip(await readFile(new URL('../fixtures/native-gui-cube-2.4.2.3mf',import.meta.url))),picture={name:'picture.png',data:Buffer.from(archive['Metadata/plate_1.png']).toString('base64')};
+async function fake(t,body,{version=IMAGE_WORKER_ID}={}){const root=await mkdtemp(path.join(tmpdir(),'orca-image-test-'));t.after(()=>rm(root,{recursive:true,force:true}));const binary=path.join(root,'worker');await writeFile(binary,`#!/usr/bin/env node\nif(process.argv.includes('--version')){console.log(${JSON.stringify(JSON.stringify(version))});process.exit(0);}\n${body}\n`,{mode:0o755});return{root,binary};}
+test('native image capabilities require the complete pinned identity and explain a missing helper',async t=>{
+ const bad=await fake(t,'',{version:{...IMAGE_WORKER_ID,wxRevision:'wrong'}}),worker=createNativeImageWorker({binary:bad.binary});t.after(()=>worker.close());assert.equal((await worker.capabilities()).available,false);await assert.rejects(worker.generate(picture),/baseline/);
+ const missing=createNativeImageWorker({binary:path.join(bad.root,'not-built')});t.after(()=>missing.close());assert.match((await missing.capabilities()).reason,/Build the native image worker/);
+});
+test('cover input rejects invalid bytes, paths and extreme native intermediate surfaces before spawning',async t=>{
+ const worker=createNativeImageWorker({binary:'/does/not/exist'});t.after(()=>worker.close());for(const input of [null,{name:'../photo.png',data:picture.data},{name:'photo.html',data:picture.data},{name:'photo.png',data:'AAAA'}])await assert.rejects(worker.generate(input),/Invalid|Unsafe|valid static/);
+ assert.throws(()=>validateNativeCoverSurface(4096,1),/aspect ratio/);assert.doesNotThrow(()=>validateNativeCoverSurface(4096,2048));assert.throws(()=>createNativeImageWorker({maxQueued:100}),/limits/);
+});
+test('active and queued image work obey cancellation, capacity and cleanup without spawning an extra child',async t=>{
+ const fixture=await fake(t,"setInterval(()=>{},1000);"),worker=createNativeImageWorker({binary:fixture.binary,maxQueued:1,timeoutMs:5000,temporaryRoot:fixture.root});t.after(()=>worker.close());assert.equal((await worker.capabilities()).available,true);
+ const active=new AbortController(),queued=new AbortController(),one=worker.generate(picture,{signal:active.signal}),two=worker.generate(picture,{signal:queued.signal});const settled=Promise.allSettled([one,two]);await assert.rejects(worker.generate(picture),error=>error.status===429);queued.abort(new Error('queued cancellation'));active.abort(new Error('active cancellation'));const result=await settled;assert.ok(result.every(item=>item.status==='rejected'));await worker.close();assert.deepEqual((await readdir(fixture.root)).filter(name=>name.startsWith('orca-image-')),[]);await assert.rejects(worker.generate(picture),/shutting down/);
+});
+test('native image deadlines and excessive child logs terminate work and remove private files',async t=>{
+ for(const body of ["setInterval(()=>{},1000);","process.stdout.write('x'.repeat(160000));setInterval(()=>{},1000);"]){const fixture=await fake(t,body),worker=createNativeImageWorker({binary:fixture.binary,timeoutMs:1000,temporaryRoot:fixture.root});t.after(()=>worker.close());assert.equal((await worker.capabilities()).available,true);await assert.rejects(worker.generate(picture),/timed out|output limit/);await worker.close();assert.deepEqual((await readdir(fixture.root)).filter(name=>name.startsWith('orca-image-')),[]);}
+});
+test('worker errors and malformed result descriptions cannot publish an incomplete cover set',async t=>{
+ for(const body of ["console.error('decode failed');process.exit(1);","console.log(JSON.stringify({protocol:1,sourceWidth:999,sourceHeight:1}));"]){const fixture=await fake(t,body),worker=createNativeImageWorker({binary:fixture.binary,temporaryRoot:fixture.root});t.after(()=>worker.close());await assert.rejects(worker.generate(picture),/failed|invalid image description/);await worker.close();assert.deepEqual((await readdir(fixture.root)).filter(name=>name.startsWith('orca-image-')),[]);}
+});
+test('relative configured helper paths still resolve after entering a private work directory',async t=>{const fixture=await fake(t,"console.error('relative helper executed');process.exit(1);"),worker=createNativeImageWorker({binary:path.relative(process.cwd(),fixture.binary),temporaryRoot:fixture.root});t.after(()=>worker.close());assert.equal((await worker.capabilities()).available,true);await assert.rejects(worker.generate(picture),/relative helper executed/);});

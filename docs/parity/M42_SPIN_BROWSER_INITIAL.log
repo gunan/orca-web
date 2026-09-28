@@ -1,0 +1,90 @@
+[WebServer] (node:71750) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:71754) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/native-preference-spin.spec.js:8:1 › native FPS arrow presses use the committed value while keyboard arrows use the current draft (470ms)
+  ✘  2 tests/e2e/native-preference-spin.spec.js:9:1 › native held arrows wait400ms then repeat every100ms and retain pointer capture until release (5.3s)
+(node:71764) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/e2e/native-preference-spin.spec.js:10:1 › loss of focus and dialog disposal stop held repeats without later preference changes (5.3s)
+(node:71776) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 tests/e2e/native-preference-spin.spec.js:11:1 › native orbit text and FPS spin fields do not add browser-native wheel stepping (280ms)
+
+
+  1) tests/e2e/native-preference-spin.spec.js:9:1 › native held arrows wait400ms then repeat every100ms and retain pointer capture until release 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  getByRole('dialog', { name: 'Preferences' }).getByLabel('FPS cap', { exact: true })
+    Expected: "34"
+    Received: "33"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveValue" getByRole('dialog', { name: 'Preferences' }).getByLabel('FPS cap', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Preferences' }).getByLabel('FPS cap', { exact: true })
+        14 × locator resolved to <input value="33" type="text" role="spinbutton" aria-valuemin="0" aria-valuenow="33" aria-valuemax="240" inputmode="numeric" aria-label="FPS cap"/>
+           - unexpected value "33"
+
+
+       7 | async function press(page,button){const box=await button.boundingBox();await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.down();}
+       8 | test('native FPS arrow presses use the committed value while keyboard arrows use the current draft',async({page},info)=>{const d=await open(page),input=d.getByLabel('FPS cap',{exact:true}),up=d.getByRole('button',{name:'Increase FPS cap'});await input.fill('100');await up.click();await expect(input).toHaveValue('31');await expect(page.getByLabel('Saved FPS')).toHaveText('31');await input.fill('100');await input.press('ArrowUp');await expect(input).toHaveValue('101');await input.fill('239');await input.press('Enter');await up.click();await up.click();await expect(input).toHaveValue('240');expect((await up.boundingBox()).x).toBeLessThan((await input.boundingBox()).x);await expect(input).toHaveAttribute('aria-valuemax','240');await expect(d.locator('.native-preference-unit')).toHaveText('FPS');await d.screenshot({path:info.outputPath('native-preference-spin.png')});});
+    >  9 | test('native held arrows wait400ms then repeat every100ms and retain pointer capture until release',async({page})=>{const d=await open(page,{clock:true}),input=d.getByLabel('FPS cap',{exact:true}),up=d.getByRole('button',{name:'Increase FPS cap'});await press(page,up);await expect(input).toHaveValue('31');await page.clock.runFor(399);await expect(input).toHaveValue('31');await page.clock.runFor(1);await expect(input).toHaveValue('32');await page.mouse.move(5,5);await page.clock.runFor(200);await expect(input).toHaveValue('34');await page.mouse.up();await page.clock.runFor(1000);await expect(input).toHaveValue('34');expect(await input.evaluate(e=>[e.selectionStart,e.selectionEnd])).toEqual([0,2]);});
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    ^
+      10 | test('loss of focus and dialog disposal stop held repeats without later preference changes',async({page})=>{let d=await open(page,{clock:true});const input=d.getByLabel('FPS cap',{exact:true});await press(page,d.getByRole('button',{name:'Decrease FPS cap'}));await page.clock.runFor(500);await expect(input).toHaveValue('27');await page.evaluate(()=>window.dispatchEvent(new Event('blur')));await page.clock.runFor(1000);await expect(input).toHaveValue('27');await page.mouse.up();await press(page,d.getByRole('button',{name:'Increase FPS cap'}));await page.keyboard.press('Escape');await page.mouse.up();await page.clock.runFor(1000);await expect(page.getByLabel('Saved FPS')).toHaveText('28');await page.getByRole('button',{name:'Open preferences'}).click({force:true});d=page.getByRole('dialog',{name:'Preferences'});await expect(d.getByLabel('FPS cap',{exact:true})).toHaveValue('28');await press(page,d.getByRole('button',{name:'Increase FPS cap'}));await page.mouse.up();await expect(d.getByLabel('FPS cap',{exact:true})).toHaveValue('29');});
+      11 | test('native orbit text and FPS spin fields do not add browser-native wheel stepping',async({page})=>{const d=await open(page),orbit=d.getByLabel('Orbit speed multiplier'),fps=d.getByLabel('FPS cap',{exact:true});await expect(orbit).toHaveAttribute('type','text');await orbit.press('ArrowUp');await expect(orbit).toHaveValue('1.0');for(const input of [orbit,fps]){await input.focus();const before=await input.inputValue(),box=await input.boundingBox();await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.wheel(0,-100);await expect(input).toHaveValue(before);}await expect(page.getByLabel('Saved FPS')).toHaveText('30');});
+      12 |
+        at /private/tmp/orca-implementation/m42-preference-spin-stage/tests/e2e/native-preference-spin.spec.js:9:516
+
+    Error Context: test-results/m42-focused/native-preference-spin-nat-4ab1b-inter-capture-until-release/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m42-focused/native-preference-spin-nat-4ab1b-inter-capture-until-release/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m42-focused/native-preference-spin-nat-4ab1b-inter-capture-until-release/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/native-preference-spin.spec.js:10:1 › loss of focus and dialog disposal stop held repeats without later preference changes 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  getByRole('dialog', { name: 'Preferences' }).getByLabel('FPS cap', { exact: true })
+    Expected: "27"
+    Received: "28"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveValue" getByRole('dialog', { name: 'Preferences' }).getByLabel('FPS cap', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Preferences' }).getByLabel('FPS cap', { exact: true })
+        14 × locator resolved to <input value="28" type="text" role="spinbutton" aria-valuemin="0" aria-valuenow="28" aria-valuemax="240" inputmode="numeric" aria-label="FPS cap"/>
+           - unexpected value "28"
+
+
+       8 | test('native FPS arrow presses use the committed value while keyboard arrows use the current draft',async({page},info)=>{const d=await open(page),input=d.getByLabel('FPS cap',{exact:true}),up=d.getByRole('button',{name:'Increase FPS cap'});await input.fill('100');await up.click();await expect(input).toHaveValue('31');await expect(page.getByLabel('Saved FPS')).toHaveText('31');await input.fill('100');await input.press('ArrowUp');await expect(input).toHaveValue('101');await input.fill('239');await input.press('Enter');await up.click();await up.click();await expect(input).toHaveValue('240');expect((await up.boundingBox()).x).toBeLessThan((await input.boundingBox()).x);await expect(input).toHaveAttribute('aria-valuemax','240');await expect(d.locator('.native-preference-unit')).toHaveText('FPS');await d.screenshot({path:info.outputPath('native-preference-spin.png')});});
+       9 | test('native held arrows wait400ms then repeat every100ms and retain pointer capture until release',async({page})=>{const d=await open(page,{clock:true}),input=d.getByLabel('FPS cap',{exact:true}),up=d.getByRole('button',{name:'Increase FPS cap'});await press(page,up);await expect(input).toHaveValue('31');await page.clock.runFor(399);await expect(input).toHaveValue('31');await page.clock.runFor(1);await expect(input).toHaveValue('32');await page.mouse.move(5,5);await page.clock.runFor(200);await expect(input).toHaveValue('34');await page.mouse.up();await page.clock.runFor(1000);await expect(input).toHaveValue('34');expect(await input.evaluate(e=>[e.selectionStart,e.selectionEnd])).toEqual([0,2]);});
+    > 10 | test('loss of focus and dialog disposal stop held repeats without later preference changes',async({page})=>{let d=await open(page,{clock:true});const input=d.getByLabel('FPS cap',{exact:true});await press(page,d.getByRole('button',{name:'Decrease FPS cap'}));await page.clock.runFor(500);await expect(input).toHaveValue('27');await page.evaluate(()=>window.dispatchEvent(new Event('blur')));await page.clock.runFor(1000);await expect(input).toHaveValue('27');await page.mouse.up();await press(page,d.getByRole('button',{name:'Increase FPS cap'}));await page.keyboard.press('Escape');await page.mouse.up();await page.clock.runFor(1000);await expect(page.getByLabel('Saved FPS')).toHaveText('28');await page.getByRole('button',{name:'Open preferences'}).click({force:true});d=page.getByRole('dialog',{name:'Preferences'});await expect(d.getByLabel('FPS cap',{exact:true})).toHaveValue('28');await press(page,d.getByRole('button',{name:'Increase FPS cap'}));await page.mouse.up();await expect(d.getByLabel('FPS cap',{exact:true})).toHaveValue('29');});
+         |                                                                                                                                                                                                                                                                                                                     ^
+      11 | test('native orbit text and FPS spin fields do not add browser-native wheel stepping',async({page})=>{const d=await open(page),orbit=d.getByLabel('Orbit speed multiplier'),fps=d.getByLabel('FPS cap',{exact:true});await expect(orbit).toHaveAttribute('type','text');await orbit.press('ArrowUp');await expect(orbit).toHaveValue('1.0');for(const input of [orbit,fps]){await input.focus();const before=await input.inputValue(),box=await input.boundingBox();await page.mouse.move(box.x+box.width/2,box.y+box.height/2);await page.mouse.wheel(0,-100);await expect(input).toHaveValue(before);}await expect(page.getByLabel('Saved FPS')).toHaveText('30');});
+      12 |
+        at /private/tmp/orca-implementation/m42-preference-spin-stage/tests/e2e/native-preference-spin.spec.js:10:309
+
+    Error Context: test-results/m42-focused/native-preference-spin-los-ccf4c-ut-later-preference-changes/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m42-focused/native-preference-spin-los-ccf4c-ut-later-preference-changes/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m42-focused/native-preference-spin-los-ccf4c-ut-later-preference-changes/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests/e2e/native-preference-spin.spec.js:9:1 › native held arrows wait400ms then repeat every100ms and retain pointer capture until release 
+    tests/e2e/native-preference-spin.spec.js:10:1 › loss of focus and dialog disposal stop held repeats without later preference changes 
+  2 passed (13.9s)

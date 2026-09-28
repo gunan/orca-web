@@ -1,0 +1,15 @@
+
+> orca-web@0.1.0 test:e2e:native
+> playwright test --config playwright.native.config.js tests/native-e2e/project-geometry.spec.js
+
+[WebServer] (node:1257) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:1309) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/native-e2e/project-geometry.spec.js:11:1 › geometry Add exports retained mirrored linked volumes and painting, then slices the real meshes with current native presets (3.6s)
+  ✓  2 tests/native-e2e/project-geometry.spec.js:12:1 › Prusa geometry-only Open uses the pinned native importer, retains roles and facet channels and grows current materials (2.1s)
+
+  2 passed (12.2s)

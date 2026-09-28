@@ -1,0 +1,23 @@
+
+> orca-web@0.1.0 test:e2e
+> playwright test --config playwright.m29.focused.config.js tests/e2e/embedded-preset-labels.spec.js tests/e2e/native-project.spec.js tests/e2e/preset-workflow.spec.js
+
+[WebServer] (node:89333) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 10 tests using 1 worker
+
+(node:89338) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/embedded-preset-labels.spec.js:6:35 › embedded preset labels show the active native profiles with no catalog IDs and survive Undo/export (5.0s)
+  ✓   2 tests/e2e/embedded-preset-labels.spec.js:6:35 › embedded preset labels show the active native profiles with retained catalog IDs and survive Undo/export (5.9s)
+  ✓   3 tests/e2e/embedded-preset-labels.spec.js:15:1 › empty preset selectors distinguish loading from a completed catalog failure and recover on reload (2.5s)
+  ✓   4 tests/e2e/native-project.spec.js:7:1 › native project import preserves embedded settings and exports edited settings back to native 3MF (2.5s)
+  ✓   5 tests/e2e/native-project.spec.js:24:1 › embedded native projects slice through the project endpoint without replacing unmatched presets (3.2s)
+  ✓   6 tests/e2e/native-project.spec.js:35:1 › explicitly switching an unmatched native project to installed presets enables compatible replacement choices (4.0s)
+  ✓   7 tests/e2e/native-project.spec.js:47:1 › fresh native GUI project imports, exports and slices with its embedded filament visual metadata (3.3s)
+  ✓   8 tests/e2e/preset-workflow.spec.js:6:1 › a custom process captures current edits, survives reload, and supplies subsequent slice jobs (6.3s)
+  ✓   9 tests/e2e/preset-workflow.spec.js:34:1 › editing an existing custom printer refreshes the selected bed without changing its ID (3.7s)
+  ✓  10 tests/e2e/preset-workflow.spec.js:52:1 › editing a secondary filament creates a preset in that slot and keeps the first slot unchanged (4.3s)
+
+  10 passed (42.7s)

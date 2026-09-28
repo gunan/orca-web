@@ -1,0 +1,750 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "sourceSha256": {
+    "src/slic3r/GUI/GLCanvas3D.cpp": "a44c6c43ca28690da12b5502eab1a6bdec3f8392da4c0454586e065a43614ddb",
+    "src/slic3r/GUI/GLCanvas3D.hpp": "49e6b6d419039f87143d67e3f782b0fd066511e662b9c525ce8389c03851437a",
+    "src/slic3r/GUI/Preferences.cpp": "2a454ba04fd610f83de57aecce83a17fa82b7dc518b3110becc2fbce5ac71917",
+    "src/libslic3r/AppConfig.cpp": "d6951d3454eec6c7ae24b3135622ee838c0c9125033b9c97426380017801963c"
+  },
+  "generatorSha256": "5a03018ba99af001b8854041084bdb63335e07ac196416e0d2c6017d4da8bb26",
+  "referenceSha256": "0d83e7383efa2976ca78492f94540ef1f4024274f60304a2a3d57c153cd2959a",
+  "binarySha256": "2411f694760e8fd62e7fced45bd395967602b8afc7bc7d4ed71f45ee1a76a6c3",
+  "defaults": {
+    "camera_orbit_mult": "1.0",
+    "left_mouse_drag_action": "2",
+    "middle_mouse_drag_action": "1",
+    "right_mouse_drag_action": "1",
+    "reverse_mouse_wheel_zoom": "false"
+  },
+  "cases": [
+    {
+      "action": "none",
+      "button": 0,
+      "mapping": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "action": "none",
+      "button": 1,
+      "mapping": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "action": "none",
+      "button": 2,
+      "mapping": [
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "action": "none",
+      "button": 0,
+      "mapping": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "action": "none",
+      "button": 1,
+      "mapping": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 2,
+      "mapping": [
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "action": "none",
+      "button": 0,
+      "mapping": [
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "action": "none",
+      "button": 1,
+      "mapping": [
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 2,
+      "mapping": [
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "action": "none",
+      "button": 0,
+      "mapping": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 1,
+      "mapping": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "action": "none",
+      "button": 2,
+      "mapping": [
+        0,
+        1,
+        0
+      ]
+    },
+    {
+      "action": "none",
+      "button": 0,
+      "mapping": [
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 1,
+      "mapping": [
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 2,
+      "mapping": [
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "action": "none",
+      "button": 0,
+      "mapping": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 1,
+      "mapping": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 2,
+      "mapping": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "action": "none",
+      "button": 0,
+      "mapping": [
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 1,
+      "mapping": [
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "action": "none",
+      "button": 2,
+      "mapping": [
+        0,
+        2,
+        0
+      ]
+    },
+    {
+      "action": "none",
+      "button": 0,
+      "mapping": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 1,
+      "mapping": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 2,
+      "mapping": [
+        0,
+        2,
+        1
+      ]
+    },
+    {
+      "action": "none",
+      "button": 0,
+      "mapping": [
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 1,
+      "mapping": [
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 2,
+      "mapping": [
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 0,
+      "mapping": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "action": "none",
+      "button": 1,
+      "mapping": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "action": "none",
+      "button": 2,
+      "mapping": [
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 0,
+      "mapping": [
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "action": "none",
+      "button": 1,
+      "mapping": [
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 2,
+      "mapping": [
+        1,
+        0,
+        1
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 0,
+      "mapping": [
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "action": "none",
+      "button": 1,
+      "mapping": [
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 2,
+      "mapping": [
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 0,
+      "mapping": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 1,
+      "mapping": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "action": "none",
+      "button": 2,
+      "mapping": [
+        1,
+        1,
+        0
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 0,
+      "mapping": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 1,
+      "mapping": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 2,
+      "mapping": [
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 0,
+      "mapping": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 1,
+      "mapping": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 2,
+      "mapping": [
+        1,
+        1,
+        2
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 0,
+      "mapping": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 1,
+      "mapping": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "action": "none",
+      "button": 2,
+      "mapping": [
+        1,
+        2,
+        0
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 0,
+      "mapping": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 1,
+      "mapping": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 2,
+      "mapping": [
+        1,
+        2,
+        1
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 0,
+      "mapping": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 1,
+      "mapping": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 2,
+      "mapping": [
+        1,
+        2,
+        2
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 0,
+      "mapping": [
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "action": "none",
+      "button": 1,
+      "mapping": [
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "action": "none",
+      "button": 2,
+      "mapping": [
+        2,
+        0,
+        0
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 0,
+      "mapping": [
+        2,
+        0,
+        1
+      ]
+    },
+    {
+      "action": "none",
+      "button": 1,
+      "mapping": [
+        2,
+        0,
+        1
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 2,
+      "mapping": [
+        2,
+        0,
+        1
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 0,
+      "mapping": [
+        2,
+        0,
+        2
+      ]
+    },
+    {
+      "action": "none",
+      "button": 1,
+      "mapping": [
+        2,
+        0,
+        2
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 2,
+      "mapping": [
+        2,
+        0,
+        2
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 0,
+      "mapping": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 1,
+      "mapping": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "action": "none",
+      "button": 2,
+      "mapping": [
+        2,
+        1,
+        0
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 0,
+      "mapping": [
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 1,
+      "mapping": [
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 2,
+      "mapping": [
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 0,
+      "mapping": [
+        2,
+        1,
+        2
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 1,
+      "mapping": [
+        2,
+        1,
+        2
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 2,
+      "mapping": [
+        2,
+        1,
+        2
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 0,
+      "mapping": [
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 1,
+      "mapping": [
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "action": "none",
+      "button": 2,
+      "mapping": [
+        2,
+        2,
+        0
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 0,
+      "mapping": [
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 1,
+      "mapping": [
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "action": "pan",
+      "button": 2,
+      "mapping": [
+        2,
+        2,
+        1
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 0,
+      "mapping": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 1,
+      "mapping": [
+        2,
+        2,
+        2
+      ]
+    },
+    {
+      "action": "rotate",
+      "button": 2,
+      "mapping": [
+        2,
+        2,
+        2
+      ]
+    }
+  ]
+}

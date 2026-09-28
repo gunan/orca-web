@@ -1,0 +1,44 @@
+[WebServer] (node:33376) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:33385) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/prepare-performance.spec.js:21:1 › paint hover, clipping and cleared cursors redraw while untouched paint workspaces stay idle (12.1s)
+
+
+  1) tests/e2e/prepare-performance.spec.js:21:1 › paint hover, clipping and cleared cursors redraw while untouched paint workspaces stay idle 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 8000ms exceeded while waiting on the predicate
+
+       at ../fixtures/gpu-observation.js:14
+
+      12 | export const gpuDraws=canvas=>canvas.evaluate(c=>Number(c.dataset.testGpuDraws||0));
+      13 | export async function gpuIdle(page,canvas){
+    > 14 |  await expect.poll(async()=>{const before=await gpuDraws(canvas);await page.waitForTimeout(100);return before>0&&await gpuDraws(canvas)===before;},{timeout:8000}).toBe(true);
+         |                                                                                                                                                                    ^
+      15 |  const before=await gpuDraws(canvas);await page.waitForTimeout(200);expect(await gpuDraws(canvas)).toBe(before);return before;
+      16 | }
+      17 | export async function gpuRedraw(page,canvas,action){const before=await gpuIdle(page,canvas);await action();await expect.poll(()=>gpuDraws(canvas)).toBeGreaterThan(before);return gpuIdle(page,canvas);}
+        at gpuIdle (/private/tmp/orca-implementation/m36-prepare-render-stage/tests/fixtures/gpu-observation.js:14:164)
+        at /private/tmp/orca-implementation/m36-prepare-render-stage/tests/e2e/prepare-performance.spec.js:23:148
+
+    Error Context: test-results/m36-focused/prepare-performance-paint--e8080--paint-workspaces-stay-idle/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m36-focused/prepare-performance-paint--e8080--paint-workspaces-stay-idle/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m36-focused/prepare-performance-paint--e8080--paint-workspaces-stay-idle/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/prepare-performance.spec.js:21:1 › paint hover, clipping and cleared cursors redraw while untouched paint workspaces stay idle 

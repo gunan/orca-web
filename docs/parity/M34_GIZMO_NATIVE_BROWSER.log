@@ -1,0 +1,12 @@
+[WebServer] (node:24397) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:24400) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/native-e2e/prime-tower-drag.spec.js:4:36 › native tower body movement survives Undo, native project export and real slicing (6.9s)
+  ✓  2 tests/native-e2e/prime-tower-drag.spec.js:4:36 › native tower X movement survives Undo, native project export and real slicing (7.3s)
+  ✓  3 tests/native-e2e/prime-tower-drag.spec.js:4:36 › native tower Y movement survives Undo, native project export and real slicing (7.2s)
+
+  3 passed (26.9s)

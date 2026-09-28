@@ -1,0 +1,8 @@
+import {readFileSync} from 'node:fs';
+import {BoxGeometry,Matrix4,Vector3} from 'three';
+import {emptyProject} from '../../shared/project.js';
+import {createMesh} from '../../shared/geometry.js';
+import {importNative3MF} from '../../shared/native-project.js';
+export function emptyVolumeFixture({allEmpty=false}={}){const p=importNative3MF(readFileSync(new URL('./native-gui-cube-2.4.2.3mf',import.meta.url))),flat=createMesh({id:'flat',name:'Flat sheet',positions:[0,0,0,10,0,0,0,10,0],plateId:'plate-1',native:{groupId:'flat',objectName:'Flat sheet',partType:'normal_part'}});p.objects=allEmpty?[flat]:[...p.objects,flat];p.selectedId=p.objects[0].id;p.selectedIds=[p.selectedId];return p;}
+export function inspectionBox(size=10,{id='box',role='normal_part',component=new Matrix4(),build=new Matrix4(),cutId}={}){const geometry=new BoxGeometry(size,size,size).toNonIndexed(),vertices=Array.from(geometry.attributes.position.array),triangles=Array.from({length:vertices.length/3},(_,i)=>i),transform=build.clone().multiply(component),positions=[];for(let f=0;f<triangles.length;f+=3)for(const corner of transform.determinant()<0?[0,2,1]:[0,1,2])positions.push(...new Vector3(...vertices.slice((f+corner)*3,(f+corner)*3+3)).applyMatrix4(transform).toArray());geometry.dispose();return createMesh({id,name:id,plateId:'plate-1',positions,native:{groupId:id,partType:role,...(cutId&&{cutId:structuredClone(cutId)}),meshSource:{version:1,vertices,triangles,build:build.toArray(),component:component.toArray()}}});}
+export const inspectionProject=objects=>({...emptyProject(),objects,selectedId:objects[0]?.id||null,selectedIds:objects.length?[objects[0].id]:[]});

@@ -1,0 +1,27 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "version": "2.4.2",
+  "files": {
+    "src/libslic3r/GCode/GCodeProcessor.cpp": "990e7b1131b4c28ceda60992b101c4bbae0d3ffca79df9f0d99c9ebae89aa976",
+    "src/libslic3r/Print.cpp": "c9f66cd1750d12842f80249c99d70a43e976ee035b73dd8c0b1269de07ecc586",
+    "src/libslic3r/GCodeWriter.cpp": "8abfe1b65d7bcc3260e369b938761fdeb834a8f0ca26b7a9634d3f627f9ef288",
+    "src/libslic3r/GCode/Thumbnails.cpp": "b6ee3ef7f5f06bceaea881ab4b5ce16bc6a53fe5597c8289371b072bd51aadcd",
+    "src/slic3r/GUI/LibVGCode/LibVGCodeWrapper.cpp": "59555315021e617c812416adbcb14ecb5d71c25acc8ac2b6357ab9bd84fb109c",
+    "src/libvgcode/src/ViewerImpl.cpp": "0f393952652a923a9a2f18072aeebc5819a6d30b8b65dd8d43657697f887b49a",
+    "src/libvgcode/src/ColorRange.cpp": "0cecca8546ca0a0d66c85f36a3f74272ac6e8360938a7d06efcae6c46566560f",
+    "src/libvgcode/src/PathVertex.cpp": "967f9b8646f9068e53c8dae52893b1591f6c49c47c0c176f2395c098b3e77b64",
+    "src/libvgcode/src/Layers.cpp": "28ccf8c2de8459e0c2a21bfef75eea5860297c4a7838daf494ccfcfcc51a085b",
+    "src/libvgcode/src/ExtrusionRoles.cpp": "2b4f8ffee56885258fef4f3c653fcb0337e409402737a9f3ff5f483d3a5c85d1",
+    "src/libslic3r/GCodeReader.cpp": "77000b45b48dc7ce9d5c47a5e9cea6c9e68569f37b591e4501c5fde7f4889487",
+    "src/libslic3r/PrintConfig.cpp": "f635101adb6da3ee657656c6fcaa9449871b7c17446b5e2eb59b560a0eb836aa",
+    "src/libslic3r/Config.cpp": "f66aacda059021dbeb03aefbbbf2c9d2ba64e9ad941b3b5cc3cd632aab782cec",
+    "src/libslic3r/GCode.cpp": "6b29f4a6434e705cd71a83bec4c2228f31041b73ea31d8b45cba617497e125c1",
+    "src/libslic3r/Extruder.cpp": "460cd7e404c1990f0a364f4c26a75a601d518365931c07aeef8a0bfee6cffd7a",
+    "src/libslic3r/Extruder.hpp": "344431e3efaf4054d3e2f24ab41157b22be5ebb4310da749fd91a6936e5a43e5",
+    "src/slic3r/GUI/GUI_Preview.cpp": "1a45b357969ef2f2161132d02500566f901b813c43b7dd3d4701b97215a975f5",
+    "src/slic3r/GUI/Plater.cpp": "dbeee2a69d8955dd8e42efa8943a553b3c231232ce7f0cf0496575aed78daf3a",
+    "src/slic3r/GUI/GCodeViewer.cpp": "dc940588238795d439beedc007a763085a968797764ccf1fdb0a05e3a7c75937",
+    "src/slic3r/GUI/IMSlider.hpp": "85c96c762f4f0d33dab7de9ff82780c911876dd3d8a603015f2a1824153fa2c8",
+    "src/libslic3r/Utils.hpp": "dcda75767a109135f52d366e320a5cd7bf4818d54d2c2a9296ebc49e57590c38"
+  }
+}

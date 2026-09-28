@@ -1,0 +1,17 @@
+.editor-workspace.resizable-workspace {
+  grid-template-columns: var(--sidebar-width) 6px minmax(250px, 1fr) 220px;
+}
+.editor-workspace.resizable-workspace.empty-selection,
+.editor-workspace.resizable-workspace.narrow-workspace {
+  grid-template-columns: var(--sidebar-width) 6px minmax(250px, 1fr);
+}
+.resizable-workspace > .native-sidebar { min-width:0; border-right:0; }
+.sidebar-divider { background:var(--surface-muted); border-left:1px solid var(--line); border-right:1px solid var(--line); cursor:col-resize; touch-action:none; user-select:none; z-index:21; }
+.sidebar-divider:hover,.sidebar-divider:focus-visible { background:var(--accent); outline:2px solid var(--accent); outline-offset:-2px; }
+.resizable-workspace .scene-center { min-width:0; margin:0; }
+.resizable-workspace .native-sidebar .settings {position:static;width:auto;height:auto;box-shadow:none;}
+.editor-app:has(> .resizable-workspace) {height:100dvh;min-height:0;}
+.editor-workspace.resizable-workspace {height:auto;}
+.resizable-workspace .scene-viewport { min-height:160px; }
+
+@media(max-width:760px){.editor-app .head-actions{display:flex;}.editor-app .head-actions .online{display:none;}}

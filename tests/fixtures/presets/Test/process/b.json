@@ -1,0 +1,10 @@
+{
+  "type": "process",
+  "name": "Test Standard B",
+  "from": "system",
+  "instantiation": "true",
+  "inherits": "process base",
+  "compatible_printers": [
+    "Test Printer B"
+  ]
+}

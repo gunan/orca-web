@@ -1,0 +1,7 @@
+# Native project-cover worker
+
+The `generate_image` function is unchanged from OrcaSlicer 2.4.2, revision `8500fcdccaa10b5099ac20d252af3a7c560046f1`, `src/slic3r/GUI/GUI_Utils.cpp`. Copyright belongs to the OrcaSlicer contributors and upstream contributors named in that source. It and the worker are distributed under AGPL-3.0-or-later; see `licenses/OrcaSlicer-AGPL-3.0.txt`. This repository provides the wrapper source, copied kernel, source revision, hash verification and reproducible build script.
+
+The image library is SoftFever/Orca-deps-wxWidgets 3.3.2, revision `88f3483ca546fbf4ad732e1acd94cc930935077a`, the dependency pinned by this native baseline. Its source and recursively pinned submodules are obtained by `scripts/build-native-images.mjs`. wxWidgets uses the wxWindows Library Licence with its stated exception. Bundled PNG, JPEG and zlib notices are included under `licenses/`; complete library sources/notices remain in the build cache. No native OrcaSlicer binary is redistributed.
+
+The wrapper explicitly initializes the standard BMP handler normally initialized by a GUI app; it registers the same PNG/JPEG handlers, loads only a server-owned image path, calls the exact crop/resize function at 240×240, 252×188 and 680×680, and writes only the three native PNG filenames. It adds input/intermediate-surface bounds and process protocol/error handling. It does not initialize an application window, inspect native user preferences, or use browser canvas interpolation.

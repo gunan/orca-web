@@ -1,0 +1,11 @@
+{
+  "type": "machine",
+  "name": "Test Printer B",
+  "from": "system",
+  "instantiation": "true",
+  "inherits": "machine base",
+  "default_print_profile": "Test Standard B",
+  "default_filament_profile": [
+    "Test PLA B"
+  ]
+}

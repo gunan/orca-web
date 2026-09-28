@@ -1,0 +1,14 @@
+
+> orca-web@0.1.0 test:e2e:native
+> playwright test --config playwright.native.config.js --config playwright.m31.native.focused.config.js tests/native-e2e/preview-performance.spec.js
+
+[WebServer] (node:97962) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:98057) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/native-e2e/preview-performance.spec.js:2:1 › native solids stop idle GPU work and render layer, scalar, camera, size and playback changes (30.1s)
+
+  1 passed (51.2s)

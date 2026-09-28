@@ -1,0 +1,877 @@
+{
+  "nativeVersion": "2.4.2",
+  "revision": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "source": "src/slic3r/GUI/KBShortcutsDialog.cpp",
+  "sourceSha256": "408f986d15262335c3bfd5dc0fa23db08343f8994588d746387d452e65f6a703",
+  "scope": "All entries in the pinned native keyboard-help table, including platform variants and configurable mouse actions. Binding status does not certify complete underlying feature or native visual parity. Source handlers contain additional context predicates; Preview and other remaining entries are separate work.",
+  "shortcuts": [
+    {
+      "group": "Global",
+      "shortcut": "Mod+N",
+      "description": "New Project",
+      "platform": "all",
+      "sourceLine": 173,
+      "webBinding": "new",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Global",
+      "shortcut": "Mod+O",
+      "description": "Open Project",
+      "platform": "all",
+      "sourceLine": 174,
+      "webBinding": "openProject",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Global",
+      "shortcut": "Mod+S",
+      "description": "Save Project",
+      "platform": "all",
+      "sourceLine": 175,
+      "webBinding": "save",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Global",
+      "shortcut": "Mod+Shift+S",
+      "description": "Save Project as",
+      "platform": "all",
+      "sourceLine": 176,
+      "webBinding": "saveAs",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Global",
+      "shortcut": "Mod+I",
+      "description": "Import geometry data from STL/STEP/3MF/OBJ/AMF files",
+      "platform": "all",
+      "sourceLine": 178,
+      "webBinding": "importModels",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Global",
+      "shortcut": "Mod+G",
+      "description": "Export plate sliced file",
+      "platform": "all",
+      "sourceLine": 180,
+      "webBinding": "exportGcode",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Global",
+      "shortcut": "Mod+R",
+      "description": "Slice plate",
+      "platform": "all",
+      "sourceLine": 182,
+      "webBinding": "slice",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Global",
+      "shortcut": "Mod+Shift+G",
+      "description": "Print plate",
+      "platform": "all",
+      "sourceLine": 184,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Global",
+      "shortcut": "Mod+X",
+      "description": "Cut",
+      "platform": "all",
+      "sourceLine": 186,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Global",
+      "shortcut": "Mod+C",
+      "description": "Copy to clipboard",
+      "platform": "all",
+      "sourceLine": 187,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Global",
+      "shortcut": "Mod+V",
+      "description": "Paste from clipboard",
+      "platform": "all",
+      "sourceLine": 188,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Global",
+      "shortcut": "Mod+P",
+      "description": "Preferences",
+      "platform": "all",
+      "sourceLine": 190,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Global",
+      "shortcut": "Mod+Shift+M",
+      "description": "Show/Hide 3Dconnexion devices settings dialog",
+      "platform": "macOS",
+      "sourceLine": 193,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Global",
+      "shortcut": "Mod+M",
+      "description": "Show/Hide 3Dconnexion devices settings dialog",
+      "platform": "Windows/Linux",
+      "sourceLine": 195,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Global",
+      "shortcut": "Mod+Tab",
+      "description": "Switch table page",
+      "platform": "all",
+      "sourceLine": 199,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Global",
+      "shortcut": "fn+⌫",
+      "description": "Delete selected",
+      "platform": "macOS",
+      "sourceLine": 202,
+      "webBinding": "deleteSelection",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Global",
+      "shortcut": "Del",
+      "description": "Delete selected",
+      "platform": "Windows/Linux",
+      "sourceLine": 204,
+      "webBinding": "deleteSelection",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Global",
+      "shortcut": "?",
+      "description": "Show keyboard shortcuts list",
+      "platform": "all",
+      "sourceLine": 207,
+      "webBinding": "help",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Left mouse button",
+      "description": "Configured mouse action",
+      "platform": "all",
+      "sourceLine": 219,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Middle mouse button",
+      "description": "Configured mouse action",
+      "platform": "all",
+      "sourceLine": 220,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Right mouse button",
+      "description": "Configured mouse action",
+      "platform": "all",
+      "sourceLine": 221,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Mouse wheel",
+      "description": "Zoom View",
+      "platform": "all",
+      "sourceLine": 222,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "A",
+      "description": "Arrange all objects",
+      "platform": "all",
+      "sourceLine": 223,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Shift+A",
+      "description": "Arrange objects on selected plates",
+      "platform": "all",
+      "sourceLine": 224,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Q",
+      "description": "Auto orients selected objects or all objects. If there are selected objects, it just orients the selected ones. Otherwise, it will orient all objects in the current project.",
+      "platform": "all",
+      "sourceLine": 226,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Shift+Q",
+      "description": "Auto orients all objects on the active plate.",
+      "platform": "all",
+      "sourceLine": 227,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Shift+Tab",
+      "description": "Collapse/Expand the sidebar",
+      "platform": "all",
+      "sourceLine": 229,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Mod+Any arrow",
+      "description": "Movement in camera space",
+      "platform": "all",
+      "sourceLine": 230,
+      "webBinding": "nudge",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Alt+Left mouse button",
+      "description": "Select a part",
+      "platform": "all",
+      "sourceLine": 231,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Mod+Left mouse button",
+      "description": "Select multiple objects",
+      "platform": "all",
+      "sourceLine": 232,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Shift+Left mouse button",
+      "description": "Select objects by rectangle",
+      "platform": "all",
+      "sourceLine": 233,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Arrow Up",
+      "description": "Move selection 10 mm in positive Y direction",
+      "platform": "all",
+      "sourceLine": 234,
+      "webBinding": "nudge",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Arrow Down",
+      "description": "Move selection 10 mm in negative Y direction",
+      "platform": "all",
+      "sourceLine": 235,
+      "webBinding": "nudge",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Arrow Left",
+      "description": "Move selection 10 mm in negative X direction",
+      "platform": "all",
+      "sourceLine": 236,
+      "webBinding": "nudge",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Arrow Right",
+      "description": "Move selection 10 mm in positive X direction",
+      "platform": "all",
+      "sourceLine": 237,
+      "webBinding": "nudge",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Shift+Any arrow",
+      "description": "Movement step set to 1 mm",
+      "platform": "all",
+      "sourceLine": 238,
+      "webBinding": "nudge",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Esc",
+      "description": "Deselect all",
+      "platform": "all",
+      "sourceLine": 239,
+      "webBinding": "deselectAll",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "1-9",
+      "description": "Keyboard 1-9: set filament for object/part",
+      "platform": "all",
+      "sourceLine": 240,
+      "webBinding": "filamentDigit",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Mod+0",
+      "description": "Camera view - Default",
+      "platform": "all",
+      "sourceLine": 241,
+      "webBinding": "camera",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Mod+1",
+      "description": "Camera view - Top",
+      "platform": "all",
+      "sourceLine": 242,
+      "webBinding": "camera",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Mod+2",
+      "description": "Camera view - Bottom",
+      "platform": "all",
+      "sourceLine": 243,
+      "webBinding": "camera",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Mod+3",
+      "description": "Camera view - Front",
+      "platform": "all",
+      "sourceLine": 244,
+      "webBinding": "camera",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Mod+4",
+      "description": "Camera view - Behind",
+      "platform": "all",
+      "sourceLine": 245,
+      "webBinding": "camera",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Mod+5",
+      "description": "Camera Angle - Left side",
+      "platform": "all",
+      "sourceLine": 246,
+      "webBinding": "camera",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Mod+6",
+      "description": "Camera Angle - Right side",
+      "platform": "all",
+      "sourceLine": 247,
+      "webBinding": "camera",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Mod+A",
+      "description": "Select all objects",
+      "platform": "all",
+      "sourceLine": 249,
+      "webBinding": "selectAll",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Mod+D",
+      "description": "Delete all",
+      "platform": "all",
+      "sourceLine": 250,
+      "webBinding": "deleteAll",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Mod+Z",
+      "description": "Undo",
+      "platform": "all",
+      "sourceLine": 251,
+      "webBinding": "undo",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Mod+Y",
+      "description": "Redo",
+      "platform": "all",
+      "sourceLine": 252,
+      "webBinding": "redo",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "M",
+      "description": "Gizmo move",
+      "platform": "all",
+      "sourceLine": 253,
+      "webBinding": "move",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "R",
+      "description": "Gizmo rotate",
+      "platform": "all",
+      "sourceLine": 254,
+      "webBinding": "rotate",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "S",
+      "description": "Gizmo scale",
+      "platform": "all",
+      "sourceLine": 255,
+      "webBinding": "scale",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "F",
+      "description": "Gizmo place face on bed",
+      "platform": "all",
+      "sourceLine": 256,
+      "webBinding": "placeFace",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "C",
+      "description": "Gizmo cut",
+      "platform": "all",
+      "sourceLine": 257,
+      "webBinding": "cut",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "B",
+      "description": "Gizmo mesh boolean",
+      "platform": "all",
+      "sourceLine": 258,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "H",
+      "description": "Gizmo FDM paint-on fuzzy skin",
+      "platform": "all",
+      "sourceLine": 259,
+      "webBinding": "fuzzy",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "L",
+      "description": "Gizmo SLA support points",
+      "platform": "all",
+      "sourceLine": 260,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "P",
+      "description": "Gizmo FDM paint-on seam",
+      "platform": "all",
+      "sourceLine": 261,
+      "webBinding": "seam",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "T",
+      "description": "Gizmo text emboss/engrave",
+      "platform": "all",
+      "sourceLine": 262,
+      "webBinding": "text",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "U",
+      "description": "Gizmo measure",
+      "platform": "all",
+      "sourceLine": 263,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Y",
+      "description": "Gizmo assemble",
+      "platform": "all",
+      "sourceLine": 264,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "E",
+      "description": "Gizmo brim ears",
+      "platform": "all",
+      "sourceLine": 265,
+      "webBinding": "brim",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "I",
+      "description": "Zoom in",
+      "platform": "all",
+      "sourceLine": 266,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "O",
+      "description": "Zoom out",
+      "platform": "all",
+      "sourceLine": 267,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "V",
+      "description": "Toggle printable for object/part",
+      "platform": "all",
+      "sourceLine": 268,
+      "webBinding": "togglePrintable",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Prepare",
+      "shortcut": "Tab",
+      "description": "Switch between Prepare/Preview",
+      "platform": "all",
+      "sourceLine": 269,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Gizmo",
+      "shortcut": "Esc",
+      "description": "Deselect all",
+      "platform": "all",
+      "sourceLine": 275,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Gizmo",
+      "shortcut": "Shift+",
+      "description": "Move: press to snap by 1mm",
+      "platform": "all",
+      "sourceLine": 276,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Gizmo",
+      "shortcut": "Mod+Mouse wheel",
+      "description": "Support/Color Painting: adjust pen radius",
+      "platform": "all",
+      "sourceLine": 277,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Gizmo",
+      "shortcut": "Alt+Mouse wheel",
+      "description": "Support/Color Painting: adjust section position",
+      "platform": "all",
+      "sourceLine": 278,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Object list",
+      "shortcut": "1-9",
+      "description": "Set extruder number for the objects and parts",
+      "platform": "all",
+      "sourceLine": 283,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Object list",
+      "shortcut": "Del",
+      "description": "Delete objects, parts, modifiers",
+      "platform": "all",
+      "sourceLine": 284,
+      "webBinding": "deleteSelection",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Object list",
+      "shortcut": "Esc",
+      "description": "Deselect all",
+      "platform": "all",
+      "sourceLine": 285,
+      "webBinding": "deselectAll",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Object list",
+      "shortcut": "Mod+C",
+      "description": "Copy to clipboard",
+      "platform": "all",
+      "sourceLine": 286,
+      "webBinding": "copyModels",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Object list",
+      "shortcut": "Mod+V",
+      "description": "Paste from clipboard",
+      "platform": "all",
+      "sourceLine": 287,
+      "webBinding": "pasteModels",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Object list",
+      "shortcut": "Mod+X",
+      "description": "Cut",
+      "platform": "all",
+      "sourceLine": 288,
+      "webBinding": "cutModels",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Object list",
+      "shortcut": "Mod+A",
+      "description": "Select all objects",
+      "platform": "all",
+      "sourceLine": 289,
+      "webBinding": "selectAll",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Object list",
+      "shortcut": "Mod+K",
+      "description": "Clone selected",
+      "platform": "all",
+      "sourceLine": 290,
+      "webBinding": "cloneModels",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Object list",
+      "shortcut": "Mod+Z",
+      "description": "Undo",
+      "platform": "all",
+      "sourceLine": 291,
+      "webBinding": "undo",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Object list",
+      "shortcut": "Mod+Y",
+      "description": "Redo",
+      "platform": "all",
+      "sourceLine": 292,
+      "webBinding": "redo",
+      "status": "implemented binding"
+    },
+    {
+      "group": "Object list",
+      "shortcut": "Space",
+      "description": "Select the object/part and press space to change the name",
+      "platform": "all",
+      "sourceLine": 293,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Object list",
+      "shortcut": "Mouse click",
+      "description": "Select the object/part and mouse click to change the name",
+      "platform": "all",
+      "sourceLine": 294,
+      "webBinding": null,
+      "status": "pending or separate tool interaction"
+    },
+    {
+      "group": "Preview",
+      "shortcut": "Arrow Up",
+      "description": "Vertical slider - Move active thumb Up",
+      "platform": "all",
+      "sourceLine": 300,
+      "webBinding": "previewShortcut",
+      "status": "implemented binding",
+      "coverageNote": "Native slider transitions, hidden command/event ticks, and top-layer-only playback are source-verified for native-processed data; source-only fallback and visual layout retain explicit limits."
+    },
+    {
+      "group": "Preview",
+      "shortcut": "Arrow Down",
+      "description": "Vertical slider - Move active thumb Down",
+      "platform": "all",
+      "sourceLine": 301,
+      "webBinding": "previewShortcut",
+      "status": "implemented binding",
+      "coverageNote": "Native slider transitions, hidden command/event ticks, and top-layer-only playback are source-verified for native-processed data; source-only fallback and visual layout retain explicit limits."
+    },
+    {
+      "group": "Preview",
+      "shortcut": "Arrow Left",
+      "description": "Horizontal slider - Move active thumb Left",
+      "platform": "all",
+      "sourceLine": 302,
+      "webBinding": "previewShortcut",
+      "status": "implemented binding",
+      "coverageNote": "Native slider transitions, hidden command/event ticks, and top-layer-only playback are source-verified for native-processed data; source-only fallback and visual layout retain explicit limits."
+    },
+    {
+      "group": "Preview",
+      "shortcut": "Arrow Right",
+      "description": "Horizontal slider - Move active thumb Right",
+      "platform": "all",
+      "sourceLine": 303,
+      "webBinding": "previewShortcut",
+      "status": "implemented binding",
+      "coverageNote": "Native slider transitions, hidden command/event ticks, and top-layer-only playback are source-verified for native-processed data; source-only fallback and visual layout retain explicit limits."
+    },
+    {
+      "group": "Preview",
+      "shortcut": "L",
+      "description": "On/Off one layer mode of the vertical slider",
+      "platform": "all",
+      "sourceLine": 304,
+      "webBinding": "previewShortcut",
+      "status": "implemented binding",
+      "coverageNote": "Native slider transitions, hidden command/event ticks, and top-layer-only playback are source-verified for native-processed data; source-only fallback and visual layout retain explicit limits."
+    },
+    {
+      "group": "Preview",
+      "shortcut": "C",
+      "description": "On/Off G-code window",
+      "platform": "all",
+      "sourceLine": 305,
+      "webBinding": "previewShortcut",
+      "status": "implemented binding",
+      "coverageNote": "Native slider transitions, hidden command/event ticks, and top-layer-only playback are source-verified for native-processed data; source-only fallback and visual layout retain explicit limits."
+    },
+    {
+      "group": "Preview",
+      "shortcut": "Tab",
+      "description": "Switch between Prepare/Preview",
+      "platform": "all",
+      "sourceLine": 306,
+      "webBinding": "previewShortcut",
+      "status": "implemented binding",
+      "coverageNote": "Native slider transitions, hidden command/event ticks, and top-layer-only playback are source-verified for native-processed data; source-only fallback and visual layout retain explicit limits."
+    },
+    {
+      "group": "Preview",
+      "shortcut": "Shift+Any arrow",
+      "description": "Move slider 5x faster",
+      "platform": "all",
+      "sourceLine": 307,
+      "webBinding": "previewShortcut",
+      "status": "implemented binding",
+      "coverageNote": "Native slider transitions, hidden command/event ticks, and top-layer-only playback are source-verified for native-processed data; source-only fallback and visual layout retain explicit limits."
+    },
+    {
+      "group": "Preview",
+      "shortcut": "Shift+Mouse wheel",
+      "description": "Move slider 5x faster",
+      "platform": "all",
+      "sourceLine": 308,
+      "webBinding": "previewShortcut",
+      "status": "implemented binding",
+      "coverageNote": "Native slider transitions, hidden command/event ticks, and top-layer-only playback are source-verified for native-processed data; source-only fallback and visual layout retain explicit limits."
+    },
+    {
+      "group": "Preview",
+      "shortcut": "Mod+Any arrow",
+      "description": "Move slider 5x faster",
+      "platform": "all",
+      "sourceLine": 309,
+      "webBinding": "previewShortcut",
+      "status": "implemented binding",
+      "coverageNote": "Native slider transitions, hidden command/event ticks, and top-layer-only playback are source-verified for native-processed data; source-only fallback and visual layout retain explicit limits."
+    },
+    {
+      "group": "Preview",
+      "shortcut": "Mod+Mouse wheel",
+      "description": "Move slider 5x faster",
+      "platform": "all",
+      "sourceLine": 310,
+      "webBinding": "previewShortcut",
+      "status": "implemented binding",
+      "coverageNote": "Native slider transitions, hidden command/event ticks, and top-layer-only playback are source-verified for native-processed data; source-only fallback and visual layout retain explicit limits."
+    },
+    {
+      "group": "Preview",
+      "shortcut": "Home",
+      "description": "Horizontal slider - Move to start position",
+      "platform": "all",
+      "sourceLine": 311,
+      "webBinding": "previewShortcut",
+      "status": "implemented binding",
+      "coverageNote": "Native slider transitions, hidden command/event ticks, and top-layer-only playback are source-verified for native-processed data; source-only fallback and visual layout retain explicit limits."
+    },
+    {
+      "group": "Preview",
+      "shortcut": "End",
+      "description": "Horizontal slider - Move to last position",
+      "platform": "all",
+      "sourceLine": 312,
+      "webBinding": "previewShortcut",
+      "status": "implemented binding",
+      "coverageNote": "Native slider transitions, hidden command/event ticks, and top-layer-only playback are source-verified for native-processed data; source-only fallback and visual layout retain explicit limits."
+    }
+  ]
+}

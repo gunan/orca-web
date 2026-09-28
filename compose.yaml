@@ -6,8 +6,17 @@ services:
     environment:
       ORCA_SLICER_BIN: /opt/orca/OrcaSlicer
       ORCA_RESOURCES_DIR: /opt/orca/resources
+      ORCA_CONFIG_WORKER_BIN: /opt/orca-workers/config/orca-config-worker
+      ORCA_EMBOSS_WORKER_BIN: /opt/orca-workers/emboss/orca-emboss-worker
+      ORCA_IMAGE_WORKER_BIN: /opt/orca-workers/image/orca-image-worker
+      ORCA_GCODE_WORKER_BIN: /opt/orca-workers/gcode/orca-gcode-worker
+      ORCA_PRUSA_IMPORTER_BIN: /opt/orca-workers/prusa/orca-prusa-import
+      ORCA_ARRANGE_WORKER_BIN: /opt/orca-workers/arrange/orca-arrange-worker
     volumes:
       - orca-data:/data
+      # See docs/DEPLOYMENT.md: these must be compatible Linux builds.
+      # The config helper is required; other helpers enable optional features.
+      - ${ORCA_NATIVE_WORKERS_DIR:?Set ORCA_NATIVE_WORKERS_DIR to Linux worker folders}:/opt/orca-workers:ro
       # Provide a compatible Linux binary and matching resources.
       # Its required shared libraries must also be available inside the image.
       - ${ORCA_SLICER_BIN:?Set ORCA_SLICER_BIN to the host binary}:/opt/orca/OrcaSlicer:ro

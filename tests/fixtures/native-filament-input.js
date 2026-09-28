@@ -1,0 +1,5 @@
+import{readFile}from'node:fs/promises';
+/** Synthetic role/filament commands processed by the real engine. Reuse the
+ * retained genuine GUI export's full configuration, rather than bypass native
+ * minimum-config validation or fabricate missing printer defaults. */
+export async function nativeFilamentTestInput(){const source=await readFile(new URL('./native-gui-shrink98-2.4.2.gcode',import.meta.url),'utf8'),commands=await readFile(new URL('./native-filament-commands.gcode',import.meta.url),'utf8');let config=source.slice(source.indexOf('; CONFIG_BLOCK_START'));if(!config.includes('; CONFIG_BLOCK_END'))throw Error('Native fixture config is unavailable');const settings={filament_diameter:'1.75,2.85',filament_density:'1.24,0.97',filament_cost:'22,31',filament_colour:'#FF0000;#00FF00',extruder_colour:'#FF0000;#00FF00',filament_map:'1,1',single_extruder_multi_material:'1'};for(const[key,value]of Object.entries(settings))config=config.replace(new RegExp('^; '+key+' = .*$', 'm'),'; '+key+' = '+value);return commands+config;}

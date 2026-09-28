@@ -1,0 +1,518 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "scope": "Original ensure_on_bed(false) and center_instances_around_point, invoked in native geometry-only order. Minimal axis-aligned normal-volume bounds adapters; no archive/UI/rotation acceptance.",
+  "sourceSha256": {
+    "src/libslic3r/Model.cpp": "abc47399040b295f1eed8ad53f7ddd7b45eb324616cd8e57ea5d188b7d9ea894",
+    "src/libslic3r/Model.hpp": "c69ed9329d69db4642142844b6108b073517bfcfd37ed1e7e8bfdad798d9eee7",
+    "src/libslic3r/libslic3r.h": "8e7ca359a550006104a998f4f852ebb4cb9d66d03e384ed474a18b865eaf6939",
+    "src/slic3r/GUI/Plater.cpp": "dbeee2a69d8955dd8e42efa8943a553b3c231232ce7f0cf0496575aed78daf3a",
+    "src/libslic3r/Format/bbs_3mf.cpp": "5f5e14c8e027bd66703e8f62570ffddb6a29a9e3a5c7e979ef3f872db16eb64c"
+  },
+  "generatorSha256": "71d06836a19b30d2c8f38db891909f443e919ec9ae5174d4f4b92a271d0e1236",
+  "referenceSha256": "ebf5d1b5aa229229221322d4b56866b46432b5267dbc4b10d893bd00ee8b3fc9",
+  "binarySha256": "35ffad4e582279e5dcef89b74491b4c44ebccf2efa2688e1cf31e997e1da3528",
+  "cases": [
+    {
+      "center": [
+        125,
+        105
+      ],
+      "groups": [
+        {
+          "autoDrop": [
+            true
+          ],
+          "max": [
+            5,
+            5,
+            5
+          ],
+          "min": [
+            -5,
+            -5,
+            -5
+          ],
+          "offsets": [
+            [
+              40,
+              30,
+              10
+            ]
+          ]
+        }
+      ],
+      "name": "single floating model",
+      "placedOffsets": [
+        [
+          [
+            125.0,
+            105.0,
+            5.0
+          ]
+        ]
+      ]
+    },
+    {
+      "center": [
+        125,
+        105
+      ],
+      "groups": [
+        {
+          "autoDrop": [
+            true,
+            true
+          ],
+          "max": [
+            5,
+            5,
+            5
+          ],
+          "min": [
+            -5,
+            -5,
+            -5
+          ],
+          "offsets": [
+            [
+              40,
+              30,
+              10
+            ],
+            [
+              100,
+              30,
+              14
+            ]
+          ]
+        }
+      ],
+      "name": "two linked offsets",
+      "placedOffsets": [
+        [
+          [
+            95.0,
+            105.0,
+            5.0
+          ],
+          [
+            155.0,
+            105.0,
+            9.0
+          ]
+        ]
+      ]
+    },
+    {
+      "center": [
+        125,
+        105
+      ],
+      "groups": [
+        {
+          "autoDrop": [
+            true,
+            false
+          ],
+          "max": [
+            5,
+            5,
+            5
+          ],
+          "min": [
+            -5,
+            -5,
+            -5
+          ],
+          "offsets": [
+            [
+              40,
+              30,
+              10
+            ],
+            [
+              100,
+              30,
+              14
+            ]
+          ]
+        }
+      ],
+      "name": "second instance stays floating",
+      "placedOffsets": [
+        [
+          [
+            95.0,
+            105.0,
+            5.0
+          ],
+          [
+            155.0,
+            105.0,
+            14.0
+          ]
+        ]
+      ]
+    },
+    {
+      "center": [
+        125,
+        105
+      ],
+      "groups": [
+        {
+          "autoDrop": [
+            false,
+            true
+          ],
+          "max": [
+            5,
+            5,
+            5
+          ],
+          "min": [
+            -5,
+            -5,
+            -5
+          ],
+          "offsets": [
+            [
+              40,
+              30,
+              10
+            ],
+            [
+              100,
+              30,
+              14
+            ]
+          ]
+        }
+      ],
+      "name": "first instance disabled native double ensure",
+      "placedOffsets": [
+        [
+          [
+            95.0,
+            105.0,
+            10.0
+          ],
+          [
+            155.0,
+            105.0,
+            4.0
+          ]
+        ]
+      ]
+    },
+    {
+      "center": [
+        125,
+        105
+      ],
+      "groups": [
+        {
+          "autoDrop": [
+            false,
+            false
+          ],
+          "max": [
+            5,
+            5,
+            5
+          ],
+          "min": [
+            -5,
+            -5,
+            -5
+          ],
+          "offsets": [
+            [
+              40,
+              30,
+              10
+            ],
+            [
+              100,
+              30,
+              14
+            ]
+          ]
+        }
+      ],
+      "name": "both instances disabled",
+      "placedOffsets": [
+        [
+          [
+            95.0,
+            105.0,
+            10.0
+          ],
+          [
+            155.0,
+            105.0,
+            14.0
+          ]
+        ]
+      ]
+    },
+    {
+      "center": [
+        125,
+        105
+      ],
+      "groups": [
+        {
+          "autoDrop": [
+            true
+          ],
+          "max": [
+            5,
+            5,
+            5
+          ],
+          "min": [
+            -5,
+            -5,
+            -5
+          ],
+          "offsets": [
+            [
+              25,
+              40,
+              -7
+            ]
+          ]
+        },
+        {
+          "autoDrop": [
+            true
+          ],
+          "max": [
+            10,
+            2,
+            3
+          ],
+          "min": [
+            -10,
+            -2,
+            -3
+          ],
+          "offsets": [
+            [
+              140,
+              80,
+              17
+            ]
+          ]
+        }
+      ],
+      "name": "independent objects ground independently",
+      "placedOffsets": [
+        [
+          [
+            65.0,
+            86.5,
+            5.0
+          ]
+        ],
+        [
+          [
+            180.0,
+            126.5,
+            3.0
+          ]
+        ]
+      ]
+    },
+    {
+      "center": [
+        125,
+        105
+      ],
+      "groups": [
+        {
+          "autoDrop": [
+            true
+          ],
+          "max": [
+            20,
+            20,
+            20
+          ],
+          "min": [
+            0,
+            0,
+            0
+          ],
+          "offsets": [
+            [
+              10,
+              10,
+              0
+            ]
+          ]
+        },
+        {
+          "autoDrop": [
+            true
+          ],
+          "max": [
+            20,
+            20,
+            20
+          ],
+          "min": [
+            0,
+            0,
+            0
+          ],
+          "offsets": [
+            [
+              310,
+              -242,
+              0
+            ]
+          ]
+        }
+      ],
+      "name": "plate-grid global positions",
+      "placedOffsets": [
+        [
+          [
+            -35.0,
+            221.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            265.0,
+            -31.0,
+            0.0
+          ]
+        ]
+      ]
+    },
+    {
+      "center": [
+        125,
+        105
+      ],
+      "groups": [
+        {
+          "autoDrop": [
+            true
+          ],
+          "max": [
+            5,
+            5,
+            5
+          ],
+          "min": [
+            -5,
+            -5,
+            -5
+          ],
+          "offsets": [
+            [
+              125.00005,
+              105.00005,
+              5
+            ]
+          ]
+        }
+      ],
+      "name": "sub-epsilon centering retained",
+      "placedOffsets": [
+        [
+          [
+            125.00005,
+            105.00005,
+            5.0
+          ]
+        ]
+      ]
+    },
+    {
+      "center": [
+        125,
+        105
+      ],
+      "groups": [
+        {
+          "autoDrop": [
+            true
+          ],
+          "max": [
+            5,
+            5,
+            5
+          ],
+          "min": [
+            -5,
+            -5,
+            -5
+          ],
+          "offsets": [
+            [
+              125.0002,
+              105.00005,
+              5
+            ]
+          ]
+        }
+      ],
+      "name": "epsilon exceeded in one axis moves both",
+      "placedOffsets": [
+        [
+          [
+            125.0,
+            105.0,
+            5.0
+          ]
+        ]
+      ]
+    },
+    {
+      "center": [
+        100.123456,
+        80.654321
+      ],
+      "groups": [
+        {
+          "autoDrop": [
+            true
+          ],
+          "max": [
+            5,
+            5,
+            5
+          ],
+          "min": [
+            -5,
+            -5,
+            -5
+          ],
+          "offsets": [
+            [
+              123.456789,
+              45.678901,
+              8.123456
+            ]
+          ]
+        }
+      ],
+      "name": "fractional centers retain double precision",
+      "placedOffsets": [
+        [
+          [
+            100.12345599999999,
+            80.654321,
+            5.0
+          ]
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+import test from'node:test';import assert from'node:assert/strict';import{calibrationResultDefinition,measuredCalibrationResult}from'../../shared/calibration-results.js';
+const plan=(mode,start,end)=>({request:{mode,start,end},source:{version:'2.4.2',revision:'pinned'}});
+for(const [mode,start,end,value,settings]of[
+ ['temperature',230,190,215,{nozzle_temperature:['215'],nozzle_temperature_initial_layer:['215']}],
+ ['pressure-advance',0,.1,.032,{enable_pressure_advance:['1'],pressure_advance:['0.032'],adaptive_pressure_advance:['0']}],
+ ['retraction',0,2,.6,{filament_retraction_length:['0.6']}],
+ ['max-volumetric-speed',5,20,15.5,{filament_max_volumetric_speed:['15.5']}]
+])test(`explicit ${mode} measurement maps only to the source-defined filament settings`,()=>{const p=plan(mode,start,end),before=structuredClone(p),result=measuredCalibrationResult(p,String(value));assert.deepEqual(result.settings,settings);assert.deepEqual(result.result.settings,settings);assert.equal(result.result.measuredBy,'user-entry');assert.equal(result.result.value,value);assert.equal(result.result.source.version,'2.4.2');assert.deepEqual(p,before);assert.equal(calibrationResultDefinition(p).min,Math.min(start,end));for(const invalid of ['',null,true,NaN,Infinity,{},[],Math.min(start,end)-1,Math.max(start,end)+1,'0x1'])assert.throws(()=>measuredCalibrationResult(p,invalid));});
+test('temperature requires a whole-degree value and no unsupported result is guessed',()=>{assert.throws(()=>measuredCalibrationResult(plan('temperature',230,190),210.5),/whole-number/);assert.equal(calibrationResultDefinition(plan('vfa',40,200)),null);assert.throws(()=>measuredCalibrationResult(plan('input-shaping-frequency',15,110),38),/unavailable/);assert.throws(()=>measuredCalibrationResult(plan('temperature','garbage',190),210),/invalid/);});

@@ -1,0 +1,71 @@
+{
+  "baseline": "OrcaSlicer 2.4.2",
+  "command": "npm run test:native",
+  "runOrder": [
+    "reference",
+    "reference",
+    "web",
+    "web"
+  ],
+  "runs": [
+    {
+      "name": "reference",
+      "inputSHA256": "334fcbfe47574e3d8e2ad8a2c268742f577cfe9b9ef9d203b0bb75c41bd27c7f",
+      "motionSHA256": "981b4b436332ebbcdcd46258531ae372cfc785845bb7eac503511128f024dc4c",
+      "commandCount": 11057
+    },
+    {
+      "name": "reference",
+      "inputSHA256": "334fcbfe47574e3d8e2ad8a2c268742f577cfe9b9ef9d203b0bb75c41bd27c7f",
+      "motionSHA256": "981b4b436332ebbcdcd46258531ae372cfc785845bb7eac503511128f024dc4c",
+      "commandCount": 11057
+    },
+    {
+      "name": "web",
+      "inputSHA256": "6ebd90aa275ede8b2c0c3c824a3ebf3b94290b0a783fe7ebfb47f5aadd4fb662",
+      "motionSHA256": "199409bf09a3e5ba39dfb8a7425595f915f3821be3b2496c7b712f7776c2ef4c",
+      "commandCount": 11189
+    },
+    {
+      "name": "web",
+      "inputSHA256": "6ebd90aa275ede8b2c0c3c824a3ebf3b94290b0a783fe7ebfb47f5aadd4fb662",
+      "motionSHA256": "981b4b436332ebbcdcd46258531ae372cfc785845bb7eac503511128f024dc4c",
+      "commandCount": 11057
+    }
+  ],
+  "pairwiseMotionDifferences": [
+    {
+      "from": 0,
+      "to": 1,
+      "differentMotionLines": 0
+    },
+    {
+      "from": 0,
+      "to": 2,
+      "differentMotionLines": 2204
+    },
+    {
+      "from": 0,
+      "to": 3,
+      "differentMotionLines": 0
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "differentMotionLines": 2204
+    },
+    {
+      "from": 1,
+      "to": 3,
+      "differentMotionLines": 0
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "differentMotionLines": 2204
+    }
+  ],
+  "archiveSha256": "1425b979a9ef740701083d1c067c2025699c4b225d2ae83ac4e8a62ccafdb9a8",
+  "result": "failed",
+  "limitations": "All native-readable project archive entries are asserted equal against independent XML edits. The strict fixed-order comparison failed at run 2 with 2204 different motion commands. No retries or tolerance selection were used. Historical same-input native repeatability failures remain open."
+}

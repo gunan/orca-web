@@ -1,0 +1,54 @@
+[WebServer] (node:3001) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 1 worker
+
+(node:3005) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/multipart-import.spec.js:13:1 › native multipart Yes retains relative heights as one model, preserves current presets and participates in one Undo (6.2s)
+(node:3034) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/e2e/multipart-import.spec.js:14:37 › multipart No keeps separate objects and grounds each independently (1.2s)
+  ✓  3 tests/e2e/multipart-import.spec.js:14:37 › multipart Escape keeps separate objects and grounds each independently (1.1s)
+  ✓  4 tests/e2e/multipart-import.spec.js:15:1 › explicit geometry Open asks discard before multipart, then exports one two-volume object at full height (1.3s)
+  ✓  5 tests/e2e/multipart-import.spec.js:16:1 › linked instances and an existing multi-volume model do not trigger the multipart object question (1.1s)
+
+
+  1) tests/e2e/multipart-import.spec.js:13:1 › native multipart Yes retains relative heights as one model, preserves current presets and participates in one Undo 
+
+    Error: expect(locator).toBeDisabled() failed
+
+    Locator:  getByRole('button', { name: 'Undo', exact: true })
+    Expected: disabled
+    Received: enabled
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toBeDisabled" getByRole('button', { name: 'Undo', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Undo', exact: true })
+        14 × locator resolved to <button aria-label="Undo">↶</button>
+           - unexpected value "enabled"
+
+
+      11 | async function start(page){await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByRole('button',{name:'Preferences',exact:true}).click();const d=page.getByRole('dialog',{name:'Preferences'});await d.getByLabel('Load behaviour').selectOption('load_geometry_only');await d.getByRole('button',{name:'Close',exact:true}).click();}
+      12 | async function save(page){const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Save project',exact:true}).click();return parseProject(await readFile(await(await pending).path(),'utf8'));}
+    > 13 | test('native multipart Yes retains relative heights as one model, preserves current presets and participates in one Undo',async({page},info)=>{await start(page);await page.getByLabel('Layer height',{exact:true}).fill('0.25');await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toContainText('several objects positioned at multiple heights');await expect(page.getByRole('dialog')).toHaveCount(1);await expect(page.getByRole('button',{name:'Undo',exact:true})).toBeDisabled();await page.screenshot({path:info.outputPath('native-multipart-choice.png')});await dialog(page).getByRole('button',{name:'Yes',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const p=await save(page),added=p.objects.slice(1);expect(added).toHaveLength(2);expect(new Set(added.map(o=>o.native.groupId)).size).toBe(1);expect(sceneBounds(added).size[2]).toBe(40);expect(added.map(o=>o.name)).toEqual(['Bottom','Top']);expect(p.overrides.layer_height).toBe('0.25');await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByRole('button',{name:'Redo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);});
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+      14 | for(const action of ['No','Escape'])test(`multipart ${action} keeps separate objects and grounds each independently`,async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toBeVisible();if(action==='Escape')await page.keyboard.press('Escape');else await dialog(page).getByRole('button',{name:'No',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const p=await save(page);expect(p.objects).toHaveLength(2);expect(new Set(p.objects.map(o=>o.native.groupId)).size).toBe(2);expect(p.objects.map(o=>meshBounds(o).min[2])).toEqual([0,0]);});
+      15 | test('explicit geometry Open asks discard before multipart, then exports one two-volume object at full height',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('Open Orca Web project').setInputFiles(file());await expect(dialog(page)).toHaveCount(0);await page.getByRole('button',{name:'Discard changes',exact:true}).click();await dialog(page).getByRole('button',{name:'Yes',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByRole('button',{name:'Project',exact:true}).click();const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Export native project',exact:true}).click();const p=importNative3MF(await readFile(await(await pending).path()));expect(p.objects).toHaveLength(2);expect(new Set(p.objects.map(o=>o.native.groupId)).size).toBe(1);expect(sceneBounds(p.objects).size[2]).toBe(40);});
+      16 | test('linked instances and an existing multi-volume model do not trigger the multipart object question',async({page})=>{await start(page);for(const parts of [1,2]){const loaded=page.waitForResponse(r=>r.url().endsWith('/api/projects/import')&&r.request().method()==='POST');await page.getByLabel('Choose a 3D model').setInputFiles(file(fixture({parts})));expect((await loaded).status()).toBe(200);await expect(page.getByRole('dialog')).toHaveCount(0);}const p=await save(page);expect(p.objects).toHaveLength(6);expect(new Set(p.objects.map(o=>o.native.instanceFamily)).size).toBe(2);});
+        at /private/tmp/orca-implementation/m47-multipart-import-stage/tests/e2e/multipart-import.spec.js:13:563
+
+    Error Context: test-results/m47-focused/multipart-import-native-mu-4d280-nd-participates-in-one-Undo/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m47-focused/multipart-import-native-mu-4d280-nd-participates-in-one-Undo/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m47-focused/multipart-import-native-mu-4d280-nd-participates-in-one-Undo/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/multipart-import.spec.js:13:1 › native multipart Yes retains relative heights as one model, preserves current presets and participates in one Undo 
+  4 passed (12.8s)

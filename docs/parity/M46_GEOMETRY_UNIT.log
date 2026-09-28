@@ -1,0 +1,21 @@
+✔ geometry import preserves linked instances, exact meshes, painting and per-layer data while dropping object and part overrides (4.658292ms)
+✔ all source plates merge onto the active plate using native global coordinates without importing plate events (12.438917ms)
+✔ native role order and model-only placement keep outside modifiers from moving the solid off center (5.256083ms)
+✔ geometry material and painted requirements grow current slots without adopting imported materials or replacing existing purge values (6.984042ms)
+✔ painting alone allocates its assigned material while imported extruder zero becomes the native default (3.51875ms)
+✔ repeated imports allocate independent families and preserve existing geometry and native processed cut metadata (2.201458ms)
+✔ locked plate, invalid roles, invalid slots, broken families and exhausted identities reject atomically (7.388125ms)
+✔ geometry-only Open retains material colors, purge tables and native preset context by value (0.132792ms)
+✔ geometry export retains actual linked model references and native painting after import (15.88425ms)
+✔ geometry-only placement matches ten compiled native first-instance auto-drop and double-precision centering cases (3.567583ms)
+✔ geometry placement reference has reproducible original-source and generator provenance (1.283959ms)
+✔ geometry-only native text and SVG retain their regeneration frames and embedded vector source through export (104.082083ms)
+✔ geometry-only import retains printable flags, brim attachment positions and processed cut identifiers across export (11.249958ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 283.9195

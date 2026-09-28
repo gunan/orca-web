@@ -1,0 +1,27 @@
+import {test,expect} from '@playwright/test';
+import {readFile} from 'node:fs/promises';
+import path from 'node:path';
+import {parseGcode} from '../../shared/gcode.js';
+import {derivePreviewAttributes} from '../../shared/gcode-attributes.js';
+import {previewScalarRange} from '../../shared/gcode-scalar-colors.js';
+import {selectPreviewSegments} from '../../shared/gcode-preview.js';
+const code='; filament_diameter: 1.75\nG90\nM83\nG92 X0 Y0 Z0 E0\n;LAYER_CHANGE\n;Z:0.2\n;HEIGHT:0.2\n;WIDTH:0.4\n;TYPE:Outer wall\nG1 X10 E1 F1200\n;WIDTH:0.6\n;TYPE:Sparse infill\nG1 Y10 E1 F2400\n;LAYER_CHANGE\n;Z:0.4\n;HEIGHT:0.4\n;WIDTH:0.8\nG1 X0 E1 F1200\n';
+async function preview(page,text=code){
+ await page.route('**/api/jobs',route=>route.request().method()==='POST'?route.fulfill({status:202,json:{id:'scalar-fixture',filename:'cube.stl',status:'ready'}}):route.continue());
+ await page.route('**/api/jobs/scalar-fixture/download',route=>route.fulfill({status:200,contentType:'text/plain',body:text}));
+ await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Choose a 3D model').setInputFiles(path.resolve('tests/fixtures/cube.stl'));await page.getByRole('button',{name:'Slice model',exact:true}).click();await expect(page.getByRole('heading',{name:'G-code toolpath preview'})).toBeVisible();
+}
+test('source dimensions and commanded flow share native scalar colors and stay synchronized with selected commands',async({page})=>{
+ await preview(page);const canvas=page.getByRole('img',{name:'3D G-code toolpaths'}),mode=page.getByLabel('Toolpath color mode');await mode.selectOption('width');await expect(page.getByTestId('scalar-availability')).toHaveText('3 / 3 extrusion segments have line width data. Missing values are gray.');await expect(canvas).toHaveAttribute('data-color-mode','width');await expect(page.getByLabel('Native scalar color legend').locator('i').first()).toHaveCSS('background-color','rgb(148, 38, 22)');await expect(page.getByLabel('Native scalar color legend').locator('i').last()).toHaveCSS('background-color','rgb(11, 44, 122)');
+ await page.getByLabel('Show G-code',{exact:true}).check();await expect(page.locator('[data-attribute=width]')).toHaveText('0.8 mm');await page.getByLabel('Last preview layer').fill('0');await expect(page.locator('[data-attribute=width]')).toHaveText('0.6 mm');await expect(canvas).toHaveAttribute('data-current-scalar-value',String(Math.fround(.6)));await mode.selectOption('height');await expect(page.locator('[data-attribute=height]')).toHaveText('0.2 mm');
+ await mode.selectOption('flow');await expect(page.getByText('Commanded volumetric flow. Actual flow needs native motion timing.')).toBeVisible();await page.getByLabel('Visible toolpath segments').fill('1');await expect(page.locator('[data-attribute=flow]')).toHaveText('4.810565 mm³/s');await expect(canvas).toHaveAttribute('data-current-source-line','10');await mode.selectOption('feature');await page.getByLabel('Show Outer wall toolpaths').uncheck();await mode.selectOption('flow');await expect(page.getByTestId('toolpath-visible-count')).toHaveText('0 / 1 segments');
+});
+test('missing source metadata and native planner values stay explicitly unavailable',async({page})=>{
+ await preview(page,code.replace(/^; (?:filament_diameter).*\n/gm,'').replace(/^;(?:WIDTH|HEIGHT):.*\n/gm,''));const options=page.getByLabel('Toolpath color mode');for(const value of ['width','height','flow','actualFlow','layerTime','layerTimeLog'])await expect(options.locator(`option[value="${value}"]`)).toHaveJSProperty('disabled',true);await page.getByLabel('Show G-code',{exact:true}).check();await expect(page.locator('[data-attribute=width]')).toHaveText('Unavailable');await expect(page.locator('[data-attribute=flow]')).toHaveText('Unavailable');await expect(page.getByText('Not present in this G-code. Time, mass and cost are not inferred.')).toBeVisible();
+});
+test('native GUI export uses exact source flow values and whole-file ranges while a single layer is inspected',async({page})=>{
+ const text=await readFile(path.resolve('tests/fixtures/native-gui-shrink98-2.4.2.gcode'),'utf8'),parsed=parseGcode(text,{includeSource:true}),attributes=derivePreviewAttributes(parsed),range=previewScalarRange(parsed,attributes,'flow');await preview(page,text);await page.getByLabel('Toolpath color mode').selectOption('flow');await page.getByLabel('First preview layer').fill('50');await page.getByLabel('Last preview layer').fill('50');await page.getByLabel('Show G-code',{exact:true}).check();const selection=selectPreviewSegments(parsed,{firstLayer:50,lastLayer:50}),index=selection.indices.at(-1),canvas=page.getByRole('img',{name:'3D G-code toolpaths'});await expect(canvas).toHaveAttribute('data-current-scalar-value',String(attributes.segments[index].flow));await expect(canvas).toHaveAttribute('data-scalar-range',JSON.stringify(range));await expect(page.getByTestId('scalar-availability')).toContainText('6,900 /');await expect(page.getByLabel('G-code source lines').locator('[aria-current=true]')).toHaveAttribute('data-line',String(parsed.segments[index].line));await page.screenshot({path:test.info().outputPath('native-flow-preview.png')});
+});
+
+// These fixtures exercise the bounded source-only parser; native processing has separate real-worker coverage.
+test.beforeEach(async({page})=>{await page.route('**/api/jobs/native-preview/capabilities',route=>route.fulfill({status:200,json:{available:false,error:'Source-only preview fixture'}}));});

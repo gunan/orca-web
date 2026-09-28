@@ -1,0 +1,761 @@
+[
+  {
+    "name": "multiple-maps-and-native-assignment-filter",
+    "input": {
+      "plates": [
+        {
+          "data": {
+            "vertexCount": 3,
+            "colorPaletteSource": "native-editor-job",
+            "materialStatisticsVersion": 1,
+            "editorStatisticsVersion": 1,
+            "filamentDiameters": [
+              1.75,
+              2.8499999046325684,
+              1.75
+            ],
+            "filamentDensities": [
+              1.2400000095367432,
+              0.9700000286102295,
+              1.0499999523162842
+            ],
+            "toolsColors": [
+              [
+                255,
+                48,
+                48
+              ],
+              [
+                48,
+                255,
+                48
+              ],
+              [
+                48,
+                48,
+                255
+              ]
+            ],
+            "modes": [
+              {
+                "name": "normal",
+                "processorSeconds": 3599.987060546875
+              },
+              {
+                "name": "stealth",
+                "processorSeconds": 5500.7177734375
+              }
+            ],
+            "editorStatistics": {
+              "cost": 0.8971798653
+            },
+            "materialStatistics": {
+              "modelVolumes": [
+                [
+                  0,
+                  1735.2198
+                ],
+                [
+                  1,
+                  91.1872
+                ]
+              ],
+              "supportVolumes": [
+                [
+                  1,
+                  14.1317
+                ]
+              ],
+              "towerVolumes": [
+                [
+                  0,
+                  15.7861
+                ],
+                [
+                  1,
+                  9.87611
+                ]
+              ],
+              "flushedVolumes": [
+                [
+                  0,
+                  3.812
+                ]
+              ],
+              "totalVolumes": []
+            }
+          },
+          "extruders": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "data": {
+            "vertexCount": 3,
+            "colorPaletteSource": "native-editor-job",
+            "materialStatisticsVersion": 1,
+            "editorStatisticsVersion": 1,
+            "filamentDiameters": [
+              1.75,
+              2.8499999046325684,
+              1.75
+            ],
+            "filamentDensities": [
+              1.2400000095367432,
+              0.9700000286102295,
+              1.0499999523162842
+            ],
+            "toolsColors": [
+              [
+                255,
+                48,
+                48
+              ],
+              [
+                48,
+                255,
+                48
+              ],
+              [
+                48,
+                48,
+                255
+              ]
+            ],
+            "modes": [
+              {
+                "name": "normal",
+                "processorSeconds": 730.2145385742188
+              },
+              {
+                "name": "stealth",
+                "processorSeconds": 5500.7177734375
+              }
+            ],
+            "editorStatistics": {
+              "cost": 0.15431581
+            },
+            "materialStatistics": {
+              "modelVolumes": [
+                [
+                  1,
+                  5543.219
+                ],
+                [
+                  2,
+                  75.736
+                ]
+              ],
+              "supportVolumes": [
+                [
+                  2,
+                  343.217
+                ]
+              ],
+              "towerVolumes": [
+                [
+                  0,
+                  15.7861
+                ],
+                [
+                  1,
+                  9.87611
+                ]
+              ],
+              "flushedVolumes": [
+                [
+                  0,
+                  3.812
+                ]
+              ],
+              "totalVolumes": []
+            }
+          },
+          "extruders": [
+            2,
+            3,
+            99
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "zero-columns-and-disabled-stealth",
+    "input": {
+      "plates": [
+        {
+          "data": {
+            "vertexCount": 3,
+            "colorPaletteSource": "native-editor-job",
+            "materialStatisticsVersion": 1,
+            "editorStatisticsVersion": 1,
+            "filamentDiameters": [
+              1.75,
+              2.8499999046325684,
+              1.75
+            ],
+            "filamentDensities": [
+              1.2400000095367432,
+              0.9700000286102295,
+              1.0499999523162842
+            ],
+            "toolsColors": [
+              [
+                255,
+                48,
+                48
+              ],
+              [
+                48,
+                255,
+                48
+              ],
+              [
+                48,
+                48,
+                255
+              ]
+            ],
+            "modes": [
+              {
+                "name": "normal",
+                "processorSeconds": 3599.987060546875
+              },
+              {
+                "name": "stealth",
+                "processorSeconds": 5500.7177734375
+              }
+            ],
+            "editorStatistics": {
+              "cost": 0.8971798653
+            },
+            "materialStatistics": {
+              "modelVolumes": [
+                [
+                  0,
+                  1735.2198
+                ],
+                [
+                  1,
+                  91.1872
+                ]
+              ],
+              "supportVolumes": [],
+              "towerVolumes": [],
+              "flushedVolumes": [
+                [
+                  0,
+                  0
+                ]
+              ],
+              "totalVolumes": []
+            }
+          },
+          "extruders": [
+            1,
+            2,
+            3
+          ]
+        },
+        {
+          "data": {
+            "vertexCount": 3,
+            "colorPaletteSource": "native-editor-job",
+            "materialStatisticsVersion": 1,
+            "editorStatisticsVersion": 1,
+            "filamentDiameters": [
+              1.75,
+              2.8499999046325684,
+              1.75
+            ],
+            "filamentDensities": [
+              1.2400000095367432,
+              0.9700000286102295,
+              1.0499999523162842
+            ],
+            "toolsColors": [
+              [
+                255,
+                48,
+                48
+              ],
+              [
+                48,
+                255,
+                48
+              ],
+              [
+                48,
+                48,
+                255
+              ]
+            ],
+            "modes": [
+              {
+                "name": "normal",
+                "processorSeconds": 730.2145385742188
+              }
+            ],
+            "editorStatistics": {
+              "cost": 0.15431581
+            },
+            "materialStatistics": {
+              "modelVolumes": [
+                [
+                  1,
+                  5543.219
+                ],
+                [
+                  2,
+                  75.736
+                ]
+              ],
+              "supportVolumes": [],
+              "towerVolumes": [],
+              "flushedVolumes": [
+                [
+                  0,
+                  0
+                ]
+              ],
+              "totalVolumes": []
+            }
+          },
+          "extruders": [
+            2,
+            3,
+            99
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "native-commands",
+    "sourceSha256": [
+      "60f46f9569dd3b4fb128e07386cbc19b4100dee6de32b216cd93915d226e49f1",
+      "37dd73ac91990a13741ba7ef9cdbc735937af3f823f316cc284376d6dbf72df6"
+    ],
+    "context": {
+      "version": 1,
+      "source": "native-editor-job",
+      "filamentColors": [
+        "#C800FF",
+        "#12EE32"
+      ],
+      "filamentDiameters": [
+        1.75,
+        2.85
+      ],
+      "filamentDensities": [
+        1.24,
+        0.97
+      ],
+      "filamentCosts": [
+        22,
+        31
+      ],
+      "timeCost": 12.5,
+      "customEvents": [
+        {
+          "type": 0,
+          "z": 0.2,
+          "extruder": 1,
+          "color": "#123ABC"
+        },
+        {
+          "type": 1,
+          "z": 0.4,
+          "extruder": -1,
+          "color": ""
+        },
+        {
+          "type": 2,
+          "z": 0.4005,
+          "extruder": 2,
+          "color": ""
+        },
+        {
+          "type": 3,
+          "z": 5,
+          "extruder": -1,
+          "color": ""
+        },
+        {
+          "type": 4,
+          "z": 0.4,
+          "extruder": -1,
+          "color": ""
+        },
+        {
+          "type": 5,
+          "z": 0.2,
+          "extruder": -1,
+          "color": ""
+        }
+      ]
+    },
+    "input": {
+      "plates": [
+        {
+          "data": {
+            "vertexCount": 42,
+            "colorPaletteSource": "native-editor-job",
+            "materialStatisticsVersion": 1,
+            "materialStatistics": {
+              "filamentChanges": 1,
+              "flushedVolumes": [
+                [
+                  1,
+                  12.758792877197266
+                ]
+              ],
+              "modelVolumes": [
+                [
+                  0,
+                  7.215846061706543
+                ],
+                [
+                  1,
+                  12.758792877197266
+                ]
+              ],
+              "supportVolumes": [
+                [
+                  0,
+                  7.215846061706543
+                ],
+                [
+                  1,
+                  12.758792877197266
+                ]
+              ],
+              "toolChanges": 0,
+              "totalVolumes": [
+                [
+                  0,
+                  24.052820205688477
+                ],
+                [
+                  1,
+                  57.414567947387695
+                ]
+              ],
+              "towerVolumes": [
+                [
+                  0,
+                  9.62112808227539
+                ],
+                [
+                  1,
+                  19.1381893157959
+                ]
+              ]
+            },
+            "editorStatisticsVersion": 1,
+            "editorStatistics": {
+              "cost": 0.18832392904155942,
+              "filamentGrams": 0.08551762796401978,
+              "filamentMm": 19.000000400936795,
+              "filamentMm3": 81.46738815307617,
+              "source": "native-editor-formula",
+              "timeCost": 12.5
+            },
+            "toolsColors": [
+              [
+                200,
+                48,
+                255
+              ],
+              [
+                48,
+                238,
+                50
+              ]
+            ],
+            "filamentDiameters": [
+              1.75,
+              2.8499999046325684
+            ],
+            "filamentDensities": [
+              1.2400000095367432,
+              0.9700000286102295
+            ],
+            "modes": [
+              {
+                "firstLayerSeconds": 53.50637435913086,
+                "name": "normal",
+                "prepareSeconds": 0,
+                "processorSeconds": 53.55109786987305,
+                "summaryTimeLabel": "53s",
+                "totalSeconds": 53.55109405517578,
+                "travelSeconds": 0.09873303771018982
+              }
+            ]
+          },
+          "extruders": [
+            1,
+            2
+          ]
+        },
+        {
+          "data": {
+            "vertexCount": 42,
+            "colorPaletteSource": "native-editor-job",
+            "materialStatisticsVersion": 1,
+            "materialStatistics": {
+              "filamentChanges": 1,
+              "flushedVolumes": [
+                [
+                  1,
+                  12.758792877197266
+                ]
+              ],
+              "modelVolumes": [
+                [
+                  0,
+                  8.418487071990967
+                ],
+                [
+                  1,
+                  12.758792877197266
+                ]
+              ],
+              "supportVolumes": [
+                [
+                  0,
+                  7.215846061706543
+                ],
+                [
+                  1,
+                  12.758792877197266
+                ]
+              ],
+              "toolChanges": 0,
+              "totalVolumes": [
+                [
+                  0,
+                  25.2554612159729
+                ],
+                [
+                  1,
+                  57.414567947387695
+                ]
+              ],
+              "towerVolumes": [
+                [
+                  0,
+                  9.62112808227539
+                ],
+                [
+                  1,
+                  19.1381893157959
+                ]
+              ]
+            },
+            "editorStatisticsVersion": 1,
+            "editorStatistics": {
+              "cost": 0.18835673708832,
+              "filamentGrams": 0.08700890281677245,
+              "filamentMm": 19.500000431112916,
+              "filamentMm3": 82.6700291633606,
+              "source": "native-editor-formula",
+              "timeCost": 12.5
+            },
+            "toolsColors": [
+              [
+                200,
+                48,
+                255
+              ],
+              [
+                48,
+                238,
+                50
+              ]
+            ],
+            "filamentDiameters": [
+              1.75,
+              2.8499999046325684
+            ],
+            "filamentDensities": [
+              1.2400000095367432,
+              0.9700000286102295
+            ],
+            "modes": [
+              {
+                "firstLayerSeconds": 53.50637435913086,
+                "name": "normal",
+                "prepareSeconds": 0,
+                "processorSeconds": 53.55109786987305,
+                "summaryTimeLabel": "53s",
+                "totalSeconds": 53.55109405517578,
+                "travelSeconds": 0.09873303771018982
+              }
+            ]
+          },
+          "extruders": [
+            1,
+            2
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "name": "native-gui",
+    "sourceSha256": [
+      "79399a156dc3cc43279242e832db5a74dd5426228303ed3a6eeef8bcc220337e",
+      "79399a156dc3cc43279242e832db5a74dd5426228303ed3a6eeef8bcc220337e"
+    ],
+    "context": {
+      "version": 1,
+      "source": "native-editor-job",
+      "filamentColors": [
+        "#C800FF"
+      ],
+      "filamentDiameters": [
+        1.75
+      ],
+      "filamentDensities": [
+        1.24
+      ],
+      "filamentCosts": [
+        22
+      ],
+      "timeCost": 12.5,
+      "customEvents": []
+    },
+    "input": {
+      "plates": [
+        {
+          "data": {
+            "vertexCount": 29021,
+            "colorPaletteSource": "native-editor-job",
+            "materialStatisticsVersion": 1,
+            "materialStatistics": {
+              "filamentChanges": 0,
+              "flushedVolumes": [],
+              "modelVolumes": [
+                [
+                  0,
+                  3423.009063103702
+                ]
+              ],
+              "supportVolumes": [],
+              "toolChanges": 0,
+              "totalVolumes": [
+                [
+                  0,
+                  3423.009063103702
+                ]
+              ],
+              "towerVolumes": []
+            },
+            "editorStatisticsVersion": 1,
+            "editorStatistics": {
+              "cost": 8.906596002616903,
+              "filamentGrams": 4.24453123824859,
+              "filamentMm": 1423.1217962875082,
+              "filamentMm3": 3423.009063103702,
+              "source": "native-editor-formula",
+              "timeCost": 12.5
+            },
+            "toolsColors": [
+              [
+                200,
+                48,
+                255
+              ]
+            ],
+            "filamentDiameters": [
+              1.75
+            ],
+            "filamentDensities": [
+              1.2400000095367432
+            ],
+            "modes": [
+              {
+                "firstLayerSeconds": 1594.4898681640625,
+                "name": "normal",
+                "prepareSeconds": 1571.9742431640625,
+                "processorSeconds": 2538.206298828125,
+                "summaryTimeLabel": "42m18s",
+                "totalSeconds": 2538.174072265625,
+                "travelSeconds": 1631.124267578125
+              }
+            ]
+          },
+          "extruders": [
+            1
+          ]
+        },
+        {
+          "data": {
+            "vertexCount": 29021,
+            "colorPaletteSource": "native-editor-job",
+            "materialStatisticsVersion": 1,
+            "materialStatistics": {
+              "filamentChanges": 0,
+              "flushedVolumes": [],
+              "modelVolumes": [
+                [
+                  0,
+                  3423.009063103702
+                ]
+              ],
+              "supportVolumes": [],
+              "toolChanges": 0,
+              "totalVolumes": [
+                [
+                  0,
+                  3423.009063103702
+                ]
+              ],
+              "towerVolumes": []
+            },
+            "editorStatisticsVersion": 1,
+            "editorStatistics": {
+              "cost": 8.906596002616903,
+              "filamentGrams": 4.24453123824859,
+              "filamentMm": 1423.1217962875082,
+              "filamentMm3": 3423.009063103702,
+              "source": "native-editor-formula",
+              "timeCost": 12.5
+            },
+            "toolsColors": [
+              [
+                200,
+                48,
+                255
+              ]
+            ],
+            "filamentDiameters": [
+              1.75
+            ],
+            "filamentDensities": [
+              1.2400000095367432
+            ],
+            "modes": [
+              {
+                "firstLayerSeconds": 1594.4898681640625,
+                "name": "normal",
+                "prepareSeconds": 1571.9742431640625,
+                "processorSeconds": 2538.206298828125,
+                "summaryTimeLabel": "42m18s",
+                "totalSeconds": 2538.174072265625,
+                "travelSeconds": 1631.124267578125
+              }
+            ]
+          },
+          "extruders": [
+            1
+          ]
+        }
+      ]
+    }
+  }
+]

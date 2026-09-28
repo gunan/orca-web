@@ -1,0 +1,68 @@
+[WebServer] (node:53659) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:53663) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/camera-preferences.spec.js:46:37 › Preferences has an opaque, legible light surface and usable controls at compact sizes (728ms)
+(node:53676) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/camera-preferences.spec.js:46:37 › Preferences has an opaque, legible dark surface and usable controls at compact sizes (780ms)
+
+
+  1) tests/e2e/camera-preferences.spec.js:46:37 › Preferences has an opaque, legible light surface and usable controls at compact sizes 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "rgb(255, 255, 255)"
+    Received: "rgba(0, 0, 0, 0)"
+
+      48 |  await page.getByRole('button',{name:'Preferences',exact:true}).click();const dialog=page.getByRole('dialog',{name:'Preferences'});
+      49 |  const appearance=await dialog.evaluate(element=>{const style=getComputedStyle(element);return{background:style.backgroundColor,color:style.color};});
+    > 50 |  expect(appearance.background).toBe(theme==='light'?'rgb(255, 255, 255)':'rgb(38, 45, 48)');expect(appearance.color).toBe(theme==='light'?'rgb(41, 51, 56)':'rgb(237, 241, 243)');
+         |                                ^
+      51 |  const checkbox=dialog.getByLabel('Reverse mouse zoom'),box=await checkbox.boundingBox();expect(box.width).toBeLessThan(30);expect(box.height).toBeLessThan(30);await checkbox.check();await dialog.screenshot({path:info.outputPath(`preferences-${theme}.png`)});
+      52 |  await page.setViewportSize({width:480,height:400});await dialog.getByLabel('Right Mouse Drag').selectOption('0');await expect(dialog.getByLabel('Right Mouse Drag')).toHaveValue('0');
+      53 |  const overflow=await dialog.evaluate(element=>({width:element.scrollWidth,client:element.clientWidth}));expect(overflow.width).toBeLessThanOrEqual(overflow.client);await dialog.getByRole('button',{name:'Close',exact:true}).click();await expect(dialog).toHaveCount(0);
+        at /private/tmp/orca-implementation/m39-camera-preferences-stage/tests/e2e/camera-preferences.spec.js:50:32
+
+    Error Context: test-results/m39-focused/camera-preferences-Prefere-99501-e-controls-at-compact-sizes/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m39-focused/camera-preferences-Prefere-99501-e-controls-at-compact-sizes/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m39-focused/camera-preferences-Prefere-99501-e-controls-at-compact-sizes/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/camera-preferences.spec.js:46:37 › Preferences has an opaque, legible dark surface and usable controls at compact sizes 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: "rgb(38, 45, 48)"
+    Received: "rgba(0, 0, 0, 0)"
+
+      48 |  await page.getByRole('button',{name:'Preferences',exact:true}).click();const dialog=page.getByRole('dialog',{name:'Preferences'});
+      49 |  const appearance=await dialog.evaluate(element=>{const style=getComputedStyle(element);return{background:style.backgroundColor,color:style.color};});
+    > 50 |  expect(appearance.background).toBe(theme==='light'?'rgb(255, 255, 255)':'rgb(38, 45, 48)');expect(appearance.color).toBe(theme==='light'?'rgb(41, 51, 56)':'rgb(237, 241, 243)');
+         |                                ^
+      51 |  const checkbox=dialog.getByLabel('Reverse mouse zoom'),box=await checkbox.boundingBox();expect(box.width).toBeLessThan(30);expect(box.height).toBeLessThan(30);await checkbox.check();await dialog.screenshot({path:info.outputPath(`preferences-${theme}.png`)});
+      52 |  await page.setViewportSize({width:480,height:400});await dialog.getByLabel('Right Mouse Drag').selectOption('0');await expect(dialog.getByLabel('Right Mouse Drag')).toHaveValue('0');
+      53 |  const overflow=await dialog.evaluate(element=>({width:element.scrollWidth,client:element.clientWidth}));expect(overflow.width).toBeLessThanOrEqual(overflow.client);await dialog.getByRole('button',{name:'Close',exact:true}).click();await expect(dialog).toHaveCount(0);
+        at /private/tmp/orca-implementation/m39-camera-preferences-stage/tests/e2e/camera-preferences.spec.js:50:32
+
+    Error Context: test-results/m39-focused/camera-preferences-Prefere-88de5-e-controls-at-compact-sizes/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m39-focused/camera-preferences-Prefere-88de5-e-controls-at-compact-sizes/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m39-focused/camera-preferences-Prefere-88de5-e-controls-at-compact-sizes/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests/e2e/camera-preferences.spec.js:46:37 › Preferences has an opaque, legible light surface and usable controls at compact sizes 
+    tests/e2e/camera-preferences.spec.js:46:37 › Preferences has an opaque, legible dark surface and usable controls at compact sizes 

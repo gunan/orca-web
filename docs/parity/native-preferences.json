@@ -1,0 +1,2035 @@
+{
+  "schemaVersion": 1,
+  "nativeVersion": "2.4.2",
+  "sourceCommit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "sourcePath": "src/slic3r/GUI/Preferences.cpp",
+  "sourceSha256": "2a454ba04fd610f83de57aecce83a17fa82b7dc518b3110becc2fbce5ac71917",
+  "generatorSha256": "47fba208e5adb3c4272624801c4d9e49cee8b332b8c000f55d385f07035eb039",
+  "scope": "All uncommented top-level control declarations in PreferencesDialog::create_items, including platform/build-guarded controls. Commented-out declarations and separately defined, uncalled debug/sync panes are excluded. This is not a GUI visibility census or evidence of completed functionality. An explicit #if0 declaration is retained separately and excluded from candidate controls. Planned tests are not passing tests.",
+  "controls": [
+    {
+      "id": "preferences.language",
+      "tab": "General",
+      "group": "Settings",
+      "sourceLabel": "Language",
+      "controlFactory": "create_item_language_combobox",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 1538,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Language through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Language visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_language_combobox(_L(\"Language\"), \"\")"
+    },
+    {
+      "id": "preferences.use-inches",
+      "tab": "General",
+      "group": "Settings",
+      "sourceLabel": "Units",
+      "controlFactory": "create_item_combobox",
+      "nativeKey": "use_inches",
+      "nativeKeyExpression": "\"use_inches\"",
+      "sourceLine": 1542,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "partial",
+      "featureId": "ui.units",
+      "scope": "Prepare and Preview display units; remaining native precision, import controls and desktop acceptance are open.",
+      "testRefs": [
+        "tests/e2e/native-display-preferences.spec.js",
+        "tests/e2e/manipulation-units.spec.js",
+        "tests/native-e2e/native-display-units.spec.js"
+      ],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Units through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Units visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_combobox(_L(\"Units\"), \"\", \"use_inches\", Units)"
+    },
+    {
+      "id": "preferences.default-page",
+      "tab": "General",
+      "group": "Settings",
+      "sourceLabel": "Default page",
+      "controlFactory": "create_item_combobox",
+      "nativeKey": "default_page",
+      "nativeKeyExpression": "\"default_page\"",
+      "sourceLine": 1546,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "partial",
+      "featureId": "ui.home",
+      "scope": "Native Home/Prepare default and next-startup persistence are covered. Native launch overrides, cloud state and paired desktop appearance remain open.",
+      "testRefs": [
+        "tests/unit/native-startup-preferences.test.js",
+        "tests/e2e/home-workspace.spec.js",
+        "tests/native-e2e/home-workspace.spec.js"
+      ],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Default page through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Default page visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_combobox(_L(\"Default page\"), _L(\"Set the page opened on startup.\"), \"default_page\", DefaultPage)"
+    },
+    {
+      "id": "preferences.dark-color-mode",
+      "tab": "General",
+      "group": "Settings",
+      "sourceLabel": "Enable dark mode",
+      "controlFactory": "create_item_darkmode",
+      "nativeKey": "dark_color_mode",
+      "nativeKeyExpression": "\"dark_color_mode\"",
+      "sourceLine": 1550,
+      "sourceConditions": [
+        "ifdef _WIN32"
+      ],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Enable dark mode through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Enable dark mode visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_darkmode(_L(\"Enable dark mode\"), \"\", \"dark_color_mode\")"
+    },
+    {
+      "id": "preferences.single-instance",
+      "tab": "General",
+      "group": "Settings",
+      "sourceLabel": "Allow only one OrcaSlicer instance",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "single_instance",
+      "nativeKeyExpression": "\"single_instance\"",
+      "sourceLine": 1554,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Allow only one OrcaSlicer instance through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Allow only one OrcaSlicer instance visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Allow only one OrcaSlicer instance\"),\n    #if __APPLE__\n            _L(\"On OSX there is always only one instance of app running by default. However it is allowed to run multiple instances \"\n                \"of same app from the command line. In such case this settings will allow only one instance.\"),\n    #else\n            _L(\"If this is enabled, when starting OrcaSlicer and another instance of the same OrcaSlicer is already running, that instance will be reactivated instead.\"),\n    #endif\n            \"single_instance\")"
+    },
+    {
+      "id": "preferences.show-splash-screen",
+      "tab": "General",
+      "group": "Settings",
+      "sourceLabel": "Show splash screen",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "show_splash_screen",
+      "nativeKeyExpression": "\"show_splash_screen\"",
+      "sourceLine": 1564,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Show splash screen through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Show splash screen visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Show splash screen\"), _L(\"Show the splash screen during startup.\"), \"show_splash_screen\")"
+    },
+    {
+      "id": "preferences.window-buttons-on-left",
+      "tab": "General",
+      "group": "Settings",
+      "sourceLabel": "Use window buttons on left side",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "window_buttons_on_left",
+      "nativeKeyExpression": "\"window_buttons_on_left\"",
+      "sourceLine": 1568,
+      "sourceConditions": [
+        "ifdef __linux__"
+      ],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Use window buttons on left side through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Use window buttons on left side visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Use window buttons on left side\"), \"\", \"window_buttons_on_left\", _L(\"(Requires restart)\"))"
+    },
+    {
+      "id": "preferences.downloads",
+      "tab": "General",
+      "group": "Settings",
+      "sourceLabel": "Downloads folder",
+      "controlFactory": "create_item_downloads",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 1575,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Downloads folder through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Downloads folder visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_downloads(_L(\"Downloads folder\"), _L(\"Target folder for downloaded items\"))"
+    },
+    {
+      "id": "preferences.project-load-behaviour",
+      "tab": "General",
+      "group": "Project",
+      "sourceLabel": "Load behaviour",
+      "controlFactory": "create_item_combobox",
+      "nativeKey": "project_load_behaviour",
+      "nativeKeyExpression": "SETTING_PROJECT_LOAD_BEHAVIOUR",
+      "sourceLine": 1583,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "partial",
+      "featureId": "projects.save-load",
+      "scope": "Native Open/Add policies, retained structured3MF geometry, zero-volume filtering and multipart choices, preserved current preset/material/purge context, cancellation and real native slicing are covered. Unit conversion, oversize handling, generic/mixed formats, palette cursor, preset-dirty details and paired desktop appearance remain open.",
+      "testRefs": [
+        "tests/unit/native-project-load.test.js",
+        "tests/e2e/project-load-preferences.spec.js",
+        "tests/native-e2e/project-load-preferences.spec.js"
+      ],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Load behaviour through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Load behaviour visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_combobox(_L(\"Load behaviour\"), _L(\"Should printer/filament/process settings be loaded when opening a 3MF file?\"), SETTING_PROJECT_LOAD_BEHAVIOUR, projectLoadSettingsBehaviourOptions, projectLoadSettingsConfigOptions)"
+    },
+    {
+      "id": "preferences.backup",
+      "tab": "General",
+      "group": "Project",
+      "sourceLabel": "Auto backup",
+      "controlFactory": "create_item_backup",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 1586,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Auto backup through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Auto backup visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_backup(_L(\"Auto backup\"), _L(\"Backup your project periodically to help with restoring from an occasional crash.\"))"
+    },
+    {
+      "id": "preferences.max-recent-count",
+      "tab": "General",
+      "group": "Project",
+      "sourceLabel": "Maximum recent files",
+      "controlFactory": "create_item_input",
+      "nativeKey": "max_recent_count",
+      "nativeKeyExpression": "\"max_recent_count\"",
+      "sourceLine": 1589,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "partial",
+      "featureId": "projects.recent-files",
+      "scope": "Native default limit, effective0..999 bounds, atomic pruning and labeled STL/STEP opt-in apply to browser copies. Native path identity, wx input details and broader model-format inclusion remain open.",
+      "testRefs": [
+        "tests/unit/recent-files.test.js",
+        "tests/e2e/recent-files.spec.js",
+        "tests/e2e/recent-store.spec.js",
+        "tests/native-e2e/recent-files.spec.js"
+      ],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Maximum recent files through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Maximum recent files visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_input(_L(\"Maximum recent files\"), \"\", _L(\"Maximum count of recent files\"), \"max_recent_count\", [](wxString value) {\n        long max = 0;\n        if (value.ToLong(&max))\n            wxGetApp().mainframe->set_max_recent_count(max);\n    })"
+    },
+    {
+      "id": "preferences.recent-models",
+      "tab": "General",
+      "group": "Project",
+      "sourceLabel": "Add STL/STEP files to recent files list",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "recent_models",
+      "nativeKeyExpression": "\"recent_models\"",
+      "sourceLine": 1596,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "partial",
+      "featureId": "projects.recent-files",
+      "scope": "Native default limit, effective0..999 bounds, atomic pruning and labeled STL/STEP opt-in apply to browser copies. Native path identity, wx input details and broader model-format inclusion remain open.",
+      "testRefs": [
+        "tests/unit/recent-files.test.js",
+        "tests/e2e/recent-files.spec.js",
+        "tests/e2e/recent-store.spec.js",
+        "tests/native-e2e/recent-files.spec.js"
+      ],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Add STL/STEP files to recent files list through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Add STL/STEP files to recent files list visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Add STL/STEP files to recent files list\"), \"\", \"recent_models\")"
+    },
+    {
+      "id": "preferences.no-warn-when-modified-gcodes",
+      "tab": "General",
+      "group": "Project",
+      "sourceLabel": "Don't warn when loading 3MF with modified G-code",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "no_warn_when_modified_gcodes",
+      "nativeKeyExpression": "\"no_warn_when_modified_gcodes\"",
+      "sourceLine": 1599,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Don't warn when loading 3MF with modified G-code through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Don't warn when loading 3MF with modified G-code visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Don't warn when loading 3MF with modified G-code\"), \"\", \"no_warn_when_modified_gcodes\")"
+    },
+    {
+      "id": "preferences.enable-step-mesh-setting",
+      "tab": "General",
+      "group": "Project",
+      "sourceLabel": "Show options when importing STEP file",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "enable_step_mesh_setting",
+      "nativeKeyExpression": "\"enable_step_mesh_setting\"",
+      "sourceLine": 1602,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Show options when importing STEP file through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Show options when importing STEP file visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(\n        _L(\"Show options when importing STEP file\"), _L(\"If enabled, a parameter settings dialog will appear during STEP file import.\"), \n        \"enable_step_mesh_setting\", wxEmptyString, \"import_export#dont-show-again\"\n    )"
+    },
+    {
+      "id": "preferences.drc-bits",
+      "tab": "General",
+      "group": "Project",
+      "sourceLabel": "Quality level for Draco export",
+      "controlFactory": "create_item_spinctrl",
+      "nativeKey": "drc_bits",
+      "nativeKeyExpression": "\"drc_bits\"",
+      "sourceLine": 1608,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Quality level for Draco export through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Quality level for Draco export visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_spinctrl(_L(\"Quality level for Draco export\"), \"\",\n        _L(\"bits\"),\n        _L(\"Controls the quantization bit depth used when compressing the mesh to Draco format.\\n\"\n           \"0 = lossless compression (geometry is preserved at full precision). Valid lossy values range from 8 to 30.\\n\"\n           \"Lower values produce smaller files but lose more geometric detail; higher values preserve more detail at the cost of larger files.\"),\n        \"drc_bits\", DRC_BITS_MIN, DRC_BITS_MAX, nullptr, \"import_export#drc\"\n    )"
+    },
+    {
+      "id": "preferences.export-sources-full-pathnames",
+      "tab": "General",
+      "group": "Project",
+      "sourceLabel": "Store full source file paths in projects",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "export_sources_full_pathnames",
+      "nativeKeyExpression": "\"export_sources_full_pathnames\"",
+      "sourceLine": 1617,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Store full source file paths in projects through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Store full source file paths in projects visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Store full source file paths in projects\"),\n        _L(\"If enabled, saved projects store the absolute path to imported source files (STEP/STL/...), so \"\n           \"\\\"Reload from disk\\\" still works when the source file is kept in a different folder than the project. \"\n           \"If disabled, only the filename is stored, which keeps projects portable and avoids embedding absolute paths.\"),\n        \"export_sources_full_pathnames\")"
+    },
+    {
+      "id": "preferences.remember-printer-config",
+      "tab": "General",
+      "group": "Preset",
+      "sourceLabel": "Remember printer configuration",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "remember_printer_config",
+      "nativeKeyExpression": "\"remember_printer_config\"",
+      "sourceLine": 1627,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Remember printer configuration through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Remember printer configuration visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Remember printer configuration\"), _L(\"If enabled, Orca will remember and switch filament/process configuration for each printer automatically.\"), \"remember_printer_config\")"
+    },
+    {
+      "id": "preferences.group-filament-presets",
+      "tab": "General",
+      "group": "Preset",
+      "sourceLabel": "Group user filament presets",
+      "controlFactory": "create_item_combobox",
+      "nativeKey": "group_filament_presets",
+      "nativeKeyExpression": "\"group_filament_presets\"",
+      "sourceLine": 1630,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Group user filament presets through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Group user filament presets visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_combobox(_L(\"Group user filament presets\"), _L(\"Group user filament presets based on selection\"),\n        \"group_filament_presets\", {_L(\"All\"), _L(\"None\"), _L(\"By type\"), _L(\"By vendor\")}, [](wxString value) {wxGetApp().plater()->sidebar().update_presets(Preset::TYPE_FILAMENT);})"
+    },
+    {
+      "id": "preferences.filaments-area-preferred-count",
+      "tab": "General",
+      "group": "Preset",
+      "sourceLabel": "Optimize filaments area height for...",
+      "controlFactory": "create_item_spinctrl",
+      "nativeKey": "filaments_area_preferred_count",
+      "nativeKeyExpression": "\"filaments_area_preferred_count\"",
+      "sourceLine": 1639,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Optimize filaments area height for... through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Optimize filaments area height for... visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_spinctrl(_L(\"Optimize filaments area height for...\"), \"\", _L(\"filaments\"), _L(\"Optimizes filament area maximum height by chosen filament count.\"),\n        \"filaments_area_preferred_count\", 8, 99, [this](int value) {m_filament_height_timer.StartOnce(500);})"
+    },
+    {
+      "id": "preferences.show-shared-profiles-notification",
+      "tab": "General",
+      "group": "Preset",
+      "sourceLabel": "Show shared profiles notification",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "show_shared_profiles_notification",
+      "nativeKeyExpression": "\"show_shared_profiles_notification\"",
+      "sourceLine": 1643,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Show shared profiles notification through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Show shared profiles notification visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Show shared profiles notification\"), _L(\"Show a notification with a link to browse shared profiles when the selected printer is changed.\"), \"show_shared_profiles_notification\")"
+    },
+    {
+      "id": "preferences.enable-multi-machine",
+      "tab": "General",
+      "group": "Features",
+      "sourceLabel": "Multi device management",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "enable_multi_machine",
+      "nativeKeyExpression": "\"enable_multi_machine\"",
+      "sourceLine": 1649,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Multi device management through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Multi device management visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Multi device management\"), _L(\"With this option enabled, you can send a task to multiple devices at the same time and manage multiple devices.\"), \"enable_multi_machine\", _L(\"(Requires restart)\"))"
+    },
+    {
+      "id": "preferences.auto-calculate-flush",
+      "tab": "Control",
+      "group": "Behaviour",
+      "sourceLabel": "Auto flush after changing...",
+      "controlFactory": "create_item_combobox",
+      "nativeKey": "auto_calculate_flush",
+      "nativeKeyExpression": "\"auto_calculate_flush\"",
+      "sourceLine": 1676,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Auto flush after changing... through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Auto flush after changing... visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_combobox(_L(\"Auto flush after changing...\"), _L(\"Auto calculate flushing volumes when selected values changed\"), \"auto_calculate_flush\", FlushOptionLabels, FlushOptionValues)"
+    },
+    {
+      "id": "preferences.auto-arrange",
+      "tab": "Control",
+      "group": "Behaviour",
+      "sourceLabel": "Auto arrange plate after cloning",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "auto_arrange",
+      "nativeKeyExpression": "\"auto_arrange\"",
+      "sourceLine": 1679,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Auto arrange plate after cloning through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Auto arrange plate after cloning visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Auto arrange plate after cloning\"), \"\", \"auto_arrange\")"
+    },
+    {
+      "id": "preferences.auto-reslice",
+      "tab": "Control",
+      "group": "Slicing",
+      "sourceLabel": "Auto slice after changes",
+      "controlFactory": "create_item_auto_reslice",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 1685,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Auto slice after changes through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Auto slice after changes visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_auto_reslice(\n        _L(\"Auto slice after changes\"),\n        _L(\"If enabled, OrcaSlicer will re-slice automatically whenever slicing-related settings change.\"),\n        _L(\"Delay in seconds before auto slicing starts, allowing multiple edits to be grouped. Use 0 to slice immediately.\"))"
+    },
+    {
+      "id": "preferences.enable-high-low-temp-mixed-printing",
+      "tab": "Control",
+      "group": "Slicing",
+      "sourceLabel": "Remove mixed temperature restriction",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "enable_high_low_temp_mixed_printing",
+      "nativeKeyExpression": "\"enable_high_low_temp_mixed_printing\"",
+      "sourceLine": 1691,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Remove mixed temperature restriction through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Remove mixed temperature restriction visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Remove mixed temperature restriction\"), _L(\"With this option enabled, you can print materials with a large temperature difference together.\"), \"enable_high_low_temp_mixed_printing\")"
+    },
+    {
+      "id": "preferences.camera-navigation-style",
+      "tab": "Control",
+      "group": "Camera",
+      "sourceLabel": "Camera style",
+      "controlFactory": "create_item_combobox",
+      "nativeKey": "camera_navigation_style",
+      "nativeKeyExpression": "\"camera_navigation_style\"",
+      "sourceLine": 1698,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Camera style through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Camera style visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_combobox(_L(\"Camera style\"), _L(\"Select camera navigation style.\\nDefault: LMB+move for rotation, RMB/MMB+move for panning.\\nTouchpad: Alt+move for rotation, Shift+move for panning.\"), \"camera_navigation_style\", CameraNavStyle)"
+    },
+    {
+      "id": "preferences.camera-orbit-mult",
+      "tab": "Control",
+      "group": "Camera",
+      "sourceLabel": "Orbit speed multiplier",
+      "controlFactory": "create_camera_orbit_mult_input",
+      "nativeKey": "camera_orbit_mult",
+      "nativeKeyExpression": null,
+      "sourceLine": 1701,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "partial",
+      "featureId": "ui.camera-preferences",
+      "scope": "Mapped gestures, relative orbit speed and wheel reversal are covered. Exact native camera mathematics, remaining input modes and desktop acceptance are open.",
+      "testRefs": [
+        "tests/unit/native-camera-preferences.test.js",
+        "tests/e2e/camera-preferences.spec.js",
+        "tests/native-e2e/camera-preferences.spec.js"
+      ],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Orbit speed multiplier through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Orbit speed multiplier visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_camera_orbit_mult_input(_L(\"Orbit speed multiplier\"), _L(\"Multiplies the orbit speed for finer or coarser camera movement.\"))"
+    },
+    {
+      "id": "preferences.zoom-to-mouse",
+      "tab": "Control",
+      "group": "Camera",
+      "sourceLabel": "Zoom to mouse position",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "zoom_to_mouse",
+      "nativeKeyExpression": "\"zoom_to_mouse\"",
+      "sourceLine": 1704,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Zoom to mouse position through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Zoom to mouse position visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Zoom to mouse position\"), _L(\"Zoom in towards the mouse pointer's position in the 3D view, rather than the 2D window center.\"), \"zoom_to_mouse\")"
+    },
+    {
+      "id": "preferences.use-free-camera",
+      "tab": "Control",
+      "group": "Camera",
+      "sourceLabel": "Use free camera",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "use_free_camera",
+      "nativeKeyExpression": "\"use_free_camera\"",
+      "sourceLine": 1707,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Use free camera through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Use free camera visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Use free camera\"), _L(\"If enabled, use free camera. If not enabled, use constrained camera.\"), \"use_free_camera\")"
+    },
+    {
+      "id": "preferences.reverse-mouse-wheel-zoom",
+      "tab": "Control",
+      "group": "Camera",
+      "sourceLabel": "Reverse mouse zoom",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "reverse_mouse_wheel_zoom",
+      "nativeKeyExpression": "\"reverse_mouse_wheel_zoom\"",
+      "sourceLine": 1710,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "partial",
+      "featureId": "ui.camera-preferences",
+      "scope": "Mapped gestures, relative orbit speed and wheel reversal are covered. Exact native camera mathematics, remaining input modes and desktop acceptance are open.",
+      "testRefs": [
+        "tests/unit/native-camera-preferences.test.js",
+        "tests/e2e/camera-preferences.spec.js",
+        "tests/native-e2e/camera-preferences.spec.js"
+      ],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Reverse mouse zoom through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Reverse mouse zoom visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Reverse mouse zoom\"), _L(\"If enabled, reverses the direction of zoom with mouse wheel.\"), \"reverse_mouse_wheel_zoom\")"
+    },
+    {
+      "id": "preferences.left-mouse-drag-action",
+      "tab": "Control",
+      "group": "Camera",
+      "sourceLabel": "Left Mouse Drag",
+      "controlFactory": "create_item_combobox",
+      "nativeKey": "left_mouse_drag_action",
+      "nativeKeyExpression": "\"left_mouse_drag_action\"",
+      "sourceLine": 1714,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "partial",
+      "featureId": "ui.camera-preferences",
+      "scope": "Mapped gestures, relative orbit speed and wheel reversal are covered. Exact native camera mathematics, remaining input modes and desktop acceptance are open.",
+      "testRefs": [
+        "tests/unit/native-camera-preferences.test.js",
+        "tests/e2e/camera-preferences.spec.js",
+        "tests/native-e2e/camera-preferences.spec.js"
+      ],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Left Mouse Drag through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Left Mouse Drag visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_combobox(_L(\"Left Mouse Drag\"), _L(\"Set the action that dragging the left mouse button should perform.\"), \"left_mouse_drag_action\", ButtonDragActions)"
+    },
+    {
+      "id": "preferences.middle-mouse-drag-action",
+      "tab": "Control",
+      "group": "Camera",
+      "sourceLabel": "Middle Mouse Drag",
+      "controlFactory": "create_item_combobox",
+      "nativeKey": "middle_mouse_drag_action",
+      "nativeKeyExpression": "\"middle_mouse_drag_action\"",
+      "sourceLine": 1716,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "partial",
+      "featureId": "ui.camera-preferences",
+      "scope": "Mapped gestures, relative orbit speed and wheel reversal are covered. Exact native camera mathematics, remaining input modes and desktop acceptance are open.",
+      "testRefs": [
+        "tests/unit/native-camera-preferences.test.js",
+        "tests/e2e/camera-preferences.spec.js",
+        "tests/native-e2e/camera-preferences.spec.js"
+      ],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Middle Mouse Drag through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Middle Mouse Drag visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_combobox(_L(\"Middle Mouse Drag\"), _L(\"Set the action that dragging the middle mouse button should perform.\"), \"middle_mouse_drag_action\", ButtonDragActions)"
+    },
+    {
+      "id": "preferences.right-mouse-drag-action",
+      "tab": "Control",
+      "group": "Camera",
+      "sourceLabel": "Right Mouse Drag",
+      "controlFactory": "create_item_combobox",
+      "nativeKey": "right_mouse_drag_action",
+      "nativeKeyExpression": "\"right_mouse_drag_action\"",
+      "sourceLine": 1718,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "partial",
+      "featureId": "ui.camera-preferences",
+      "scope": "Mapped gestures, relative orbit speed and wheel reversal are covered. Exact native camera mathematics, remaining input modes and desktop acceptance are open.",
+      "testRefs": [
+        "tests/unit/native-camera-preferences.test.js",
+        "tests/e2e/camera-preferences.spec.js",
+        "tests/native-e2e/camera-preferences.spec.js"
+      ],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Right Mouse Drag through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Right Mouse Drag visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_combobox(_L(\"Right Mouse Drag\"), _L(\"Set the action that dragging the right mouse button should perform.\"), \"right_mouse_drag_action\", ButtonDragActions)"
+    },
+    {
+      "id": "preferences.save-choise",
+      "tab": "Control",
+      "group": "Clear my choice on...",
+      "sourceLabel": "Unsaved projects",
+      "controlFactory": "create_item_button",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 1724,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Unsaved projects through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Unsaved projects visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_button(_L(\"Unsaved projects\"), _L(\"Clear\"), \"\", _L(\"Clear my choice on the unsaved projects.\"), []() {\n        wxGetApp().app_config->set(\"save_project_choise\", \"\");\n    })"
+    },
+    {
+      "id": "preferences.save-presets",
+      "tab": "Control",
+      "group": "Clear my choice on...",
+      "sourceLabel": "Unsaved presets",
+      "controlFactory": "create_item_button",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 1729,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Unsaved presets through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Unsaved presets visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_button(_L(\"Unsaved presets\"), _L(\"Clear\"), \"\", _L(\"Clear my choice on the unsaved presets.\"), []() {\n        wxGetApp().app_config->set(\"save_preset_choise\", \"\");\n    })"
+    },
+    {
+      "id": "preferences.restore-hide-pop-ups",
+      "tab": "Control",
+      "group": "Clear my choice on...",
+      "sourceLabel": "Synchronizing printer preset",
+      "controlFactory": "create_item_button",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 1734,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Synchronizing printer preset through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Synchronizing printer preset visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_button(_L(\"Synchronizing printer preset\"), _L(\"Clear\"), L\"\", _L(\"Clear my choice for synchronizing printer preset after loading the file.\"), []() {\n        wxGetApp().app_config->erase(\"app\", \"sync_after_load_file_show_flag\");\n    })"
+    },
+    {
+      "id": "preferences.opengl-realistic-phong",
+      "tab": "Graphics",
+      "group": "Realistic View",
+      "sourceLabel": "Phong shading",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "opengl_realistic_phong",
+      "nativeKeyExpression": "SETTING_OPENGL_REALISTIC_PHONG",
+      "sourceLine": 1753,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Phong shading through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Phong shading visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(\n        _L(\"Phong shading\"),\n        _L(\"Uses Phong shading inside realistic view.\")\n        , SETTING_OPENGL_REALISTIC_PHONG\n    )"
+    },
+    {
+      "id": "preferences.opengl-phong-ssao",
+      "tab": "Graphics",
+      "group": "Realistic View",
+      "sourceLabel": "SSAO ambient occlusion",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "opengl_phong_ssao",
+      "nativeKeyExpression": "SETTING_OPENGL_PHONG_SSAO",
+      "sourceLine": 1760,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise SSAO ambient occlusion through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare SSAO ambient occlusion visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(\n        _L(\"SSAO ambient occlusion\"),\n        _L(\"Applies SSAO in realistic view.\"),\n        SETTING_OPENGL_PHONG_SSAO\n    )"
+    },
+    {
+      "id": "preferences.opengl-phong-basic-plate-shadows",
+      "tab": "Graphics",
+      "group": "Realistic View",
+      "sourceLabel": "Shadows",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "opengl_phong_basic_plate_shadows",
+      "nativeKeyExpression": "SETTING_OPENGL_PHONG_BASIC_PLATE_SHADOWS",
+      "sourceLine": 1767,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Shadows through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Shadows visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(\n        _L(\"Shadows\"),\n        _L(\"Renders cast shadows on the plate in realistic view.\"),\n        SETTING_OPENGL_PHONG_BASIC_PLATE_SHADOWS\n    )"
+    },
+    {
+      "id": "preferences.opengl-phong-smooth-normals",
+      "tab": "Graphics",
+      "group": "Realistic View",
+      "sourceLabel": "Smooth normals",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "opengl_phong_smooth_normals",
+      "nativeKeyExpression": "SETTING_OPENGL_PHONG_SMOOTH_NORMALS",
+      "sourceLine": 1775,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Smooth normals through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Smooth normals visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(\n        _L(\"Smooth normals\"),\n        _L(\"Applies smooth normals to the realistic view.\\n\\nRequires manual scene reload to take effect \"\n                                \"(right-click on 3D view \u2192 \\\"Reload All\\\").\"),\n        SETTING_OPENGL_PHONG_SMOOTH_NORMALS\n    )"
+    },
+    {
+      "id": "preferences.opengl-antialiasing-samples",
+      "tab": "Graphics",
+      "group": "Anti-aliasing",
+      "sourceLabel": "MSAA Multiplier",
+      "controlFactory": "create_item_combobox",
+      "nativeKey": "opengl_antialiasing_samples",
+      "nativeKeyExpression": "SETTING_OPENGL_AA_SAMPLES",
+      "sourceLine": 1786,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise MSAA Multiplier through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare MSAA Multiplier visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_combobox(\n        _L(\"MSAA Multiplier\"),\n        _L(\"Set the Multi-Sample Anti-Aliasing level.\\n\"\n           \"Higher values result in smoother edges, but the impact on performance is exponential.\\n\"\n           \"Lower values improve performance, at the cost of jagged edges.\\n\"\n           \"If disabled, its recommended to enable FXAA to reduce jagged edges with minimal performance impact.\\n\\n\"\n           \"Requires application restart.\"),\n        SETTING_OPENGL_AA_SAMPLES,\n        {_L(\"Disabled\"), \"2x\", \"4x\", \"8x\", \"16x\"},\n        {\"0\", \"2\", \"4\", \"8\", \"16\"}\n    )"
+    },
+    {
+      "id": "preferences.opengl-fxaa-enabled",
+      "tab": "Graphics",
+      "group": "Anti-aliasing",
+      "sourceLabel": "FXAA post-processing",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "opengl_fxaa_enabled",
+      "nativeKeyExpression": "SETTING_OPENGL_FXAA_ENABLED",
+      "sourceLine": 1799,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise FXAA post-processing through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare FXAA post-processing visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(\n        _L(\"FXAA post-processing\"),\n        _L(\"Applies Fast Approximate Anti-Aliasing as a screen-space pass.\\n\"\n           \"Useful for disabling or reducing the MSAA setting to improve performance.\\n\\n\"\n           \"Takes effect immediately.\"),\n        SETTING_OPENGL_FXAA_ENABLED\n    )"
+    },
+    {
+      "id": "preferences.opengl-fps-cap",
+      "tab": "Graphics",
+      "group": "FPS",
+      "sourceLabel": "FPS cap",
+      "controlFactory": "create_item_spinctrl",
+      "nativeKey": "opengl_fps_cap",
+      "nativeKeyExpression": "SETTING_OPENGL_FPS_CAP",
+      "sourceLine": 1811,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "partial",
+      "featureId": "ui.graphics-preferences",
+      "scope": "Native cap/pacing/statistics references, left arrow assets and400ms/100ms repeats, browser state and actual native Preview workflows pass. wx validation/overflow, double-click event details, physical GPU presentation and paired desktop acceptance remain open.",
+      "testRefs": [
+        "tests/unit/native-graphics-preferences.test.js",
+        "tests/unit/preview-render-scheduler.test.js",
+        "tests/e2e/graphics-preferences.spec.js",
+        "tests/native-e2e/graphics-preferences.spec.js",
+        "tests/unit/native-preference-spin.test.js",
+        "tests/e2e/native-preference-spin.spec.js"
+      ],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise FPS cap through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare FPS cap visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_spinctrl(\n        _L(\"FPS cap\"),\n        _L(\"(0 = unlimited)\"),\n        _L(\"FPS\"),\n        _L(\"Limits viewport frame rate to reduce GPU load and power usage.\\n\"\n           \"Set to 0 for unlimited frame rate.\"),\n        SETTING_OPENGL_FPS_CAP,\n        0,\n        240\n    )"
+    },
+    {
+      "id": "preferences.opengl-show-fps-overlay",
+      "tab": "Graphics",
+      "group": "FPS",
+      "sourceLabel": "Show FPS overlay",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "opengl_show_fps_overlay",
+      "nativeKeyExpression": "SETTING_OPENGL_SHOW_FPS_OVERLAY",
+      "sourceLine": 1823,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "partial",
+      "featureId": "ui.graphics-preferences",
+      "scope": "Original-source cap/pacing/statistics references and actual GPU/native Preview workflows pass. GPU presentation, native spin-button details and paired desktop layout acceptance remain open.",
+      "testRefs": [
+        "tests/unit/native-graphics-preferences.test.js",
+        "tests/unit/preview-render-scheduler.test.js",
+        "tests/e2e/graphics-preferences.spec.js",
+        "tests/native-e2e/graphics-preferences.spec.js"
+      ],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Show FPS overlay through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Show FPS overlay visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(\n        _L(\"Show FPS overlay\"),\n        _L(\"Displays current viewport FPS in the top-right corner.\"),\n        SETTING_OPENGL_SHOW_FPS_OVERLAY\n    )"
+    },
+    {
+      "id": "preferences.region",
+      "tab": "Online",
+      "group": "Connection",
+      "sourceLabel": "Login region",
+      "controlFactory": "create_item_region_combobox",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 1844,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Login region through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Login region visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_region_combobox(_L(\"Login region\"), \"\")"
+    },
+    {
+      "id": "preferences.stealth-mode",
+      "tab": "Online",
+      "group": "Connection",
+      "sourceLabel": "Stealth mode",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "stealth_mode",
+      "nativeKeyExpression": "\"stealth_mode\"",
+      "sourceLine": 1847,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Stealth mode through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Stealth mode visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Stealth mode\"), _L(\"This disables all cloud features, including Orca Cloud profile syncing. Users who prefer to work entirely offline can enable this option.\\nNote: When Stealth Mode is enabled, your user profiles will not be backed up to Orca Cloud.\"), \"stealth_mode\")"
+    },
+    {
+      "id": "preferences.hide-login-side-panel",
+      "tab": "Online",
+      "group": "Connection",
+      "sourceLabel": "Hide login side panel",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "hide_login_side_panel",
+      "nativeKeyExpression": "\"hide_login_side_panel\"",
+      "sourceLine": 1850,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Hide login side panel through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Hide login side panel visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Hide login side panel\"), _L(\"Hide the login side panel on the home page.\"), \"hide_login_side_panel\")"
+    },
+    {
+      "id": "preferences.network-test",
+      "tab": "Online",
+      "group": "Connection",
+      "sourceLabel": "Network test",
+      "controlFactory": "create_item_button",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 1853,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Network test through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Network test visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_button(_L(\"Network test\"), _L(\"Test\") + \" \" + dots, \"\", _L(\"Open Network Test\"), []() {\n        NetworkTestDialog dlg(wxGetApp().mainframe);\n        dlg.ShowModal();\n    })"
+    },
+    {
+      "id": "preferences.bambu-cloud",
+      "tab": "Online",
+      "group": "Cloud Providers",
+      "sourceLabel": "Enable Bambu Cloud",
+      "controlFactory": "create_item_bambu_cloud",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 1862,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Enable Bambu Cloud through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Enable Bambu Cloud visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_bambu_cloud(_L(\"Enable Bambu Cloud\"), _L(\"Allow logging into Bambu Cloud alongside Orca Cloud. When enabled, a Bambu login section appears on the homepage.\"))"
+    },
+    {
+      "id": "preferences.check-stable-update-only",
+      "tab": "Online",
+      "group": "Update & sync",
+      "sourceLabel": "Check for stable updates only",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "check_stable_update_only",
+      "nativeKeyExpression": "\"check_stable_update_only\"",
+      "sourceLine": 1868,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Check for stable updates only through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Check for stable updates only visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Check for stable updates only\"), \"\", \"check_stable_update_only\")"
+    },
+    {
+      "id": "preferences.sync-user-preset",
+      "tab": "Online",
+      "group": "Update & sync",
+      "sourceLabel": "Auto sync user presets (Printer/Filament/Process)",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "sync_user_preset",
+      "nativeKeyExpression": "\"sync_user_preset\"",
+      "sourceLine": 1871,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Auto sync user presets (Printer/Filament/Process) through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Auto sync user presets (Printer/Filament/Process) visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Auto sync user presets (Printer/Filament/Process)\"), \"\", \"sync_user_preset\")"
+    },
+    {
+      "id": "preferences.sync-ams-filament-mode",
+      "tab": "Online",
+      "group": "Update & sync",
+      "sourceLabel": "Filament sync mode",
+      "controlFactory": "create_item_combobox",
+      "nativeKey": "sync_ams_filament_mode",
+      "nativeKeyExpression": "\"sync_ams_filament_mode\"",
+      "sourceLine": 1879,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Filament sync mode through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Filament sync mode visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_combobox(\n        _L(\"Filament sync mode\"),\n        _L(\"Choose whether sync updates both filament preset and color, or only color.\"),\n        \"sync_ams_filament_mode\",\n        {_L(\"Filament & Color\"), _L(\"Color only\")})"
+    },
+    {
+      "id": "preferences.sync-system-preset",
+      "tab": "Online",
+      "group": "Update & sync",
+      "sourceLabel": "Update built-in presets automatically.",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "sync_system_preset",
+      "nativeKeyExpression": "\"sync_system_preset\"",
+      "sourceLine": 1886,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Update built-in presets automatically. through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Update built-in presets automatically. visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Update built-in presets automatically.\"), \"\", \"sync_system_preset\")"
+    },
+    {
+      "id": "preferences.use-encrypted-token-file",
+      "tab": "Online",
+      "group": "Update & sync",
+      "sourceLabel": "Use encrypted file for token storage",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "use_encrypted_token_file",
+      "nativeKeyExpression": "SETTING_USE_ENCRYPTED_TOKEN_FILE",
+      "sourceLine": 1889,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Use encrypted file for token storage through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Use encrypted file for token storage visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Use encrypted file for token storage\"),\n                                                      _L(\"Store authentication tokens in an encrypted file instead of the system keychain. (Requires restart)\"),\n                                                      SETTING_USE_ENCRYPTED_TOKEN_FILE)"
+    },
+    {
+      "id": "preferences.installed-networking",
+      "tab": "Online",
+      "group": "Network plug-in",
+      "sourceLabel": "Enable network plug-in",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "installed_networking",
+      "nativeKeyExpression": "\"installed_networking\"",
+      "sourceLine": 1897,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Enable network plug-in through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Enable network plug-in visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Enable network plug-in\"), \"\", \"installed_networking\")"
+    },
+    {
+      "id": "preferences.plugin-version",
+      "tab": "Online",
+      "group": "Network plug-in",
+      "sourceLabel": "Network plug-in version",
+      "controlFactory": "create_item_network_plugin_version",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 1900,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Network plug-in version through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Network plug-in version visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_network_plugin_version(_L(\"Network plug-in version\"), _L(\"Select the network plug-in version to use\"))"
+    },
+    {
+      "id": "preferences.open-default-apps",
+      "tab": "Associate",
+      "group": "Associate files to OrcaSlicer",
+      "sourceLabel": "File associations for the Microsoft Store version are managed by Windows Settings.",
+      "controlFactory": "create_item_button",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 1921,
+      "sourceConditions": [
+        "ifdef _WIN32"
+      ],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise File associations for the Microsoft Store version are managed by Windows Settings. through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare File associations for the Microsoft Store version are managed by Windows Settings. visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_button(\n            _L(\"File associations for the Microsoft Store version are managed by Windows Settings.\"),\n            _L(\"Open Windows Default Apps Settings\"), \"\", \"\",\n            []() { wxLaunchDefaultBrowser(\"ms-settings:defaultapps\"); })"
+    },
+    {
+      "id": "preferences.associate-3mf",
+      "tab": "Associate",
+      "group": "Associate files to OrcaSlicer",
+      "sourceLabel": "Associate 3MF files to OrcaSlicer",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "associate_3mf",
+      "nativeKeyExpression": "\"associate_3mf\"",
+      "sourceLine": 1938,
+      "sourceConditions": [
+        "ifdef _WIN32"
+      ],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Associate 3MF files to OrcaSlicer through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Associate 3MF files to OrcaSlicer visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Associate 3MF files to OrcaSlicer\"), _L(\"If enabled, sets OrcaSlicer as default application to open 3MF files.\") , \"associate_3mf\")"
+    },
+    {
+      "id": "preferences.associate-drc",
+      "tab": "Associate",
+      "group": "Associate files to OrcaSlicer",
+      "sourceLabel": "Associate DRC files to OrcaSlicer",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "associate_drc",
+      "nativeKeyExpression": "\"associate_drc\"",
+      "sourceLine": 1941,
+      "sourceConditions": [
+        "ifdef _WIN32"
+      ],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Associate DRC files to OrcaSlicer through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Associate DRC files to OrcaSlicer visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Associate DRC files to OrcaSlicer\"), _L(\"If enabled, sets OrcaSlicer as default application to open DRC files.\"), \"associate_drc\")"
+    },
+    {
+      "id": "preferences.associate-stl",
+      "tab": "Associate",
+      "group": "Associate files to OrcaSlicer",
+      "sourceLabel": "Associate STL files to OrcaSlicer",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "associate_stl",
+      "nativeKeyExpression": "\"associate_stl\"",
+      "sourceLine": 1944,
+      "sourceConditions": [
+        "ifdef _WIN32"
+      ],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Associate STL files to OrcaSlicer through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Associate STL files to OrcaSlicer visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Associate STL files to OrcaSlicer\"), _L(\"If enabled, sets OrcaSlicer as default application to open STL files.\") , \"associate_stl\")"
+    },
+    {
+      "id": "preferences.associate-step",
+      "tab": "Associate",
+      "group": "Associate files to OrcaSlicer",
+      "sourceLabel": "Associate STEP files to OrcaSlicer",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "associate_step",
+      "nativeKeyExpression": "\"associate_step\"",
+      "sourceLine": 1947,
+      "sourceConditions": [
+        "ifdef _WIN32"
+      ],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Associate STEP files to OrcaSlicer through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Associate STEP files to OrcaSlicer visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Associate STEP files to OrcaSlicer\"), _L(\"If enabled, sets OrcaSlicer as default application to open STEP files.\"), \"associate_step\")"
+    },
+    {
+      "id": "preferences.associate-url-prusa",
+      "tab": "Associate",
+      "group": "Associate web links to OrcaSlicer",
+      "sourceLabel": "prusaslicer",
+      "controlFactory": "create_item_link_association",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 1953,
+      "sourceConditions": [
+        "ifdef _WIN32"
+      ],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise prusaslicer through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare prusaslicer visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_link_association(L\"prusaslicer\", \"Printables.com\")"
+    },
+    {
+      "id": "preferences.associate-url-bambu",
+      "tab": "Associate",
+      "group": "Associate web links to OrcaSlicer",
+      "sourceLabel": "bambustudio",
+      "controlFactory": "create_item_link_association",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 1956,
+      "sourceConditions": [
+        "ifdef _WIN32"
+      ],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise bambustudio through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare bambustudio visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_link_association(L\"bambustudio\", \"Makerworld.com\")"
+    },
+    {
+      "id": "preferences.associate-url-cura",
+      "tab": "Associate",
+      "group": "Associate web links to OrcaSlicer",
+      "sourceLabel": "cura",
+      "controlFactory": "create_item_link_association",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 1959,
+      "sourceConditions": [
+        "ifdef _WIN32"
+      ],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise cura through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare cura visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_link_association(L\"cura\", \"Thingiverse.com\")"
+    },
+    {
+      "id": "preferences.developer-mode",
+      "tab": "Developer",
+      "group": "Settings",
+      "sourceLabel": "Developer mode",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "developer_mode",
+      "nativeKeyExpression": "\"developer_mode\"",
+      "sourceLine": 1978,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Developer mode through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Developer mode visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Developer mode\"), \"\", \"developer_mode\", wxEmptyString, \"option_mode#developer+mode\")"
+    },
+    {
+      "id": "preferences.skip-ams-blacklist-check",
+      "tab": "Developer",
+      "group": "Settings",
+      "sourceLabel": "Skip AMS blacklist check",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "skip_ams_blacklist_check",
+      "nativeKeyExpression": "\"skip_ams_blacklist_check\"",
+      "sourceLine": 1981,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Skip AMS blacklist check through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Skip AMS blacklist check visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Skip AMS blacklist check\"), \"\", \"skip_ams_blacklist_check\")"
+    },
+    {
+      "id": "preferences.show-unsupported-presets",
+      "tab": "Developer",
+      "group": "Settings",
+      "sourceLabel": "Show unsupported presets",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "show_unsupported_presets",
+      "nativeKeyExpression": "\"show_unsupported_presets\"",
+      "sourceLine": 1984,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Show unsupported presets through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Show unsupported presets visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Show unsupported presets\"), _L(\"Show incompatible/unsupported presets in the printer and filament dropdown lists. These presets cannot be selected.\"), \"show_unsupported_presets\")"
+    },
+    {
+      "id": "preferences.keep-painting",
+      "tab": "Developer",
+      "group": "Experimental Features",
+      "sourceLabel": "Keep painted feature after mesh change",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "keep_painting",
+      "nativeKeyExpression": "\"keep_painting\"",
+      "sourceLine": 1990,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Keep painted feature after mesh change through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Keep painted feature after mesh change visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Keep painted feature after mesh change\"), _L(\"Attempt to keep painted features (color/seam/support/fuzzy etc.) after changing the object mesh (such as cut/reload from disk/simplify/fix etc.)\\nHighly experimental! Slow and may create artifact.\"), \"keep_painting\")"
+    },
+    {
+      "id": "preferences.allow-abnormal-storage",
+      "tab": "Developer",
+      "group": "Storage",
+      "sourceLabel": "Allow Abnormal Storage",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "allow_abnormal_storage",
+      "nativeKeyExpression": "\"allow_abnormal_storage\"",
+      "sourceLine": 1996,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Allow Abnormal Storage through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Allow Abnormal Storage visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Allow Abnormal Storage\"), _L(\"This allows the use of Storage that is marked as abnormal by the Printer.\\nUse at your own risk, can cause issues!\"), \"allow_abnormal_storage\")"
+    },
+    {
+      "id": "preferences.loglevel-combox",
+      "tab": "Developer",
+      "group": "Log Level",
+      "sourceLabel": "Log Level",
+      "controlFactory": "create_item_loglevel_combobox",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 2002,
+      "sourceConditions": [],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Log Level through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Log Level visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_loglevel_combobox(_L(\"Log Level\"), _L(\"Log Level\"), log_level_list)"
+    },
+    {
+      "id": "preferences.debug-page",
+      "tab": "Developer",
+      "group": "Debug",
+      "sourceLabel": "",
+      "controlFactory": "create_debug_page",
+      "nativeKey": null,
+      "nativeKeyExpression": null,
+      "sourceLine": 2008,
+      "sourceConditions": [
+        "if !BBL_RELEASE_TO_PUBLIC"
+      ],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise debug_page through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare debug_page visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_debug_page()"
+    }
+  ],
+  "disabledDeclarations": [
+    {
+      "id": "preferences.pop-up-filament-map-dialog",
+      "tab": "General",
+      "group": "Filament Grouping",
+      "sourceLabel": "Pop up to select filament grouping mode",
+      "controlFactory": "create_item_checkbox",
+      "nativeKey": "pop_up_filament_map_dialog",
+      "nativeKeyExpression": "\"pop_up_filament_map_dialog\"",
+      "sourceLine": 1656,
+      "sourceConditions": [
+        "if 0"
+      ],
+      "visibility": "Source declaration; installed GUI visibility and runtime guards require acceptance.",
+      "status": "missing",
+      "featureId": "ui.dialogs",
+      "scope": "No corresponding web Preferences control is implemented.",
+      "testRefs": [],
+      "plannedTests": [
+        {
+          "kind": "browser",
+          "description": "Exercise Pop up to select filament grouping mode through its actual Preferences control; validate persistence, cancellation or immediate-apply behavior and malformed input where applicable."
+        },
+        {
+          "kind": "native",
+          "description": "Compare Pop up to select filament grouping mode visibility, defaults and its affected application behavior with pinned native2.4.2 on the applicable platform/build."
+        }
+      ],
+      "sourceCall": "create_item_checkbox(_L(\"Pop up to select filament grouping mode\"), _L(\"Pop up to select filament grouping mode\"), 50, \"pop_up_filament_map_dialog\")"
+    }
+  ]
+}

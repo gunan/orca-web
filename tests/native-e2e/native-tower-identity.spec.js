@@ -1,0 +1,13 @@
+import {test,expect} from '@playwright/test';import {readFile} from 'node:fs/promises';
+import {importNative3MF} from '../../shared/native-project.js';import {addFilamentSlot} from '../../shared/filament-slots.js';import {instanceGroupKey} from '../../shared/native-instances.js';
+for(const variant of ['colliding family','multibyte groups'])test(`native preview retains both materials and user identities for ${variant}`,async({page,request},info)=>{
+ expect((await(await request.get('/api/health')).json()).engine.version).toBe('OrcaSlicer-2.4.2');
+ let project=importNative3MF(await readFile(new URL('../fixtures/native-gui-cube-2.4.2.3mf',import.meta.url)));project.useEmbeddedSettings=true;project=addFilamentSlot(project);
+ Object.assign(project.nativeSettings,{enable_prime_tower:'1',prime_tower_width:'60',prime_volume:'45',wipe_tower_x:['100'],wipe_tower_y:['140'],filament_colour:['#0080FF','#FF4000']});
+ const first=project.objects[0];first.position=[20,20,0];delete first.native.instanceFamily;const second=structuredClone(first);second.id='independent-second-material';second.native.groupId='independent-second-group';second.filamentSlot=2;second.position=[60,20,0];project.objects.push(second);
+ if(variant==='colliding family')first.native.instanceFamily=instanceGroupKey(second);else project.objects.forEach((o,i)=>o.native.groupId=String(i)+'工具'.repeat(100));
+ await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();const preview=page.waitForResponse(r=>r.url().endsWith('/api/geometry/prime-tower'));await page.getByLabel('Open Orca Web project').setInputFiles({name:'tower-identity.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(project))});
+ await expect(page.getByLabel('Filament slot 2',{exact:true})).toBeVisible();const response=await preview;expect(response.status(),await response.text()).toBe(200);const result=(await response.json()).result;expect(result).toMatchObject({visible:true,extruders:[1,2],containedFirstInstances:[true,true],printableInstanceCount:2});
+ const canvas=page.getByRole('img',{name:'Interactive 3D model view',exact:true});await expect.poll(()=>canvas.evaluate(el=>JSON.parse(el.dataset.primeTower))).toMatchObject({status:'ready',visible:true,bands:2,extruders:[1,2]});
+ await page.screenshot({path:info.outputPath('tower-identities.png')});const saving=page.waitForEvent('download');await page.getByRole('button',{name:'Save project',exact:true}).click();const saved=JSON.parse(await readFile(await(await saving).path(),'utf8'));expect(saved.objects.map(o=>[o.id,o.native.groupId,o.native.instanceFamily,o.filamentSlot])).toEqual(project.objects.map(o=>[o.id,o.native.groupId,o.native.instanceFamily,o.filamentSlot]));
+});

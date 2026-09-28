@@ -1,0 +1,35 @@
+✖ real orbit and pan damping settle in wall-clock time at 4–144 FPS without changing the final view (6.920375ms)
+✔ default frame-based controls demonstrate the slow-render regression (4.942458ms)
+✔ a new gesture resets a long idle gap; Fit drains momentum without disabling future damping (1.127125ms)
+✔ preview renders invalidated frames once and remains idle until a new change (1.037083ms)
+✔ preview drains OrbitControls damping including change events without an endless animation loop (0.136541ms)
+✔ disposed previews cancel pending frames and cannot draw into a detached canvas (0.075042ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 5
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 137.996792
+
+✖ failing tests:
+
+test at tests/unit/preview-camera-damping.test.js:7:1
+✖ real orbit and pan damping settle in wall-clock time at 4–144 FPS without changing the final view (6.920375ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m31-preview-damping-stage/tests/unit/preview-camera-damping.test.js:13:107)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.start (node:internal/test_runner/test:1003:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

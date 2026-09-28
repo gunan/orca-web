@@ -1,0 +1,2 @@
+.viewport-fps{position:absolute;right:10px;top:10px;color:#fff;background:#0006;padding:4px 7px;border-radius:3px;font-size:12px;font-variant-numeric:tabular-nums;pointer-events:none;z-index:4}
+.scene-viewport[data-fps-overlay=true] .scene-views{top:40px}

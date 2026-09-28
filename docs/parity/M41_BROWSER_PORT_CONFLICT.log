@@ -1,0 +1,6 @@
+
+> orca-web@0.1.0 test:e2e
+> playwright test --workers=2
+
+Error: http://127.0.0.1:4173/api/health is already used, make sure that nothing is running on the port/url or set reuseExistingServer:true in config.webServer.
+

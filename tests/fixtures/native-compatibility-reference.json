@@ -1,0 +1,33 @@
+{
+  "sourceRevision": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "provenance": "Original Preset.cpp predicates, compiled independently with ORCA_COMPATIBILITY_REFERENCE; unchanged original PlaceholderParser.cpp",
+  "helperSha256": "1f07836c6e1fbdaa194f32a039a3545d21f47c7df2e1e68bbe504aee6b1ac908",
+  "results": {
+    "empty": true,
+    "list-wins-true": true,
+    "list-wins-false": false,
+    "false-expression": false,
+    "typed-regex-and-extras": true,
+    "native-arithmetic": true,
+    "unknown-variable": true,
+    "malformed-expression": true,
+    "user-immediate-parent": true,
+    "system-parent-not-inherited": false,
+    "grandparent-not-inherited": false,
+    "cross-vendor": true,
+    "library-excluded-printer": false,
+    "library-excluded-parent": false,
+    "regular-vendor-exclusion-ignored": true,
+    "print-typed-condition": true,
+    "print-false-condition": false,
+    "print-list-wins": true,
+    "print-mismatching-list": false,
+    "print-error-compatible": true,
+    "printer-rejection-short-circuits-print": false
+  },
+  "exclusions": {
+    "library-last": [
+      "Specific printer"
+    ]
+  }
+}

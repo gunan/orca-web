@@ -1,0 +1,20 @@
+[WebServer] (node:54839) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 11 tests using 1 worker
+
+(node:54843) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/camera-preferences.spec.js:9:1 › native default middle drag pans; remapped None and Rotate actions persist without changing project history (10.4s)
+  ✓   2 tests/e2e/camera-preferences.spec.js:19:1 › reverse mouse wheel applies immediately in perspective and orthographic Prepare (3.0s)
+  ✓   3 tests/e2e/camera-preferences.spec.js:24:1 › orbit speed clamps and commits on Enter or blur; invalid drafts preserve the existing camera setting (1.3s)
+  ✓   4 tests/e2e/camera-preferences.spec.js:28:1 › malformed camera preferences recover to native defaults and storage failures retain explicit session-only changes (1.6s)
+  ✓   5 tests/e2e/camera-preferences.spec.js:33:1 › camera settings propagate to painting workspaces without converting a left brush stroke into a camera gesture (7.6s)
+  ✓   6 tests/e2e/camera-preferences.spec.js:38:1 › Preview shares native middle pan and reverse wheel preferences across workspace remounts (9.0s)
+  ✓   7 tests/e2e/camera-preferences.spec.js:46:37 › Preferences has an opaque, legible light surface and usable controls at compact sizes (883ms)
+  ✓   8 tests/e2e/camera-preferences.spec.js:46:37 › Preferences has an opaque, legible dark surface and usable controls at compact sizes (896ms)
+  ✓   9 tests/e2e/native-display-preferences.spec.js:4:1 › native Units labels apply immediately, persist after reload, and leave project settings intact (1.3s)
+  ✓  10 tests/e2e/native-display-preferences.spec.js:13:1 › invalid stored Units fall back to metric and storage failures retain a visible session-only change (728ms)
+  ✓  11 tests/e2e/native-display-preferences.spec.js:17:1 › Preferences shortcut respects focused text inputs and an already open dialog (710ms)
+
+  11 passed (38.3s)

@@ -1,0 +1,15 @@
+✔ real OrbitControls gestures follow all81 original native button mappings, including modifier keys (12.579ms)
+✔ native default middle drag pans without dollying and selected orbit speed scales the angle (0.321291ms)
+✔ reverse wheel changes zoom direction without changing later touch pinch direction (0.382708ms)
+✔ reentrant wheel events and disposal restore the original zoom speed; paint can suppress left camera gestures (0.2115ms)
+✔ camera preferences use exact native defaults, preserve supported values and reject malformed storage (0.2745ms)
+✔ orbit input commits on native bounds and two-decimal formatting (0.106ms)
+✔ camera reference retains original method and generator provenance (0.443625ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 68.0275

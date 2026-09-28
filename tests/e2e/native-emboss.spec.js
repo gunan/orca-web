@@ -1,0 +1,28 @@
+import {test,expect} from '@playwright/test';
+import {readFile} from 'node:fs/promises';
+import {importNative3MF} from '../../shared/native-project.js';
+const fixture=new URL('../fixtures/native-text-planar-2.4.2.3mf',import.meta.url).pathname;
+async function begin(page){await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Open Orca Web project').setInputFiles(fixture);await expect(page.locator('[data-tree-kind=volume]')).toHaveCount(2);await page.getByRole('button',{name:'Center',exact:true}).click();await page.getByLabel('Transform scope').selectOption('part');await page.locator('.scene-object-row').getByRole('button',{name:'A & B',exact:true}).click();await expect(page.getByRole('note',{name:'Native text metadata'})).toContainText('Editing metadata is preserved');}
+async function save(page){await page.getByRole('button',{name:'Project',exact:true}).click();const promise=page.waitForEvent('download');await page.locator('.project-actions').getByRole('button',{name:'Save project',exact:true}).click();const project=JSON.parse(await readFile(await(await promise).path(),'utf8'));await page.getByRole('button',{name:'Prepare',exact:true}).click();return project;}
+const text=project=>project.objects.find(object=>object.native?.textConfiguration);
+
+test('native glyph metadata persists through browser transforms, JSON save and validated native export',async({page})=>{
+ await begin(page);await page.getByLabel('position X',{exact:true}).fill('5');const saved=await save(page);expect(text(saved).native.textConfiguration.text).toBe('A & B');expect(text(saved).native.embossShape.useSurface).toBe(false);
+ await page.getByRole('button',{name:'Project',exact:true}).click();const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Export native project',exact:true}).click();const exported=importNative3MF(await readFile(await(await pending).path()));expect(text(exported).native.textConfiguration).toEqual(text(saved).native.textConfiguration);expect(text(exported).positions.length).toBe(1176*9);
+});
+
+test('split and repair prepare results but retain native text until consent; undo restores metadata',async({page})=>{
+ await begin(page);const before=await save(page);await page.getByRole('button',{name:'Split shells',exact:true}).click();const consent=page.getByRole('dialog',{name:'Remove native text editing metadata',exact:true});await expect(consent).toContainText('Split shells');await expect(page.locator('[data-tree-kind=volume]')).toHaveCount(2);await consent.getByRole('button',{name:'Keep native text'}).click();expect(text(await save(page)).native).toEqual(text(before).native);
+ await page.getByRole('button',{name:'Repair mesh',exact:true}).click();await expect(consent).toContainText('Repair mesh');await consent.getByRole('button',{name:'Remove metadata and continue'}).click();expect(text(await save(page))).toBeUndefined();await page.getByRole('button',{name:'Undo',exact:true}).click();expect(text(await save(page)).native).toEqual(text(before).native);
+ await page.getByRole('button',{name:'Split shells',exact:true}).click();await consent.getByRole('button',{name:'Remove metadata and continue'}).click();const split=await save(page);expect(split.objects.length).toBeGreaterThan(2);expect(text(split)).toBeUndefined();
+});
+
+test('assembly and native cut explicitly require metadata-loss consent',async({page})=>{
+ await begin(page);await page.locator('.toolbar').getByRole('button',{name:'Assemble plate',exact:true}).click();const consent=page.getByRole('dialog',{name:'Remove native text editing metadata',exact:true});await expect(consent).toContainText('Assemble plate');await consent.getByRole('button',{name:'Keep native text'}).click();await expect(page.locator('[data-tree-kind=volume]')).toHaveCount(2);
+ await page.getByLabel('Transform scope').selectOption('object');await page.locator('.toolbar').getByRole('button',{name:'Cut',exact:true}).click();const cut=page.getByRole('dialog',{name:'Cut object'});await expect(cut.getByRole('button',{name:'Apply cut'})).toBeDisabled();await cut.getByLabel('Remove native text editing metadata',{exact:true}).check();await expect(cut.getByRole('button',{name:'Apply cut'})).toBeEnabled();await cut.getByRole('button',{name:'Cancel cut'}).click();expect(text(await save(page))).toBeDefined();
+ await page.locator('.toolbar').getByRole('button',{name:'Assemble plate',exact:true}).click();await consent.getByRole('button',{name:'Remove metadata and continue'}).click();await expect(page.locator('.scene-object-row')).toHaveCount(1);expect(text(await save(page))).toBeUndefined();await page.getByRole('button',{name:'Undo',exact:true}).click();expect(text(await save(page))).toBeDefined();
+});
+
+test('topology consent blocks document shortcuts and cancellation preserves native text and undo history',async({page})=>{
+ await begin(page);const before=await save(page);await page.getByLabel('position X',{exact:true}).fill('5');const edited=await save(page);await page.getByRole('button',{name:'Repair mesh',exact:true}).click();const consent=page.getByRole('dialog',{name:'Remove native text editing metadata',exact:true});await consent.getByRole('button',{name:'Keep native text'}).focus();await page.keyboard.press(process.platform==='darwin'?'Meta+z':'Control+z');await expect(page.getByLabel('position X',{exact:true})).toHaveValue('5');await expect(consent).toBeVisible();await consent.getByRole('button',{name:'Keep native text'}).click();expect(text(await save(page))).toEqual(text(edited));await page.getByRole('button',{name:'Undo',exact:true}).click();const restored=await save(page);expect(text(restored)).toEqual(text(before));
+});

@@ -1,0 +1,24 @@
+✔ legal identities retain the exact original two-material tower: family token equals a standalone group key (24.862875ms)
+✔ legal identities retain the exact original two-material tower: standalone group precedes a colliding family token (17.116584ms)
+✔ legal identities retain the exact original two-material tower: long plate and object IDs compose beyond the worker bound (18.078167ms)
+✔ legal identities retain the exact original two-material tower: escaped group IDs exceed the bound only after JSON encoding (25.6645ms)
+✔ legal identities retain the exact original two-material tower: multibyte group IDs exceed the worker byte bound (18.706291ms)
+✔ legal identities retain the exact original two-material tower: multibyte family token exceeds the worker byte bound (17.501625ms)
+✔ legal identities retain the exact original two-material tower: user family token collides with an allocated worker ID (15.715833ms)
+✔ legal identities retain the exact original two-material tower: allocated worker ID skips an existing user family token (15.260916ms)
+✔ tower request keeps distinct native models: family token equals a standalone group key (2.789958ms)
+✔ tower request keeps distinct native models: standalone group precedes a colliding family token (0.464208ms)
+✔ tower request keeps distinct native models: long plate and object IDs compose beyond the worker bound (0.427542ms)
+✔ tower request keeps distinct native models: escaped group IDs exceed the bound only after JSON encoding (0.361833ms)
+✔ tower request keeps distinct native models: multibyte group IDs exceed the worker byte bound (0.341584ms)
+✔ tower request keeps distinct native models: multibyte family token exceeds the worker byte bound (0.298625ms)
+✔ tower request keeps distinct native models: user family token collides with an allocated worker ID (0.264584ms)
+✔ tower request keeps distinct native models: allocated worker ID skips an existing user family token (0.242166ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 262.626916

@@ -1,0 +1,15 @@
+# Prepare redraws only when needed
+
+Baseline: OrcaSlicer 2.4.2, source `8500fcdccaa10b5099ac20d252af3a7c560046f1`. Original `GLCanvas3D::on_idle` returns immediately when `m_dirty` is false; native controls and pending extra frames mark it dirty. The audited file `src/slic3r/GUI/GLCanvas3D.cpp` has SHA-256 `a44c6c43ca28690da12b5502eab1a6bdec3f8392da4c0454586e065a43614ddb` and matches the pinned Git revision. This is source-inspection evidence, not a fresh desktop GPU measurement.
+
+The web Prepare canvas previously ran `renderer.render` on every animation frame even with no user action. Ordinary model editing, painting, brim editing and variable-layer dialogs each retained that continuous loop. Prepare now reuses the tested coalescing render scheduler and wall-clock OrbitControls damping already used in Preview. Data edits, camera/transform changes, resize, tower interaction, paint cursors, support overlays, brim ghosts and layer-height shaders request a frame. Damping continues until settled; Fit drains momentum first. Disposal cancels scheduled frames and removes control listeners before releasing scene resources.
+
+## Independent browser measurements
+
+The new browser fixture wraps actual WebGL draw methods before app startup. Assertions count real GPU submissions rather than an application-maintained render flag. Once a scene settles, its count must remain identical through a second200 ms idle interval. Every tested change must increase that count and then settle again. No polling tolerance permits ongoing rendering.
+
+Five focused browser checks pass: model/Undo/wireframe/tool/selection/camera/resize/projection changes; paint hover/clear/clipping; variable-layer texture/uniform/cleanup; brim ghost/placement/selection/diameter/removal; and tower selection/Move/drag/capture-loss/deselection. Forty-three existing scheduler, real OrbitControls damping, tower projection and interruption unit checks pass. [Unit](M36_PREPARE_UNIT.log), [Prepare/painting/layer browser](M36_PREPARE_BROWSER.log), [brim/tower GPU browser](M36_TOOLS_GPU_BROWSER.log).
+
+Before the fix, ordinary Prepare and variable-layer cases fail because GPU submissions never stop. The first painting test had an incorrect dialog name; after correcting it from Paint supports to Paint facets, the unchanged baseline also fails its actual GPU-idle assertion. [Initial run](M36_PREPARE_BEFORE.log), [corrected painting baseline](M36_PAINT_BEFORE.log), [retained traces](M36_IDLE_REGRESSION_TRACES.zip). The runtime change passes all five focused cases with the same8-second settling bound and exact idle-count equality.
+
+This establishes idle/redraw behavior for the covered browser paths. It does not complete native camera motion or appearance parity, establish large-project responsiveness on every supported device, or implement native frame-rate limits and all graphics preferences. Fresh desktop/hardware comparisons remain open. No slicing worker, model geometry, native numerical comparison or printer control was changed.

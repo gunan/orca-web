@@ -1,0 +1,18 @@
+{
+  "type": "machine",
+  "name": "machine base",
+  "from": "system",
+  "instantiation": "false",
+  "nozzle_diameter": [
+    "0.4"
+  ],
+  "printable_area": [
+    "0x0",
+    "250x0",
+    "250x210",
+    "0x210"
+  ],
+  "printable_height": "220",
+  "printer_technology": "FFF",
+  "gcode_flavor": "marlin2"
+}

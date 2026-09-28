@@ -1,0 +1,18 @@
+import { readFile, writeFile } from 'node:fs/promises';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { fileURLToPath } from 'node:url';
+const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
+const manifest=JSON.parse(await readFile(path.join(root,'scripts/native-profile-schema-sources.json'),'utf8'));
+const args=process.argv.slice(2),sourceIndex=args.indexOf('--source-dir');
+const directory=sourceIndex>=0?path.resolve(args[sourceIndex+1]):path.join(root,'.cache/native-schema',manifest.commit);
+const entry=manifest.files.find(file=>file.name==='MaterialType.cpp');
+const source=await readFile(path.join(directory,entry.name),'utf8');
+if(crypto.createHash('sha256').update(source).digest('hex')!==entry.sha256)throw new Error('Pinned MaterialType.cpp hash mismatch');
+const materials=[...source.matchAll(/\{"([^"\n]+)",\s*(\d+),\s*(\d+),\s*(\d+),\s*(\d+),/g)].map(match=>({name:match[1],nozzle:[Number(match[2]),Number(match[3])],chamber:[Number(match[4]),Number(match[5])]}));
+const constant=name=>Number(source.match(new RegExp(`${name}\\s*=\\s*(\\d+)`))?.[1]);
+const output=JSON.stringify({source:{file:entry.path,commit:manifest.commit},unknownNozzle:[constant('DEFAULT_MIN_TEMP'),constant('DEFAULT_MAX_TEMP')],materials},null,2)+'\n';
+if(materials.length<70||new Set(materials.map(item=>item.name)).size!==materials.length)throw new Error('Incomplete or duplicate native material table');
+const target=path.join(root,'shared/native-material-ranges.json');
+if(args.includes('--check')){if(await readFile(target,'utf8')!==output)throw new Error('Native material ranges are stale');}else await writeFile(target,output);
+console.log(`Verified ${materials.length} native material temperature ranges.`);

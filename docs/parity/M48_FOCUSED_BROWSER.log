@@ -1,0 +1,43 @@
+[WebServer] (node:19094) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 32 tests using 2 workers
+
+(node:19099) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:19098) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/import-transaction.spec.js:27:1 › same-project reload blocks edits until the catalog commits, then Drop and Undo preserve the new edit (2.4s)
+  ✓   2 tests/e2e/multipart-import.spec.js:13:1 › native multipart Yes retains relative heights as one model, preserves current presets and participates in one Undo (2.5s)
+  ✓   4 tests/e2e/multipart-import.spec.js:14:37 › multipart No keeps separate objects and grounds each independently (2.1s)
+  ✓   3 tests/e2e/import-transaction.spec.js:38:1 › cancelled catalog restoration keeps edits, history and preset readiness after the late response (2.6s)
+  ✓   5 tests/e2e/multipart-import.spec.js:14:37 › multipart Escape keeps separate objects and grounds each independently (1.8s)
+  ✓   7 tests/e2e/multipart-import.spec.js:15:1 › explicit geometry Open asks discard before multipart, then exports one two-volume object at full height (2.3s)
+  ✓   6 tests/e2e/import-transaction.spec.js:50:1 › failed catalog restoration preserves the previous catalog, project and dirty state (4.2s)
+  ✓   8 tests/e2e/multipart-import.spec.js:16:1 › linked instances and an existing multi-volume model do not trigger the multipart object question (1.9s)
+  ✓   9 tests/e2e/import-transaction.spec.js:64:1 › Escape cancels a native project upload and its late response cannot replace the current project (1.8s)
+  ✓  10 tests/e2e/multipart-import.spec.js:17:37 › multipart light dialog uses native warning dimensions, choice buttons and fits compact windows (1.8s)
+  ✓  11 tests/e2e/import-transaction.spec.js:74:1 › cancelled local model read cannot append geometry after a subsequent import completes (1.9s)
+  ✓  12 tests/e2e/multipart-import.spec.js:17:37 › multipart dark dialog uses native warning dimensions, choice buttons and fits compact windows (1.9s)
+  ✓  13 tests/e2e/import-transaction.spec.js:86:1 › cancelling Open from Preview preserves the completed job and its download (2.3s)
+  ✓  14 tests/e2e/project-geometry.spec.js:13:1 › geometry Add retains linked parts, painting and layer profiles and strips imported overrides in the saved project (2.4s)
+  ✓  15 tests/e2e/import-transaction.spec.js:98:1 › a cancelled local read failure cannot replace the status of a later successful import (1.9s)
+  ✓  17 tests/e2e/project-load-preferences.spec.js:7:1 › native Ask When Relevant is the default and all four choices persist (2.0s)
+  ✓  16 tests/e2e/project-geometry.spec.js:14:1 › geometry-only Open retains current material colors and purge settings while replacing objects (3.7s)
+  ✓  18 tests/e2e/project-load-preferences.spec.js:8:1 › adding a 3MF to an empty plate opens its embedded presets under the default policy (1.5s)
+  ✓  19 tests/e2e/project-geometry.spec.js:15:1 › repeated geometry Add keeps separate model families and preserves exported paint (2.2s)
+  ✓  20 tests/e2e/project-load-preferences.spec.js:9:1 › adding a 3MF to existing geometry asks, defaults to geometry, cancels cleanly and appends without changing presets (2.0s)
+  ✓  22 tests/e2e/project-load-preferences.spec.js:10:1 › Always Ask explicit Open chooses native project settings only after approval, and Escape preserves the scene (1.7s)
+  ✓  21 tests/e2e/project-geometry.spec.js:16:1 › failed geometry import and cancelled delayed API response retain the project and Undo history (1.9s)
+  ✓  23 tests/e2e/project-load-preferences.spec.js:11:1 › explicit geometry-only Open replaces old geometry after discard and keeps the selected print settings (1.8s)
+  ✓  24 tests/e2e/zero-volume-import.spec.js:14:1 › zero-volume notice precedes insertion, uses native information icon, and surviving geometry is one Undo action (2.0s)
+  ✓  25 tests/e2e/project-load-preferences.spec.js:12:1 › Load All replaces through the existing discard transaction when adding a project to edited geometry (1.6s)
+  ✓  26 tests/e2e/zero-volume-import.spec.js:15:1 › all-empty geometry Open reports the removal and retains the previous document and edit history (1.9s)
+  ✓  27 tests/e2e/project-load-preferences.spec.js:13:1 › corrupt load preferences recover to native defaults and denied writes retain explicit session behavior (2.0s)
+  ✓  28 tests/e2e/zero-volume-import.spec.js:16:1 › dismissal acknowledges the information and imports only surviving models (1.4s)
+  ✓  29 tests/e2e/project-load-preferences.spec.js:14:1 › cancelling a delayed geometry-only Open leaves the previous model unchanged after reading finishes (1.5s)
+  ✓  30 tests/e2e/zero-volume-import.spec.js:17:1 › failed or cancelled inspection leaves existing geometry and Undo intact, including a late response (1.6s)
+  ✓  31 tests/e2e/project-load-preferences.spec.js:15:1 › explicit Open under Ask When Relevant uses the discard choice without presenting an Add-only load prompt (1.0s)
+  ✓  32 tests/e2e/project-load-preferences.spec.js:17:1 › dropping an actual 3MF on the viewport uses the native Add choice and cancellation preserves the plate (935ms)
+
+  32 passed (35.2s)

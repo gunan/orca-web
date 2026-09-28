@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "kind": "pressure-advance-pattern",
+  "geometry": "1929:32d84a20:7c65354",
+  "settings": "11257:5c702742:74909d7e",
+  "plates": "54595:82d87e06:75dcb652",
+  "structure": [
+    {
+      "plateId": "plate-1",
+      "patternCount": 1,
+      "layers": 4
+    }
+  ]
+}

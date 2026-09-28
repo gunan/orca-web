@@ -1,0 +1,12 @@
+✔ fit keeps every corner of wide, tall and asymmetric objects within portrait and landscape camera frames (2.583875ms)
+✔ camera fitting is translation invariant and validates malformed geometry and viewport dimensions (0.541875ms)
+✔ fitting arbitrary viewing axes preserves orientation and contains every corner in both projections (0.331375ms)
+✔ fit rejects degenerate or malformed viewing axes before producing invalid camera coordinates (0.096958ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 44.4095

@@ -1,0 +1,22 @@
+[WebServer] (node:40998) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 11 tests using 2 workers
+
+(node:41003) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:41002) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 tests/e2e/import-transaction.spec.js:27:1 › same-project reload blocks edits until the catalog commits, then Drop and Undo preserve the new edit (1.5s)
+  ✓   1 tests/e2e/multi-selection.spec.js:8:1 › tree toggles and ranges select complete targets, shortcuts respect text inputs, and single-object tools cannot mutate the primary (1.7s)
+  ✓   3 tests/e2e/import-transaction.spec.js:38:1 › cancelled catalog restoration keeps edits, history and preset readiness after the late response (1.5s)
+  ✓   4 tests/e2e/multi-selection.spec.js:13:1 › joint numeric transforms survive project save/reload and undo; center/drop and batch duplicate/delete preserve relative geometry (3.2s)
+  ✓   5 tests/e2e/import-transaction.spec.js:50:1 › failed catalog restoration preserves the previous catalog, project and dirty state (2.7s)
+  ✓   7 tests/e2e/import-transaction.spec.js:64:1 › Escape cancels a native project upload and its late response cannot replace the current project (1.0s)
+  ✓   6 tests/e2e/multi-selection.spec.js:18:1 › canvas Cmd/Ctrl click toggles hit objects and Shift rectangle picks visible depth IDs instead of occluded bounds (2.2s)
+  ✓   8 tests/e2e/import-transaction.spec.js:74:1 › cancelled local model read cannot append geometry after a subsequent import completes (1.2s)
+  ✓   9 tests/e2e/multi-selection.spec.js:23:1 › rectangle adds with control, modifier-only hits stay in part scope, and the saved scope survives reload (3.1s)
+  ✓  10 tests/e2e/multi-selection.spec.js:26:1 › joint gizmo translation updates both meshes in a single history step (1.7s)
+  ✓  11 tests/e2e/multi-selection.spec.js:30:71 › retina selection › rectangle ID picking uses backing pixels and keeps hidden and occluded objects out (1.7s)
+
+  11 passed (14.6s)

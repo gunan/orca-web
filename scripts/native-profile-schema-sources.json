@@ -1,0 +1,43 @@
+{
+  "repository": "https://github.com/OrcaSlicer/OrcaSlicer",
+  "version": "2.4.2",
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "license": "AGPL-3.0",
+  "files": [
+    {
+      "name": "PrintConfig.cpp",
+      "path": "src/libslic3r/PrintConfig.cpp",
+      "sha256": "f635101adb6da3ee657656c6fcaa9449871b7c17446b5e2eb59b560a0eb836aa"
+    },
+    {
+      "name": "Config.hpp",
+      "path": "src/libslic3r/Config.hpp",
+      "sha256": "455eb2c24a4b25cd8f089d3f020991ab6a1ca4d4d952b10b49fd10b3da5702e4"
+    },
+    {
+      "name": "PrintConfigConstants.hpp",
+      "path": "src/libslic3r/PrintConfigConstants.hpp",
+      "sha256": "eaeb335f616e52049a9ce52697fb4aaebefa2129ced4718dfc4c9170d9a550ce"
+    },
+    {
+      "name": "Preset.cpp",
+      "path": "src/libslic3r/Preset.cpp",
+      "sha256": "af50e30fcb9c17d3eb3f9fc579cb710fe616f4a863a02a4e74bc36cd3b395ee2"
+    },
+    {
+      "name": "Tab.cpp",
+      "path": "src/slic3r/GUI/Tab.cpp",
+      "sha256": "2b7c129434f54a85ed657599aa2de3323cdf085b43bc97074d81aa84a92da577"
+    },
+    {
+      "name": "ConfigManipulation.cpp",
+      "path": "src/slic3r/GUI/ConfigManipulation.cpp",
+      "sha256": "be96a01ff8dec298d7624da2f9a3677eb27342f00fbb398580b464336c0c1d66"
+    },
+    {
+      "name": "MaterialType.cpp",
+      "path": "src/libslic3r/MaterialType.cpp",
+      "sha256": "78daadb9c9e923e83ada34c7485306e3249894eeca2ec1cc49c3dcc143b15a1d"
+    }
+  ]
+}

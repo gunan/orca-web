@@ -1,0 +1,19 @@
+# Native manipulation unit conversions
+
+OrcaSlicer 2.4.2, source `8500fcdccaa10b5099ac20d252af3a7c560046f1`, converts position and size display values using `0.0393700787`, while committed inch values multiply by `25.4`. Rotation, absolute rotation and scale remain unchanged. These constants are intentionally asymmetric and differ from Preview's formatting paths.
+
+`build-manipulation-units-reference.py` compiles the original `GizmoObjectManipulation::update_buffered_value` and `on_change` method bodies without arithmetic edits. A small vector facade supplies three-component multiplication; GUI dispatch records the requested value instead of editing a native scene. Sixteen metric/imperial and valid/invalid-cache scenarios are saved with pinned source, generator, extracted C++ and compiled binary hashes. Eight valid reference cases compare every buffered position/size/angle/scale value and dispatched edit exactly; provenance and input-boundary checks bring the focused unit total to ten. The web conversion helper does not claim to reimplement native selection-cache dispatch.
+
+Prepare's position-offset fields and measured dimensions now follow the selected display units, including the native reciprocal. Inch position edits commit millimeters into the existing geometry operations. Degrees and scale factors remain unchanged. The status bar follows the chosen units; bed and process settings retain their explicitly labeled native units. Switching Preferences creates no geometry edit or Undo entry and does not rewrite saved project data.
+
+## Validation
+
+[Ten focused unit checks](M38_UNITS_UNIT.log) pass. [Six browser checks](M38_UNITS_BROWSER.log) cover immediate display changes, unchanged saved geometry/settings, Undo, inch editing, rotation/scale isolation, save/reopen, grounding, joint transforms and existing preference behavior. The final status-bar label assertion is included in the subsequent full browser run, not this earlier focused log.
+
+The [installed-native browser check](M38_UNITS_NATIVE_BROWSER.log) imports the retained GUI cube through the actual native endpoint, enters1in X and2in Y, exports native 3MF with physical bounds at25.4/50.8mm, verifies Undo/Redo and slices with the installed engine. Wall paths occupy the requested physical bounds and every layer height matches `native-gui-cube-2.4.2.gcode`. This validates model coordinates without commanding a printer. [Observed web inspector](M38_NATIVE_MANIPULATION_UNITS.png).
+
+The unchanged millimeter-only UI fails all three new browser cases. The first fixed-run tests made wrong assumptions about STL auto-centering, the offset required to ground a scaled model and Float32 world-bound precision. Their corrections use the captured initial position, submicrometer grounding precision, exact Float32 bounds and the actual saved joint selection frame. Both failed runs and the original baseline are retained. The first native run passed physical bounds and motion checks but wrongly expected a20mm last layer; the independent GUI fixture ends at20.04mm. The final assertion compares the complete native reference layer sequence instead. [All traces](M38_UNITS_DIAGNOSTICS.zip), [baseline](M38_UNITS_BEFORE.log), [first fixed](M38_UNITS_BROWSER_FIRST.log), [second fixed](M38_UNITS_BROWSER_SECOND.log), [native initial](M38_UNITS_NATIVE_FIRST.log).
+
+## Remaining scope
+
+The web inspector still exposes explicit position offsets and scale factors rather than every native selection-relative center, percentage and editable-size field. Its existing three-decimal formatting and immediate input commits differ from native buffered two-decimal controls. Import unit conversion/detection, remaining Preferences pages, locale formatting, exact desktop appearance and fresh paired GUI interaction remain open. These gaps keep units and transform features partial. The native engine and its slicing settings are unchanged.

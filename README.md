@@ -173,6 +173,8 @@ The old `balanced`/`detail`/`draft` API strings have been replaced by native pre
 
 ## Deployment and limits
 
+[Docker and TrueNAS SCALE deployment status and requirements](docs/DEPLOYMENT.md). The web image can be built separately, but a complete Linux native runtime is still required for a functional slicer deployment.
+
 The Docker image does not redistribute OrcaSlicer. Supply a compatible Linux installation including libraries and resources; mounting only an executable is not sufficient for every distribution. Configure `ORCA_SLICER_BIN` and `ORCA_RESOURCES_DIR` inside the container. Native configuration and optional feature helpers also need compatible Linux builds with their manifests; the currently tested macOS binaries cannot run in this image. `HOST=0.0.0.0` is set inside the image for container networking.
 
 Authentication and multi-user isolation are not implemented. Keep the local listener private; a network deployment needs an authenticated reverse proxy and appropriate model/printer isolation. Run only one server per `DATA_DIR`. Queued/running jobs can be cancelled. Restart marks interrupted work failed and cleans owned temporary artifacts while retaining ready output. Calibration sessions expire after 24 hours or a server restart and must be regenerated. Multiple output plates currently fail clearly instead of returning an arbitrary plate.

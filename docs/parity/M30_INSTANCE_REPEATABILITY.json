@@ -1,0 +1,71 @@
+{
+  "baseline": "OrcaSlicer 2.4.2",
+  "command": "npm run test:native",
+  "runOrder": [
+    "reference",
+    "reference",
+    "web",
+    "web"
+  ],
+  "runs": [
+    {
+      "name": "reference",
+      "inputSHA256": "39d11afa9a18af4ada8fd15f9b046ab28b10d1d9f89fe61f63b5abf4d730bcca",
+      "motionSHA256": "981b4b436332ebbcdcd46258531ae372cfc785845bb7eac503511128f024dc4c",
+      "commandCount": 11057
+    },
+    {
+      "name": "reference",
+      "inputSHA256": "39d11afa9a18af4ada8fd15f9b046ab28b10d1d9f89fe61f63b5abf4d730bcca",
+      "motionSHA256": "199409bf09a3e5ba39dfb8a7425595f915f3821be3b2496c7b712f7776c2ef4c",
+      "commandCount": 11189
+    },
+    {
+      "name": "web",
+      "inputSHA256": "0abf2644f4529ed7ef3f60918ae0f401cb796dc46bc32cd11a30bd9ed2fd2f7d",
+      "motionSHA256": "981b4b436332ebbcdcd46258531ae372cfc785845bb7eac503511128f024dc4c",
+      "commandCount": 11057
+    },
+    {
+      "name": "web",
+      "inputSHA256": "0abf2644f4529ed7ef3f60918ae0f401cb796dc46bc32cd11a30bd9ed2fd2f7d",
+      "motionSHA256": "981b4b436332ebbcdcd46258531ae372cfc785845bb7eac503511128f024dc4c",
+      "commandCount": 11057
+    }
+  ],
+  "pairwiseMotionDifferences": [
+    {
+      "from": 0,
+      "to": 1,
+      "differentMotionLines": 2204
+    },
+    {
+      "from": 0,
+      "to": 2,
+      "differentMotionLines": 0
+    },
+    {
+      "from": 0,
+      "to": 3,
+      "differentMotionLines": 0
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "differentMotionLines": 2204
+    },
+    {
+      "from": 1,
+      "to": 3,
+      "differentMotionLines": 2204
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "differentMotionLines": 0
+    }
+  ],
+  "archiveSha256": "4debd62760b032dabe183d8bdbac141ace9918d4298609d42a2fbeebe1fd1357",
+  "result": "failed",
+  "limitations": "Native-readable archive entries equal independent XML edits. Strict fixed reference/reference/web/web comparison fails between the two byte-identical reference inputs (2204 motion lines). No retries or tolerance selection. This demonstrates native repeatability failure independent of web archive generation."
+}

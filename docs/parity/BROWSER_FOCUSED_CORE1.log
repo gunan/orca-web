@@ -1,0 +1,34 @@
+[WebServer] (node:45084) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 23 tests using 2 workers
+
+(node:45103) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:45102) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 tests/e2e/calibration-project-export.spec.js:10:1 › native calibration export sends exact token/IDs/objects and downloads all four generated command layers (1.3s)
+  ✓   1 tests/e2e/core-workflows.spec.js:17:1 › add an installed printer and load its compatible material and print settings (1.7s)
+  ✓   3 tests/e2e/calibration-project-export.spec.js:11:1 › expired native calibration export fails visibly without falling back to handle-only geometry (1.3s)
+  ✓   5 tests/e2e/calibration-project-export.spec.js:12:1 › ordinary JSON save remains a scene file and explains calibration token persistence limits (1.2s)
+  ✓   4 tests/e2e/core-workflows.spec.js:53:1 › create a printer, choose a filament and print settings, load a model, rotate and reopen the saved project (3.6s)
+  ✓   6 tests/e2e/multi-selection.spec.js:8:1 › tree toggles and ranges select complete targets, shortcuts respect text inputs, and single-object tools cannot mutate the primary (1.5s)
+  ✓   7 tests/e2e/core-workflows.spec.js:134:1 › visible rotation presets update every axis, support free angles, and undo as individual actions (1.9s)
+  ✓   8 tests/e2e/multi-selection.spec.js:13:1 › joint numeric transforms survive project save/reload and undo; center/drop and batch duplicate/delete preserve relative geometry (2.5s)
+  ✓   9 tests/e2e/core-workflows.spec.js:192:1 › dragging the rotation ring shows live snapped angles, commits one Undo step, and supports free rotation (2.5s)
+  ✓  10 tests/e2e/multi-selection.spec.js:18:1 › canvas Cmd/Ctrl click toggles hit objects and Shift rectangle picks visible depth IDs instead of occluded bounds (2.3s)
+  ✓  11 tests/e2e/native-toolbar-states.spec.js:19:62 › native Move states remain visible and match source pixels in light at 1x (1.9s)
+  ✓  12 tests/e2e/multi-selection.spec.js:23:1 › rectangle adds with control, modifier-only hits stay in part scope, and the saved scope survives reload (3.2s)
+  ✓  13 tests/e2e/native-toolbar-states.spec.js:19:62 › native Move states remain visible and match source pixels in light at 2x (2.1s)
+  ✓  14 tests/e2e/multi-selection.spec.js:26:1 › joint gizmo translation updates both meshes in a single history step (1.9s)
+  ✓  15 tests/e2e/native-toolbar-states.spec.js:19:62 › native Move states remain visible and match source pixels in dark at 1x (1.9s)
+  ✓  16 tests/e2e/multi-selection.spec.js:30:71 › retina selection › rectangle ID picking uses backing pixels and keeps hidden and occluded objects out (1.8s)
+  ✓  17 tests/e2e/native-toolbar-states.spec.js:19:62 › native Move states remain visible and match source pixels in dark at 2x (2.2s)
+  ✓  18 tests/e2e/pa-pattern-multiplate.spec.js:13:1 › generated batch keeps plate assignments and submits the full bound scene with the selected plate (1.3s)
+  ✓  19 tests/e2e/paint-fill-preview.spec.js:6:1 › smart fill hover shows the current-state region and white boundary without creating undo or painting (2.2s)
+  ✓  20 tests/e2e/pa-pattern-multiplate.spec.js:14:1 › selected calibration 3MF export has four complete layers and native project export keeps both plates (1.5s)
+  ✓  22 tests/e2e/pa-pattern-multiplate.spec.js:15:1 › imported complete generated batch permits plate switching and selected export while blocking geometry edits (1.9s)
+  ✓  21 tests/e2e/paint-fill-preview.spec.js:7:1 › pointer and bucket hover recompute on tool, clipping and overhang restrictions without a mouse click (3.2s)
+  ✓  23 tests/e2e/paint-fill-preview.spec.js:10:1 › fill hover clears between native normal parts and highlights only the current hit state (2.1s)
+
+  23 passed (27.0s)

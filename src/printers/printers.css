@@ -1,0 +1,80 @@
+.add-printer-dialog {
+  width: min(540px, calc(100vw - 32px));
+  background: var(--surface);
+  color: var(--text);
+}
+.add-printer-dialog header,
+.add-printer-dialog footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.add-printer-dialog h2 {
+  margin: 0;
+}
+.add-printer-dialog p {
+  line-height: 1.5;
+}
+.add-printer-dialog form > label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 14px 0;
+}
+.add-printer-dialog input,
+.add-printer-dialog select {
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 8px;
+  min-width: 0;
+}
+.add-printer-dialog .printer-custom-choice {
+  flex-direction: row;
+  align-items: center;
+}
+.add-printer-dialog fieldset {
+  display: flex;
+  gap: 12px;
+  border: 1px solid var(--line);
+  padding: 12px;
+}
+.add-printer-dialog fieldset label {
+  flex: 1;
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+}
+.add-printer-dialog fieldset input {
+  width: 100%;
+}
+.add-printer-dialog small {
+  display: block;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.add-printer-dialog footer {
+  margin-top: 20px;
+  justify-content: flex-end;
+}
+.add-printer-dialog button {
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--bg);
+  color: var(--text);
+}
+.add-printer-dialog button.primary {
+  background: var(--accent);
+  color: white;
+}
+.add-printer-dialog [role="alert"] {
+  color: #d44e42;
+}
+.add-printer-dialog .printer-review {
+  border: 1px solid var(--line);
+  padding: 12px;
+  margin-top: 12px;
+}

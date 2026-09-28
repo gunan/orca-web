@@ -1,0 +1,25 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFile,writeFile,mkdir,readdir,mkdtemp,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import path from 'node:path';
+import {unzipSync,strFromU8} from 'fflate';
+import {inspectSlicer,runSlicer} from '../../server/slicer.js';
+import {createNativeProjectService} from '../../server/native-projects.js';
+import {importNative3MF} from '../../shared/native-project.js';
+import {fixtureCatalog} from '../fixtures/native-project-catalog.js';
+import {parseGcode} from '../../shared/gcode.js';
+import {derivePreviewAttributes} from '../../shared/gcode-attributes.js';
+const binary=process.env.ORCA_SLICER_BIN||'/Applications/OrcaSlicer.app/Contents/MacOS/OrcaSlicer';
+test('installed native export supplies dimension/diameter metadata but no per-move or per-role times through slice-info or slice-data',{timeout:120000},async t=>{
+ const engine=await inspectSlicer(binary);assert.equal(engine.available,true,engine.error);assert.match(engine.version,/^OrcaSlicer-2\.4\.2\b/);
+ const root=await mkdtemp(path.join(tmpdir(),'orca-preview-scalars-'));t.after(()=>rm(root,{recursive:true,force:true}));for(const name of ['config','output','cache'])await mkdir(path.join(root,name));
+ const project=importNative3MF(await readFile(new URL('../fixtures/orca-2.4.2-cube.3mf',import.meta.url)));project.nativeSettings={...project.nativeSettings,post_process:[],layer_height:'.2',initial_layer_print_height:'.2',brim_type:'no_brim',skirt_loops:'0'};project.objects[0].position=[60,70,0];
+ const service=createNativeProjectService({catalog:fixtureCatalog(project)}),prepared=await service.prepare({project,useEmbeddedSettings:true});await writeFile(path.join(root,'model.3mf'),prepared.bytes);
+ await runSlicer(binary,['--export-slicedata',path.join(root,'cache'),'--slice','0','--arrange','0','--orient','0','--datadir',path.join(root,'config'),'--outputdir',path.join(root,'output'),'--export-3mf','sliced.3mf',path.join(root,'model.3mf')],{cwd:root,timeoutMs:90000,signal:t.signal});
+ const files=await readdir(path.join(root,'output')),gcode=await readFile(path.join(root,'output',files.find(file=>file.endsWith('.gcode'))),'utf8'),parsed=parseGcode(gcode,{includeSource:true}),attributes=derivePreviewAttributes(parsed);
+ assert.ok(attributes.segments.filter(row=>row.height!==null&&row.width!==null&&row.flow!==null).length>100);assert.ok(parsed.nativeEstimates.printTime);assert.ok(attributes.diameters.length);
+ const archive=unzipSync(await readFile(path.join(root,'output','sliced.3mf'))),info=strFromU8(archive['Metadata/slice_info.config']);assert.match(info,/prediction/);assert.match(info,/first_layer_time/);assert.doesNotMatch(info,/roles_times|layers_times|layer_duration|actual_feedrate|mm3_per_mm/);
+ const cache=await readdir(path.join(root,'cache','1')),objectFile=cache.find(file=>/^obj_.*\.json$/.test(file));assert.ok(objectFile);const stored=JSON.parse(await readFile(path.join(root,'cache','1',objectFile),'utf8'));assert.ok(Array.isArray(stored.layers));assert.ok(stored.layers.length>0);assert.doesNotMatch(JSON.stringify(stored),/"(?:roles_times|layers_times|layer_duration|actual_feedrate)"/);
+ t.diagnostic(`${attributes.segments.filter(row=>row.flow!==null).length} native linear flow values, ${stored.layers.length} cached geometry layers; native processed move timing is absent from both inspected exports.`);
+});

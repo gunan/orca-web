@@ -1,0 +1,10 @@
+import{test,expect}from'@playwright/test';import{readFile}from'node:fs/promises';import path from'node:path';import{extractBoundedZip}from'../../shared/import-limits.js';
+const fixture=path.resolve('tests/fixtures/native-gui-cube-2.4.2.3mf');
+async function exported(page){await page.getByRole('button',{name:'Project',exact:true}).click();const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Export native project',exact:true}).click();return extractBoundedZip(await readFile(await(await pending).path()));}
+test('native GUI image assets survive web save and unchanged native export, while edited geometry omits outdated thumbnails',async({page})=>{
+ await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Open Orca Web project').setInputFiles(fixture);await expect(page.getByText('Embedded native presets',{exact:true})).toBeVisible();
+ const original=extractBoundedZip(await readFile(fixture)),first=await exported(page);for(const name of ['plate_1','plate_1_small','plate_no_light_1','top_1'])expect(Buffer.from(first[`Metadata/${name}.png`])).toEqual(Buffer.from(original[`Metadata/${name}.png`]));expect(first['Metadata/pick_1.png']).toBeUndefined();
+ const pending=page.waitForEvent('download');await page.getByRole('contentinfo').getByRole('button',{name:'Save project',exact:true}).click();const json=JSON.parse(await readFile(await(await pending).path(),'utf8'));expect(json.nativeAssets.plates[0].images.pick).toBeTruthy();
+ await page.getByRole('button',{name:'Prepare',exact:true}).click();await page.getByLabel('position X',{exact:true}).fill('40');const changed=await exported(page);expect(Object.keys(changed).filter(name=>name.endsWith('.png'))).toHaveLength(0);
+ await page.getByRole('button',{name:'Prepare',exact:true}).click();await page.getByRole('button',{name:'Undo',exact:true}).click();const undone=await exported(page);expect(Buffer.from(undone['Metadata/plate_1.png'])).toEqual(Buffer.from(original['Metadata/plate_1.png']));
+});

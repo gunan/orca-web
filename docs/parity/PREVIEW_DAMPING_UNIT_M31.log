@@ -1,0 +1,24 @@
+✔ real orbit and pan damping settle in wall-clock time at 4–144 FPS without changing the final view (32.13375ms)
+ℹ {"gesture":"orbit","fps":4,"frames":16,"elapsedMs":4000}
+ℹ {"gesture":"orbit","fps":10,"frames":35,"elapsedMs":3500}
+ℹ {"gesture":"orbit","fps":30,"frames":89,"elapsedMs":2966.666666666669}
+ℹ {"gesture":"orbit","fps":60,"frames":163,"elapsedMs":2716.6666666666642}
+ℹ {"gesture":"orbit","fps":144,"frames":348,"elapsedMs":2416.666666666648}
+ℹ {"gesture":"pan","fps":4,"frames":13,"elapsedMs":3250}
+ℹ {"gesture":"pan","fps":10,"frames":28,"elapsedMs":2800}
+ℹ {"gesture":"pan","fps":30,"frames":69,"elapsedMs":2299.999999999999}
+ℹ {"gesture":"pan","fps":60,"frames":123,"elapsedMs":2050.0000000000036}
+ℹ {"gesture":"pan","fps":144,"frames":252,"elapsedMs":1749.999999999991}
+✔ default frame-based controls demonstrate the slow-render regression (0.272541ms)
+✔ a new gesture resets a long idle gap; Fit drains momentum without disabling future damping (0.137875ms)
+✔ preview renders invalidated frames once and remains idle until a new change (0.404833ms)
+✔ preview drains OrbitControls damping including change events without an endless animation loop (0.083208ms)
+✔ disposed previews cancel pending frames and cannot draw into a detached canvas (0.061167ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 142.150542

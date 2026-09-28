@@ -1,0 +1,113 @@
+[WebServer] (node:32087) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:32095) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/prepare-performance.spec.js:6:1 › Prepare stops actual GPU submissions when idle and redraws model, camera, selection and layout changes (11.1s)
+(node:32194) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/prepare-performance.spec.js:21:1 › paint hover, clipping and cleared cursors redraw while untouched paint workspaces stay idle (31.2s)
+(node:32330) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/e2e/prepare-performance.spec.js:29:1 › variable-layer shader creation, hover uniforms and cleanup submit fresh frames then stop (11.8s)
+
+
+  1) tests/e2e/prepare-performance.spec.js:6:1 › Prepare stops actual GPU submissions when idle and redraws model, camera, selection and layout changes 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 8000ms exceeded while waiting on the predicate
+
+       at ../fixtures/gpu-observation.js:14
+
+      12 | export const gpuDraws=canvas=>canvas.evaluate(c=>Number(c.dataset.testGpuDraws||0));
+      13 | export async function gpuIdle(page,canvas){
+    > 14 |  await expect.poll(async()=>{const before=await gpuDraws(canvas);await page.waitForTimeout(100);return before>0&&await gpuDraws(canvas)===before;},{timeout:8000}).toBe(true);
+         |                                                                                                                                                                    ^
+      15 |  const before=await gpuDraws(canvas);await page.waitForTimeout(200);expect(await gpuDraws(canvas)).toBe(before);return before;
+      16 | }
+      17 | export async function gpuRedraw(page,canvas,action){const before=await gpuIdle(page,canvas);await action();await expect.poll(()=>gpuDraws(canvas)).toBeGreaterThan(before);return gpuIdle(page,canvas);}
+        at gpuIdle (/private/tmp/orca-implementation/m36-prepare-render-stage/tests/fixtures/gpu-observation.js:14:164)
+        at /private/tmp/orca-implementation/m36-prepare-render-stage/tests/e2e/prepare-performance.spec.js:7:101
+
+    Error Context: test-results/m36-focused/prepare-performance-Prepar-e13d7-election-and-layout-changes/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m36-focused/prepare-performance-Prepar-e13d7-election-and-layout-changes/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m36-focused/prepare-performance-Prepar-e13d7-election-and-layout-changes/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/prepare-performance.spec.js:21:1 › paint hover, clipping and cleared cursors redraw while untouched paint workspaces stay idle 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('dialog', { name: 'Paint supports', exact: true }).getByRole('button', { name: 'Top', exact: true })
+
+
+      21 | test('paint hover, clipping and cleared cursors redraw while untouched paint workspaces stay idle',async({page})=>{
+      22 |  await open(page);await page.getByRole('button',{name:'Paint supports',exact:true}).click();const dialog=page.getByRole('dialog',{name:'Paint supports',exact:true}),canvas=dialog.getByRole('img',{name:'Interactive 3D model view',exact:true});
+    > 23 |  await dialog.getByRole('button',{name:'Top',exact:true}).click();await dialog.getByLabel('Painting tool',{exact:true}).selectOption('fill');await gpuIdle(page,canvas);const b=await canvas.boundingBox();
+         |                                                           ^
+      24 |  await gpuRedraw(page,canvas,()=>page.mouse.move(b.x+b.width*.5,b.y+b.height*.5));await expect(canvas).toHaveAttribute('data-paint-fill-preview',/triangles/);
+      25 |  await gpuRedraw(page,canvas,()=>page.mouse.move(b.x+3,b.y+3));await expect(canvas).toHaveAttribute('data-paint-fill-preview','null');
+      26 |  await gpuRedraw(page,canvas,async()=>{await dialog.getByLabel('Clipping axis').selectOption('Z');await dialog.getByLabel('Clipping offset (mm)').fill('10');});await expect(canvas).toHaveAttribute('data-clipping-cap-triangles',/^[1-9]/);
+        at /private/tmp/orca-implementation/m36-prepare-render-stage/tests/e2e/prepare-performance.spec.js:23:59
+
+    Error Context: test-results/m36-focused/prepare-performance-paint--e8080--paint-workspaces-stay-idle/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m36-focused/prepare-performance-paint--e8080--paint-workspaces-stay-idle/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m36-focused/prepare-performance-paint--e8080--paint-workspaces-stay-idle/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests/e2e/prepare-performance.spec.js:29:1 › variable-layer shader creation, hover uniforms and cleanup submit fresh frames then stop 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 8000ms exceeded while waiting on the predicate
+
+       at ../fixtures/gpu-observation.js:14
+
+      12 | export const gpuDraws=canvas=>canvas.evaluate(c=>Number(c.dataset.testGpuDraws||0));
+      13 | export async function gpuIdle(page,canvas){
+    > 14 |  await expect.poll(async()=>{const before=await gpuDraws(canvas);await page.waitForTimeout(100);return before>0&&await gpuDraws(canvas)===before;},{timeout:8000}).toBe(true);
+         |                                                                                                                                                                    ^
+      15 |  const before=await gpuDraws(canvas);await page.waitForTimeout(200);expect(await gpuDraws(canvas)).toBe(before);return before;
+      16 | }
+      17 | export async function gpuRedraw(page,canvas,action){const before=await gpuIdle(page,canvas);await action();await expect.poll(()=>gpuDraws(canvas)).toBeGreaterThan(before);return gpuIdle(page,canvas);}
+        at gpuIdle (/private/tmp/orca-implementation/m36-prepare-render-stage/tests/fixtures/gpu-observation.js:14:164)
+        at gpuRedraw (/private/tmp/orca-implementation/m36-prepare-render-stage/tests/fixtures/gpu-observation.js:17:72)
+        at /private/tmp/orca-implementation/m36-prepare-render-stage/tests/e2e/prepare-performance.spec.js:31:8
+
+    Error Context: test-results/m36-focused/prepare-performance-variab-c9d0a-bmit-fresh-frames-then-stop/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m36-focused/prepare-performance-variab-c9d0a-bmit-fresh-frames-then-stop/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m36-focused/prepare-performance-variab-c9d0a-bmit-fresh-frames-then-stop/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    tests/e2e/prepare-performance.spec.js:6:1 › Prepare stops actual GPU submissions when idle and redraws model, camera, selection and layout changes 
+    tests/e2e/prepare-performance.spec.js:21:1 › paint hover, clipping and cleared cursors redraw while untouched paint workspaces stay idle 
+    tests/e2e/prepare-performance.spec.js:29:1 › variable-layer shader creation, hover uniforms and cleanup submit fresh frames then stop 

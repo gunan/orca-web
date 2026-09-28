@@ -1,0 +1,7 @@
+.project-load-dialog{width:min(390px,90vw);padding:20px;background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:4px}
+.project-load-dialog h2{font-size:14px;font-weight:400;margin:0 0 10px}
+.project-load-dialog p{font-size:14px;font-weight:600;overflow-wrap:anywhere;margin:0 0 16px}
+.project-load-dialog label{display:flex;align-items:center;gap:8px;margin:12px 0;font-size:14px}
+.project-load-dialog input{accent-color:var(--accent)}
+.project-load-dialog footer{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
+.project-load-dialog button{padding:5px 20px;border:1px solid var(--line);border-radius:3px;background:var(--surface-muted);color:var(--text)}

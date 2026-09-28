@@ -1,0 +1,10 @@
+{
+  "version": "2.4.2",
+  "sourceCommit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "origin": "Unmodified installed OrcaSlicer resources, /Applications/OrcaSlicer.app/Contents/Resources",
+  "files": {
+    "hotend.stl": "9335e4cbcab291890d822aac3ed149204ae591de371eabfcaff631bd06c6d9bc",
+    "gouraud_light.vs": "3052ac42b7cb825f6f3dd9416d3ea1d36d870074a2d5ff9ebc929aa172f01f35",
+    "gouraud_light.fs": "bb42b55a36b04fb270004132043aa190039bfa4f3d94085c3efc72b7daf983b3"
+  }
+}

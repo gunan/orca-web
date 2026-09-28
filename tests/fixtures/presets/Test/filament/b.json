@@ -1,0 +1,15 @@
+{
+  "type": "filament",
+  "name": "Test PLA B",
+  "from": "system",
+  "instantiation": "true",
+  "filament_type": [
+    "PLA"
+  ],
+  "filament_diameter": [
+    "1.75"
+  ],
+  "compatible_printers": [
+    "Test Printer B"
+  ]
+}

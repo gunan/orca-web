@@ -1,0 +1,19 @@
+import{test,expect}from'@playwright/test';import{readFile}from'node:fs/promises';import{createHash}from'node:crypto';import path from'node:path';import{createNativeGcodeWorker}from'../../server/native-gcode-worker.js';
+test('native solids stop idle GPU work and render layer, scalar, camera, size and playback changes',async({page})=>{
+ const text=await readFile(path.resolve('tests/fixtures/native-gui-shrink98-2.4.2.gcode'),'utf8'),worker=createNativeGcodeWorker({binary:process.env.ORCA_GCODE_WORKER_BIN||path.resolve(process.env.ORCA_NATIVE_CACHE_DIR||'.native-cache','gcode-build','orca-gcode-worker'),resourcesDir:process.env.ORCA_RESOURCES_DIR||'/Applications/OrcaSlicer.app/Contents/Resources'});let data;try{data={...await worker.process(Buffer.from(text)),sourceSha256:createHash('sha256').update(text).digest('hex'),sourceBytes:Buffer.byteLength(text)};}finally{await worker.shutdown();}
+ const errors=[];page.on('pageerror',error=>errors.push(error.message));await page.route('**/api/jobs',route=>route.request().method()==='POST'?route.fulfill({status:202,json:{id:'native-idle-proof',filename:'GUI cube.gcode',status:'ready'}}):route.continue());await page.route('**/api/jobs/native-idle-proof/download',route=>route.fulfill({contentType:'text/plain',body:text}));await page.route('**/api/jobs/native-preview/capabilities',route=>route.fulfill({json:{available:true,engine:data.engine}}));await page.route('**/api/jobs/native-idle-proof/native-preview',route=>route.fulfill({json:data}));await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Choose a 3D model').setInputFiles(path.resolve('tests/fixtures/cube.stl'));await page.getByRole('button',{name:'Slice model',exact:true}).click();const canvas=page.getByRole('img',{name:'3D G-code toolpaths'});await expect(canvas).toHaveAttribute('data-processor','native');
+ const observations=[];const frames=()=>canvas.evaluate(c=>Number(c.dataset.renderFrames));
+ const idle=async()=>{await expect.poll(async()=>{const before=await frames();await page.waitForTimeout(100);return await frames()===before;},{timeout:20000}).toBe(true);const before=await frames();await page.waitForTimeout(250);expect(await frames()).toBe(before);return before;};
+ const redraw=async(action)=>{const before=await idle(),start=Date.now();await action();await expect.poll(frames).toBeGreaterThan(before);const after=await idle();observations.push({frames:after-before,settledMs:Date.now()-start});};
+ await idle();expect(Number(await canvas.getAttribute('data-visible-volumes'))).toBeGreaterThan(18000);
+ await redraw(()=>page.getByLabel('Last preview layer').fill('49'));
+ await redraw(()=>page.getByLabel('Toolpath color mode').selectOption('actualSpeed'));
+ await redraw(()=>page.getByLabel('Show Travel markers or paths').check());
+ await redraw(()=>page.setViewportSize({width:1380,height:960}));
+ await redraw(async()=>{const b=await canvas.boundingBox();await page.mouse.move(b.x+b.width*.5,b.y+b.height*.5);await page.mouse.down();await page.mouse.move(b.x+b.width*.6,b.y+b.height*.5,{steps:5});await page.mouse.up();});
+ await redraw(()=>page.getByRole('button',{name:'Fit toolpaths'}).click());
+ await redraw(()=>page.getByLabel('Visible native commands').fill('1'));
+ const before=await frames();await page.getByRole('button',{name:'Play toolpath playback'}).click();await expect.poll(frames).toBeGreaterThan(before+1);await page.getByRole('button',{name:'Pause toolpath playback'}).click();await idle();
+ await redraw(()=>page.getByLabel('Show Wipe markers or paths').check());
+ await page.getByRole('button',{name:'Prepare',exact:true}).click();await expect(canvas).toHaveCount(0);await page.waitForTimeout(100);expect(errors).toEqual([]);await test.info().attach('demand-render-observations',{body:JSON.stringify(observations,null,2),contentType:'application/json'});
+});

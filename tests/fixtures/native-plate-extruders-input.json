@@ -1,0 +1,469 @@
+[
+  {
+    "name": "default-one",
+    "input": {
+      "global": {
+        "support_interface_filament": 0,
+        "support_filament": 0,
+        "outer_wall_filament_id": 0,
+        "inner_wall_filament_id": 0,
+        "sparse_infill_filament_id": 0,
+        "internal_solid_filament_id": 0,
+        "top_surface_filament_id": 0,
+        "bottom_surface_filament_id": 0,
+        "enable_support": 0,
+        "raft_layers": 0
+      },
+      "filamentCount": 16,
+      "objects": [
+        {
+          "contained": true,
+          "config": {},
+          "volumes": [
+            {
+              "type": "normal_part",
+              "config": {},
+              "painting": {}
+            }
+          ],
+          "ranges": []
+        }
+      ],
+      "events": []
+    }
+  },
+  {
+    "name": "volume-role-and-paint",
+    "input": {
+      "global": {
+        "support_interface_filament": 0,
+        "support_filament": 0,
+        "outer_wall_filament_id": 0,
+        "inner_wall_filament_id": 0,
+        "sparse_infill_filament_id": 0,
+        "internal_solid_filament_id": 0,
+        "top_surface_filament_id": 0,
+        "bottom_surface_filament_id": 0,
+        "enable_support": 0,
+        "raft_layers": 0
+      },
+      "filamentCount": 16,
+      "objects": [
+        {
+          "contained": true,
+          "config": {},
+          "volumes": [
+            {
+              "type": "normal_part",
+              "config": {
+                "extruder": 2
+              },
+              "painting": {
+                "0": "8C"
+              }
+            },
+            {
+              "type": "modifier_part",
+              "config": {
+                "extruder": 3
+              },
+              "painting": {
+                "0": "8C"
+              }
+            },
+            {
+              "type": "negative_part",
+              "config": {
+                "extruder": 4
+              },
+              "painting": {
+                "0": "8C"
+              }
+            },
+            {
+              "type": "support_enforcer",
+              "config": {
+                "extruder": 5
+              },
+              "painting": {
+                "0": "8C"
+              }
+            },
+            {
+              "type": "support_blocker",
+              "config": {
+                "extruder": 6
+              },
+              "painting": {
+                "0": "8C"
+              }
+            }
+          ],
+          "ranges": []
+        }
+      ],
+      "events": []
+    }
+  },
+  {
+    "name": "nested-painted-subdivision",
+    "input": {
+      "global": {
+        "support_interface_filament": 0,
+        "support_filament": 0,
+        "outer_wall_filament_id": 0,
+        "inner_wall_filament_id": 0,
+        "sparse_infill_filament_id": 0,
+        "internal_solid_filament_id": 0,
+        "top_surface_filament_id": 0,
+        "bottom_surface_filament_id": 0,
+        "enable_support": 0,
+        "raft_layers": 0
+      },
+      "filamentCount": 16,
+      "objects": [
+        {
+          "contained": true,
+          "config": {},
+          "volumes": [
+            {
+              "type": "normal_part",
+              "config": {},
+              "painting": {
+                "0": "480C1C3",
+                "1": "0DC4C6"
+              }
+            }
+          ],
+          "ranges": []
+        }
+      ],
+      "events": []
+    }
+  },
+  {
+    "name": "global-support-and-raft",
+    "input": {
+      "global": {
+        "support_interface_filament": 4,
+        "support_filament": 3,
+        "outer_wall_filament_id": 0,
+        "inner_wall_filament_id": 0,
+        "sparse_infill_filament_id": 0,
+        "internal_solid_filament_id": 0,
+        "top_surface_filament_id": 0,
+        "bottom_surface_filament_id": 0,
+        "enable_support": 1,
+        "raft_layers": 2
+      },
+      "filamentCount": 16,
+      "objects": [
+        {
+          "contained": true,
+          "config": {},
+          "volumes": [
+            {
+              "type": "normal_part",
+              "config": {},
+              "painting": {}
+            }
+          ],
+          "ranges": []
+        }
+      ],
+      "events": []
+    }
+  },
+  {
+    "name": "object-raft-zero-stops-inherited-support",
+    "input": {
+      "global": {
+        "support_interface_filament": 4,
+        "support_filament": 3,
+        "outer_wall_filament_id": 0,
+        "inner_wall_filament_id": 0,
+        "sparse_infill_filament_id": 0,
+        "internal_solid_filament_id": 0,
+        "top_surface_filament_id": 0,
+        "bottom_surface_filament_id": 0,
+        "enable_support": 1,
+        "raft_layers": 0
+      },
+      "filamentCount": 16,
+      "objects": [
+        {
+          "contained": true,
+          "config": {
+            "raft_layers": 0
+          },
+          "volumes": [
+            {
+              "type": "normal_part",
+              "config": {},
+              "painting": {}
+            }
+          ],
+          "ranges": []
+        }
+      ],
+      "events": []
+    }
+  },
+  {
+    "name": "object-support-overrides",
+    "input": {
+      "global": {
+        "support_interface_filament": 4,
+        "support_filament": 3,
+        "outer_wall_filament_id": 0,
+        "inner_wall_filament_id": 0,
+        "sparse_infill_filament_id": 0,
+        "internal_solid_filament_id": 0,
+        "top_surface_filament_id": 0,
+        "bottom_surface_filament_id": 0,
+        "enable_support": 0,
+        "raft_layers": 0
+      },
+      "filamentCount": 16,
+      "objects": [
+        {
+          "contained": true,
+          "config": {
+            "enable_support": 1,
+            "support_filament": 5,
+            "support_interface_filament": 6
+          },
+          "volumes": [
+            {
+              "type": "normal_part",
+              "config": {},
+              "painting": {}
+            }
+          ],
+          "ranges": []
+        }
+      ],
+      "events": []
+    }
+  },
+  {
+    "name": "wall-surface-fallbacks",
+    "input": {
+      "global": {
+        "support_interface_filament": 0,
+        "support_filament": 0,
+        "outer_wall_filament_id": 0,
+        "inner_wall_filament_id": 3,
+        "sparse_infill_filament_id": 5,
+        "internal_solid_filament_id": 4,
+        "top_surface_filament_id": 0,
+        "bottom_surface_filament_id": 0,
+        "enable_support": 0,
+        "raft_layers": 0
+      },
+      "filamentCount": 16,
+      "objects": [
+        {
+          "contained": true,
+          "config": {},
+          "volumes": [
+            {
+              "type": "normal_part",
+              "config": {},
+              "painting": {}
+            }
+          ],
+          "ranges": []
+        }
+      ],
+      "events": []
+    }
+  },
+  {
+    "name": "object-wall-surface-fallbacks",
+    "input": {
+      "global": {
+        "support_interface_filament": 0,
+        "support_filament": 0,
+        "outer_wall_filament_id": 3,
+        "inner_wall_filament_id": 0,
+        "sparse_infill_filament_id": 0,
+        "internal_solid_filament_id": 4,
+        "top_surface_filament_id": 5,
+        "bottom_surface_filament_id": 0,
+        "enable_support": 0,
+        "raft_layers": 0
+      },
+      "filamentCount": 16,
+      "objects": [
+        {
+          "contained": true,
+          "config": {
+            "inner_wall_filament_id": 7,
+            "internal_solid_filament_id": 8,
+            "bottom_surface_filament_id": 9
+          },
+          "volumes": [
+            {
+              "type": "normal_part",
+              "config": {},
+              "painting": {}
+            }
+          ],
+          "ranges": []
+        }
+      ],
+      "events": []
+    }
+  },
+  {
+    "name": "height-ranges-and-tool-events",
+    "input": {
+      "global": {
+        "support_interface_filament": 0,
+        "support_filament": 0,
+        "outer_wall_filament_id": 0,
+        "inner_wall_filament_id": 0,
+        "sparse_infill_filament_id": 0,
+        "internal_solid_filament_id": 0,
+        "top_surface_filament_id": 0,
+        "bottom_surface_filament_id": 0,
+        "enable_support": 0,
+        "raft_layers": 0
+      },
+      "filamentCount": 16,
+      "objects": [
+        {
+          "contained": true,
+          "config": {},
+          "volumes": [
+            {
+              "type": "normal_part",
+              "config": {},
+              "painting": {}
+            }
+          ],
+          "ranges": [
+            {
+              "extruder": 6
+            },
+            {
+              "extruder": 0
+            },
+            {}
+          ]
+        }
+      ],
+      "events": [
+        {
+          "type": "ToolChange",
+          "extruder": 7
+        },
+        {
+          "type": "ToolChange",
+          "extruder": 17
+        },
+        {
+          "type": "PausePrint",
+          "extruder": 8
+        }
+      ]
+    }
+  },
+  {
+    "name": "only-instance-zero-is-contained",
+    "input": {
+      "global": {
+        "support_interface_filament": 0,
+        "support_filament": 0,
+        "outer_wall_filament_id": 0,
+        "inner_wall_filament_id": 0,
+        "sparse_infill_filament_id": 0,
+        "internal_solid_filament_id": 0,
+        "top_surface_filament_id": 0,
+        "bottom_surface_filament_id": 0,
+        "enable_support": 0,
+        "raft_layers": 0
+      },
+      "filamentCount": 16,
+      "objects": [
+        {
+          "contained": false,
+          "config": {},
+          "volumes": [
+            {
+              "type": "normal_part",
+              "config": {},
+              "painting": {}
+            }
+          ],
+          "ranges": []
+        }
+      ],
+      "events": []
+    }
+  },
+  {
+    "name": "tool-event-outside-instance-zero-still-counts",
+    "input": {
+      "global": {
+        "support_interface_filament": 0,
+        "support_filament": 0,
+        "outer_wall_filament_id": 0,
+        "inner_wall_filament_id": 0,
+        "sparse_infill_filament_id": 0,
+        "internal_solid_filament_id": 0,
+        "top_surface_filament_id": 0,
+        "bottom_surface_filament_id": 0,
+        "enable_support": 0,
+        "raft_layers": 0
+      },
+      "filamentCount": 16,
+      "objects": [
+        {
+          "contained": false,
+          "config": {},
+          "volumes": [
+            {
+              "type": "normal_part",
+              "config": {},
+              "painting": {}
+            }
+          ],
+          "ranges": []
+        }
+      ],
+      "events": [
+        {
+          "type": "ToolChange",
+          "extruder": 4
+        }
+      ]
+    }
+  },
+  {
+    "name": "empty-model-does-not-count-events",
+    "input": {
+      "global": {
+        "support_interface_filament": 0,
+        "support_filament": 0,
+        "outer_wall_filament_id": 0,
+        "inner_wall_filament_id": 0,
+        "sparse_infill_filament_id": 0,
+        "internal_solid_filament_id": 0,
+        "top_surface_filament_id": 0,
+        "bottom_surface_filament_id": 0,
+        "enable_support": 0,
+        "raft_layers": 0
+      },
+      "filamentCount": 16,
+      "objects": [],
+      "events": [
+        {
+          "type": "ToolChange",
+          "extruder": 4
+        }
+      ]
+    }
+  }
+]

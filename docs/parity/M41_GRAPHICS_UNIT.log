@@ -1,0 +1,20 @@
+✔ FPS caps match original native std::stoi and clamping across malformed values and signed overflow (0.436833ms)
+✔ frame-start pacing matches the original native millisecond wait calculation (0.075584ms)
+✔ completed-frame samples match original RenderStats including its strict1000ms boundary and idle interval (0.083917ms)
+✔ graphics preferences normalize stored caps and retain explicit persistence errors (0.522083ms)
+✔ graphics reference retains the pinned source, extracted C++ and generator provenance (0.84575ms)
+✔ native preference declaration export has unique IDs, explicit unimplemented plans, source guards and honest existing test references (1.972625ms)
+✔ preview renders invalidated frames once and remains idle until a new change (1.745666ms)
+✔ preview drains OrbitControls damping including change events without an endless animation loop (0.106416ms)
+✔ disposed previews cancel pending frames and cannot draw into a detached canvas (0.063792ms)
+✔ a capped viewport coalesces continuous invalidation and leaves no timer while idle (0.489917ms)
+✔ changing the cap releases a waiting frame and disposal cancels all scheduled work (0.087667ms)
+✔ render duration consumes the native frame budget and a trailing damped frame still draws (0.08075ms)
+ℹ tests 12
+ℹ suites 0
+ℹ pass 12
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 47.403

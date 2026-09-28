@@ -1,0 +1,11 @@
+In file included from /private/tmp/orca-implementation/m46-geometry-import-stage/tests/fixtures/native-geometry-import-reference.cpp:4:
+/private/tmp/orca-implementation/m28-native-emboss-worker/upstream/repository/deps_src/nlohmann/json.hpp:9050:35: warning: identifier '_json' preceded by whitespace in a literal operator declaration is deprecated [-Wdeprecated-literal-operator]
+ 9050 | inline nlohmann::json operator "" _json(const char* s, std::size_t n)
+      |                       ~~~~~~~~~~~~^~~~~
+      |                       operator""_json
+/private/tmp/orca-implementation/m28-native-emboss-worker/upstream/repository/deps_src/nlohmann/json.hpp:9069:49: warning: identifier '_json_pointer' preceded by whitespace in a literal operator declaration is deprecated [-Wdeprecated-literal-operator]
+ 9069 | inline nlohmann::json::json_pointer operator "" _json_pointer(const char* s, std::size_t n)
+      |                                     ~~~~~~~~~~~~^~~~~~~~~~~~~
+      |                                     operator""_json_pointer
+2 warnings generated.
+Compiled original native placement methods:10 first-instance/auto-drop/centering cases.

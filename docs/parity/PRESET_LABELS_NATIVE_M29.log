@@ -1,0 +1,15 @@
+
+> orca-web@0.1.0 test:e2e:native
+> playwright test --config playwright.native.config.js --config playwright.m29.native.focused.config.js tests/native-e2e/native-project.spec.js
+
+[WebServer] (node:89600) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:89799) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/native-e2e/native-project.spec.js:11:1 › browser native project edits and layer events produce actual native G-code (10.6s)
+  ✓  2 tests/native-e2e/native-project.spec.js:19:1 › browser native part overrides and two filament slots reach the installed engine (9.3s)
+
+  2 passed (36.8s)

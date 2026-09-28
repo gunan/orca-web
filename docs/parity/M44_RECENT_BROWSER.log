@@ -1,0 +1,24 @@
+[WebServer] (node:83423) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 13 tests using 2 workers
+
+(node:83428) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:83427) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 tests/e2e/recent-store.spec.js:4:1 › concurrent writers preserve both copies and atomically prune to the latest persisted limit (603ms)
+  ✓   3 tests/e2e/recent-store.spec.js:5:1 › a failed pruning transaction retains the previous preference and every copy (557ms)
+  ✓   4 tests/e2e/recent-store.spec.js:6:1 › same-name different content remains distinguishable; tampered same-size payloads fail integrity checks (748ms)
+  ✓   5 tests/e2e/recent-store.spec.js:7:1 › damaged metadata is isolated, Clear all removes hidden entries and unavailable storage rejects explicitly (864ms)
+  ✓   1 tests/e2e/recent-files.spec.js:7:1 › recent projects preserve MRU order, deduplicate identical copies and reopen the saved geometry after reload (6.1s)
+  ✓   6 tests/e2e/recent-files.spec.js:8:1 › history preferences prune immediately, persist, disable at zero and stay outside model Undo (5.6s)
+  ✓   7 tests/e2e/recent-files.spec.js:9:1 › per-item removal and File-menu reopen operate on the same persisted recent history (4.3s)
+  ✓   8 tests/e2e/recent-files.spec.js:10:1 › STL and STEP recent imports are opt-in; reopening a model appends real geometry (2.2s)
+  ✓   9 tests/e2e/recent-files.spec.js:11:1 › invalid and cancelled project opens never enter history or replace the current project (1.5s)
+  ✓  10 tests/e2e/recent-files.spec.js:12:1 › failed recent-copy writes leave the imported project usable and roll back its metadata (2.4s)
+  ✓  11 tests/e2e/recent-files.spec.js:13:1 › missing recent copies report a recoverable error without discarding edited geometry (2.7s)
+  ✓  12 tests/e2e/recent-files.spec.js:14:1 › another tab receives recent changes and compact cards remain keyboard operable (3.5s)
+  ✓  13 tests/e2e/recent-files.spec.js:15:1 › cancel during recent-copy verification preserves current edits and does not reopen after delayed work completes (2.7s)
+
+  13 passed (31.9s)

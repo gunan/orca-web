@@ -1,0 +1,1 @@
+{"root":200,"bundle":200,"iconManifest":200,"rotationIcon":200,"health":503,"note":"Web packaging passes. Native Linux runtime is not bundled, so native health is correctly unavailable.","uid":1000,"gid":1000}

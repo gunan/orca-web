@@ -1,0 +1,26 @@
+.native-preferences-dialog{width:min(520px,90vw);padding:24px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--text);box-shadow:0 16px 64px #0005}
+.native-preferences-dialog header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.native-preferences-dialog h2{margin:0;font-size:18px}
+.native-preferences-dialog h3{font-size:14px;margin:20px 0 10px}
+.native-preferences-dialog fieldset{display:grid;gap:12px;min-width:0;margin:0;padding:16px;border:1px solid var(--line)}
+.native-preferences-dialog legend{color:var(--subtle);padding:0 4px}
+.native-preferences-dialog label{display:grid;grid-template-columns:minmax(0,1fr) 150px;align-items:center;gap:16px}
+.native-preferences-dialog select,.native-preferences-dialog input[type=text]{width:100%;min-width:0;padding:6px;background:var(--input);color:var(--text);border:1px solid var(--line);border-radius:3px}
+.native-preferences-dialog .camera-checkbox{display:flex;justify-content:flex-start;gap:8px}
+.native-preferences-dialog input[type=checkbox]{width:16px;height:16px;flex:none;margin:0;accent-color:var(--accent)}
+.native-preferences-dialog button{padding:5px 12px;background:var(--surface-muted);border:1px solid var(--line);border-radius:3px;cursor:pointer}
+.native-preferences-dialog header button{padding:2px 8px}
+.native-preferences-dialog p{line-height:1.5;color:var(--subtle)}
+.native-preferences-dialog [role=alert]{color:var(--text);border-left:3px solid var(--accent);padding-left:8px}
+.native-preferences-dialog footer{display:flex;justify-content:flex-end;margin-top:20px}
+@media(max-width:520px){.native-preferences-dialog{padding:16px}.native-preferences-dialog label{grid-template-columns:minmax(0,1fr) 130px;gap:10px}.native-preferences-dialog fieldset{padding:12px}}
+
+.native-preferences-dialog .native-preference-spin{display:flex;position:relative;align-items:center;gap:4px;height:32px;min-width:0;border:1px solid var(--line);border-radius:3px;background:var(--input)}
+.native-preferences-dialog .native-preference-spin:focus-within{border-color:var(--accent)}
+.native-preferences-dialog .native-preference-spin input{flex:1;min-width:0;width:0;border:0;padding:4px 1px;background:transparent;outline:none}
+.native-preferences-dialog .native-preference-arrows{display:flex;flex-direction:column;align-self:stretch;flex:none;width:20px;padding:2px}
+.native-preferences-dialog .native-preference-arrows button{display:flex;align-items:center;justify-content:center;flex:1;padding:0;border:0;border-radius:0;background:transparent;touch-action:none}
+.native-preferences-dialog .native-preference-arrows button:first-child{border-bottom:1px solid var(--line)}
+.native-preferences-dialog .native-preference-arrows button:hover{background:var(--surface-muted)}
+.native-preferences-dialog .native-preference-arrows img{width:12px;height:6px}
+.native-preferences-dialog .native-preference-unit{padding-right:5px;color:var(--subtle);font-size:12px}

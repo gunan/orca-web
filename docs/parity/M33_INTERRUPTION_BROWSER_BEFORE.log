@@ -1,0 +1,121 @@
+[WebServer] (node:16922) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:16927) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/prime-tower-drag.spec.js:52:88 › lost pointer capture cancels a tower drag and releases its temporary layout (9.2s)
+(node:16971) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/prime-tower-drag.spec.js:52:88 › window blur cancels a tower drag and releases its temporary layout (9.6s)
+(node:17030) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/e2e/prime-tower-drag.spec.js:52:88 › preview replacement cancels a tower drag and releases its temporary layout (10.7s)
+
+
+  1) tests/e2e/prime-tower-drag.spec.js:52:88 › lost pointer capture cancels a tower drag and releases its temporary layout 
+
+    Error: expect(received).toMatchObject(expected)
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+    -   "dragging": false,
+    +   "dragging": true,
+      }
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      56 |  }else if(interruption==='window blur')await page.evaluate(()=>window.dispatchEvent(new Event('blur')));
+      57 |  else await page.getByLabel('Layer height',{exact:true}).fill('0.3');
+    > 58 |  await expect.poll(()=>interaction(page)).toMatchObject({dragging:false});await page.mouse.up();
+         |                                           ^
+      59 |  await expect.poll(()=>tower(page)).toMatchObject({status:'ready',position:[100,140]});
+      60 |  await expect(page.getByRole('region',{name:'Selected prime tower'})).toBeVisible();
+      61 |  const data=await saved(page);expect(data.nativeSettings.wipe_tower_x).toEqual(p.nativeSettings.wipe_tower_x);expect(data.nativeSettings.wipe_tower_y).toEqual(p.nativeSettings.wipe_tower_y);expect(data.objects).toEqual(p.objects);
+        at /private/tmp/orca-implementation/m33-tower-interruption-stage/tests/e2e/prime-tower-drag.spec.js:58:43
+
+    Error Context: test-results/m33-focused/prime-tower-drag-lost-poin-df671-leases-its-temporary-layout/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m33-focused/prime-tower-drag-lost-poin-df671-leases-its-temporary-layout/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m33-focused/prime-tower-drag-lost-poin-df671-leases-its-temporary-layout/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/prime-tower-drag.spec.js:52:88 › window blur cancels a tower drag and releases its temporary layout 
+
+    Error: expect(received).toMatchObject(expected)
+
+    - Expected  - 1
+    + Received  + 1
+
+      Object {
+    -   "dragging": false,
+    +   "dragging": true,
+      }
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      56 |  }else if(interruption==='window blur')await page.evaluate(()=>window.dispatchEvent(new Event('blur')));
+      57 |  else await page.getByLabel('Layer height',{exact:true}).fill('0.3');
+    > 58 |  await expect.poll(()=>interaction(page)).toMatchObject({dragging:false});await page.mouse.up();
+         |                                           ^
+      59 |  await expect.poll(()=>tower(page)).toMatchObject({status:'ready',position:[100,140]});
+      60 |  await expect(page.getByRole('region',{name:'Selected prime tower'})).toBeVisible();
+      61 |  const data=await saved(page);expect(data.nativeSettings.wipe_tower_x).toEqual(p.nativeSettings.wipe_tower_x);expect(data.nativeSettings.wipe_tower_y).toEqual(p.nativeSettings.wipe_tower_y);expect(data.objects).toEqual(p.objects);
+        at /private/tmp/orca-implementation/m33-tower-interruption-stage/tests/e2e/prime-tower-drag.spec.js:58:43
+
+    Error Context: test-results/m33-focused/prime-tower-drag-window-bl-c29cb-leases-its-temporary-layout/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m33-focused/prime-tower-drag-window-bl-c29cb-leases-its-temporary-layout/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m33-focused/prime-tower-drag-window-bl-c29cb-leases-its-temporary-layout/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests/e2e/prime-tower-drag.spec.js:52:88 › preview replacement cancels a tower drag and releases its temporary layout 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('region', { name: 'Selected prime tower' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('region', { name: 'Selected prime tower' }) with timeout 5000ms
+      - waiting for getByRole('region', { name: 'Selected prime tower' })
+
+
+      58 |  await expect.poll(()=>interaction(page)).toMatchObject({dragging:false});await page.mouse.up();
+      59 |  await expect.poll(()=>tower(page)).toMatchObject({status:'ready',position:[100,140]});
+    > 60 |  await expect(page.getByRole('region',{name:'Selected prime tower'})).toBeVisible();
+         |                                                                       ^
+      61 |  const data=await saved(page);expect(data.nativeSettings.wipe_tower_x).toEqual(p.nativeSettings.wipe_tower_x);expect(data.nativeSettings.wipe_tower_y).toEqual(p.nativeSettings.wipe_tower_y);expect(data.objects).toEqual(p.objects);
+      62 |  if(interruption!=='preview replacement')await expect(page.getByRole('button',{name:'Undo',exact:true})).toBeDisabled();
+      63 |  const expected=await grab(page,[12,-8]);await page.mouse.up();await expect.poll(async()=>((await tower(page)).position?.[0]??NaN)).toBeCloseTo(expected[0],4);expect(errors).toEqual([]);
+        at /private/tmp/orca-implementation/m33-tower-interruption-stage/tests/e2e/prime-tower-drag.spec.js:60:71
+
+    Error Context: test-results/m33-focused/prime-tower-drag-preview-r-d7696-leases-its-temporary-layout/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m33-focused/prime-tower-drag-preview-r-d7696-leases-its-temporary-layout/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m33-focused/prime-tower-drag-preview-r-d7696-leases-its-temporary-layout/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    tests/e2e/prime-tower-drag.spec.js:52:88 › lost pointer capture cancels a tower drag and releases its temporary layout 
+    tests/e2e/prime-tower-drag.spec.js:52:88 › window blur cancels a tower drag and releases its temporary layout 
+    tests/e2e/prime-tower-drag.spec.js:52:88 › preview replacement cancels a tower drag and releases its temporary layout 

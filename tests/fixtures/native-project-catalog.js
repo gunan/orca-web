@@ -1,0 +1,7 @@
+import { definitionsByScope } from '../../shared/profile-settings.js';
+export function fixtureCatalog(base){
+  const printer={...Object.fromEntries(definitionsByScope.machine.filter(d=>base.nativeSettings[d.key]!==undefined).map(d=>[d.key,base.nativeSettings[d.key]])),name:base.nativePresetNames.printer,printer_settings_id:base.nativePresetNames.printer};
+  const process={...Object.fromEntries(definitionsByScope.process.filter(d=>base.nativeSettings[d.key]!==undefined).map(d=>[d.key,base.nativeSettings[d.key]])),name:base.nativePresetNames.process,print_settings_id:base.nativePresetNames.process};
+  const filament={...Object.fromEntries(definitionsByScope.filament.filter(d=>base.nativeSettings[d.key]!==undefined).map(d=>[d.key,base.nativeSettings[d.key]])),name:base.nativePresetNames.filaments[0],filament_settings_id:base.nativePresetNames.filaments,filament_colour:['#FF0000']};
+  return{list(){return{printers:[{id:'printer',name:printer.name}],processes:[{id:'process',name:process.name}],filaments:[{id:'red',name:filament.name},{id:'blue',name:'Blue PLA'}],defaults:{printerId:'printer',processId:'process',filamentId:'red'}};},resolveSelection({printerId,processId,filamentId}){if(printerId!=='printer'||processId!=='process'||!['red','blue'].includes(filamentId))throw new Error('Unknown preset ID');return structuredClone({printer,process,filament:filamentId==='red'?filament:{...filament,name:'Blue PLA',filament_settings_id:['Blue PLA'],filament_colour:['#0000FF']}});}};
+}

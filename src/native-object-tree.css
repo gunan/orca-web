@@ -1,0 +1,23 @@
+.native-sidebar .scene-object-list.native-tree-panel {display:block;max-height:36vh;min-height:130px;overflow:auto;}
+.native-object-tree {min-width:0;position:relative;padding:2px 0;}
+.native-tree-row,.native-tree-row.scene-object-row {display:flex;align-items:center;gap:2px;min-height:27px;padding:2px 5px 2px calc(3px + var(--tree-depth)*11px);position:relative;}
+.native-tree-row:focus-visible {outline:2px solid var(--accent);outline-offset:-2px;}
+.native-tree-row.selected {background:color-mix(in srgb,var(--accent) 15%,transparent);box-shadow:inset 3px 0 var(--accent);}
+.native-tree-row.active-plate>.tree-label {font-weight:700;}
+.native-tree-row button,.native-tree-row.scene-object-row button {background:transparent;border:0;box-shadow:none;min-width:0;padding:1px;line-height:18px;border-radius:3px;}
+.native-tree-row button:hover {background:color-mix(in srgb,var(--accent) 13%,transparent);}
+.native-tree-row .tree-disclosure,.native-tree-row.scene-object-row .tree-disclosure {flex:0 0 14px;text-align:center;font-size:13px;}
+.native-tree-row .tree-label,.native-tree-row.scene-object-row .tree-label {flex:1;display:flex;align-items:center;gap:3px;text-align:left;overflow:hidden;font-size:11px;}
+.tree-label>span:last-child {overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+.native-tree-row .tree-action,.native-tree-row.scene-object-row .tree-action {flex:0 0 18px;width:18px;height:20px;text-align:center;overflow:visible;}
+.native-tree-row .native-icon {width:16px;height:16px;flex:0 0 16px;}
+.native-tree-row .native-icon img {width:16px;height:16px;}
+.native-tree-row .tree-filament {font-size:10px;min-width:15px;text-align:center;border:1px solid var(--line);border-radius:2px;}
+.tree-plate-badge {font-size:9px;color:var(--subtle);}
+.native-tree-panel .tree-scope-note {font-size:10px;line-height:1.3;margin:8px;color:var(--subtle);}
+.tree-context {position:absolute;z-index:10;background:var(--panel);border:1px solid var(--line);box-shadow:0 3px 10px #0003;right:0;top:100%;padding:5px;}
+.tree-context button {display:block;white-space:nowrap;}
+
+.native-sidebar .scene-object-list.native-tree-panel:has(>p) {display:block;}
+
+.native-sidebar .scene-object-list.native-tree-panel[data-empty="true"] {display:none;}

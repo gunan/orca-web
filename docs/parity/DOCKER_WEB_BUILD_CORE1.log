@@ -1,0 +1,78 @@
+DEPRECATED: The legacy builder is deprecated and will be removed in a future release.
+            Install the buildx component to build images with BuildKit:
+            https://docs.docker.com/go/buildx/
+
+Sending build context to Docker daemon  4.852MB
+Step 1/23 : FROM node:20-bookworm-slim AS build
+ ---> 2cf067cfed83
+Step 2/23 : WORKDIR /app
+ ---> Using cache
+ ---> ad7f9cb08c76
+Step 3/23 : COPY package*.json ./
+ ---> Using cache
+ ---> 7aca677f7330
+Step 4/23 : RUN npm ci
+ ---> Using cache
+ ---> d616298dd841
+Step 5/23 : COPY index.html vite.config.js ./
+ ---> Using cache
+ ---> 34ce25b670c1
+Step 6/23 : COPY src ./src
+ ---> Using cache
+ ---> f3bf5718d034
+Step 7/23 : COPY shared ./shared
+ ---> Using cache
+ ---> 5ae1d43de625
+Step 8/23 : COPY public ./public
+ ---> Using cache
+ ---> 4d7c67acd62a
+Step 9/23 : RUN npm run build
+ ---> Using cache
+ ---> 05928bc76bd1
+Step 10/23 : FROM node:20-bookworm-slim
+ ---> 2cf067cfed83
+Step 11/23 : ENV NODE_ENV=production HOST=0.0.0.0 PORT=3000 DATA_DIR=/data ORCA_SLICER_BIN=/opt/orca/OrcaSlicer
+ ---> Using cache
+ ---> da0d0bb9170d
+Step 12/23 : WORKDIR /app
+ ---> Using cache
+ ---> ba9aa14ef04f
+Step 13/23 : COPY package*.json ./
+ ---> Using cache
+ ---> e6cbfa37a686
+Step 14/23 : RUN npm ci --omit=dev && npm cache clean --force
+ ---> Using cache
+ ---> 519b9240684c
+Step 15/23 : COPY --from=build /app/dist ./dist
+ ---> Using cache
+ ---> c2591e4402a4
+Step 16/23 : COPY server ./server
+ ---> Using cache
+ ---> 6645cf8a7533
+Step 17/23 : COPY shared ./shared
+ ---> Using cache
+ ---> d4189aa4deb7
+Step 18/23 : COPY src/model-loader.js src/importers.js ./src/
+ ---> 53c2e4903210
+Step 19/23 : RUN mkdir -p /data && chown -R node:node /app /data
+ ---> Running in d800ee2d5b95
+ ---> Removed intermediate container d800ee2d5b95
+ ---> 24f162d8d3d3
+Step 20/23 : USER node
+ ---> Running in 8a224d7c77d3
+ ---> Removed intermediate container 8a224d7c77d3
+ ---> 004f5514486b
+Step 21/23 : EXPOSE 3000
+ ---> Running in d425eb0fcda4
+ ---> Removed intermediate container d425eb0fcda4
+ ---> c0273412160f
+Step 22/23 : VOLUME ["/data"]
+ ---> Running in d4fd54ed9da1
+ ---> Removed intermediate container d4fd54ed9da1
+ ---> 4cfc0983fb30
+Step 23/23 : CMD ["node", "server/index.js"]
+ ---> Running in 998176da72ad
+ ---> Removed intermediate container 998176da72ad
+ ---> 464afd9f33f0
+Successfully built 464afd9f33f0
+Successfully tagged orca-web:core-workflows-1

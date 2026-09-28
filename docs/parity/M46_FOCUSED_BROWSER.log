@@ -1,0 +1,43 @@
+[WebServer] (node:762) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 32 tests using 2 workers
+
+(node:808) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:807) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 tests/e2e/project-geometry.spec.js:13:1 › geometry Add retains linked parts, painting and layer profiles and strips imported overrides in the saved project (2.2s)
+  ✓   1 tests/e2e/import-transaction.spec.js:27:1 › same-project reload blocks edits until the catalog commits, then Drop and Undo preserve the new edit (2.3s)
+  ✓   4 tests/e2e/import-transaction.spec.js:38:1 › cancelled catalog restoration keeps edits, history and preset readiness after the late response (2.2s)
+  ✓   3 tests/e2e/project-geometry.spec.js:14:1 › geometry-only Open retains current material colors and purge settings while replacing objects (3.6s)
+  ✓   6 tests/e2e/project-geometry.spec.js:15:1 › repeated geometry Add keeps separate model families and preserves exported paint (2.0s)
+  ✓   5 tests/e2e/import-transaction.spec.js:50:1 › failed catalog restoration preserves the previous catalog, project and dirty state (3.8s)
+  ✓   7 tests/e2e/project-geometry.spec.js:16:1 › failed geometry import and cancelled delayed API response retain the project and Undo history (1.8s)
+  ✓   8 tests/e2e/import-transaction.spec.js:64:1 › Escape cancels a native project upload and its late response cannot replace the current project (1.6s)
+  ✓   9 tests/e2e/project-load-preferences.spec.js:7:1 › native Ask When Relevant is the default and all four choices persist (2.1s)
+  ✓  10 tests/e2e/import-transaction.spec.js:74:1 › cancelled local model read cannot append geometry after a subsequent import completes (1.9s)
+  ✓  11 tests/e2e/project-load-preferences.spec.js:8:1 › adding a 3MF to an empty plate opens its embedded presets under the default policy (1.2s)
+  ✓  12 tests/e2e/import-transaction.spec.js:86:1 › cancelling Open from Preview preserves the completed job and its download (2.1s)
+  ✓  13 tests/e2e/project-load-preferences.spec.js:9:1 › adding a 3MF to existing geometry asks, defaults to geometry, cancels cleanly and appends without changing presets (1.5s)
+  ✓  14 tests/e2e/import-transaction.spec.js:98:1 › a cancelled local read failure cannot replace the status of a later successful import (1.5s)
+  ✓  15 tests/e2e/project-load-preferences.spec.js:10:1 › Always Ask explicit Open chooses native project settings only after approval, and Escape preserves the scene (1.6s)
+  ✓  17 tests/e2e/project-load-preferences.spec.js:11:1 › explicit geometry-only Open replaces old geometry after discard and keeps the selected print settings (1.6s)
+  ✓  18 tests/e2e/project-load-preferences.spec.js:12:1 › Load All replaces through the existing discard transaction when adding a project to edited geometry (1.4s)
+  ✓  19 tests/e2e/project-load-preferences.spec.js:13:1 › corrupt load preferences recover to native defaults and denied writes retain explicit session behavior (1.8s)
+  ✓  16 tests/e2e/recent-files.spec.js:7:1 › recent projects preserve MRU order, deduplicate identical copies and reopen the saved geometry after reload (6.6s)
+  ✓  20 tests/e2e/project-load-preferences.spec.js:14:1 › cancelling a delayed geometry-only Open leaves the previous model unchanged after reading finishes (1.5s)
+  ✓  22 tests/e2e/project-load-preferences.spec.js:15:1 › explicit Open under Ask When Relevant uses the discard choice without presenting an Add-only load prompt (1.6s)
+  ✓  23 tests/e2e/project-load-preferences.spec.js:17:1 › dropping an actual 3MF on the viewport uses the native Add choice and cancellation preserves the plate (1.3s)
+  ✓  21 tests/e2e/recent-files.spec.js:8:1 › history preferences prune immediately, persist, disable at zero and stay outside model Undo (7.0s)
+  ✓  24 tests/e2e/recent-files.spec.js:9:1 › per-item removal and File-menu reopen operate on the same persisted recent history (4.4s)
+  ✓  25 tests/e2e/recent-files.spec.js:10:1 › STL and STEP recent imports are opt-in; reopening a model appends real geometry (2.4s)
+  ✓  26 tests/e2e/recent-files.spec.js:11:1 › invalid and cancelled project opens never enter history or replace the current project (1.6s)
+  ✓  27 tests/e2e/recent-files.spec.js:12:1 › failed recent-copy writes leave the imported project usable and roll back its metadata (2.6s)
+  ✓  28 tests/e2e/recent-files.spec.js:13:1 › missing recent copies report a recoverable error without discarding edited geometry (2.9s)
+  ✓  29 tests/e2e/recent-files.spec.js:14:1 › another tab receives recent changes and compact cards remain keyboard operable (3.6s)
+  ✓  30 tests/e2e/recent-files.spec.js:15:1 › cancel during recent-copy verification preserves current edits and does not reopen after delayed work completes (2.9s)
+  ✓  31 tests/e2e/recent-files.spec.js:16:1 › dark recent cards and Clear all use installed native dimensions and colors (2.0s)
+  ✓  32 tests/e2e/recent-files.spec.js:17:1 › unavailable storage reports a specific limitation and a failed opt-in returns to its previous state (888ms)
+
+  32 passed (54.3s)

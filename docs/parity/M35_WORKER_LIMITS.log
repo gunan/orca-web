@@ -1,0 +1,13 @@
+✔ worker validates native identity and output while every successful/failed request cleans its files (241.472875ms)
+✔ worker enforces input, result and console byte limits (183.064625ms)
+✔ worker retains its short deadline for stalled native code independently of byte-limit checks (218.736541ms)
+✔ worker cancels active and queued requests, enforces queue capacity and drains on shutdown (121.917333ms)
+✔ operation deadlines include queue wait rather than granting every queued job another full execution window (371.916709ms)
+ℹ tests 5
+ℹ suites 0
+ℹ pass 5
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1272.471666

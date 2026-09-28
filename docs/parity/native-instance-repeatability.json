@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "nativeVersion": "2.4.2",
+  "sourceRevision": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "summary": "The saved rotated linked-instance web archive generated 11122 commands in the integrated run and 11072 commands in both fixed later same-input controls. All native-read archive entries between the independent reference and web archives match. No claim of deterministic rotated native toolpaths is made.",
+  "fixture": {
+    "wall_generator": "classic",
+    "sparse_infill_pattern": "rectilinear",
+    "slow_down_for_layer_cooling": false,
+    "layer_height": 0.2
+  },
+  "firstOriginalDifference": {
+    "index": 8964,
+    "reference": "G1 X103.983 Y57.983 E.25775",
+    "web": "G1 X103.983 Y57.279 E.23496",
+    "printZ": 8.8
+  },
+  "fixedControls": [
+    {
+      "name": "reference",
+      "inputSHA256": "4222331efae61896f4181ef04ef1215404d1564a84dbe4ce3a12a8c8621b0663",
+      "commandCount": 11072,
+      "motionSHA256": "c42cfcb0fe2e93a3568033b1ef99a0aa6a7e62b48519c72810a773faa405a9bf"
+    },
+    {
+      "name": "reference",
+      "inputSHA256": "4222331efae61896f4181ef04ef1215404d1564a84dbe4ce3a12a8c8621b0663",
+      "commandCount": 11072,
+      "motionSHA256": "c42cfcb0fe2e93a3568033b1ef99a0aa6a7e62b48519c72810a773faa405a9bf"
+    },
+    {
+      "name": "web",
+      "inputSHA256": "0714b7f95740cf1e3b29cec963e74ae1c44e4728b5662990d5b8403b056aada5",
+      "commandCount": 11072,
+      "motionSHA256": "c42cfcb0fe2e93a3568033b1ef99a0aa6a7e62b48519c72810a773faa405a9bf"
+    },
+    {
+      "name": "web",
+      "inputSHA256": "0714b7f95740cf1e3b29cec963e74ae1c44e4728b5662990d5b8403b056aada5",
+      "commandCount": 11072,
+      "motionSHA256": "c42cfcb0fe2e93a3568033b1ef99a0aa6a7e62b48519c72810a773faa405a9bf"
+    }
+  ],
+  "comparisons": [
+    {
+      "a": 0,
+      "b": 1,
+      "sameInput": true,
+      "count": 0,
+      "examples": []
+    },
+    {
+      "a": 0,
+      "b": 2,
+      "sameInput": false,
+      "count": 0,
+      "examples": []
+    },
+    {
+      "a": 0,
+      "b": 3,
+      "sameInput": false,
+      "count": 0,
+      "examples": []
+    },
+    {
+      "a": 1,
+      "b": 2,
+      "sameInput": false,
+      "count": 0,
+      "examples": []
+    },
+    {
+      "a": 1,
+      "b": 3,
+      "sameInput": false,
+      "count": 0,
+      "examples": []
+    },
+    {
+      "a": 2,
+      "b": 3,
+      "sameInput": true,
+      "count": 0,
+      "examples": []
+    }
+  ],
+  "files": [
+    {
+      "path": "original/reference.3mf",
+      "sha256": "4222331efae61896f4181ef04ef1215404d1564a84dbe4ce3a12a8c8621b0663",
+      "bytes": 17845
+    },
+    {
+      "path": "original/reference.gcode",
+      "sha256": "c743ab7a1fd5103aa54db2551b480f76fd06c19c1fc8083c5e0a2d3208bd6d16",
+      "bytes": 345720,
+      "commands": 11072,
+      "motionSHA256": "c42cfcb0fe2e93a3568033b1ef99a0aa6a7e62b48519c72810a773faa405a9bf"
+    },
+    {
+      "path": "original/web.3mf",
+      "sha256": "0714b7f95740cf1e3b29cec963e74ae1c44e4728b5662990d5b8403b056aada5",
+      "bytes": 17882
+    },
+    {
+      "path": "original/web.gcode",
+      "sha256": "82c0bc85635450ff56b700dead9b44f0d4f020d17b2dd99924c3fa729be5c9f4",
+      "bytes": 346826,
+      "commands": 11122,
+      "motionSHA256": "18d3e64466c5c1416936358d42f364ea9632e6302fd5a6ffb6ce39c10990db36"
+    },
+    {
+      "path": "controls/0-reference.3mf",
+      "sha256": "4222331efae61896f4181ef04ef1215404d1564a84dbe4ce3a12a8c8621b0663",
+      "bytes": 17845
+    },
+    {
+      "path": "controls/0-reference.gcode",
+      "sha256": "8360c2e13070fede919e1b7e56d81544e7fbe68f7fc2c331df526551a41a64fd",
+      "bytes": 345720,
+      "commands": 11072,
+      "motionSHA256": "c42cfcb0fe2e93a3568033b1ef99a0aa6a7e62b48519c72810a773faa405a9bf"
+    },
+    {
+      "path": "controls/1-reference.3mf",
+      "sha256": "4222331efae61896f4181ef04ef1215404d1564a84dbe4ce3a12a8c8621b0663",
+      "bytes": 17845
+    },
+    {
+      "path": "controls/1-reference.gcode",
+      "sha256": "4055fb294a677d66e2144535bf4aa3461699cbbd5c68e691153def238a20f84d",
+      "bytes": 345720,
+      "commands": 11072,
+      "motionSHA256": "c42cfcb0fe2e93a3568033b1ef99a0aa6a7e62b48519c72810a773faa405a9bf"
+    },
+    {
+      "path": "controls/2-web.3mf",
+      "sha256": "0714b7f95740cf1e3b29cec963e74ae1c44e4728b5662990d5b8403b056aada5",
+      "bytes": 17882
+    },
+    {
+      "path": "controls/2-web.gcode",
+      "sha256": "4055fb294a677d66e2144535bf4aa3461699cbbd5c68e691153def238a20f84d",
+      "bytes": 345720,
+      "commands": 11072,
+      "motionSHA256": "c42cfcb0fe2e93a3568033b1ef99a0aa6a7e62b48519c72810a773faa405a9bf"
+    },
+    {
+      "path": "controls/3-web.3mf",
+      "sha256": "0714b7f95740cf1e3b29cec963e74ae1c44e4728b5662990d5b8403b056aada5",
+      "bytes": 17882
+    },
+    {
+      "path": "controls/3-web.gcode",
+      "sha256": "4055fb294a677d66e2144535bf4aa3461699cbbd5c68e691153def238a20f84d",
+      "bytes": 345720,
+      "commands": 11072,
+      "motionSHA256": "c42cfcb0fe2e93a3568033b1ef99a0aa6a7e62b48519c72810a773faa405a9bf"
+    }
+  ],
+  "evidenceArchive": {
+    "path": "native-instance-repeatability.zip",
+    "bytes": 271278,
+    "sha256": "ea32f73bb7d867f3d9d26e44c9e6e3290c23a76434352e8a4cdda63c5c8cbb3e"
+  }
+}

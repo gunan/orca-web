@@ -1,0 +1,37 @@
+{
+  "nativeVersion": "2.4.2",
+  "sourceRevision": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "result": "failed",
+  "summary": "All native-readable archive entries match independent XML edits, but identical saved web input produced11223 and11057 motion commands in fixed runs2 and3. Translation-only repeatability remains unresolved. No retry or tolerance was used to select a passing output.",
+  "runs": [
+    {
+      "name": "reference",
+      "inputSHA256": "0c397aa2dce0ecb241ba08bce587cb51542588658beabb042fe61c3ed67a61ea",
+      "motionSHA256": "981b4b436332ebbcdcd46258531ae372cfc785845bb7eac503511128f024dc4c",
+      "commandCount": 11057
+    },
+    {
+      "name": "reference",
+      "inputSHA256": "0c397aa2dce0ecb241ba08bce587cb51542588658beabb042fe61c3ed67a61ea",
+      "motionSHA256": "981b4b436332ebbcdcd46258531ae372cfc785845bb7eac503511128f024dc4c",
+      "commandCount": 11057
+    },
+    {
+      "name": "web",
+      "inputSHA256": "fb55c879d699e548aff582e16987a6dcf02a6580f0c94ae677562d7d1d6d13e6",
+      "motionSHA256": "bb0ab2e9b055131ab2c0e16f484e009daf0687a353a5b2f9ebff8ab2c4aa9cff",
+      "commandCount": 11223
+    },
+    {
+      "name": "web",
+      "inputSHA256": "fb55c879d699e548aff582e16987a6dcf02a6580f0c94ae677562d7d1d6d13e6",
+      "motionSHA256": "981b4b436332ebbcdcd46258531ae372cfc785845bb7eac503511128f024dc4c",
+      "commandCount": 11057
+    }
+  ],
+  "firstDifference": {
+    "index": 422,
+    "reference": "G1 X109.2 Y35.2 E.27934",
+    "web": "G1 X109.2 Y35.383 E.27402"
+  }
+}

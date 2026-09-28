@@ -1,0 +1,643 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "sourceSha256": {
+    "src/slic3r/GUI/GCodeViewer.cpp": "dc940588238795d439beedc007a763085a968797764ccf1fdb0a05e3a7c75937",
+    "src/libslic3r/Utils.hpp": "dcda75767a109135f52d366e320a5cd7bf4818d54d2c2a9296ebc49e57590c38",
+    "src/slic3r/GUI/Preferences.cpp": "2a454ba04fd610f83de57aecce83a17fa82b7dc518b3110becc2fbce5ac71917",
+    "src/slic3r/GUI/Gizmos/GizmoObjectManipulation.cpp": "b513e1e5d154d6611c64646e8f8e5bc6f9a5ffa21605e45e40aa20a043328a07",
+    "src/libslic3r/AppConfig.cpp": "d6951d3454eec6c7ae24b3135622ee838c0c9125033b9c97426380017801963c"
+  },
+  "referenceSha256": "756ee37dbd01e89673458998cecd648951211c9d57cbdb13dab8e951c474cc92",
+  "cases": [
+    {
+      "name": "zero",
+      "input": {
+        "filamentMeters": 0,
+        "filamentMm": 0,
+        "filamentGrams": 0,
+        "seconds": 0,
+        "totalSeconds": 0,
+        "distanceMm": 0
+      },
+      "expected": {
+        "imperial": {
+          "distance": "0.00in",
+          "length": "0.00in",
+          "percent": "0",
+          "summaryLength": "0.00 in",
+          "summaryWeight": "0.00 oz",
+          "time": "",
+          "weight": "0.00 oz"
+        },
+        "metric": {
+          "distance": "0mm",
+          "length": "0.00m",
+          "percent": "0",
+          "summaryLength": "0.00 m",
+          "summaryWeight": "0.00g",
+          "time": "",
+          "weight": "0.00g"
+        }
+      }
+    },
+    {
+      "name": "small",
+      "input": {
+        "filamentMeters": 0.005,
+        "filamentMm": 5.0,
+        "filamentGrams": 0.0005,
+        "seconds": 0.0001,
+        "totalSeconds": 1,
+        "distanceMm": 0.125
+      },
+      "expected": {
+        "imperial": {
+          "distance": "0.00in",
+          "length": "0.20in",
+          "percent": "<0.1",
+          "summaryLength": "0.20 in",
+          "summaryWeight": "0.00 oz",
+          "time": "<1s",
+          "weight": "0.00 oz"
+        },
+        "metric": {
+          "distance": "0mm",
+          "length": "0.01m",
+          "percent": "<0.1",
+          "summaryLength": "0.01 m",
+          "summaryWeight": "0.00g",
+          "time": "<1s",
+          "weight": "0.00g"
+        }
+      }
+    },
+    {
+      "name": "fraction",
+      "input": {
+        "filamentMeters": 1.005,
+        "filamentMm": 1004.9999999999999,
+        "filamentGrams": 28.34952,
+        "seconds": 0.1,
+        "totalSeconds": 100,
+        "distanceMm": 0.49
+      },
+      "expected": {
+        "imperial": {
+          "distance": "0.02in",
+          "length": "39.57in",
+          "percent": "0.1",
+          "summaryLength": "39.57 in",
+          "summaryWeight": "1.00 oz",
+          "time": "<1s",
+          "weight": "0.04 oz"
+        },
+        "metric": {
+          "distance": "0mm",
+          "length": "1.00m",
+          "percent": "0.1",
+          "summaryLength": "1.00 m",
+          "summaryWeight": "28.35g",
+          "time": "<1s",
+          "weight": "28.35g"
+        }
+      }
+    },
+    {
+      "name": "native-ounces",
+      "input": {
+        "filamentMeters": 25.4,
+        "filamentMm": 25400.0,
+        "filamentGrams": 803.695283,
+        "seconds": 3600,
+        "totalSeconds": 10000,
+        "distanceMm": 25.4
+      },
+      "expected": {
+        "imperial": {
+          "distance": "1.00in",
+          "length": "1000.00in",
+          "percent": "36.0",
+          "summaryLength": "1000.00 in",
+          "summaryWeight": "28.35 oz",
+          "time": "1h0m",
+          "weight": "1.00 oz"
+        },
+        "metric": {
+          "distance": "25mm",
+          "length": "25.40m",
+          "percent": "36.0",
+          "summaryLength": "25.40 m",
+          "summaryWeight": "803.70g",
+          "time": "1h0m",
+          "weight": "803.70g"
+        }
+      }
+    },
+    {
+      "name": "minute-rounding",
+      "input": {
+        "filamentMeters": 1000,
+        "filamentMm": 1000000,
+        "filamentGrams": 1000,
+        "seconds": 3630,
+        "totalSeconds": 10000,
+        "distanceMm": 999.99
+      },
+      "expected": {
+        "imperial": {
+          "distance": "39.37in",
+          "length": "39370.08in",
+          "percent": "36.3",
+          "summaryLength": "39370.08 in",
+          "summaryWeight": "35.27 oz",
+          "time": "1h1m",
+          "weight": "1.24 oz"
+        },
+        "metric": {
+          "distance": "1000mm",
+          "length": "1000.00m",
+          "percent": "36.3",
+          "summaryLength": "1000.00 m",
+          "summaryWeight": "1.00kg",
+          "time": "1h1m",
+          "weight": "1.00kg"
+        }
+      }
+    },
+    {
+      "name": "large",
+      "input": {
+        "filamentMeters": 100000,
+        "filamentMm": 100000000,
+        "filamentGrams": 1000000,
+        "seconds": 86430,
+        "totalSeconds": 100000,
+        "distanceMm": 1000
+      },
+      "expected": {
+        "imperial": {
+          "distance": "39.37in",
+          "length": "3937007.87in",
+          "percent": "86.4",
+          "summaryLength": "3937007.87 in",
+          "summaryWeight": "35273.97 oz",
+          "time": "1d0h1m",
+          "weight": "1244.25 oz"
+        },
+        "metric": {
+          "distance": "1.00m",
+          "length": "100000.00m",
+          "percent": "86.4",
+          "summaryLength": "100000.00 m",
+          "summaryWeight": "1.00t",
+          "time": "1d0h1m",
+          "weight": "1.00t"
+        }
+      }
+    },
+    {
+      "name": "percent-boundary",
+      "input": {
+        "filamentMeters": 1,
+        "filamentMm": 1000,
+        "filamentGrams": 1,
+        "seconds": 0.001,
+        "totalSeconds": 1,
+        "distanceMm": 12345.678
+      },
+      "expected": {
+        "imperial": {
+          "distance": "486.05in",
+          "length": "39.37in",
+          "percent": "0.1",
+          "summaryLength": "39.37 in",
+          "summaryWeight": "0.04 oz",
+          "time": "<1s",
+          "weight": "0.00 oz"
+        },
+        "metric": {
+          "distance": "12.35m",
+          "length": "1.00m",
+          "percent": "0.1",
+          "summaryLength": "1.00 m",
+          "summaryWeight": "1.00g",
+          "time": "<1s",
+          "weight": "1.00g"
+        }
+      }
+    },
+    {
+      "name": "percent-below",
+      "input": {
+        "filamentMeters": 1,
+        "filamentMm": 1000,
+        "filamentGrams": 1,
+        "seconds": 0.000999999,
+        "totalSeconds": 1,
+        "distanceMm": -1000.001
+      },
+      "expected": {
+        "imperial": {
+          "distance": "-39.37in",
+          "length": "39.37in",
+          "percent": "<0.1",
+          "summaryLength": "39.37 in",
+          "summaryWeight": "0.04 oz",
+          "time": "<1s",
+          "weight": "0.00 oz"
+        },
+        "metric": {
+          "distance": "-1.00m",
+          "length": "1.00m",
+          "percent": "<0.1",
+          "summaryLength": "1.00 m",
+          "summaryWeight": "1.00g",
+          "time": "<1s",
+          "weight": "1.00g"
+        }
+      }
+    }
+  ],
+  "fixedCases": [
+    {
+      "value": 0.0,
+      "digits": 0,
+      "expected": "0"
+    },
+    {
+      "value": 0.0,
+      "digits": 2,
+      "expected": "0.00"
+    },
+    {
+      "value": 0.0,
+      "digits": 3,
+      "expected": "0.000"
+    },
+    {
+      "value": 0.0,
+      "digits": 6,
+      "expected": "0.000000"
+    },
+    {
+      "value": -0.0,
+      "digits": 0,
+      "expected": "-0"
+    },
+    {
+      "value": -0.0,
+      "digits": 2,
+      "expected": "-0.00"
+    },
+    {
+      "value": -0.0,
+      "digits": 3,
+      "expected": "-0.000"
+    },
+    {
+      "value": -0.0,
+      "digits": 6,
+      "expected": "-0.000000"
+    },
+    {
+      "value": 2.5,
+      "digits": 0,
+      "expected": "2"
+    },
+    {
+      "value": 2.5,
+      "digits": 2,
+      "expected": "2.50"
+    },
+    {
+      "value": 2.5,
+      "digits": 3,
+      "expected": "2.500"
+    },
+    {
+      "value": 2.5,
+      "digits": 6,
+      "expected": "2.500000"
+    },
+    {
+      "value": 3.5,
+      "digits": 0,
+      "expected": "4"
+    },
+    {
+      "value": 3.5,
+      "digits": 2,
+      "expected": "3.50"
+    },
+    {
+      "value": 3.5,
+      "digits": 3,
+      "expected": "3.500"
+    },
+    {
+      "value": 3.5,
+      "digits": 6,
+      "expected": "3.500000"
+    },
+    {
+      "value": -2.5,
+      "digits": 0,
+      "expected": "-2"
+    },
+    {
+      "value": -2.5,
+      "digits": 2,
+      "expected": "-2.50"
+    },
+    {
+      "value": -2.5,
+      "digits": 3,
+      "expected": "-2.500"
+    },
+    {
+      "value": -2.5,
+      "digits": 6,
+      "expected": "-2.500000"
+    },
+    {
+      "value": -3.5,
+      "digits": 0,
+      "expected": "-4"
+    },
+    {
+      "value": -3.5,
+      "digits": 2,
+      "expected": "-3.50"
+    },
+    {
+      "value": -3.5,
+      "digits": 3,
+      "expected": "-3.500"
+    },
+    {
+      "value": -3.5,
+      "digits": 6,
+      "expected": "-3.500000"
+    },
+    {
+      "value": 2.625,
+      "digits": 0,
+      "expected": "3"
+    },
+    {
+      "value": 2.625,
+      "digits": 2,
+      "expected": "2.62"
+    },
+    {
+      "value": 2.625,
+      "digits": 3,
+      "expected": "2.625"
+    },
+    {
+      "value": 2.625,
+      "digits": 6,
+      "expected": "2.625000"
+    },
+    {
+      "value": -2.625,
+      "digits": 0,
+      "expected": "-3"
+    },
+    {
+      "value": -2.625,
+      "digits": 2,
+      "expected": "-2.62"
+    },
+    {
+      "value": -2.625,
+      "digits": 3,
+      "expected": "-2.625"
+    },
+    {
+      "value": -2.625,
+      "digits": 6,
+      "expected": "-2.625000"
+    },
+    {
+      "value": 0.005,
+      "digits": 0,
+      "expected": "0"
+    },
+    {
+      "value": 0.005,
+      "digits": 2,
+      "expected": "0.01"
+    },
+    {
+      "value": 0.005,
+      "digits": 3,
+      "expected": "0.005"
+    },
+    {
+      "value": 0.005,
+      "digits": 6,
+      "expected": "0.005000"
+    },
+    {
+      "value": 0.004999999999999999,
+      "digits": 0,
+      "expected": "0"
+    },
+    {
+      "value": 0.004999999999999999,
+      "digits": 2,
+      "expected": "0.00"
+    },
+    {
+      "value": 0.004999999999999999,
+      "digits": 3,
+      "expected": "0.005"
+    },
+    {
+      "value": 0.004999999999999999,
+      "digits": 6,
+      "expected": "0.005000"
+    },
+    {
+      "value": 0.005000000000000001,
+      "digits": 0,
+      "expected": "0"
+    },
+    {
+      "value": 0.005000000000000001,
+      "digits": 2,
+      "expected": "0.01"
+    },
+    {
+      "value": 0.005000000000000001,
+      "digits": 3,
+      "expected": "0.005"
+    },
+    {
+      "value": 0.005000000000000001,
+      "digits": 6,
+      "expected": "0.005000"
+    },
+    {
+      "value": -0.005,
+      "digits": 0,
+      "expected": "-0"
+    },
+    {
+      "value": -0.005,
+      "digits": 2,
+      "expected": "-0.01"
+    },
+    {
+      "value": -0.005,
+      "digits": 3,
+      "expected": "-0.005"
+    },
+    {
+      "value": -0.005,
+      "digits": 6,
+      "expected": "-0.005000"
+    },
+    {
+      "value": 1.005,
+      "digits": 0,
+      "expected": "1"
+    },
+    {
+      "value": 1.005,
+      "digits": 2,
+      "expected": "1.00"
+    },
+    {
+      "value": 1.005,
+      "digits": 3,
+      "expected": "1.005"
+    },
+    {
+      "value": 1.005,
+      "digits": 6,
+      "expected": "1.005000"
+    },
+    {
+      "value": 0.015,
+      "digits": 0,
+      "expected": "0"
+    },
+    {
+      "value": 0.015,
+      "digits": 2,
+      "expected": "0.01"
+    },
+    {
+      "value": 0.015,
+      "digits": 3,
+      "expected": "0.015"
+    },
+    {
+      "value": 0.015,
+      "digits": 6,
+      "expected": "0.015000"
+    },
+    {
+      "value": 99.995,
+      "digits": 0,
+      "expected": "100"
+    },
+    {
+      "value": 99.995,
+      "digits": 2,
+      "expected": "100.00"
+    },
+    {
+      "value": 99.995,
+      "digits": 3,
+      "expected": "99.995"
+    },
+    {
+      "value": 99.995,
+      "digits": 6,
+      "expected": "99.995000"
+    },
+    {
+      "value": 1e+21,
+      "digits": 0,
+      "expected": "1000000000000000000000"
+    },
+    {
+      "value": 1e+21,
+      "digits": 2,
+      "expected": "1000000000000000000000.00"
+    },
+    {
+      "value": 1e+21,
+      "digits": 3,
+      "expected": "1000000000000000000000.000"
+    },
+    {
+      "value": 1e+21,
+      "digits": 6,
+      "expected": "1000000000000000000000.000000"
+    },
+    {
+      "value": 1e+38,
+      "digits": 0,
+      "expected": "99999999999999997748809823456034029568"
+    },
+    {
+      "value": 1e+38,
+      "digits": 2,
+      "expected": "99999999999999997748809823456034029568.00"
+    },
+    {
+      "value": 1e+38,
+      "digits": 3,
+      "expected": "99999999999999997748809823456034029568.000"
+    },
+    {
+      "value": 1e+38,
+      "digits": 6,
+      "expected": "99999999999999997748809823456034029568.000000"
+    },
+    {
+      "value": 5e-324,
+      "digits": 0,
+      "expected": "0"
+    },
+    {
+      "value": 5e-324,
+      "digits": 2,
+      "expected": "0.00"
+    },
+    {
+      "value": 5e-324,
+      "digits": 3,
+      "expected": "0.000"
+    },
+    {
+      "value": 5e-324,
+      "digits": 6,
+      "expected": "0.000000"
+    },
+    {
+      "value": -5e-324,
+      "digits": 0,
+      "expected": "-0"
+    },
+    {
+      "value": -5e-324,
+      "digits": 2,
+      "expected": "-0.00"
+    },
+    {
+      "value": -5e-324,
+      "digits": 3,
+      "expected": "-0.000"
+    },
+    {
+      "value": -5e-324,
+      "digits": 6,
+      "expected": "-0.000000"
+    }
+  ]
+}

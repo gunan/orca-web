@@ -1,0 +1,59 @@
+
+> orca-web@0.1.0 test:e2e
+> playwright test --workers=1 tests/e2e/prime-tower-camera.spec.js tests/e2e/prime-tower-preview.spec.js
+
+[WebServer] (node:86848) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 11 tests using 1 worker
+
+(node:86852) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/prime-tower-camera.spec.js:35:56 › Fit waits for replacement tower bounds in Perspective and retains the chosen view (2.1s)
+  ✓   2 tests/e2e/prime-tower-camera.spec.js:35:56 › Fit waits for replacement tower bounds in Orthographic and retains the chosen view (2.4s)
+  ✓   3 tests/e2e/prime-tower-camera.spec.js:43:45 › a user orbit supersedes a pending Fit without a late camera jump (6.0s)
+  ✘   4 tests/e2e/prime-tower-camera.spec.js:43:45 › a user pan supersedes a pending Fit without a late camera jump (5.7s)
+(node:86870) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   5 tests/e2e/prime-tower-camera.spec.js:43:45 › a user zoom supersedes a pending Fit without a late camera jump (2.6s)
+  ✓   6 tests/e2e/prime-tower-camera.spec.js:48:1 › Zoom to bed supersedes a pending object Fit (2.1s)
+  ✓   7 tests/e2e/prime-tower-camera.spec.js:51:1 › failed preview clears the pending Fit before a later successful refresh (2.5s)
+  ✓   8 tests/e2e/prime-tower-camera.spec.js:54:1 › disabling the tower cancels a pending Fit and its delayed response (2.5s)
+  ✓   9 tests/e2e/prime-tower-camera.spec.js:58:1 › superseded geometry cannot satisfy Fit; the newest valid preview does (2.6s)
+  ✓  10 tests/e2e/prime-tower-preview.spec.js:8:1 › pre-slice tower renders native color bands, updates placement, supports Undo, and disappears on an empty plate (3.3s)
+  ✓  11 tests/e2e/prime-tower-preview.spec.js:13:1 › disabled tower discards delayed geometry and error responses remove stale bands (1.9s)
+
+
+  1) tests/e2e/prime-tower-camera.spec.js:43:45 › a user pan supersedes a pending Fit without a late camera jump 
+
+    Error: expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 91.65265330501977
+    Received: 91.65185831330962
+
+    Expected precision:    4
+    Expected difference: < 0.00005
+    Received difference:   0.0007949917101512938
+
+      44 |  const control=await start(page);control.defer();await edit(page);await page.locator('.scene-views').getByRole('button',{name:'Fit',exact:true}).click();const before=await frame(page),box=await canvas(page).boundingBox(),x=box.x+box.width*.2,y=box.y+box.height*.6;
+      45 |  await page.mouse.move(x,y);if(gesture==='zoom')await page.mouse.wheel(0,-160);else{await page.mouse.down({button:gesture==='pan'?'right':'left'});await page.mouse.move(x+80,y+40,{steps:8});await page.mouse.up({button:gesture==='pan'?'right':'left'});}
+    > 46 |  const moved=await settled(page);expect(moved.position).not.toEqual(before.position);await control.next();await expect.poll(()=>preview(page)).toMatchObject({status:'ready',visible:true});const after=await settled(page);for(const key of ['position','target'])for(let i=0;i<3;i++)expect(after[key][i]).toBeCloseTo(moved[key][i],4);
+         |                                                                                                                                                                                                                                                                                                              ^
+      47 | });
+      48 | test('Zoom to bed supersedes a pending object Fit',async({page})=>{
+      49 |  const control=await start(page);control.defer();await edit(page);await page.locator('.scene-views').getByRole('button',{name:'Fit',exact:true}).click();await canvas(page).focus();await page.keyboard.press('ControlOrMeta+0');await expect.poll(()=>target(page)).toEqual([100,100,0]);const before=await frame(page);await control.next();await expect.poll(()=>preview(page)).toMatchObject({status:'ready',visible:true});expect(await frame(page)).toEqual(before);
+        at /private/tmp/orca-implementation/m28-camera-fit-stage/tests/e2e/prime-tower-camera.spec.js:46:302
+
+    Error Context: test-results/browser/prime-tower-camera-a-user--b0f0b--without-a-late-camera-jump/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/browser/prime-tower-camera-a-user--b0f0b--without-a-late-camera-jump/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/browser/prime-tower-camera-a-user--b0f0b--without-a-late-camera-jump/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/prime-tower-camera.spec.js:43:45 › a user pan supersedes a pending Fit without a late camera jump 
+  10 passed (35.6s)

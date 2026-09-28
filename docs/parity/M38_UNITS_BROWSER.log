@@ -1,0 +1,15 @@
+[WebServer] (node:45222) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:45228) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/manipulation-units.spec.js:8:1 › Prepare positions and dimensions switch units without changing geometry, settings or Undo (1.8s)
+  ✓  2 tests/e2e/manipulation-units.spec.js:17:1 › inch position edits commit millimeters, leave angle and scale units unchanged, and survive save/reopen and Undo (2.6s)
+  ✓  3 tests/e2e/manipulation-units.spec.js:27:1 › inch edits of a joint selection preserve millimeter spacing and native-sized saved geometry (2.0s)
+  ✓  4 tests/e2e/native-display-preferences.spec.js:4:1 › native Units labels apply immediately, persist after reload, and leave project settings intact (1.7s)
+  ✓  5 tests/e2e/native-display-preferences.spec.js:13:1 › invalid stored Units fall back to metric and storage failures retain a visible session-only change (1.0s)
+  ✓  6 tests/e2e/native-display-preferences.spec.js:17:1 › Preferences shortcut respects focused text inputs and an already open dialog (950ms)
+
+  6 passed (11.5s)

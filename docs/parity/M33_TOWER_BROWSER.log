@@ -1,0 +1,33 @@
+[WebServer] (node:19376) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 24 tests using 1 worker
+
+(node:19380) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/prime-tower-camera.spec.js:29:56 › Fit waits for replacement tower bounds in Perspective and retains the chosen view (2.3s)
+  ✓   2 tests/e2e/prime-tower-camera.spec.js:29:56 › Fit waits for replacement tower bounds in Orthographic and retains the chosen view (2.5s)
+  ✓   3 tests/e2e/prime-tower-camera.spec.js:39:45 › a user orbit supersedes a pending Fit without a late camera jump (5.8s)
+  ✓   4 tests/e2e/prime-tower-camera.spec.js:39:45 › a user pan supersedes a pending Fit without a late camera jump (5.4s)
+  ✓   5 tests/e2e/prime-tower-camera.spec.js:39:45 › a user zoom supersedes a pending Fit without a late camera jump (2.3s)
+  ✓   6 tests/e2e/prime-tower-camera.spec.js:44:1 › Zoom to bed supersedes a pending object Fit (2.0s)
+  ✓   7 tests/e2e/prime-tower-camera.spec.js:47:1 › failed preview clears the pending Fit before a later successful refresh (2.4s)
+  ✓   8 tests/e2e/prime-tower-camera.spec.js:50:1 › disabling the tower cancels a pending Fit and its delayed response (2.5s)
+  ✓   9 tests/e2e/prime-tower-camera.spec.js:54:1 › superseded geometry cannot satisfy Fit; the newest valid preview does (2.5s)
+  ✓  10 tests/e2e/prime-tower-camera.spec.js:57:1 › a fit queued for the previous plate cannot impose its view on the next plate (2.4s)
+  ✓  11 tests/e2e/prime-tower-camera.spec.js:60:1 › camera movement before the first tower response also cancels automatic fitting (2.2s)
+  ✓  12 tests/e2e/prime-tower-drag.spec.js:21:1 › native tower drag commits one position edit, preserves other plates and geometry, and supports Undo/Redo (3.3s)
+  ✓  13 tests/e2e/prime-tower-drag.spec.js:27:54 › Escape restores an in-flight tower drag without an undo edit (1.9s)
+  ✓  14 tests/e2e/prime-tower-drag.spec.js:27:54 › pointercancel restores an in-flight tower drag without an undo edit (1.9s)
+  ✓  15 tests/e2e/prime-tower-drag.spec.js:32:1 › dragging beyond an edge uses the native brim inset and keeps the camera fixed (2.2s)
+  ✓  16 tests/e2e/prime-tower-drag.spec.js:36:1 › a helper without native drag context keeps its tower visible and offers no drag mutation (1.7s)
+  ✓  17 tests/e2e/prime-tower-drag.spec.js:40:1 › starting from no object selection preserves the viewport for the entire tower gesture (2.4s)
+  ✓  18 tests/e2e/prime-tower-drag.spec.js:45:1 › orthographic tower dragging preserves pointer geometry and selection (2.7s)
+  ✓  19 tests/e2e/prime-tower-drag.spec.js:48:1 › native five-pixel threshold applies only before the tower is selected (2.5s)
+  ✓  20 tests/e2e/prime-tower-drag.spec.js:52:88 › lost pointer capture cancels a tower drag and releases its temporary layout (2.7s)
+  ✓  21 tests/e2e/prime-tower-drag.spec.js:52:88 › window blur cancels a tower drag and releases its temporary layout (2.7s)
+  ✓  22 tests/e2e/prime-tower-drag.spec.js:52:88 › preview replacement cancels a tower drag and releases its temporary layout (3.0s)
+  ✓  23 tests/e2e/prime-tower-fit-lifecycle.spec.js:14:43 › Fit uses newly committed tower geometry before passive effects replace the ready scene (744ms)
+  ✓  24 tests/e2e/prime-tower-fit-lifecycle.spec.js:14:43 › Fit uses newly committed tower geometry before passive effects replace the loading scene (807ms)
+
+  24 passed (1.0m)

@@ -1,0 +1,16 @@
+[WebServer] (node:42304) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 7 tests using 1 worker
+
+(node:42308) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/import-transaction.spec.js:27:1 › same-project reload blocks edits until the catalog commits, then Drop and Undo preserve the new edit (1.4s)
+  ✓  2 tests/e2e/import-transaction.spec.js:38:1 › cancelled catalog restoration keeps edits, history and preset readiness after the late response (1.4s)
+  ✓  3 tests/e2e/import-transaction.spec.js:50:1 › failed catalog restoration preserves the previous catalog, project and dirty state (2.2s)
+  ✓  4 tests/e2e/import-transaction.spec.js:64:1 › Escape cancels a native project upload and its late response cannot replace the current project (963ms)
+  ✓  5 tests/e2e/import-transaction.spec.js:74:1 › cancelled local model read cannot append geometry after a subsequent import completes (1.0s)
+  ✓  6 tests/e2e/import-transaction.spec.js:86:1 › cancelling Open from Preview preserves the completed job and its download (1.7s)
+  ✓  7 tests/e2e/import-transaction.spec.js:98:1 › a cancelled local read failure cannot replace the status of a later successful import (996ms)
+
+  7 passed (10.7s)

@@ -1,0 +1,47 @@
+✔ geometry import preserves linked instances, exact meshes, painting and per-layer data while dropping object and part overrides (4.843041ms)
+✔ all source plates merge onto the active plate using native global coordinates without importing plate events (12.561042ms)
+✔ native role order and model-only placement keep outside modifiers from moving the solid off center (5.563208ms)
+✖ geometry material and painted requirements grow current slots without adopting imported materials or replacing existing purge values (4.251125ms)
+✖ painting alone allocates its assigned material while imported extruder zero becomes the native default (2.226333ms)
+✔ repeated imports allocate independent families and preserve existing geometry and native processed cut metadata (2.548375ms)
+✔ locked plate, invalid roles, invalid slots, broken families and exhausted identities reject atomically (6.669666ms)
+✔ geometry-only Open retains material colors, purge tables and native preset context by value (0.192458ms)
+✔ geometry export retains actual linked model references and native painting after import (16.253917ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 7
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 157.47175
+
+✖ failing tests:
+
+test at tests/unit/native-geometry-import.test.js:27:1
+✖ geometry material and painted requirements grow current slots without adopting imported materials or replacing existing purge values (4.251125ms)
+  Error: Truncated native facet tree
+      at next (file:///private/tmp/orca-implementation/m46-geometry-import-stage/shared/facet-codec.js:13:37)
+      at read (file:///private/tmp/orca-implementation/m46-geometry-import-stage/shared/facet-codec.js:15:48)
+      at decodeFacet (file:///private/tmp/orca-implementation/m46-geometry-import-stage/shared/facet-codec.js:18:14)
+      at normalizePainting (file:///private/tmp/orca-implementation/m46-geometry-import-stage/shared/facet-codec.js:33:175)
+      at validateProject (file:///private/tmp/orca-implementation/m46-geometry-import-stage/shared/project.js:41:5)
+      at importNativeGeometry (file:///private/tmp/orca-implementation/m46-geometry-import-stage/shared/native-geometry-import.js:22:27)
+      at apply (file:///private/tmp/orca-implementation/m46-geometry-import-stage/tests/unit/native-geometry-import.test.js:14:37)
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m46-geometry-import-stage/tests/unit/native-geometry-import.test.js:28:186)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+
+test at tests/unit/native-geometry-import.test.js:30:1
+✖ painting alone allocates its assigned material while imported extruder zero becomes the native default (2.226333ms)
+  Error: Truncated native facet tree
+      at next (file:///private/tmp/orca-implementation/m46-geometry-import-stage/shared/facet-codec.js:13:37)
+      at read (file:///private/tmp/orca-implementation/m46-geometry-import-stage/shared/facet-codec.js:15:48)
+      at decodeFacet (file:///private/tmp/orca-implementation/m46-geometry-import-stage/shared/facet-codec.js:18:14)
+      at normalizePainting (file:///private/tmp/orca-implementation/m46-geometry-import-stage/shared/facet-codec.js:33:175)
+      at validateProject (file:///private/tmp/orca-implementation/m46-geometry-import-stage/shared/project.js:41:5)
+      at importNativeGeometry (file:///private/tmp/orca-implementation/m46-geometry-import-stage/shared/native-geometry-import.js:22:27)
+      at apply (file:///private/tmp/orca-implementation/m46-geometry-import-stage/tests/unit/native-geometry-import.test.js:14:37)
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m46-geometry-import-stage/tests/unit/native-geometry-import.test.js:30:254)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)

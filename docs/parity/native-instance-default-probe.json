@@ -1,0 +1,77 @@
+{
+  "nativeVersion": "2.4.2",
+  "scope": "Default Arachne and layer-cooling probe; retained failure, not an acceptance pass",
+  "nativeEntries": [
+    {
+      "name": "[Content_Types].xml",
+      "referenceSha256": "49c262859b63adca3221de81823be51e0d159ae2609f6f4957a60b56e1932f8c",
+      "webSha256": "49c262859b63adca3221de81823be51e0d159ae2609f6f4957a60b56e1932f8c"
+    },
+    {
+      "name": "_rels/.rels",
+      "referenceSha256": "16320c5e9ae02d96c5be0452dda9c06b74425de791265c66dd4e8618cb2a43d7",
+      "webSha256": "16320c5e9ae02d96c5be0452dda9c06b74425de791265c66dd4e8618cb2a43d7"
+    },
+    {
+      "name": "3D/3dmodel.model",
+      "referenceSha256": "5a9f13cf8bf2d470b165d4c03fb396355a13002c4d6c155168355ee4fb6d5433",
+      "webSha256": "5a9f13cf8bf2d470b165d4c03fb396355a13002c4d6c155168355ee4fb6d5433"
+    },
+    {
+      "name": "Metadata/model_settings.config",
+      "referenceSha256": "9b3bc04730fe68f5757a574c4ab2efb6cd864e5d3a4bc353a1baa81d793454c1",
+      "webSha256": "9b3bc04730fe68f5757a574c4ab2efb6cd864e5d3a4bc353a1baa81d793454c1"
+    },
+    {
+      "name": "Metadata/project_settings.config",
+      "referenceSha256": "8ececb9a0c18625a992d68f93e86ed22c368cce3c0bff863d6160ec2f51e75f0",
+      "webSha256": "8ececb9a0c18625a992d68f93e86ed22c368cce3c0bff863d6160ec2f51e75f0"
+    }
+  ],
+  "allNativeReadEntriesIdentical": true,
+  "referenceCommands": 11862,
+  "webCommands": 11995,
+  "firstDifferences": [
+    {
+      "index": 1420,
+      "reference": "G1 F5886",
+      "web": "G1 F5875"
+    },
+    {
+      "index": 1423,
+      "reference": "G1 X95.996 Y58.004 E.25914",
+      "web": "G1 X96.512 Y58.004 E.24242"
+    },
+    {
+      "index": 1424,
+      "reference": "G1 X95.996 Y50.036 E.25784",
+      "web": "G1 X95.996 Y57.488 E.02365"
+    },
+    {
+      "index": 1425,
+      "reference": "G1 X95.599 Y49.599 F18000",
+      "web": "G1 X95.996 Y50.036 E.24112"
+    },
+    {
+      "index": 1426,
+      "reference": "G1 F5886",
+      "web": "G1 X95.599 Y49.599 F18000"
+    },
+    {
+      "index": 1427,
+      "reference": "G1 X104.401 Y49.599 E.28484",
+      "web": "G1 F5875"
+    },
+    {
+      "index": 1428,
+      "reference": "G1 X104.401 Y58.401 E.28484",
+      "web": "G1 X104.401 Y49.599 E.28484"
+    },
+    {
+      "index": 1429,
+      "reference": "G1 X95.599 Y58.401 E.28484",
+      "web": "G1 X104.401 Y58.401 E.28484"
+    }
+  ],
+  "limitation": "Separate CLI invocations produced differing paths despite identical native geometry/settings archive entries. No claim that default native slicing is deterministic. Installed CLI rejected --threads."
+}

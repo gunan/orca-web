@@ -1,0 +1,153 @@
+[WebServer] (node:61178) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:61182) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/graphics-preferences.spec.js:6:1 › native FPS limits, keyboard commits and overlay persist without adding a model Undo step (6.1s)
+(node:61200) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/graphics-preferences.spec.js:10:1 › Prepare caps actual GPU frame submissions, samples FPS and remains idle; unlimited changes take effect immediately (30.1s)
+(node:61254) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/e2e/graphics-preferences.spec.js:14:1 › painting canvases inherit the limit and overlay and release their render timers on closing (30.1s)
+(node:61475) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 tests/e2e/graphics-preferences.spec.js:17:1 › stored native cap normalization and failed storage retain an explicit session-only graphics change (6.0s)
+
+
+  1) tests/e2e/graphics-preferences.spec.js:6:1 › native FPS limits, keyboard commits and overlay persist without adding a model Undo step 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByRole('dialog', { name: 'Preferences' }).getByLabel('FPS cap', { exact: true })
+    Expected: "0"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByRole('dialog', { name: 'Preferences' }).getByLabel('FPS cap', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Preferences' }).getByLabel('FPS cap', { exact: true })
+
+
+       5 | async function open(page){await observeFrameClears(page);await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);return page.getByRole('img',{name:'Interactive 3D model view'});}
+       6 | test('native FPS limits, keyboard commits and overlay persist without adding a model Undo step',async({page},info)=>{
+    >  7 |  await open(page);await preferences(page,async dialog=>{const fps=dialog.getByLabel('FPS cap',{exact:true});await expect(fps).toHaveValue('0');await expect(dialog.getByLabel('Show FPS overlay')).not.toBeChecked();await fps.press('ArrowUp');await expect(fps).toHaveValue('1');await fps.press('ArrowDown');await expect(fps).toHaveValue('0');await fps.fill('999');await fps.press('Enter');await expect(fps).toHaveValue('240');await fps.fill('');await fps.press('Tab');await expect(dialog.getByRole('alert')).toHaveText('Enter a whole number for FPS cap.');await fps.fill('15');await fps.press('Tab');await dialog.getByLabel('Show FPS overlay').check();await dialog.screenshot({path:info.outputPath('native-fps-preferences.png')});});
+         |                                                                                                                               ^
+       8 |  expect(await page.evaluate(k=>JSON.parse(localStorage.getItem(k)),key)).toEqual({version:1,opengl_fps_cap:'15',opengl_show_fps_overlay:'true'});await expect(page.getByLabel('Viewport FPS',{exact:true})).toBeVisible();await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('.scene-object-row')).toHaveCount(0);await page.reload();await preferences(page,async dialog=>{await expect(dialog.getByLabel('FPS cap',{exact:true})).toHaveValue('15');await expect(dialog.getByLabel('Show FPS overlay')).toBeChecked();});
+       9 | });
+      10 | test('Prepare caps actual GPU frame submissions, samples FPS and remains idle; unlimited changes take effect immediately',async({page},info)=>{
+        at change (/private/tmp/orca-implementation/m41-graphics-preferences-stage/tests/e2e/graphics-preferences.spec.js:7:127)
+        at preferences (/private/tmp/orca-implementation/m41-graphics-preferences-stage/tests/fixtures/camera-browser.js:8:184)
+        at /private/tmp/orca-implementation/m41-graphics-preferences-stage/tests/e2e/graphics-preferences.spec.js:7:19
+
+    Error Context: test-results/m41-focused/graphics-preferences-nativ-0550d-ut-adding-a-model-Undo-step/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m41-focused/graphics-preferences-nativ-0550d-ut-adding-a-model-Undo-step/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m41-focused/graphics-preferences-nativ-0550d-ut-adding-a-model-Undo-step/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/graphics-preferences.spec.js:10:1 › Prepare caps actual GPU frame submissions, samples FPS and remains idle; unlimited changes take effect immediately 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('dialog', { name: 'Preferences' }).getByLabel('FPS cap', { exact: true })
+
+
+       9 | });
+      10 | test('Prepare caps actual GPU frame submissions, samples FPS and remains idle; unlimited changes take effect immediately',async({page},info)=>{
+    > 11 |  const canvas=await open(page);await preferences(page,async dialog=>{await dialog.getByLabel('FPS cap',{exact:true}).fill('5');await dialog.getByLabel('FPS cap',{exact:true}).press('Enter');await dialog.getByLabel('Show FPS overlay').check();});await cappedIdle(page,canvas,5);const times=await exerciseCappedCamera(page,canvas,5,{steps:85});const fps=Number((await page.getByLabel('Viewport FPS',{exact:true}).innerText()).replace('FPS: ',''));expect(fps).toBeGreaterThan(0);expect(fps).toBeLessThanOrEqual(5);await cappedIdle(page,canvas,5);await info.attach('actual-capped-frame-clears',{body:JSON.stringify(times),contentType:'application/json'});await page.screenshot({path:info.outputPath('prepare-fps-overlay.png')});
+         |                                                                                                                      ^
+      12 |  await preferences(page,async dialog=>{await dialog.getByLabel('FPS cap',{exact:true}).fill('0');await dialog.getByLabel('FPS cap',{exact:true}).press('Enter');await dialog.getByLabel('Show FPS overlay').uncheck();});await expect(page.getByLabel('Viewport FPS',{exact:true})).toBeHidden();const count=(await frameClears(canvas)).length;await page.getByRole('button',{name:'Wireframe',exact:true}).click();await expect.poll(async()=>(await frameClears(canvas)).length,{timeout:500}).toBeGreaterThan(count);
+      13 | });
+      14 | test('painting canvases inherit the limit and overlay and release their render timers on closing',async({page})=>{
+        at change (/private/tmp/orca-implementation/m41-graphics-preferences-stage/tests/e2e/graphics-preferences.spec.js:11:118)
+        at preferences (/private/tmp/orca-implementation/m41-graphics-preferences-stage/tests/fixtures/camera-browser.js:8:184)
+        at /private/tmp/orca-implementation/m41-graphics-preferences-stage/tests/e2e/graphics-preferences.spec.js:11:32
+
+    Error Context: test-results/m41-focused/graphics-preferences-Prepa-670a3-ges-take-effect-immediately/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m41-focused/graphics-preferences-Prepa-670a3-ges-take-effect-immediately/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m41-focused/graphics-preferences-Prepa-670a3-ges-take-effect-immediately/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests/e2e/graphics-preferences.spec.js:14:1 › painting canvases inherit the limit and overlay and release their render timers on closing 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.fill: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('dialog', { name: 'Preferences' }).getByLabel('FPS cap', { exact: true })
+
+
+      13 | });
+      14 | test('painting canvases inherit the limit and overlay and release their render timers on closing',async({page})=>{
+    > 15 |  await open(page);await preferences(page,async dialog=>{await dialog.getByLabel('FPS cap',{exact:true}).fill('5');await dialog.getByLabel('FPS cap',{exact:true}).press('Enter');await dialog.getByLabel('Show FPS overlay').check();});await page.getByRole('button',{name:'Paint supports',exact:true}).click();const dialog=page.getByRole('dialog',{name:'Paint facets'}),canvas=dialog.getByRole('img',{name:'Interactive 3D model view'});await expect(dialog.getByLabel('Viewport FPS',{exact:true})).toBeVisible();await cappedIdle(page,canvas,5);await exerciseCappedCamera(page,canvas,5,{steps:45});await cappedIdle(page,canvas,5);const old=await canvas.elementHandle(),before=(await frameClears(canvas)).length;await dialog.getByRole('button',{name:'Cancel painting',exact:true}).click();await page.waitForTimeout(350);expect(await old.evaluate(c=>(window.__frameClears.get(c)||[]).length)).toBe(before);
+         |                                                                                                         ^
+      16 | });
+      17 | test('stored native cap normalization and failed storage retain an explicit session-only graphics change',async({page})=>{
+      18 |  await page.addInitScript(k=>{localStorage.setItem(k,JSON.stringify({version:1,opengl_fps_cap:'999',opengl_show_fps_overlay:'false'}));const original=Storage.prototype.setItem;Storage.prototype.setItem=function(name,value){if(name===k)throw new DOMException('disabled','QuotaExceededError');return original.call(this,name,value);};},key);await open(page);await preferences(page,async dialog=>{await expect(dialog.getByLabel('FPS cap',{exact:true})).toHaveValue('240');await dialog.getByLabel('Show FPS overlay').check();await expect(dialog.getByRole('alert')).toHaveText('Graphics controls changed for this session, but browser storage could not save them.');});await expect(page.getByLabel('Viewport FPS',{exact:true})).toBeVisible();
+        at change (/private/tmp/orca-implementation/m41-graphics-preferences-stage/tests/e2e/graphics-preferences.spec.js:15:105)
+        at preferences (/private/tmp/orca-implementation/m41-graphics-preferences-stage/tests/fixtures/camera-browser.js:8:184)
+        at /private/tmp/orca-implementation/m41-graphics-preferences-stage/tests/e2e/graphics-preferences.spec.js:15:19
+
+    Error Context: test-results/m41-focused/graphics-preferences-paint-0635c-ir-render-timers-on-closing/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m41-focused/graphics-preferences-paint-0635c-ir-render-timers-on-closing/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m41-focused/graphics-preferences-paint-0635c-ir-render-timers-on-closing/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests/e2e/graphics-preferences.spec.js:17:1 › stored native cap normalization and failed storage retain an explicit session-only graphics change 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByRole('dialog', { name: 'Preferences' }).getByLabel('FPS cap', { exact: true })
+    Expected: "240"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByRole('dialog', { name: 'Preferences' }).getByLabel('FPS cap', { exact: true }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Preferences' }).getByLabel('FPS cap', { exact: true })
+
+
+      16 | });
+      17 | test('stored native cap normalization and failed storage retain an explicit session-only graphics change',async({page})=>{
+    > 18 |  await page.addInitScript(k=>{localStorage.setItem(k,JSON.stringify({version:1,opengl_fps_cap:'999',opengl_show_fps_overlay:'false'}));const original=Storage.prototype.setItem;Storage.prototype.setItem=function(name,value){if(name===k)throw new DOMException('disabled','QuotaExceededError');return original.call(this,name,value);};},key);await open(page);await preferences(page,async dialog=>{await expect(dialog.getByLabel('FPS cap',{exact:true})).toHaveValue('240');await dialog.getByLabel('Show FPS overlay').check();await expect(dialog.getByRole('alert')).toHaveText('Graphics controls changed for this session, but browser storage could not save them.');});await expect(page.getByLabel('Viewport FPS',{exact:true})).toBeVisible();
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                  ^
+      19 | });
+      20 |
+        at change (/private/tmp/orca-implementation/m41-graphics-preferences-stage/tests/e2e/graphics-preferences.spec.js:18:450)
+        at preferences (/private/tmp/orca-implementation/m41-graphics-preferences-stage/tests/fixtures/camera-browser.js:8:184)
+        at /private/tmp/orca-implementation/m41-graphics-preferences-stage/tests/e2e/graphics-preferences.spec.js:18:356
+
+    Error Context: test-results/m41-focused/graphics-preferences-store-41c5c-ession-only-graphics-change/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m41-focused/graphics-preferences-store-41c5c-ession-only-graphics-change/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m41-focused/graphics-preferences-store-41c5c-ession-only-graphics-change/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    tests/e2e/graphics-preferences.spec.js:6:1 › native FPS limits, keyboard commits and overlay persist without adding a model Undo step 
+    tests/e2e/graphics-preferences.spec.js:10:1 › Prepare caps actual GPU frame submissions, samples FPS and remains idle; unlimited changes take effect immediately 
+    tests/e2e/graphics-preferences.spec.js:14:1 › painting canvases inherit the limit and overlay and release their render timers on closing 
+    tests/e2e/graphics-preferences.spec.js:17:1 › stored native cap normalization and failed storage retain an explicit session-only graphics change 

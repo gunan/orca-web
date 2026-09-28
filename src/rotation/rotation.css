@@ -1,0 +1,87 @@
+.rotation-controls {
+  padding: 10px 14px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  flex: none;
+}
+.rotation-controls header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.rotation-controls header strong {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.rotation-controls header strong span {
+  font-weight: 400;
+  color: var(--muted);
+}
+.rotation-controls header label {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  font-size: 12px;
+}
+.rotation-axes {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.rotation-axis {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.rotation-axis > label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.rotation-axis input[type="number"] {
+  width: 54px;
+  padding: 5px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--text);
+  background: var(--bg);
+}
+.rotation-axis-label {
+  font-weight: 700;
+}
+.rotation-axis-label.axis-x {
+  color: #cf5353;
+}
+.rotation-axis-label.axis-y {
+  color: #29966a;
+}
+.rotation-axis-label.axis-z {
+  color: #488cda;
+}
+.rotation-presets {
+  display: flex;
+  gap: 2px;
+}
+.rotation-presets button {
+  background: var(--bg);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 5px;
+  min-width: 30px;
+}
+.rotation-presets button[aria-pressed="true"] {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+.rotation-controls p {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 7px 0 0;
+}

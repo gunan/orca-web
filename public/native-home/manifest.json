@@ -1,0 +1,18 @@
+{
+  "nativeVersion": "2.4.2",
+  "sourceDirectory": "web/homepage/img",
+  "files": [
+    {
+      "file": "i4.png",
+      "sha256": "0d7b1adf8c9023850e7820c251d86595ef5e3ef65a838e61bd6ec45493733470"
+    },
+    {
+      "file": "i5.png",
+      "sha256": "6f187d257c03224756a436bf25abebe091a79b14fbed2d79804d411a6ab631e4"
+    },
+    {
+      "file": "d.png",
+      "sha256": "151bdb15f1137621bd42d1bbe2cd0bb7b7ff2cf42e02b03ea259f17ef00371f6"
+    }
+  ]
+}

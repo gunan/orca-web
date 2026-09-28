@@ -1,0 +1,29 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "excerpts": [
+    {
+      "declaration": "double GLCanvas3D::get_size_proportional_to_max_bed_size(double factor) const",
+      "sha256": "8f37099373076ecc601c43f64ed0a40ba3c0f7186491547f5153bea02a4e43b8"
+    },
+    {
+      "declaration": "std::vector<Vec2f> GLCanvas3D::get_empty_cells(const Vec2f start_point, const Vec2f step)",
+      "sha256": "7dd3b88152813a482ae41730d460a1aa8f9186932df8bc620cc3f0cfd47e5cb8"
+    },
+    {
+      "declaration": "Vec2f GLCanvas3D::get_nearest_empty_cell(const Vec2f start_point, const Vec2f step)",
+      "sha256": "6050ccdab456dbb091fcdc53c5de92c1ed2fbb13c4aef4b35660bbe6a7fddd41"
+    },
+    {
+      "declaration": "void Selection::paste_objects_from_clipboard()",
+      "sha256": "e01a3755c8a553c8df675b3f81f7caac38df7ae93206b500b0e10a716e191183"
+    },
+    {
+      "declaration": "bool PartPlate::intersects(const BoundingBoxf3& bb) const",
+      "sha256": "624a0b369e2689cd167b81547dc649698bb7adee109adb6909708c5518004f1b"
+    },
+    {
+      "declaration": "void Selection::paste_volumes_from_clipboard()",
+      "sha256": "2440f441cf284015f510afb2be73405882262fb3b940318752c7a20eb71fde1d"
+    }
+  ]
+}

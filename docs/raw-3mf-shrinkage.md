@@ -1,0 +1,30 @@
+# Raw 3MF shrinkage initialization
+
+For installed OrcaSlicer 2.4.2, raw native project uploads use the bounded second-apply initialization used by the project endpoint. Original native archive geometry is not re-exported or scaled.
+
+`--export-settings` obtains the exact merged native configuration before `Print::apply`. This matters because one `--load-filaments` file replaces slot one while other embedded slots remain. The adapter derives compensation from the actual used slots, preserves the original native model resources and part metadata, and appends a private second build instance/plate. The final native invocation retains the original external profile files, so native profile handling and printer bed adaptation remain authoritative. Only target plate 1 is published.
+
+The pinned native importer clears a sole volume's material override (`bbs_3mf.cpp:2237`), using its parent object's material. The raw context follows that rule without mutating the uploaded archive. Browser export also synchronizes the parent material for single-part objects; see [single-volume material handling](single-volume-material.md).
+
+For generic geometry/property 3MF or native-recognized object metadata without complete project globals, the adapter first checks merged settings. If compensation is required, it asks the installed native engine to export `normalized.3mf`, then initializes that native archive. Native import/export supplies object placement, per-part settings and material interpretation. There is no intermediate STL and no web reconstruction of part or material assignments. Normalization preserves the native engine's interpretation, rather than promising byte-for-byte preservation of arbitrary third-party archive entries. Archives whose complete material vectors are all 100% need no normalization export.
+
+Both native invocations share the job's timeout and cancellation signal. Input and normalized archives are bounded to 128 MB, merged settings to 4 MB, and the existing bounded ZIP/configuration checks run before native input and after native normalization. All native config and output directories are job-local. The export filename is relative because native prepends `--outputdir` itself.
+
+Recognized PrusaSlicer projects now use the pinned native GUI archive importer before entering this pipeline; see [Prusa project import](prusa-project-import.md). It preserves the exact native object/part/material/facet interpretation and local transform frames. OrcaSlicer 2.4.2 intentionally ignores Prusa global profiles, height profiles/ranges and most arbitrary object settings. Those source carriers are retained as bounded inactive provenance with an explicit report. The converted project receives the user's selected profiles and any native-required additional material slots; non-unity compensation uses the same second-apply adapter. Prusa-like metadata without the native format discriminator remains explicitly rejected, because silently choosing a different importer would not establish native parity. Raw jobs remain one-plate jobs; the native project workflow supports selecting a plate.
+
+Validation:
+
+- Eight unit cases cover unchanged native resource/part/asset data, used-slot activation, repeated instances, unsafe scripts, importer material normalization, argument isolation, cancellation, one shared deadline, merged-settings/archive bounds and explicit rejection of unclassified Prusa-like carriers. Recognized Prusa imports have additional worker, provenance, native differential and API tests.
+- Native raw upload with selected 98% profiles matches all 9,217 captured GUI motion commands, with 102 layers ending at Z 20.4 mm.
+- Selected slot one at 100% leaves active embedded slot two at 98%; output is compensated. Painted materials with different XY compensation disable both XY and Z compensation, as in the source.
+- A negative volume remains a through-hole. Modifier metadata, distinct materials, a 45 mm/s part speed over a 70 mm/s global setting and a custom layer event survive actual slicing.
+- Two geometry-only objects get native placement and retain distinct output labels, with 102 compensated layers.
+- A generic 3MF with two `m:colorgroup` resources and object `pid` assignments retains both native material slots and tool paths after normalization, with 102 compensated layers.
+- A generic 3MF carrying native `model_settings.config` retains a 45 mm/s object wall override over the selected 70 mm/s global process, with 102 compensated layers.
+- Changing the selected printer bed from 250×210 to 300×250 moves the target center to [95,100] in both uncompensated and compensated runs. The initialized output expands dimensions while preserving that native center.
+
+The earlier claim that pre-slice/post-slice 3MF exports were unavailable was based on two probe errors. Graphics sandbox denial caused SIGABRT before export. Outside that sandbox, using an absolute export filename together with `--outputdir` caused native to prepend the directory twice and exit 243. Both pre-slice and post-slice probes succeeded when run with normal native graphics access and a relative output filename. Normalization now uses the successful pre-slice form. A host that denies the native graphics initialization will surface that error; the service never silently substitutes flattened geometry.
+
+A deliberately malformed full native project with `project_settings.config` removed, while retaining its native project/version declaration, separately caused the installed engine to SIGSEGV during initial settings export. This is distinct from the successful generic metadata-only case above. It is retained as a diagnostic limitation, not counted as accepted-format coverage.
+
+Source references: pinned `OrcaSlicer.cpp` profile/filament merge around 3145–3330, `export_settings` action around 5577, second-apply loop 5638/6103/6296; `bbs_3mf.cpp` color-group mapping 2043–2059/2157 and material normalization 2228–2250; `Model.cpp` CLI archive import 324–330 and GUI dispatch 388–397. Revision `8500fcdccaa10b5099ac20d252af3a7c560046f1`.

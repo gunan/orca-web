@@ -1,0 +1,15 @@
+✔ native toolbar raster inputs and generator retain the pinned provenance (1.80825ms)
+✔ all light 36px icon strips exactly preserve the original native state atlas (4.263958ms)
+✔ all light 72px icon strips exactly preserve the original native state atlas (5.452083ms)
+✔ all dark 36px icon strips exactly preserve the original native state atlas (2.590417ms)
+✔ all dark 72px icon strips exactly preserve the original native state atlas (4.873583ms)
+✔ Move light has distinct native normal, selected and disabled states with preserved alpha (0.396333ms)
+✔ Move dark has distinct native normal, selected and disabled states with preserved alpha (0.213917ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 58.012417

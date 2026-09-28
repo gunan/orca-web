@@ -1,0 +1,1437 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "scope": "Original multipart predicate and Model::convert_multipart_object with affine/config/name adapters. Conversion fixtures use zero origin_translation and exclude archive parsing and geometry triangulation.",
+  "sourceSha256": {
+    "src/libslic3r/Model.cpp": "abc47399040b295f1eed8ad53f7ddd7b45eb324616cd8e57ea5d188b7d9ea894",
+    "src/slic3r/GUI/Plater.cpp": "dbeee2a69d8955dd8e42efa8943a553b3c231232ce7f0cf0496575aed78daf3a"
+  },
+  "generatorSha256": "c9e450acd47c67e80457f5270e9fef6e912678616635bdb52bce6a6d5a0efcfd",
+  "referenceSha256": "a24738206168b1021d2a4f44310124128cd599212e4a6bcfa839460e23f51544",
+  "binarySha256": "08abb23681a2aec6599a0c3666c96b92116da44d95990ae639fe698eb4c1e8f4",
+  "conversions": [
+    {
+      "groups": [
+        {
+          "inputFile": "Stack.3mf",
+          "instances": [
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "name": "Bottom",
+          "objectExtruder": null,
+          "volumes": [
+            {
+              "extruder": null,
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "name": "base",
+              "tag": "base"
+            }
+          ]
+        },
+        {
+          "inputFile": "Stack.3mf",
+          "instances": [
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              20,
+              1
+            ]
+          ],
+          "name": "Top",
+          "objectExtruder": null,
+          "volumes": [
+            {
+              "extruder": null,
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "name": "top",
+              "tag": "top"
+            }
+          ]
+        }
+      ],
+      "name": "stacked objects",
+      "result": {
+        "name": "Stack",
+        "volumes": [
+          {
+            "extruder": null,
+            "matrix": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "name": "Bottom",
+            "tag": "base"
+          },
+          {
+            "extruder": null,
+            "matrix": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              20.0,
+              1.0
+            ],
+            "name": "Top",
+            "tag": "top"
+          }
+        ]
+      }
+    },
+    {
+      "groups": [
+        {
+          "inputFile": "Stack.3mf",
+          "instances": [
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1
+            ]
+          ],
+          "name": "First",
+          "objectExtruder": 2,
+          "volumes": [
+            {
+              "extruder": 0,
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "name": "zero",
+              "tag": "zero"
+            }
+          ]
+        },
+        {
+          "inputFile": "Stack.3mf",
+          "instances": [
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              30,
+              0,
+              0,
+              1
+            ]
+          ],
+          "name": "Second",
+          "objectExtruder": 2,
+          "volumes": [
+            {
+              "extruder": null,
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "name": "inherited",
+              "tag": "inherited"
+            }
+          ]
+        }
+      ],
+      "name": "volume zero wins and object fallback",
+      "result": {
+        "name": "Stack",
+        "volumes": [
+          {
+            "extruder": 0,
+            "matrix": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "name": "First",
+            "tag": "zero"
+          },
+          {
+            "extruder": 2,
+            "matrix": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              30.0,
+              0.0,
+              0.0,
+              1.0
+            ],
+            "name": "Second",
+            "tag": "inherited"
+          }
+        ]
+      }
+    },
+    {
+      "groups": [
+        {
+          "inputFile": "Stack.3mf",
+          "instances": [
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              40,
+              30,
+              10,
+              1
+            ],
+            [
+              -1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              100,
+              30,
+              10,
+              1
+            ]
+          ],
+          "name": "Shared",
+          "objectExtruder": 1,
+          "volumes": [
+            {
+              "extruder": null,
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "name": "a",
+              "tag": "a"
+            },
+            {
+              "extruder": 2,
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                14,
+                0,
+                0,
+                1
+              ],
+              "name": "b",
+              "tag": "b"
+            }
+          ]
+        },
+        {
+          "inputFile": "Stack.3mf",
+          "instances": [
+            [
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              30,
+              1
+            ]
+          ],
+          "name": "Other",
+          "objectExtruder": null,
+          "volumes": [
+            {
+              "extruder": null,
+              "matrix": [
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1,
+                0,
+                0,
+                0,
+                0,
+                1
+              ],
+              "name": "c",
+              "tag": "c"
+            }
+          ]
+        }
+      ],
+      "name": "linked mirrored instances and volume-major order",
+      "result": {
+        "name": "Stack",
+        "volumes": [
+          {
+            "extruder": 1,
+            "matrix": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              40.0,
+              30.0,
+              10.0,
+              1.0
+            ],
+            "name": "Shared",
+            "tag": "a"
+          },
+          {
+            "extruder": 1,
+            "matrix": [
+              -1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              100.0,
+              30.0,
+              10.0,
+              1.0
+            ],
+            "name": "Shared",
+            "tag": "a"
+          },
+          {
+            "extruder": 2,
+            "matrix": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              54.0,
+              30.0,
+              10.0,
+              1.0
+            ],
+            "name": "Shared",
+            "tag": "b"
+          },
+          {
+            "extruder": 2,
+            "matrix": [
+              -1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              86.0,
+              30.0,
+              10.0,
+              1.0
+            ],
+            "name": "Shared",
+            "tag": "b"
+          },
+          {
+            "extruder": null,
+            "matrix": [
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              0.0,
+              1.0,
+              0.0,
+              0.0,
+              0.0,
+              30.0,
+              1.0
+            ],
+            "name": "Other",
+            "tag": "c"
+          }
+        ]
+      }
+    }
+  ],
+  "predicates": [
+    {
+      "detected": false,
+      "objects": []
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 0,
+          "volumeCount": 1
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 0,
+          "volumeCount": 1
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 0,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 0,
+          "volumeCount": 2
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 2
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 0,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 0,
+          "volumeCount": 2
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 5e-05,
+          "volumeCount": 1
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 5e-05,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 5e-05,
+          "volumeCount": 1
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 5e-05,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 5e-05,
+          "volumeCount": 1
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 5e-05,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 5e-05,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 5e-05,
+          "volumeCount": 2
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 5e-05,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 5e-05,
+          "volumeCount": 2
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 5e-05,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 5e-05,
+          "volumeCount": 2
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": true,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 0.0002,
+          "volumeCount": 1
+        }
+      ]
+    },
+    {
+      "detected": true,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 0.0002,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": true,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 0.0002,
+          "volumeCount": 1
+        }
+      ]
+    },
+    {
+      "detected": true,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 0.0002,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 0.0002,
+          "volumeCount": 1
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 0.0002,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 0.0002,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 0.0002,
+          "volumeCount": 2
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 0.0002,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 0.0002,
+          "volumeCount": 2
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 0.0002,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 0.0002,
+          "volumeCount": 2
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": true,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 20,
+          "volumeCount": 1
+        }
+      ]
+    },
+    {
+      "detected": true,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 20,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": true,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 20,
+          "volumeCount": 1
+        }
+      ]
+    },
+    {
+      "detected": true,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 20,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 20,
+          "volumeCount": 1
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 20,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 20,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 0,
+          "minZ": 20,
+          "volumeCount": 2
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 20,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 1,
+          "minZ": 20,
+          "volumeCount": 2
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 20,
+          "volumeCount": 2
+        }
+      ]
+    },
+    {
+      "detected": false,
+      "objects": [
+        {
+          "configKeys": 1,
+          "minZ": 0,
+          "volumeCount": 1
+        },
+        {
+          "configKeys": 2,
+          "minZ": 20,
+          "volumeCount": 2
+        },
+        {
+          "configKeys": 2,
+          "minZ": -10,
+          "volumeCount": 2
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+[WebServer] (node:55854) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:55860) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/camera-fit-orientation.spec.js:10:56 › Prepare Fit and Zoom to bed preserve the current Perspective viewing axes and Undo history (8.4s)
+(node:55880) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/camera-fit-orientation.spec.js:10:56 › Prepare Fit and Zoom to bed preserve the current Orthographic viewing axes and Undo history (9.0s)
+(node:55896) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/e2e/camera-fit-orientation.spec.js:15:1 › Fit toolpaths preserves a user orbit and pan while fitting the visible preview without slicing again (9.3s)
+
+
+  1) tests/e2e/camera-fit-orientation.spec.js:10:56 › Prepare Fit and Zoom to bed preserve the current Perspective viewing axes and Undo history 
+
+    Error: expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 0.8467241992282699
+    Received: 0.7071067811865475
+
+    Expected precision:    10
+    Expected difference: < 0.00000000005
+    Received difference:   0.13961741804172245
+
+       5 | import {expectSceneInCamera} from '../fixtures/camera-frustum-assertions.js';
+       6 | const rotation=f=>[0,1,2,4,5,6,8,9,10].map(i=>f.matrixWorldInverse[i]);
+    >  7 | const sameDirection=(a,b)=>rotation(a).forEach((v,i)=>expect(rotation(b)[i]).toBeCloseTo(v,10));
+         |                                                                              ^
+       8 | async function open(page){await observeGpu(page);await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);const canvas=page.getByRole('img',{name:'Interactive 3D model view'});await gpuIdle(page,canvas);return canvas;}
+       9 | async function save(page){const event=page.waitForEvent('download');await page.getByRole('button',{name:'Save project',exact:true}).click();return JSON.parse(await readFile(await(await event).path(),'utf8'));}
+      10 | for(const projection of ['Perspective','Orthographic'])test(`Prepare Fit and Zoom to bed preserve the current ${projection} viewing axes and Undo history`,async({page})=>{
+        at forEach (/private/tmp/orca-implementation/m40-camera-fit-stage/tests/e2e/camera-fit-orientation.spec.js:7:78)
+        at sameDirection (/private/tmp/orca-implementation/m40-camera-fit-stage/tests/e2e/camera-fit-orientation.spec.js:7:40)
+        at /private/tmp/orca-implementation/m40-camera-fit-stage/tests/e2e/camera-fit-orientation.spec.js:12:128
+
+    Error Context: test-results/m40-focused/camera-fit-orientation-Pre-6da1e-ewing-axes-and-Undo-history/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m40-focused/camera-fit-orientation-Pre-6da1e-ewing-axes-and-Undo-history/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m40-focused/camera-fit-orientation-Pre-6da1e-ewing-axes-and-Undo-history/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/camera-fit-orientation.spec.js:10:56 › Prepare Fit and Zoom to bed preserve the current Orthographic viewing axes and Undo history 
+
+    Error: expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 0.8467241992282718
+    Received: 0.7071067811865475
+
+    Expected precision:    10
+    Expected difference: < 0.00000000005
+    Received difference:   0.13961741804172434
+
+       5 | import {expectSceneInCamera} from '../fixtures/camera-frustum-assertions.js';
+       6 | const rotation=f=>[0,1,2,4,5,6,8,9,10].map(i=>f.matrixWorldInverse[i]);
+    >  7 | const sameDirection=(a,b)=>rotation(a).forEach((v,i)=>expect(rotation(b)[i]).toBeCloseTo(v,10));
+         |                                                                              ^
+       8 | async function open(page){await observeGpu(page);await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);const canvas=page.getByRole('img',{name:'Interactive 3D model view'});await gpuIdle(page,canvas);return canvas;}
+       9 | async function save(page){const event=page.waitForEvent('download');await page.getByRole('button',{name:'Save project',exact:true}).click();return JSON.parse(await readFile(await(await event).path(),'utf8'));}
+      10 | for(const projection of ['Perspective','Orthographic'])test(`Prepare Fit and Zoom to bed preserve the current ${projection} viewing axes and Undo history`,async({page})=>{
+        at forEach (/private/tmp/orca-implementation/m40-camera-fit-stage/tests/e2e/camera-fit-orientation.spec.js:7:78)
+        at sameDirection (/private/tmp/orca-implementation/m40-camera-fit-stage/tests/e2e/camera-fit-orientation.spec.js:7:40)
+        at /private/tmp/orca-implementation/m40-camera-fit-stage/tests/e2e/camera-fit-orientation.spec.js:12:128
+
+    Error Context: test-results/m40-focused/camera-fit-orientation-Pre-84882-ewing-axes-and-Undo-history/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m40-focused/camera-fit-orientation-Pre-84882-ewing-axes-and-Undo-history/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m40-focused/camera-fit-orientation-Pre-84882-ewing-axes-and-Undo-history/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests/e2e/camera-fit-orientation.spec.js:15:1 › Fit toolpaths preserves a user orbit and pan while fitting the visible preview without slicing again 
+
+    Error: expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 0.9998165284317941
+    Received: 0.7071067811865477
+
+    Expected precision:    10
+    Expected difference: < 0.00000000005
+    Received difference:   0.29270974724524645
+
+       5 | import {expectSceneInCamera} from '../fixtures/camera-frustum-assertions.js';
+       6 | const rotation=f=>[0,1,2,4,5,6,8,9,10].map(i=>f.matrixWorldInverse[i]);
+    >  7 | const sameDirection=(a,b)=>rotation(a).forEach((v,i)=>expect(rotation(b)[i]).toBeCloseTo(v,10));
+         |                                                                              ^
+       8 | async function open(page){await observeGpu(page);await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);const canvas=page.getByRole('img',{name:'Interactive 3D model view'});await gpuIdle(page,canvas);return canvas;}
+       9 | async function save(page){const event=page.waitForEvent('download');await page.getByRole('button',{name:'Save project',exact:true}).click();return JSON.parse(await readFile(await(await event).path(),'utf8'));}
+      10 | for(const projection of ['Perspective','Orthographic'])test(`Prepare Fit and Zoom to bed preserve the current ${projection} viewing axes and Undo history`,async({page})=>{
+        at forEach (/private/tmp/orca-implementation/m40-camera-fit-stage/tests/e2e/camera-fit-orientation.spec.js:7:78)
+        at sameDirection (/private/tmp/orca-implementation/m40-camera-fit-stage/tests/e2e/camera-fit-orientation.spec.js:7:40)
+        at /private/tmp/orca-implementation/m40-camera-fit-stage/tests/e2e/camera-fit-orientation.spec.js:19:102
+
+    Error Context: test-results/m40-focused/camera-fit-orientation-Fit-b8377-eview-without-slicing-again/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m40-focused/camera-fit-orientation-Fit-b8377-eview-without-slicing-again/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m40-focused/camera-fit-orientation-Fit-b8377-eview-without-slicing-again/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    tests/e2e/camera-fit-orientation.spec.js:10:56 › Prepare Fit and Zoom to bed preserve the current Perspective viewing axes and Undo history 
+    tests/e2e/camera-fit-orientation.spec.js:10:56 › Prepare Fit and Zoom to bed preserve the current Orthographic viewing axes and Undo history 
+    tests/e2e/camera-fit-orientation.spec.js:15:1 › Fit toolpaths preserves a user orbit and pan while fitting the visible preview without slicing again 

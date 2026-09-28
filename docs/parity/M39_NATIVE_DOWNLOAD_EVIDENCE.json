@@ -1,0 +1,8 @@
+{
+  "browserStatus": 200,
+  "browserBytes": 1047484,
+  "sha256": "80cd166f0e1d19675ba556cb97f5a61b628b9962437e697a1feaff89136fce3c",
+  "towerExtrusions": 6795,
+  "apiRequestIdleMilliseconds": 5954.43200000003,
+  "apiError": "ECONNRESET"
+}

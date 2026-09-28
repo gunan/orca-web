@@ -1,0 +1,34 @@
+✔ real OrbitControls gestures follow all81 original native button mappings, including modifier keys (12.403792ms)
+✔ native default middle drag pans without dollying and selected orbit speed scales the angle (0.301708ms)
+✖ reverse wheel changes zoom direction without changing later touch pinch direction (6.8565ms)
+✔ reentrant wheel events and disposal restore the original zoom speed; paint can suppress left camera gestures (0.292625ms)
+✔ camera preferences use exact native defaults, preserve supported values and reject malformed storage (0.303042ms)
+✔ orbit input commits on native bounds and two-decimal formatting (0.115667ms)
+✔ camera reference retains original method and generator provenance (0.36475ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 109.2045
+
+✖ failing tests:
+
+test at tests/unit/native-camera-preferences.test.js:25:1
+✖ reverse wheel changes zoom direction without changing later touch pinch direction (6.8565ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(distance()<before)
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m39-camera-preferences-stage/tests/unit/native-camera-preferences.test.js:28:257)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

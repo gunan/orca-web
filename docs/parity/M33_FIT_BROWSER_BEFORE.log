@@ -1,0 +1,76 @@
+[WebServer] (node:19255) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:19259) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/prime-tower-fit-lifecycle.spec.js:14:43 › Fit uses newly committed tower geometry before passive effects replace the ready scene (741ms)
+(node:19265) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/prime-tower-fit-lifecycle.spec.js:14:43 › Fit uses newly committed tower geometry before passive effects replace the loading scene (854ms)
+
+
+  1) tests/e2e/prime-tower-fit-lifecycle.spec.js:14:43 › Fit uses newly committed tower geometry before passive effects replace the ready scene 
+
+    Error: vertical clip at 360,-160,0
+
+    expect(received).toBeLessThan(expected)
+
+    Expected: < 0.94
+    Received:   5.842466993115939
+
+       at ../fixtures/camera-frustum-assertions.js:11
+
+       9 |  const points=corners(sceneBounds(objects.filter(o=>o.visible!==false)));
+      10 |  if(tower?.visible)points.push(...corners({min:[0,0,0],max:tower.size}).map(v=>new Vector3(...v).applyAxisAngle(new Vector3(0,0,1),tower.rotation).add(new Vector3(...tower.position,0)).toArray()));
+    > 11 |  for(const point of points){const ndc=new Vector3(...point).applyMatrix4(view).applyMatrix4(projection);expect(Math.abs(ndc.x),`horizontal clip at ${point}`).toBeLessThan(.94);expect(Math.abs(ndc.y),`vertical clip at ${point}`).toBeLessThan(.94);expect(ndc.z).toBeGreaterThan(-1);expect(ndc.z).toBeLessThan(1);}
+         |                                                                                                                                                                                                                                     ^
+      12 | }
+      13 |
+        at expectSceneInCamera (/private/tmp/orca-implementation/m33-tower-interruption-stage/tests/fixtures/camera-frustum-assertions.js:11:229)
+        at /private/tmp/orca-implementation/m33-tower-interruption-stage/tests/e2e/prime-tower-fit-lifecycle.spec.js:21:217
+
+    Error Context: test-results/m33-focused/prime-tower-fit-lifecycle--58d38-cts-replace-the-ready-scene/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m33-focused/prime-tower-fit-lifecycle--58d38-cts-replace-the-ready-scene/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m33-focused/prime-tower-fit-lifecycle--58d38-cts-replace-the-ready-scene/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/prime-tower-fit-lifecycle.spec.js:14:43 › Fit uses newly committed tower geometry before passive effects replace the loading scene 
+
+    Error: vertical clip at 360,-160,0
+
+    expect(received).toBeLessThan(expected)
+
+    Expected: < 0.94
+    Received:   2.1374387081860906
+
+       at ../fixtures/camera-frustum-assertions.js:11
+
+       9 |  const points=corners(sceneBounds(objects.filter(o=>o.visible!==false)));
+      10 |  if(tower?.visible)points.push(...corners({min:[0,0,0],max:tower.size}).map(v=>new Vector3(...v).applyAxisAngle(new Vector3(0,0,1),tower.rotation).add(new Vector3(...tower.position,0)).toArray()));
+    > 11 |  for(const point of points){const ndc=new Vector3(...point).applyMatrix4(view).applyMatrix4(projection);expect(Math.abs(ndc.x),`horizontal clip at ${point}`).toBeLessThan(.94);expect(Math.abs(ndc.y),`vertical clip at ${point}`).toBeLessThan(.94);expect(ndc.z).toBeGreaterThan(-1);expect(ndc.z).toBeLessThan(1);}
+         |                                                                                                                                                                                                                                     ^
+      12 | }
+      13 |
+        at expectSceneInCamera (/private/tmp/orca-implementation/m33-tower-interruption-stage/tests/fixtures/camera-frustum-assertions.js:11:229)
+        at /private/tmp/orca-implementation/m33-tower-interruption-stage/tests/e2e/prime-tower-fit-lifecycle.spec.js:21:217
+
+    Error Context: test-results/m33-focused/prime-tower-fit-lifecycle--d660d-s-replace-the-loading-scene/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m33-focused/prime-tower-fit-lifecycle--d660d-s-replace-the-loading-scene/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m33-focused/prime-tower-fit-lifecycle--d660d-s-replace-the-loading-scene/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests/e2e/prime-tower-fit-lifecycle.spec.js:14:43 › Fit uses newly committed tower geometry before passive effects replace the ready scene 
+    tests/e2e/prime-tower-fit-lifecycle.spec.js:14:43 › Fit uses newly committed tower geometry before passive effects replace the loading scene 

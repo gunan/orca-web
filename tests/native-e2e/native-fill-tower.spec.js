@@ -1,0 +1,30 @@
+import {test,expect} from '@playwright/test';import {readFile} from 'node:fs/promises';
+import {importNative3MF,exportNative3MF} from '../../shared/native-project.js';
+import {expectSceneInCamera} from '../fixtures/camera-frustum-assertions.js';
+import {meshBounds} from '../../shared/geometry.js';
+import {addFilamentSlot} from '../../shared/filament-slots.js';
+for(const width of [20,60])test(`real two-material Fill retains native tower width ${width}, Undo and export; native slicing ${width===20?'reports its actual conflict':'completes'}`,async({page,request},info)=>{
+ const towerX=width===20?70:75,bed=width===20?100:150;
+ expect((await(await request.get('/api/health')).json()).engine.version).toMatch(/^OrcaSlicer-2\.4\.2/);
+ let project=importNative3MF(await readFile(new URL('../fixtures/native-gui-cube-2.4.2.3mf',import.meta.url)));
+ project.useEmbeddedSettings=true;project=addFilamentSlot(project);
+ Object.assign(project.nativeSettings,{printable_area:['0x0',`${bed}x0`,`${bed}x${bed}`,`0x${bed}`],enable_prime_tower:'1',prime_tower_width:String(width),prime_tower_brim_width:'3',prime_volume:width===20?'20':'200',wipe_tower_wall_type:'rectangle',wipe_tower_x:[String(towerX)],wipe_tower_y:['10'],wipe_tower_rotation_angle:'0',timelapse_type:'0',enable_wrapping_detection:'0',filament_colour:['#0080FF','#FF4000']});
+ project.objects[0].position=[20,20,0];project.objects[0].scale=[2,2,1];delete project.objects[0].native.instanceFamily;
+ const peer=structuredClone(project.objects[0]);peer.id='second-material';peer.name='Second material';peer.native.groupId=peer.id;peer.filamentSlot=2;peer.scale=[1,1,1];peer.position[0]+=width===20?45:90;peer.position[1]+=width===20?45:90;project.objects.push(peer);
+ for(const box of project.objects.map(meshBounds)){expect(Math.min(box.min[0],box.min[1])).toBeGreaterThanOrEqual(0);expect(Math.max(box.max[0],box.max[1])).toBeLessThanOrEqual(bed);}
+ await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();
+ await page.getByLabel('Open Orca Web project').setInputFiles({name:'fill-with-tower.3mf',mimeType:'application/octet-stream',buffer:Buffer.from(exportNative3MF(project))});
+ await expect(page.getByText('Embedded native presets',{exact:true})).toBeVisible();await expect(page.locator('.scene-object-row')).toHaveCount(2);
+ const canvas=page.getByRole('img',{name:'Interactive 3D model view',exact:true});await expect.poll(()=>canvas.evaluate(el=>JSON.parse(el.dataset.primeTower))).toMatchObject({visible:true,bands:2});
+ await page.getByRole('button',{name:'Edit',exact:true}).click();await page.getByRole('menuitem',{name:'Clone selected…',exact:true}).click();const dialog=page.getByRole('dialog',{name:'Clone',exact:true});
+ const filling=page.waitForResponse(r=>r.url().endsWith('/api/geometry/fill-bed'));await dialog.getByRole('button',{name:'Fill',exact:true}).click();const response=await filling;expect(response.status(),await response.text()).toBe(200);const filled=await response.json();
+ expect(filled.result.added).toBeGreaterThan(0);expect(filled.result.diagnostics.tower).toMatchObject({rotation:0,bedIndex:0,isVirtual:true,isWipeTower:true,translation:[(width===20?68:75)*1000000,10000000]});
+ expect(filled.result.diagnostics.tower.polygon[0]).toEqual([-6000000,-6000000]);expect(filled.result.diagnostics.tower.polygon[1][0]).toBe((width+6)*1000000);expect(filled.request.towerPreview).toBeUndefined();
+ const total=filled.result.added+2;await expect(dialog).not.toBeVisible();await expect(page.locator('.editor-notice')).toContainText(`Arranged ${total}`);
+ await page.getByRole('button',{name:'Undo',exact:true}).click();await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('.scene-object-row')).toHaveCount(2);
+ await page.getByRole('button',{name:'Redo',exact:true}).click();await page.getByRole('button',{name:'Redo',exact:true}).click();await page.locator('.scene-views').getByRole('button',{name:'Fit',exact:true}).click();await expect.poll(()=>canvas.evaluate(el=>JSON.parse(el.dataset.primeTower))).toMatchObject({status:'ready',visible:true});const fitted=await canvas.evaluate(el=>({tower:JSON.parse(el.dataset.primeTower),frame:JSON.parse(el.dataset.cameraFrame)}));await page.screenshot({path:info.outputPath('native-fill-tower.png')});
+ await page.getByRole('button',{name:'Project',exact:true}).click();const downloading=page.waitForEvent('download');await page.getByRole('button',{name:'Export native project',exact:true}).click();const bytes=await readFile(await(await downloading).path()),restored=importNative3MF(bytes);
+ expectSceneInCamera(restored.objects.filter(o=>o.plateId===restored.activePlateId),fitted.tower,fitted.frame);expect(restored.objects).toHaveLength(total);const materialOne=restored.objects.filter(o=>o.filamentSlot===1);expect(materialOne).toHaveLength(total-1);expect(new Set(materialOne.map(o=>o.native.instanceFamily)).size).toBe(1);expect(restored.nativeSettings.wipe_tower_x[0]).toBe(String(towerX));
+ await page.getByRole('button',{name:'Prepare',exact:true}).click();const slicing=page.waitForResponse(r=>r.url().endsWith('/api/jobs/project'));await page.getByRole('button',{name:'Slice model',exact:true}).click();const accepted=await slicing;expect(accepted.status(),await accepted.text()).toBe(202);const job=await accepted.json();let completed;await expect.poll(async()=>{completed=await(await request.get(`/api/jobs/${job.id}`)).json();return completed.status;},{timeout:90000}).toMatch(/^(ready|failed|cancelled)$/);if(width===20){expect(completed.status).toBe('failed');expect(completed.error).toMatch(/exited 155: Generated toolpaths intersect/);await expect(page.getByText(completed.error,{exact:true})).toBeVisible();return;}expect(completed.status,completed.error).toBe('ready');await expect(page.getByText('Ready to print')).toBeVisible();
+ const code=await(await request.get(`/api/jobs/${job.id}/download`)).text();expect(code).toMatch(/generated by OrcaSlicer/);expect(code).toMatch(/^T0\b/m);expect(code).toMatch(/^T1\b/m);expect(code).toMatch(/;TYPE:.*[Pp]rime tower/);expect(code).not.toMatch(/fake|test fixture/);
+});

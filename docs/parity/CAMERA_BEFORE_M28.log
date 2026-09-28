@@ -1,0 +1,78 @@
+
+> orca-web@0.1.0 test:e2e
+> playwright test --workers=1 tests/e2e/prime-tower-camera.spec.js
+
+[WebServer] (node:86732) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:86736) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/prime-tower-camera.spec.js:35:56 › Fit waits for replacement tower bounds in Perspective and retains the chosen view (7.3s)
+(node:86764) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/prime-tower-camera.spec.js:35:56 › Fit waits for replacement tower bounds in Orthographic and retains the chosen view (7.6s)
+
+
+  1) tests/e2e/prime-tower-camera.spec.js:35:56 › Fit waits for replacement tower bounds in Perspective and retains the chosen view 
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 100
+    Received:   52.5
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      36 |  const control=await start(page);if(projection==='Orthographic')await page.locator('.scene-views').getByRole('button',{name:'Perspective',exact:true}).click();control.defer();await edit(page);
+      37 |  await page.locator('.scene-views').getByRole('button',{name:'Front',exact:true}).click();expect((await target(page))[0]).toBeLessThan(100);
+    > 38 |  await control.next();await expect.poll(()=>preview(page)).toMatchObject({status:'ready',position:[125,160]});await expect.poll(async()=>(await target(page))[0]).toBeGreaterThan(100);
+         |                                                                                                                                                                   ^
+      39 |  await expect(canvas(page)).toHaveAttribute('data-camera-view','Front');await assertFits(page,control.project);await page.screenshot({path:info.outputPath(`tower-fit-${projection}.png`)});
+      40 | });
+      41 |
+        at /private/tmp/orca-implementation/m28-camera-fit-stage/tests/e2e/prime-tower-camera.spec.js:38:163
+
+    Error Context: test-results/browser/prime-tower-camera-Fit-wai-0840c-and-retains-the-chosen-view/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/browser/prime-tower-camera-Fit-wai-0840c-and-retains-the-chosen-view/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/browser/prime-tower-camera-Fit-wai-0840c-and-retains-the-chosen-view/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/prime-tower-camera.spec.js:35:56 › Fit waits for replacement tower bounds in Orthographic and retains the chosen view 
+
+    Error: expect(received).toBeGreaterThan(expected)
+
+    Expected: > 100
+    Received:   52.5
+
+    Call Log:
+    - Timeout 5000ms exceeded while waiting on the predicate
+
+      36 |  const control=await start(page);if(projection==='Orthographic')await page.locator('.scene-views').getByRole('button',{name:'Perspective',exact:true}).click();control.defer();await edit(page);
+      37 |  await page.locator('.scene-views').getByRole('button',{name:'Front',exact:true}).click();expect((await target(page))[0]).toBeLessThan(100);
+    > 38 |  await control.next();await expect.poll(()=>preview(page)).toMatchObject({status:'ready',position:[125,160]});await expect.poll(async()=>(await target(page))[0]).toBeGreaterThan(100);
+         |                                                                                                                                                                   ^
+      39 |  await expect(canvas(page)).toHaveAttribute('data-camera-view','Front');await assertFits(page,control.project);await page.screenshot({path:info.outputPath(`tower-fit-${projection}.png`)});
+      40 | });
+      41 |
+        at /private/tmp/orca-implementation/m28-camera-fit-stage/tests/e2e/prime-tower-camera.spec.js:38:163
+
+    Error Context: test-results/browser/prime-tower-camera-Fit-wai-52c77-and-retains-the-chosen-view/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/browser/prime-tower-camera-Fit-wai-52c77-and-retains-the-chosen-view/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/browser/prime-tower-camera-Fit-wai-52c77-and-retains-the-chosen-view/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests/e2e/prime-tower-camera.spec.js:35:56 › Fit waits for replacement tower bounds in Perspective and retains the chosen view 
+    tests/e2e/prime-tower-camera.spec.js:35:56 › Fit waits for replacement tower bounds in Orthographic and retains the chosen view 

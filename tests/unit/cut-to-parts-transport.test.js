@@ -1,0 +1,12 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdtemp,readFile,readdir,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import path from 'node:path';
+import {createNativeArrangeWorker} from '../../server/native-arrange-worker.js';
+import {cutPartsFixture,cutPartsCases} from '../fixtures/cut-to-parts-project.js';
+const reference=JSON.parse(await readFile(new URL('../fixtures/cut-to-parts-reference.json',import.meta.url)));
+function replay(mode){const request=cutPartsFixture(cutPartsCases[0]).prepared.request,e=reference.cases[0].expected;return Buffer.from(JSON.stringify({...request,fixtureMode:mode,fixtureResult:{format:'orca-native-cut-to-parts',version:1,sourceRevision:reference.sourceCommit,selectedInstanceId:request.selectedInstanceId,minimumZBeforeGrounding:e.minimumZBeforeGrounding,minimumZAfterGrounding:e.minimumZAfterGrounding,instances:request.instances.map((value,index)=>({...value,matrix:e.instances[index]})),parts:e.parts.map(part=>({sourceId:request.sourceParts[0].id,name:part.name,type:part.type,fromUpper:part.fromUpper,vertices:part.rawVertices,triangles:part.triangles,matrix:part.matrix}))}}));}
+async function worker(t,options={}){const tempRoot=await mkdtemp(path.join(tmpdir(),'cut-parts-transport-')),value=createNativeArrangeWorker({binary:path.resolve('tests/fixtures/fake-arrange-worker.mjs'),tempRoot,...options});t.after(async()=>{await value.shutdown();assert.deepEqual(await readdir(tempRoot),[]);await rm(tempRoot,{recursive:true,force:true});});return value;}
+test('Cut transport uses its bounded geometry output budget and validates the native replay identity',async t=>{const w=await worker(t,{maxOutputBytes:100,maxGeometryOutputBytes:20000});assert.equal((await w.process(replay())).parts.length,2);await assert.rejects(w.process(replay('INVALID')),/membership/);const small=await worker(t,{maxGeometryOutputBytes:100});await assert.rejects(small.process(replay()),/output size limit/);});
+test('Cut transport cancellation and queue deadlines remove all isolated geometry',async t=>{const w=await worker(t,{timeoutMs:1500,maxQueued:1}),controller=new AbortController(),first=assert.rejects(w.process(replay('WAIT'),{signal:controller.signal}),/cancelled/),second=assert.rejects(w.process(replay('WAIT')),/timed out/);await assert.rejects(w.process(replay()),error=>error.status===429);controller.abort();await Promise.all([first,second]);assert.equal((await w.process(replay())).parts.length,2);});

@@ -1,0 +1,19 @@
+✔ current preview bounds contain every rendered native band and independent rotated shell corner (7.393167ms)
+✔ missing or hidden tower has no camera extent (0.065625ms)
+✔ tower lost capture discards preview displacement, restores controls, and closes the gesture (3.830625ms)
+✔ tower window blur discards preview displacement, restores controls, and closes the gesture (1.061709ms)
+✔ tower hidden page discards preview displacement, restores controls, and closes the gesture (0.445833ms)
+✔ tower preview replacement discards preview displacement, restores controls, and closes the gesture (0.38125ms)
+✔ tower tool switch discards preview displacement, restores controls, and closes the gesture (0.327708ms)
+✔ tower released button discards preview displacement, restores controls, and closes the gesture (0.32ms)
+✔ foreign pointer events cannot move, replace or commit an active tower gesture (0.329375ms)
+✔ normal release commits once despite synchronous lost capture and retains prior control availability (0.283833ms)
+✔ disposal cancels movement and removes interruption listeners without selecting into an unmounted owner (0.28175ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 61.687792

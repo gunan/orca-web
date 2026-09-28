@@ -1,0 +1,14 @@
+
+> orca-web@0.1.0 test:e2e:native
+> playwright test --config playwright.native.config.js tests/native-e2e/camera-preferences.spec.js
+
+[WebServer] (node:54969) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:54972) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/native-e2e/camera-preferences.spec.js:5:1 › native sliced Preview retains exact path identity while shared camera controls change and remount (25.4s)
+
+  1 passed (30.7s)

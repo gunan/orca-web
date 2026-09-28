@@ -1,0 +1,13 @@
+[WebServer] (node:19017) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:19026) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/zero-volume-import.spec.js:14:1 › zero-volume notice precedes insertion, uses native information icon, and surviving geometry is one Undo action (2.0s)
+  ✓  2 tests/e2e/zero-volume-import.spec.js:15:1 › all-empty geometry Open reports the removal and retains the previous document and edit history (1.8s)
+  ✓  3 tests/e2e/zero-volume-import.spec.js:16:1 › dismissal acknowledges the information and imports only surviving models (1.5s)
+  ✓  4 tests/e2e/zero-volume-import.spec.js:17:1 › failed or cancelled inspection leaves existing geometry and Undo intact, including a late response (1.8s)
+
+  4 passed (8.9s)

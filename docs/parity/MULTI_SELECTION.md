@@ -1,0 +1,37 @@
+# Multiple selection
+
+Status: implemented selection and joint-transform subset, with native desktop appearance and the complete native object-tree command set still unverified. No printer was contacted.
+
+## Behavior and state
+
+The object list and canvas support Cmd/Ctrl toggles. Shift-click selects a contiguous range in the object list. Select all, Deselect all, Cmd/Ctrl+A, Cmd/Ctrl+Shift+A and Escape operate on the active plate; shortcuts leave text-input selection alone. Hidden entries remain selectable from the list and Select all, while rectangle picking only sees rendered volumes. The normal object scope expands every selected native group, so negative volumes, modifiers and support helpers move with their object. Explicit part scope retains the chosen volumes only. Alt-click in the canvas selects a part.
+
+Shift-drag creates a rectangle in the canvas. Native source has an unusual retention rule: if every hit volume is already selected, the current superset and transform frame remain unchanged. Otherwise the rectangle replaces the selection unless Cmd/Ctrl is held. A rectangle containing only non-model volumes uses part scope. Empty rectangles clear selection unless additive selection was requested. Releasing Shift before the mouse button cancels the rectangle selection, matching the source event handler.
+
+The rectangle picker renders visible mesh IDs into a separate, depth-tested RGBA target, reads its pixels, then restores the normal render target. It uses actual backing-pixel dimensions, including high-DPI displays. A hidden object or an object wholly behind another cannot be selected merely because its projected bounds overlap the rectangle. The pass has no antialiasing, blending or color conversion and caps its allocation at eight million pixels. Rectangle feedback does not alter painting, layer-brush or support-preview pointer modes.
+
+`selectedId` remains the primary target for single-object compatibility. `selectedIds`, `selectionScope` and `selectionFrame` represent the saved web selection. The frame contains its exact target IDs, scope, pivot and TRS; it keeps numeric values stable while joint affine changes are baked into each group's geometry. Project validation bounds ID arrays, rejects duplicates, malformed scopes and invalid frame vectors, removes stale/cross-plate membership, and drops a frame if it no longer matches the selection. Explicit null selection remains deselected. Ordinary selection is excluded from dirty-state comparisons, but it is retained when the document is saved. Rectangle changes participate in selection history; ordinary list/click selection remains transient. Native desktop history equivalence beyond the tested cases is not claimed.
+
+Joint position, rotation and positive scale edits share one pivot. Numeric edits and the gizmo use the same affine delta; grouped part roles, material assignments, triangle painting and editable text source placement survive. Object-scope brim ears move with the group. Part-scope edits leave object-owned brim anchors in place, as the existing native group workflow does. Center and Drop to bed use selected normal-part bounds, retain relative spacing, and preserve other plates. Duplicate and Delete act on distinct complete object groups or the explicit selected parts in one history step. Deleting the final normal part is rejected if helpers would remain.
+
+A changed geometry operation invalidates an unchanged selection frame, preventing a later numeric transform from using a stale basis. The newer generated-calibration edit guard is preserved. Single-target operations—cut, painting, height/range editors, brim ears, text, part settings, filament assignment, mesh split/repair, mirroring and place-on-face—are disabled for multiple targets instead of silently editing the primary. Batch property editing and the remaining native object-tree command set remain separate parity work.
+
+## Native references
+
+Pinned OrcaSlicer 2.4.2 commit `8500fcdccaa10b5099ac20d252af3a7c560046f1`:
+
+- [GLCanvas3D.cpp](https://github.com/OrcaSlicer/OrcaSlicer/blob/8500fcdccaa10b5099ac20d252af3a7c560046f1/src/slic3r/GUI/GLCanvas3D.cpp#L4378): Shift rectangle and click/Alt/Cmd mode dispatch; release handling at 4656.
+- [Framebuffer ID selection](https://github.com/OrcaSlicer/OrcaSlicer/blob/8500fcdccaa10b5099ac20d252af3a7c560046f1/src/slic3r/GUI/GLCanvas3D.cpp#L7330): visible IDs with depth, no blending or multisampling.
+- [Selection update](https://github.com/OrcaSlicer/OrcaSlicer/blob/8500fcdccaa10b5099ac20d252af3a7c560046f1/src/slic3r/GUI/GLCanvas3D.cpp#L10450): contains-all retention, additive Ctrl behavior, empty selection and modifier-only part selection.
+- [3DScene.cpp](https://github.com/OrcaSlicer/OrcaSlicer/blob/8500fcdccaa10b5099ac20d252af3a7c560046f1/src/slic3r/GUI/3DScene.cpp#L773): `is_modifier` means any volume that is not a model part, including negative/support volumes.
+
+## Focused evidence
+
+- Seven multi-selection unit checks cover group expansion/toggle/plate scope, independent analytic affine coordinates, material roles and painting retention, joint brim movement, batch deletion invariants, native rectangle membership, saved-state sanitization, center/drop spacing, and editable text regeneration after a batch transform. Together with existing project/state/group and native-project HTTP checks, 26 focused unit/API checks pass with zero skips.
+- Six new browser scenarios cover Cmd and Ctrl tree/canvas toggles, Shift ranges, selection shortcuts and disabled single-target tools, numeric edits with persistent TRS and reload, batch center/drop/duplicate/delete with undo, a real joint gizmo drag, visible-ID occlusion, modifier-only rectangles, additive selection and high-DPI picking. Existing editor and object-group scenarios pass; focused clipping and layer-brush renderer regressions also pass.
+- Two real OrcaSlicer comparisons use independent analytic world coordinates, not the selection helper, as their reference. A 90-degree joint rotation plus nonuniform scale and translation of two native groups produces exactly 40,835 matching motion commands. A simultaneous translation of selected negative/modifier parts produces exactly 42,350 matching motions. Both filament slots extrude more than 100 mm, and native part roles survive preparation.
+- Build passes. These are focused staged results, not a complete integrated suite claim. A broad staged test attempt was not used as acceptance because sandbox socket restrictions and missing staged scripts/docs prevented unrelated tests from running; the relevant HTTP checks were rerun with local-server permission and passed.
+
+Negative evidence: the first browser pass showed that macOS Control-click on an object-list button raises a context-menu event instead of the normal click event. The list now handles that specific Control-click event while retaining normal Cmd/click behavior; both variants are tested. The initial native reference fixture had two assigned materials but only one embedded filament definition and was correctly rejected. Native acceptance now supplies two validated catalog filaments to both independent cases. No validation rule was weakened.
+
+Remaining acceptance includes native desktop screenshot/interaction comparison, complete hierarchical native object-tree command coverage, and large-scene rendering/performance on supported devices. No physical print result is inferred from geometry or G-code equivalence.

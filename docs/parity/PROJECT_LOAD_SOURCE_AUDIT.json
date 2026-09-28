@@ -1,0 +1,23 @@
+{
+  "nativeVersion": "2.4.2",
+  "sourceCommit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "sourceSha256": {
+    "src/slic3r/GUI/Plater.cpp": "dbeee2a69d8955dd8e42efa8943a553b3c231232ce7f0cf0496575aed78daf3a",
+    "src/slic3r/GUI/Plater.hpp": "26d14a560f0a3906b75267b9061bf81900774a881d8a7cfaac283922282ca33c",
+    "src/slic3r/GUI/Preferences.cpp": "2a454ba04fd610f83de57aecce83a17fa82b7dc518b3110becc2fbce5ac71917",
+    "src/libslic3r/AppConfig.cpp": "d6951d3454eec6c7ae24b3135622ee838c0c9125033b9c97426380017801963c",
+    "src/libslic3r/AppConfig.hpp": "369246cb2be33c11955246512364b433db61043acdcacd98df3f78853cb28c64"
+  },
+  "observations": [
+    "Default ask_when_relevant. Four choices use exact source config keys.",
+    "Plater::open_3mf_file promotes Ask When Relevant to a choice only for a nonempty Add/drop model.",
+    "Explicit Plater::load_project default originfile=- calls determine_load_type without that promotion after close_with_confirm.",
+    "ProjectDropDialog default action2 is Import geometry only; only Open as project and Import geometry only radios are offered. Remember choice is commented out.",
+    "Explicit geometry Open resets the model; Add geometry appends with an Import Object snapshot."
+  ],
+  "limitations": [
+    "Compiled16-case reference covers native load decisions using GUI/config adapters; it does not validate native mesh import.",
+    "Existing web geometry loader still flattens native parts/instances and omits painting, object settings and plate assignments. Mixed/multiple 3MF choices remain incomplete.",
+    "Paired desktop GUI acceptance remains pending; Mac locked."
+  ]
+}

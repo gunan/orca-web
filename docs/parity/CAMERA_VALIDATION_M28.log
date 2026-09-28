@@ -1,0 +1,26 @@
+
+> orca-web@0.1.0 test:e2e
+> playwright test --workers=1 tests/e2e/prime-tower-camera.spec.js tests/e2e/prime-tower-preview.spec.js
+
+[WebServer] (node:87028) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 13 tests using 1 worker
+
+(node:87032) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/prime-tower-camera.spec.js:36:56 › Fit waits for replacement tower bounds in Perspective and retains the chosen view (2.2s)
+  ✓   2 tests/e2e/prime-tower-camera.spec.js:36:56 › Fit waits for replacement tower bounds in Orthographic and retains the chosen view (2.5s)
+  ✓   3 tests/e2e/prime-tower-camera.spec.js:46:45 › a user orbit supersedes a pending Fit without a late camera jump (6.0s)
+  ✓   4 tests/e2e/prime-tower-camera.spec.js:46:45 › a user pan supersedes a pending Fit without a late camera jump (5.7s)
+  ✓   5 tests/e2e/prime-tower-camera.spec.js:46:45 › a user zoom supersedes a pending Fit without a late camera jump (2.3s)
+  ✓   6 tests/e2e/prime-tower-camera.spec.js:51:1 › Zoom to bed supersedes a pending object Fit (2.0s)
+  ✓   7 tests/e2e/prime-tower-camera.spec.js:54:1 › failed preview clears the pending Fit before a later successful refresh (2.4s)
+  ✓   8 tests/e2e/prime-tower-camera.spec.js:57:1 › disabling the tower cancels a pending Fit and its delayed response (2.5s)
+  ✓   9 tests/e2e/prime-tower-camera.spec.js:61:1 › superseded geometry cannot satisfy Fit; the newest valid preview does (2.5s)
+  ✓  10 tests/e2e/prime-tower-camera.spec.js:64:1 › a fit queued for the previous plate cannot impose its view on the next plate (2.4s)
+  ✓  11 tests/e2e/prime-tower-camera.spec.js:67:1 › camera movement before the first tower response also cancels automatic fitting (2.2s)
+  ✓  12 tests/e2e/prime-tower-preview.spec.js:8:1 › pre-slice tower renders native color bands, updates placement, supports Undo, and disappears on an empty plate (3.3s)
+  ✓  13 tests/e2e/prime-tower-preview.spec.js:13:1 › disabled tower discards delayed geometry and error responses remove stale bands (1.9s)
+
+  13 passed (38.9s)

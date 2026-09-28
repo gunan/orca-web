@@ -1,0 +1,218 @@
+[WebServer] (node:87686) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:87692) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:6:1 › native Ask When Relevant is the default and all four choices persist (6.1s)
+(node:87892) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:7:1 › adding a 3MF to an empty plate opens its embedded presets under the default policy (6.9s)
+(node:88525) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:8:1 › adding a 3MF to existing geometry asks, defaults to geometry, cancels cleanly and appends without changing presets (7.7s)
+(node:88743) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:9:1 › Always Ask explicit Open chooses native project settings only after approval, and Escape preserves the scene (30.1s)
+(node:88830) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  5 ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:10:1 › explicit geometry-only Open replaces old geometry after discard and keeps the selected print settings (30.1s)
+(node:88948) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  6 ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:11:1 › Load All replaces through the existing discard transaction when adding a project to edited geometry (30.1s)
+
+
+  1) ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:6:1 › native Ask When Relevant is the default and all four choices persist 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator: getByRole('dialog', { name: 'Preferences' }).getByLabel('Load behaviour')
+    Expected: "ask_when_relevant"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveValue" getByRole('dialog', { name: 'Preferences' }).getByLabel('Load behaviour') with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Preferences' }).getByLabel('Load behaviour')
+
+
+      4 | async function preferences(p,value){await p.getByRole('button',{name:'Preferences',exact:true}).click();const d=p.getByRole('dialog',{name:'Preferences'});await d.getByLabel('Load behaviour').selectOption(value);await d.getByRole('button',{name:'Close',exact:true}).click();}
+      5 | const dialog=p=>p.getByRole('dialog',{name:'Drop project file'});
+    > 6 | test('native Ask When Relevant is the default and all four choices persist',async({page})=>{await start(page);await page.getByRole('button',{name:'Preferences',exact:true}).click();const d=page.getByRole('dialog',{name:'Preferences'}),select=d.getByLabel('Load behaviour');await expect(select).toHaveValue('ask_when_relevant');await expect(select.locator('option')).toHaveText(['Load All','Ask When Relevant','Always Ask','Load Geometry Only']);await select.selectOption('always_ask');await d.getByRole('button',{name:'Close',exact:true}).click();await page.reload();await page.getByRole('button',{name:'Preferences',exact:true}).click();await expect(d.getByLabel('Load behaviour')).toHaveValue('always_ask');});
+        |                                                                                                                                                                                                                                                                                                       ^
+      7 | test('adding a 3MF to an empty plate opens its embedded presets under the default policy',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(project);await expect(page.getByText('Embedded native presets',{exact:true})).toBeVisible();await expect(dialog(page)).toHaveCount(0);await expect(page.locator('.scene-object-row')).toHaveCount(1);});
+      8 | test('adding a 3MF to existing geometry asks, defaults to geometry, cancels cleanly and appends without changing presets',async({page})=>{await start(page);await page.getByLabel('Layer height',{exact:true}).fill('0.25');await page.getByLabel('Choose a 3D model').setInputFiles(cube);const input=page.getByLabel('Choose a 3D model');await input.setInputFiles(project);await expect(dialog(page)).toBeVisible();await expect(dialog(page).getByLabel('Import geometry only')).toBeChecked();await dialog(page).getByRole('button',{name:'Cancel',exact:true}).click();await expect(page.locator('.scene-object-row')).toHaveCount(1);await input.setInputFiles(project);await dialog(page).getByRole('button',{name:'OK',exact:true}).click();await expect(page.locator('.scene-object-row')).toHaveCount(2);await expect(page.getByLabel('Layer height',{exact:true})).toHaveValue('0.25');await expect(page.getByText('Embedded native presets',{exact:true})).toHaveCount(0);await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('.scene-object-row')).toHaveCount(1);});
+      9 | test('Always Ask explicit Open chooses native project settings only after approval, and Escape preserves the scene',async({page})=>{await start(page);await preferences(page,'always_ask');await page.getByLabel('Open Orca Web project').setInputFiles(project);await expect(dialog(page)).toBeVisible();await page.keyboard.press('Escape');await expect(dialog(page)).toHaveCount(0);await expect(page.locator('.scene-object-row')).toHaveCount(0);await page.getByLabel('Open Orca Web project').setInputFiles(project);await dialog(page).getByLabel('Open as project').check();await dialog(page).getByRole('button',{name:'OK',exact:true}).click();await expect(page.getByText('Embedded native presets',{exact:true})).toBeVisible();});
+        at /private/tmp/orca-implementation/m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:6:295
+
+    Error Context: test-results/m45-focused/project-load-preferences-n-e7772-nd-all-four-choices-persist/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m45-focused/project-load-preferences-n-e7772-nd-all-four-choices-persist/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m45-focused/project-load-preferences-n-e7772-nd-all-four-choices-persist/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:7:1 › adding a 3MF to an empty plate opens its embedded presets under the default policy 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByText('Embedded native presets', { exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByText('Embedded native presets', { exact: true }) with timeout 5000ms
+      - waiting for getByText('Embedded native presets', { exact: true })
+
+
+       5 | const dialog=p=>p.getByRole('dialog',{name:'Drop project file'});
+       6 | test('native Ask When Relevant is the default and all four choices persist',async({page})=>{await start(page);await page.getByRole('button',{name:'Preferences',exact:true}).click();const d=page.getByRole('dialog',{name:'Preferences'}),select=d.getByLabel('Load behaviour');await expect(select).toHaveValue('ask_when_relevant');await expect(select.locator('option')).toHaveText(['Load All','Ask When Relevant','Always Ask','Load Geometry Only']);await select.selectOption('always_ask');await d.getByRole('button',{name:'Close',exact:true}).click();await page.reload();await page.getByRole('button',{name:'Preferences',exact:true}).click();await expect(d.getByLabel('Load behaviour')).toHaveValue('always_ask');});
+    >  7 | test('adding a 3MF to an empty plate opens its embedded presets under the default policy',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(project);await expect(page.getByText('Embedded native presets',{exact:true})).toBeVisible();await expect(dialog(page)).toHaveCount(0);await expect(page.locator('.scene-object-row')).toHaveCount(1);});
+         |                                                                                                                                                                                                                                                                    ^
+       8 | test('adding a 3MF to existing geometry asks, defaults to geometry, cancels cleanly and appends without changing presets',async({page})=>{await start(page);await page.getByLabel('Layer height',{exact:true}).fill('0.25');await page.getByLabel('Choose a 3D model').setInputFiles(cube);const input=page.getByLabel('Choose a 3D model');await input.setInputFiles(project);await expect(dialog(page)).toBeVisible();await expect(dialog(page).getByLabel('Import geometry only')).toBeChecked();await dialog(page).getByRole('button',{name:'Cancel',exact:true}).click();await expect(page.locator('.scene-object-row')).toHaveCount(1);await input.setInputFiles(project);await dialog(page).getByRole('button',{name:'OK',exact:true}).click();await expect(page.locator('.scene-object-row')).toHaveCount(2);await expect(page.getByLabel('Layer height',{exact:true})).toHaveValue('0.25');await expect(page.getByText('Embedded native presets',{exact:true})).toHaveCount(0);await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('.scene-object-row')).toHaveCount(1);});
+       9 | test('Always Ask explicit Open chooses native project settings only after approval, and Escape preserves the scene',async({page})=>{await start(page);await preferences(page,'always_ask');await page.getByLabel('Open Orca Web project').setInputFiles(project);await expect(dialog(page)).toBeVisible();await page.keyboard.press('Escape');await expect(dialog(page)).toHaveCount(0);await expect(page.locator('.scene-object-row')).toHaveCount(0);await page.getByLabel('Open Orca Web project').setInputFiles(project);await dialog(page).getByLabel('Open as project').check();await dialog(page).getByRole('button',{name:'OK',exact:true}).click();await expect(page.getByText('Embedded native presets',{exact:true})).toBeVisible();});
+      10 | test('explicit geometry-only Open replaces old geometry after discard and keeps the selected print settings',async({page})=>{await start(page);await preferences(page,'load_geometry_only');await page.getByLabel('Layer height',{exact:true}).fill('0.25');await page.getByLabel('Choose a 3D model').setInputFiles([cube,cube]);await expect(page.locator('.scene-object-row')).toHaveCount(2);await page.getByLabel('Open Orca Web project').setInputFiles(project);const discard=page.getByRole('dialog',{name:'Unsaved project changes'});await discard.getByRole('button',{name:'Keep editing'}).click();await expect(page.locator('.scene-object-row')).toHaveCount(2);await page.getByLabel('Open Orca Web project').setInputFiles(project);await discard.getByRole('button',{name:'Discard changes'}).click();await expect(page.locator('.scene-object-row')).toHaveCount(1);await expect(page.getByLabel('Layer height',{exact:true})).toHaveValue('0.25');await expect(page.getByText('Embedded native presets',{exact:true})).toHaveCount(0);await expect(page.getByTestId('object-dimensions')).toContainText('20 × 20 × 20');});
+        at /private/tmp/orca-implementation/m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:7:260
+
+    Error Context: test-results/m45-focused/project-load-preferences-a-99a2b-ts-under-the-default-policy/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m45-focused/project-load-preferences-a-99a2b-ts-under-the-default-policy/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m45-focused/project-load-preferences-a-99a2b-ts-under-the-default-policy/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:8:1 › adding a 3MF to existing geometry asks, defaults to geometry, cancels cleanly and appends without changing presets 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog', { name: 'Drop project file' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog', { name: 'Drop project file' }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Drop project file' })
+
+
+       6 | test('native Ask When Relevant is the default and all four choices persist',async({page})=>{await start(page);await page.getByRole('button',{name:'Preferences',exact:true}).click();const d=page.getByRole('dialog',{name:'Preferences'}),select=d.getByLabel('Load behaviour');await expect(select).toHaveValue('ask_when_relevant');await expect(select.locator('option')).toHaveText(['Load All','Ask When Relevant','Always Ask','Load Geometry Only']);await select.selectOption('always_ask');await d.getByRole('button',{name:'Close',exact:true}).click();await page.reload();await page.getByRole('button',{name:'Preferences',exact:true}).click();await expect(d.getByLabel('Load behaviour')).toHaveValue('always_ask');});
+       7 | test('adding a 3MF to an empty plate opens its embedded presets under the default policy',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(project);await expect(page.getByText('Embedded native presets',{exact:true})).toBeVisible();await expect(dialog(page)).toHaveCount(0);await expect(page.locator('.scene-object-row')).toHaveCount(1);});
+    >  8 | test('adding a 3MF to existing geometry asks, defaults to geometry, cancels cleanly and appends without changing presets',async({page})=>{await start(page);await page.getByLabel('Layer height',{exact:true}).fill('0.25');await page.getByLabel('Choose a 3D model').setInputFiles(cube);const input=page.getByLabel('Choose a 3D model');await input.setInputFiles(project);await expect(dialog(page)).toBeVisible();await expect(dialog(page).getByLabel('Import geometry only')).toBeChecked();await dialog(page).getByRole('button',{name:'Cancel',exact:true}).click();await expect(page.locator('.scene-object-row')).toHaveCount(1);await input.setInputFiles(project);await dialog(page).getByRole('button',{name:'OK',exact:true}).click();await expect(page.locator('.scene-object-row')).toHaveCount(2);await expect(page.getByLabel('Layer height',{exact:true})).toHaveValue('0.25');await expect(page.getByText('Embedded native presets',{exact:true})).toHaveCount(0);await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('.scene-object-row')).toHaveCount(1);});
+         |                                                                                                                                                                                                                                                                                                                                                                                                           ^
+       9 | test('Always Ask explicit Open chooses native project settings only after approval, and Escape preserves the scene',async({page})=>{await start(page);await preferences(page,'always_ask');await page.getByLabel('Open Orca Web project').setInputFiles(project);await expect(dialog(page)).toBeVisible();await page.keyboard.press('Escape');await expect(dialog(page)).toHaveCount(0);await expect(page.locator('.scene-object-row')).toHaveCount(0);await page.getByLabel('Open Orca Web project').setInputFiles(project);await dialog(page).getByLabel('Open as project').check();await dialog(page).getByRole('button',{name:'OK',exact:true}).click();await expect(page.getByText('Embedded native presets',{exact:true})).toBeVisible();});
+      10 | test('explicit geometry-only Open replaces old geometry after discard and keeps the selected print settings',async({page})=>{await start(page);await preferences(page,'load_geometry_only');await page.getByLabel('Layer height',{exact:true}).fill('0.25');await page.getByLabel('Choose a 3D model').setInputFiles([cube,cube]);await expect(page.locator('.scene-object-row')).toHaveCount(2);await page.getByLabel('Open Orca Web project').setInputFiles(project);const discard=page.getByRole('dialog',{name:'Unsaved project changes'});await discard.getByRole('button',{name:'Keep editing'}).click();await expect(page.locator('.scene-object-row')).toHaveCount(2);await page.getByLabel('Open Orca Web project').setInputFiles(project);await discard.getByRole('button',{name:'Discard changes'}).click();await expect(page.locator('.scene-object-row')).toHaveCount(1);await expect(page.getByLabel('Layer height',{exact:true})).toHaveValue('0.25');await expect(page.getByText('Embedded native presets',{exact:true})).toHaveCount(0);await expect(page.getByTestId('object-dimensions')).toContainText('20 × 20 × 20');});
+      11 | test('Load All replaces through the existing discard transaction when adding a project to edited geometry',async({page})=>{await start(page);await preferences(page,'load_all');await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('Choose a 3D model').setInputFiles(project);await page.getByRole('dialog',{name:'Unsaved project changes'}).getByRole('button',{name:'Discard changes'}).click();await expect(page.getByText('Embedded native presets',{exact:true})).toBeVisible();await expect(page.locator('.scene-object-row')).toHaveCount(1);await expect(dialog(page)).toHaveCount(0);});
+        at /private/tmp/orca-implementation/m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:8:395
+
+    Error Context: test-results/m45-focused/project-load-preferences-a-b21fb-ds-without-changing-presets/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m45-focused/project-load-preferences-a-b21fb-ds-without-changing-presets/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m45-focused/project-load-preferences-a-b21fb-ds-without-changing-presets/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:9:1 › Always Ask explicit Open chooses native project settings only after approval, and Escape preserves the scene 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('dialog', { name: 'Preferences' }).getByLabel('Load behaviour')
+
+
+      2 | const project=new URL('../fixtures/native-gui-cube-2.4.2.3mf',import.meta.url).pathname,cube=new URL('../fixtures/cube.stl',import.meta.url).pathname;
+      3 | async function start(p){await p.goto('/');await p.getByRole('button',{name:'Prepare',exact:true}).click();await expect(p.getByLabel('Layer height',{exact:true})).toBeEnabled();}
+    > 4 | async function preferences(p,value){await p.getByRole('button',{name:'Preferences',exact:true}).click();const d=p.getByRole('dialog',{name:'Preferences'});await d.getByLabel('Load behaviour').selectOption(value);await d.getByRole('button',{name:'Close',exact:true}).click();}
+        |                                                                                                                                                                                                 ^
+      5 | const dialog=p=>p.getByRole('dialog',{name:'Drop project file'});
+      6 | test('native Ask When Relevant is the default and all four choices persist',async({page})=>{await start(page);await page.getByRole('button',{name:'Preferences',exact:true}).click();const d=page.getByRole('dialog',{name:'Preferences'}),select=d.getByLabel('Load behaviour');await expect(select).toHaveValue('ask_when_relevant');await expect(select.locator('option')).toHaveText(['Load All','Ask When Relevant','Always Ask','Load Geometry Only']);await select.selectOption('always_ask');await d.getByRole('button',{name:'Close',exact:true}).click();await page.reload();await page.getByRole('button',{name:'Preferences',exact:true}).click();await expect(d.getByLabel('Load behaviour')).toHaveValue('always_ask');});
+      7 | test('adding a 3MF to an empty plate opens its embedded presets under the default policy',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(project);await expect(page.getByText('Embedded native presets',{exact:true})).toBeVisible();await expect(dialog(page)).toHaveCount(0);await expect(page.locator('.scene-object-row')).toHaveCount(1);});
+        at preferences (/private/tmp/orca-implementation/m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:4:193)
+        at /private/tmp/orca-implementation/m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:9:151
+
+    Error Context: test-results/m45-focused/project-load-preferences-A-cd409--Escape-preserves-the-scene/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m45-focused/project-load-preferences-A-cd409--Escape-preserves-the-scene/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m45-focused/project-load-preferences-A-cd409--Escape-preserves-the-scene/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:10:1 › explicit geometry-only Open replaces old geometry after discard and keeps the selected print settings 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('dialog', { name: 'Preferences' }).getByLabel('Load behaviour')
+
+
+      2 | const project=new URL('../fixtures/native-gui-cube-2.4.2.3mf',import.meta.url).pathname,cube=new URL('../fixtures/cube.stl',import.meta.url).pathname;
+      3 | async function start(p){await p.goto('/');await p.getByRole('button',{name:'Prepare',exact:true}).click();await expect(p.getByLabel('Layer height',{exact:true})).toBeEnabled();}
+    > 4 | async function preferences(p,value){await p.getByRole('button',{name:'Preferences',exact:true}).click();const d=p.getByRole('dialog',{name:'Preferences'});await d.getByLabel('Load behaviour').selectOption(value);await d.getByRole('button',{name:'Close',exact:true}).click();}
+        |                                                                                                                                                                                                 ^
+      5 | const dialog=p=>p.getByRole('dialog',{name:'Drop project file'});
+      6 | test('native Ask When Relevant is the default and all four choices persist',async({page})=>{await start(page);await page.getByRole('button',{name:'Preferences',exact:true}).click();const d=page.getByRole('dialog',{name:'Preferences'}),select=d.getByLabel('Load behaviour');await expect(select).toHaveValue('ask_when_relevant');await expect(select.locator('option')).toHaveText(['Load All','Ask When Relevant','Always Ask','Load Geometry Only']);await select.selectOption('always_ask');await d.getByRole('button',{name:'Close',exact:true}).click();await page.reload();await page.getByRole('button',{name:'Preferences',exact:true}).click();await expect(d.getByLabel('Load behaviour')).toHaveValue('always_ask');});
+      7 | test('adding a 3MF to an empty plate opens its embedded presets under the default policy',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(project);await expect(page.getByText('Embedded native presets',{exact:true})).toBeVisible();await expect(dialog(page)).toHaveCount(0);await expect(page.locator('.scene-object-row')).toHaveCount(1);});
+        at preferences (/private/tmp/orca-implementation/m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:4:193)
+        at /private/tmp/orca-implementation/m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:10:144
+
+    Error Context: test-results/m45-focused/project-load-preferences-e-e2d49-the-selected-print-settings/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m45-focused/project-load-preferences-e-e2d49-the-selected-print-settings/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m45-focused/project-load-preferences-e-e2d49-the-selected-print-settings/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:11:1 › Load All replaces through the existing discard transaction when adding a project to edited geometry 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.selectOption: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('dialog', { name: 'Preferences' }).getByLabel('Load behaviour')
+
+
+      2 | const project=new URL('../fixtures/native-gui-cube-2.4.2.3mf',import.meta.url).pathname,cube=new URL('../fixtures/cube.stl',import.meta.url).pathname;
+      3 | async function start(p){await p.goto('/');await p.getByRole('button',{name:'Prepare',exact:true}).click();await expect(p.getByLabel('Layer height',{exact:true})).toBeEnabled();}
+    > 4 | async function preferences(p,value){await p.getByRole('button',{name:'Preferences',exact:true}).click();const d=p.getByRole('dialog',{name:'Preferences'});await d.getByLabel('Load behaviour').selectOption(value);await d.getByRole('button',{name:'Close',exact:true}).click();}
+        |                                                                                                                                                                                                 ^
+      5 | const dialog=p=>p.getByRole('dialog',{name:'Drop project file'});
+      6 | test('native Ask When Relevant is the default and all four choices persist',async({page})=>{await start(page);await page.getByRole('button',{name:'Preferences',exact:true}).click();const d=page.getByRole('dialog',{name:'Preferences'}),select=d.getByLabel('Load behaviour');await expect(select).toHaveValue('ask_when_relevant');await expect(select.locator('option')).toHaveText(['Load All','Ask When Relevant','Always Ask','Load Geometry Only']);await select.selectOption('always_ask');await d.getByRole('button',{name:'Close',exact:true}).click();await page.reload();await page.getByRole('button',{name:'Preferences',exact:true}).click();await expect(d.getByLabel('Load behaviour')).toHaveValue('always_ask');});
+      7 | test('adding a 3MF to an empty plate opens its embedded presets under the default policy',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(project);await expect(page.getByText('Embedded native presets',{exact:true})).toBeVisible();await expect(dialog(page)).toHaveCount(0);await expect(page.locator('.scene-object-row')).toHaveCount(1);});
+        at preferences (/private/tmp/orca-implementation/m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:4:193)
+        at /private/tmp/orca-implementation/m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:11:142
+
+    Error Context: test-results/m45-focused/project-load-preferences-L-24220--project-to-edited-geometry/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m45-focused/project-load-preferences-L-24220--project-to-edited-geometry/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m45-focused/project-load-preferences-L-24220--project-to-edited-geometry/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6 failed
+    ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:6:1 › native Ask When Relevant is the default and all four choices persist 
+    ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:7:1 › adding a 3MF to an empty plate opens its embedded presets under the default policy 
+    ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:8:1 › adding a 3MF to existing geometry asks, defaults to geometry, cancels cleanly and appends without changing presets 
+    ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:9:1 › Always Ask explicit Open chooses native project settings only after approval, and Escape preserves the scene 
+    ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:10:1 › explicit geometry-only Open replaces old geometry after discard and keeps the selected print settings 
+    ../m45-project-load-stage/tests/e2e/project-load-preferences.spec.js:11:1 › Load All replaces through the existing discard transaction when adding a project to edited geometry 

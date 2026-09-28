@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.20)
+project(orca_image_worker LANGUAGES CXX)
+set(CMAKE_CXX_STANDARD 17)
+find_package(wxWidgets 3.3.2 EXACT CONFIG REQUIRED COMPONENTS core base)
+add_executable(orca-image-worker image-worker.cpp)
+target_link_libraries(orca-image-worker PRIVATE wx::core wx::base)

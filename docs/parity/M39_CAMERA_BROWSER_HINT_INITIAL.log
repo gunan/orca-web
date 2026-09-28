@@ -1,0 +1,58 @@
+[WebServer] (node:54678) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 11 tests using 1 worker
+
+(node:54682) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘   1 tests/e2e/camera-preferences.spec.js:9:1 › native default middle drag pans; remapped None and Rotate actions persist without changing project history (9.9s)
+(node:54728) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   2 tests/e2e/camera-preferences.spec.js:19:1 › reverse mouse wheel applies immediately in perspective and orthographic Prepare (3.1s)
+  ✓   3 tests/e2e/camera-preferences.spec.js:24:1 › orbit speed clamps and commits on Enter or blur; invalid drafts preserve the existing camera setting (1.3s)
+  ✓   4 tests/e2e/camera-preferences.spec.js:28:1 › malformed camera preferences recover to native defaults and storage failures retain explicit session-only changes (1.6s)
+  ✓   5 tests/e2e/camera-preferences.spec.js:33:1 › camera settings propagate to painting workspaces without converting a left brush stroke into a camera gesture (7.5s)
+  ✓   6 tests/e2e/camera-preferences.spec.js:38:1 › Preview shares native middle pan and reverse wheel preferences across workspace remounts (9.0s)
+  ✓   7 tests/e2e/camera-preferences.spec.js:46:37 › Preferences has an opaque, legible light surface and usable controls at compact sizes (833ms)
+  ✓   8 tests/e2e/camera-preferences.spec.js:46:37 › Preferences has an opaque, legible dark surface and usable controls at compact sizes (979ms)
+  ✓   9 tests/e2e/native-display-preferences.spec.js:4:1 › native Units labels apply immediately, persist after reload, and leave project settings intact (1.2s)
+  ✓  10 tests/e2e/native-display-preferences.spec.js:13:1 › invalid stored Units fall back to metric and storage failures retain a visible session-only change (726ms)
+  ✓  11 tests/e2e/native-display-preferences.spec.js:17:1 › Preferences shortcut respects focused text inputs and an already open dialog (709ms)
+
+
+  1) tests/e2e/camera-preferences.spec.js:9:1 › native default middle drag pans; remapped None and Rotate actions persist without changing project history 
+
+    Error: expect(locator).toHaveText(expected) failed
+
+    Locator: locator('.scene-hint')
+    Expected: "Left/Right drag to orbit · Scroll to zoom"
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toHaveText" locator('.scene-hint') with timeout 5000ms
+      - waiting for locator('.scene-hint')
+
+
+      10 |  const canvas=await open(page),saved=await save(page);await expectPan(page,canvas);
+      11 |  await preferences(page,async dialog=>{for(const [button,value] of [['Left','2'],['Middle','1'],['Right','1']]){await expect(dialog.getByLabel(`${button} Mouse Drag`)).toHaveValue(value);await expect(dialog.getByLabel(`${button} Mouse Drag`).locator('option')).toHaveText(['None','Pan','Rotate']);}await dialog.getByLabel('Middle Mouse Drag').selectOption('0');await dialog.getByLabel('Right Mouse Drag').selectOption('2');await dialog.screenshot({path:info.outputPath('native-camera-preferences.png')});});
+    > 12 |  await expect(page.locator('.scene-hint')).toHaveText('Left/Right drag to orbit · Scroll to zoom');
+         |                                            ^
+      13 |  const before=await frame(canvas);await cameraDrag(page,canvas);expect(await frame(canvas)).toEqual(before);
+      14 |  await cameraDrag(page,canvas,'right',['Control']);const rotated=await frame(canvas);expect(vectorDistance(rotated.position,before.position)).toBeGreaterThan(1);expect(vectorDistance(rotated.target,before.target)).toBeLessThan(1e-8);
+      15 |  expect(await save(page)).toEqual(saved);await page.getByRole('button',{name:'Project',exact:true}).click();await page.getByRole('button',{name:'Prepare',exact:true}).click();await gpuIdle(page,canvas);const remounted=await frame(canvas);await cameraDrag(page,canvas);expect(await frame(canvas)).toEqual(remounted);
+        at /private/tmp/orca-implementation/m39-camera-preferences-stage/tests/e2e/camera-preferences.spec.js:12:44
+
+    Error Context: test-results/m39-focused/camera-preferences-native--32e11-ut-changing-project-history/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m39-focused/camera-preferences-native--32e11-ut-changing-project-history/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m39-focused/camera-preferences-native--32e11-ut-changing-project-history/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/camera-preferences.spec.js:9:1 › native default middle drag pans; remapped None and Rotate actions persist without changing project history 
+  10 passed (38.4s)

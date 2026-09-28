@@ -1,0 +1,215 @@
+[
+  {
+    "id": "filament-two-variants",
+    "scope": "filament",
+    "parent": {
+      "name": "Parent material",
+      "settings": {
+        "filament_extruder_variant": [
+          "Direct Drive Standard",
+          "Direct Drive High Flow"
+        ],
+        "filament_retraction_length": [
+          "0.8",
+          "1.2"
+        ],
+        "filament_flow_ratio": [
+          "0.97",
+          "1.01"
+        ],
+        "filament_type": [
+          "PLA"
+        ],
+        "compatible_printers": [
+          "P"
+        ]
+      }
+    },
+    "settings": {
+      "filament_extruder_variant": [
+        "Direct Drive Standard",
+        "Direct Drive High Flow"
+      ],
+      "filament_retraction_length": [
+        "0.8",
+        "0.9"
+      ],
+      "filament_flow_ratio": [
+        "0.97",
+        "1.01"
+      ],
+      "filament_type": [
+        "PLA"
+      ],
+      "compatible_printers": [
+        "P"
+      ]
+    }
+  },
+  {
+    "id": "filament-reordered-variants",
+    "scope": "filament",
+    "parent": {
+      "name": "Parent material",
+      "settings": {
+        "filament_extruder_variant": [
+          "Direct Drive Standard",
+          "Direct Drive High Flow"
+        ],
+        "filament_retraction_length": [
+          "0.8",
+          "1.2"
+        ],
+        "filament_flow_ratio": [
+          "0.97",
+          "1.01"
+        ],
+        "filament_type": [
+          "PLA"
+        ],
+        "compatible_printers": [
+          "P"
+        ]
+      }
+    },
+    "settings": {
+      "filament_extruder_variant": [
+        "Direct Drive High Flow",
+        "Direct Drive Standard"
+      ],
+      "filament_retraction_length": [
+        "0.9",
+        "0.8"
+      ],
+      "filament_flow_ratio": [
+        "0.97",
+        "1.01"
+      ],
+      "filament_type": [
+        "PLA"
+      ],
+      "compatible_printers": [
+        "P"
+      ]
+    }
+  },
+  {
+    "id": "filament-explicit-single-nil",
+    "scope": "filament",
+    "parent": {
+      "name": "Single parent",
+      "settings": {
+        "filament_retraction_length": [
+          "0.8"
+        ]
+      }
+    },
+    "settings": {
+      "filament_retraction_length": [
+        "nil"
+      ]
+    }
+  },
+  {
+    "id": "machine-stride-two",
+    "scope": "machine",
+    "parent": {
+      "name": "Machine parent",
+      "settings": {
+        "nozzle_diameter": [
+          "0.4"
+        ],
+        "printer_extruder_id": [
+          "1",
+          "1"
+        ],
+        "printer_extruder_variant": [
+          "Direct Drive Standard",
+          "Direct Drive High Flow"
+        ],
+        "machine_max_speed_x": [
+          "300",
+          "200",
+          "280",
+          "180"
+        ]
+      }
+    },
+    "settings": {
+      "nozzle_diameter": [
+        "0.4"
+      ],
+      "printer_extruder_id": [
+        "1",
+        "1"
+      ],
+      "printer_extruder_variant": [
+        "Direct Drive Standard",
+        "Direct Drive High Flow"
+      ],
+      "machine_max_speed_x": [
+        "300",
+        "200",
+        "250",
+        "180"
+      ]
+    }
+  },
+  {
+    "id": "process-inherited-condition",
+    "scope": "process",
+    "parent": {
+      "name": "Process parent",
+      "settings": {
+        "layer_height": "0.2",
+        "compatible_printers_condition": "nozzle_diameter[0] == 0.4"
+      }
+    },
+    "settings": {
+      "layer_height": "0.12",
+      "compatible_printers_condition": "nozzle_diameter[0] == 0.4"
+    }
+  },
+  {
+    "id": "root-filament-name-restriction",
+    "scope": "filament",
+    "settings": {
+      "filament_type": [
+        "PLA"
+      ],
+      "compatible_printers": []
+    }
+  },
+  {
+    "id": "root-filament-identity-version",
+    "scope": "filament",
+    "settings": {
+      "filament_type": [
+        "PLA"
+      ],
+      "filament_id": "LOCAL-123",
+      "version": "2.3.0.0"
+    }
+  },
+  {
+    "id": "derived-filament-identity",
+    "scope": "filament",
+    "parent": {
+      "name": "Identified parent",
+      "settings": {
+        "filament_type": [
+          "PLA"
+        ],
+        "filament_id": "PARENT-123"
+      }
+    },
+    "settings": {
+      "filament_type": [
+        "PLA"
+      ],
+      "filament_retraction_length": [
+        "0.9"
+      ]
+    }
+  }
+]

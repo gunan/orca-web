@@ -1,0 +1,16 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {mkdtemp,mkdir,readFile,writeFile,rm} from 'node:fs/promises';import {tmpdir} from 'node:os';import path from 'node:path';
+import {inspectSlicer,runSlicer} from '../../server/slicer.js';import {createPresetCatalog} from '../../server/presets.js';import {createNativeProjectService} from '../../server/native-projects.js';import {importNative3MF,exportNative3MF} from '../../shared/native-project.js';import {addAttachments} from '../../shared/native-auxiliary.js';import {extractBoundedZip} from '../../shared/import-limits.js';
+const binary=process.env.ORCA_SLICER_BIN||'/Applications/OrcaSlicer.app/Contents/MacOS/OrcaSlicer',motions=s=>s.split('\n').filter(l=>/^G[0123](?: |$)/.test(l)).map(l=>l.replace(/\s*;.*/,'').trim());
+test('installed native slicing and re-export retain project attachments and model attribution without changing captured GUI motions',{timeout:90000},async t=>{
+  const engine=await inspectSlicer(binary);assert.equal(engine.available,true);assert.equal(engine.version,'OrcaSlicer-2.4.2');const root=await mkdtemp(path.join(tmpdir(),'orca-auxiliary-'));t.after(()=>rm(root,{recursive:true,force:true}));await mkdir(path.join(root,'config'));await mkdir(path.join(root,'output'));
+  const service=createNativeProjectService({catalog:await createPresetCatalog({binary})}),source=await readFile(new URL('../fixtures/native-gui-cube-2.4.2.3mf',import.meta.url)),original=(await service.importArchive(source)).project;
+  const project=(await service.prepare({project:original,useEmbeddedSettings:true})).project;
+  project.nativeAuxiliary=addAttachments(undefined,'Others',[{name:'assembly.txt',bytes:new TextEncoder().encode('Attach two M3 bolts.\n')},{name:'中文说明.txt',bytes:new TextEncoder().encode('Native UTF-8 filename preservation.')}]);
+  project.nativeModelMetadata={Copyright:'Example Designer',License:'BY-SA',Origin:'Local test fixture'};
+  const bytes=exportNative3MF(project,{includeWebProject:false});await writeFile(path.join(root,'project.3mf'),bytes);
+  await runSlicer(binary,['--slice','0','--arrange','0','--orient','0','--datadir',path.join(root,'config'),'--outputdir',path.join(root,'output'),'--export-3mf','reexport.3mf',path.join(root,'project.3mf')],{cwd:root,timeoutMs:70000,signal:t.signal});
+  const code=await readFile(path.join(root,'output','plate_1.gcode'),'utf8'),reference=await readFile(new URL('../fixtures/native-gui-cube-2.4.2.gcode',import.meta.url),'utf8');assert.deepEqual(motions(code),motions(reference));
+  const output=await readFile(path.join(root,'output','reexport.3mf')),files=extractBoundedZip(output),input=extractBoundedZip(bytes);for(const name of Object.keys(input).filter(n=>n.startsWith('Auxiliaries/')))assert.deepEqual(new Uint8Array(files[name]),new Uint8Array(input[name]),name);
+  const restored=importNative3MF(output);for(const[key,value]of Object.entries(project.nativeModelMetadata))assert.equal(restored.nativeModelMetadata[key],value,key);
+  t.diagnostic(`${motions(code).length} exact GUI motion commands; two opaque attachments, Unicode names and native attribution survive installed-native re-export. GUI attachment editing remains separate acceptance.`);
+});

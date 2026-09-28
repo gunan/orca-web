@@ -1,0 +1,262 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "sourceSha256": {
+    "src/libslic3r/Preset.cpp": "af50e30fcb9c17d3eb3f9fc579cb710fe616f4a863a02a4e74bc36cd3b395ee2",
+    "src/libslic3r/PresetBundle.cpp": "e02e8ac7b0d5c81a8453cab664d1f2009b22ee4559626d1f1462185bbace1378",
+    "src/slic3r/GUI/GCodeViewer.cpp": "dc940588238795d439beedc007a763085a968797764ccf1fdb0a05e3a7c75937"
+  },
+  "referenceSha256": "33c6a9209c510b4d8b69b6c7300c25e4fe954642c729e8ced7e49736d2c2c5dd",
+  "cases": [
+    {
+      "name": "system binds own vendor and model ID",
+      "system": true,
+      "vendor": "A",
+      "printerModel": "ID-A",
+      "files": [
+        "resources/profiles/A/a.stl"
+      ],
+      "models": [
+        {
+          "id": "ID-A",
+          "name": "Friendly",
+          "vendor": "A",
+          "hotendModel": "a.stl"
+        },
+        {
+          "id": "ID-Z",
+          "name": "Friendly",
+          "vendor": "Z",
+          "hotendModel": "z.stl"
+        }
+      ],
+      "expected": {
+        "exists": true,
+        "path": "resources/profiles/A/a.stl"
+      }
+    },
+    {
+      "name": "custom duplicate display name uses last vendor",
+      "system": false,
+      "printerModel": "Friendly",
+      "files": [
+        "resources/profiles/Z/z.stl"
+      ],
+      "models": [
+        {
+          "id": "ID-A",
+          "name": "Friendly",
+          "vendor": "A",
+          "hotendModel": "a.stl"
+        },
+        {
+          "id": "ID-Z",
+          "name": "Friendly",
+          "vendor": "Z",
+          "hotendModel": "z.stl"
+        }
+      ],
+      "expected": {
+        "exists": true,
+        "path": "resources/profiles/Z/z.stl"
+      }
+    },
+    {
+      "name": "user vendor asset has native precedence",
+      "system": true,
+      "vendor": "A",
+      "printerModel": "ID-A",
+      "files": [
+        "data/vendor/A/a.stl",
+        "resources/profiles/A/a.stl"
+      ],
+      "models": [
+        {
+          "id": "ID-A",
+          "name": "Friendly",
+          "vendor": "A",
+          "hotendModel": "a.stl"
+        },
+        {
+          "id": "ID-Z",
+          "name": "Friendly",
+          "vendor": "Z",
+          "hotendModel": "z.stl"
+        }
+      ],
+      "expected": {
+        "exists": true,
+        "path": "data/vendor/A/a.stl"
+      }
+    },
+    {
+      "name": "missing vendor file falls back to bundled default",
+      "system": false,
+      "printerModel": "Friendly",
+      "files": [],
+      "models": [
+        {
+          "id": "ID-A",
+          "name": "Friendly",
+          "vendor": "A",
+          "hotendModel": "a.stl"
+        },
+        {
+          "id": "ID-Z",
+          "name": "Friendly",
+          "vendor": "Z",
+          "hotendModel": "z.stl"
+        }
+      ],
+      "expected": {
+        "exists": true,
+        "path": "resources/profiles/hotend.stl"
+      }
+    },
+    {
+      "name": "unknown custom model",
+      "system": false,
+      "printerModel": "Unknown",
+      "files": [],
+      "models": [
+        {
+          "id": "ID-A",
+          "name": "Friendly",
+          "vendor": "A",
+          "hotendModel": "a.stl"
+        },
+        {
+          "id": "ID-Z",
+          "name": "Friendly",
+          "vendor": "Z",
+          "hotendModel": "z.stl"
+        }
+      ],
+      "expected": {
+        "exists": true,
+        "path": "resources/profiles/hotend.stl"
+      }
+    },
+    {
+      "name": "empty custom model invokes native Orca default model",
+      "system": false,
+      "printerModel": "",
+      "models": [
+        {
+          "id": "default-id",
+          "name": "MyKlipper 0.4 nozzle",
+          "vendor": "A",
+          "hotendModel": "default.stl"
+        }
+      ],
+      "files": [
+        "resources/profiles/A/default.stl"
+      ],
+      "expected": {
+        "exists": true,
+        "path": "resources/profiles/A/default.stl"
+      }
+    },
+    {
+      "name": "empty system model stays native default",
+      "system": true,
+      "vendor": "A",
+      "printerModel": "",
+      "files": [],
+      "models": [
+        {
+          "id": "ID-A",
+          "name": "Friendly",
+          "vendor": "A",
+          "hotendModel": "a.stl"
+        },
+        {
+          "id": "ID-Z",
+          "name": "Friendly",
+          "vendor": "Z",
+          "hotendModel": "z.stl"
+        }
+      ],
+      "expected": {
+        "exists": true,
+        "path": "resources/profiles/hotend.stl"
+      }
+    },
+    {
+      "name": "same-vendor duplicate display names use first model",
+      "system": false,
+      "printerModel": "Friendly",
+      "models": [
+        {
+          "id": "ID-A",
+          "name": "Friendly",
+          "vendor": "A",
+          "hotendModel": "a.stl"
+        },
+        {
+          "id": "ID-A2",
+          "name": "Friendly",
+          "vendor": "A",
+          "hotendModel": "second.stl"
+        }
+      ],
+      "files": [
+        "resources/profiles/A/a.stl",
+        "resources/profiles/A/second.stl"
+      ],
+      "expected": {
+        "exists": true,
+        "path": "resources/profiles/A/a.stl"
+      }
+    },
+    {
+      "name": "system ID is not model display name",
+      "system": true,
+      "vendor": "A",
+      "printerModel": "Friendly",
+      "files": [],
+      "models": [
+        {
+          "id": "ID-A",
+          "name": "Friendly",
+          "vendor": "A",
+          "hotendModel": "a.stl"
+        },
+        {
+          "id": "ID-Z",
+          "name": "Friendly",
+          "vendor": "Z",
+          "hotendModel": "z.stl"
+        }
+      ],
+      "expected": {
+        "exists": true,
+        "path": "resources/profiles/hotend.stl"
+      }
+    },
+    {
+      "name": "missing default returns native path but no geometry",
+      "system": false,
+      "printerModel": "Unknown",
+      "files": [],
+      "default": false,
+      "models": [
+        {
+          "id": "ID-A",
+          "name": "Friendly",
+          "vendor": "A",
+          "hotendModel": "a.stl"
+        },
+        {
+          "id": "ID-Z",
+          "name": "Friendly",
+          "vendor": "Z",
+          "hotendModel": "z.stl"
+        }
+      ],
+      "expected": {
+        "exists": false,
+        "path": "resources/profiles/hotend.stl"
+      }
+    }
+  ]
+}

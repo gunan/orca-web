@@ -1,0 +1,108 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "sourceSha256": {
+    "src/slic3r/GUI/Plater.cpp": "dbeee2a69d8955dd8e42efa8943a553b3c231232ce7f0cf0496575aed78daf3a",
+    "src/libslic3r/AppConfig.hpp": "369246cb2be33c11955246512364b433db61043acdcacd98df3f78853cb28c64"
+  },
+  "generatorSha256": "274b45e4b309107ec49cd5ff82f89da5d8c0ccb7b1760508fab1d2de24a1d1c5",
+  "referenceSha256": "3d9b0f0c5d5d82b316e3beb9742cebe498f54b3bd9abc568bc21c548bcadd692",
+  "binarySha256": "cf60b6a9fbd9100320796d6cb27e6966d2316e992b8bad9ec343e44c08f183fb",
+  "cases": [
+    {
+      "action": "project",
+      "behaviour": "load_all",
+      "entry": "open",
+      "hasObjects": false
+    },
+    {
+      "action": "project",
+      "behaviour": "load_all",
+      "entry": "open",
+      "hasObjects": true
+    },
+    {
+      "action": "project",
+      "behaviour": "load_all",
+      "entry": "add",
+      "hasObjects": false
+    },
+    {
+      "action": "project",
+      "behaviour": "load_all",
+      "entry": "add",
+      "hasObjects": true
+    },
+    {
+      "action": "project",
+      "behaviour": "ask_when_relevant",
+      "entry": "open",
+      "hasObjects": false
+    },
+    {
+      "action": "project",
+      "behaviour": "ask_when_relevant",
+      "entry": "open",
+      "hasObjects": true
+    },
+    {
+      "action": "project",
+      "behaviour": "ask_when_relevant",
+      "entry": "add",
+      "hasObjects": false
+    },
+    {
+      "action": "ask",
+      "behaviour": "ask_when_relevant",
+      "entry": "add",
+      "hasObjects": true
+    },
+    {
+      "action": "ask",
+      "behaviour": "always_ask",
+      "entry": "open",
+      "hasObjects": false
+    },
+    {
+      "action": "ask",
+      "behaviour": "always_ask",
+      "entry": "open",
+      "hasObjects": true
+    },
+    {
+      "action": "ask",
+      "behaviour": "always_ask",
+      "entry": "add",
+      "hasObjects": false
+    },
+    {
+      "action": "ask",
+      "behaviour": "always_ask",
+      "entry": "add",
+      "hasObjects": true
+    },
+    {
+      "action": "geometry",
+      "behaviour": "load_geometry_only",
+      "entry": "open",
+      "hasObjects": false
+    },
+    {
+      "action": "geometry",
+      "behaviour": "load_geometry_only",
+      "entry": "open",
+      "hasObjects": true
+    },
+    {
+      "action": "geometry",
+      "behaviour": "load_geometry_only",
+      "entry": "add",
+      "hasObjects": false
+    },
+    {
+      "action": "geometry",
+      "behaviour": "load_geometry_only",
+      "entry": "add",
+      "hasObjects": true
+    }
+  ]
+}

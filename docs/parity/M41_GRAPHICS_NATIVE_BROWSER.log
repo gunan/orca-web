@@ -1,0 +1,14 @@
+
+> orca-web@0.1.0 test:e2e:native
+> playwright test --config playwright.native.config.js graphics-preferences.spec.js
+
+[WebServer] (node:69628) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:69631) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/native-e2e/graphics-preferences.spec.js:4:1 › installed-native Preview obeys the graphics frame cap without changing native paths or submitting a new slice (1.7m)
+
+  1 passed (1.7m)

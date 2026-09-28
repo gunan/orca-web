@@ -1,0 +1,13 @@
+2026-09-27 09:58:53 -0700 Assertions          	PID 35370(caffeinate) TimedOut PreventSystemSleep "caffeinate command-line tool" 00:59:59  id:0x0x700008d28 [System: PrevIdle PrevSleep IntPrevDisp kCPU kDisp]          
+2026-09-27 09:58:53 -0700 Assertions          	Summary- [System: PrevIdle IntPrevDisp kDisp] Using AC(Charge: 100)          
+2026-09-27 09:58:53 -0700 Sleep               	Entering Sleep state due to 'Clamshell Sleep':TCPKeepAlive=active Using AC (Charge:100%) 623 secs  
+2026-09-27 10:09:16 -0700 Assertions          	PID 233(mDNSResponder) Created MaintenanceWake "mDNSResponder:maintenance" 00:00:00  id:0x0xd0000947a [System: PrevIdle SRPrevSleep IntPrevDisp kCPU kDisp]          
+2026-09-27 10:09:16 -0700 Assertions          	PID 109(powerd) Created InternalPreventSleep "PM configd - Wait for Device enumeration" 00:00:00  id:0x0xd0000947b [System: PrevIdle SRPrevSleep IntPrevDisp kCPU kDisp]          
+2026-09-27 10:09:16 -0700 com.apple.sleepservices.sessionStarted	SleepService: window begins with cap time=180 secs                         	          
+2026-09-27 10:09:16 -0700 DarkWake            	DarkWake from Deep Idle [CDNP] : due to smc.sysState.Wake(0x70070000) wifibt SMC.OutboxNotEmpty nub-spmi-a0.0x3F/ Using AC (Charge:100%)           
+2026-09-27 10:09:16 -0700 WakeDetails         	DriverReason:smc.sysState.Wake(0x70070000) - DriverDetails:                
+2026-09-27 10:09:16 -0700 HibernateStats      	hibmode=3 standbydelaylow=0 standbydelayhigh=0                             	          17606     	
+2026-09-27 10:09:16 -0700 WakeTime            	WakeTime: 0.209 sec                                                        	          
+2026-09-27 10:09:16 -0700 Kernel Client Acks  	
+2026-09-27 10:09:16 -0700 Kernel Client Acks  	Delays to Wake notifications: [AppleCS42L84Audio driver is slow(msg: DidChangeState to 1)(75 ms)] [Codec Output driver is slow(msg: WillChangeState to 1)(75 ms)] [RTBuddy(ANS2) driver is slow(msg: SetState to 2)(96 ms)] [AppleConvergedIPCOLYBTControl driver is slow(msg: SetState to 1)(221 ms)] [AppleMultiFunctionManager driver is slow(msg: SetState to 1)(224 ms)]           
+2026-09-27 10:09:16 -0700 Assertions          	PID 109(powerd) Created InternalPreventSleep "com.apple.powermanagement.acwakelinger" 00:00:00  id:0x0xd0000947d [System: PrevIdle PushSrvc SRPrevSleep IntPrevDisp kCPU kDisp]          

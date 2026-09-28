@@ -1,0 +1,12 @@
+✔ recent preferences retain native defaults and effective bounds, rejecting unsafe draft numbers (1.014458ms)
+✔ model recent history is opt-in and supported extensions are explicit (0.1575ms)
+✔ damaged recent metadata is isolated without suppressing valid ordered records (0.238458ms)
+✔ recent thumbnails accept only bounded validated PNG data and timestamps retain file modification time (0.81075ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 45.146333

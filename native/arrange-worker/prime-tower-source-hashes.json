@@ -1,0 +1,18 @@
+{
+  "sourceCommit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "sources": {
+    "src/slic3r/GUI/PartPlate.cpp": "680e4a913627d5290fd6f50f1ffb63d2f2867b356684f240e3b8663bc27703ed",
+    "src/slic3r/GUI/PartPlate.hpp": "df275665bcc5cd7c18be875939ae5f76797c7aa5fb075c50c5c36a9d729484a2",
+    "src/slic3r/GUI/GLCanvas3D.cpp": "a44c6c43ca28690da12b5502eab1a6bdec3f8392da4c0454586e065a43614ddb",
+    "src/slic3r/GUI/3DScene.cpp": "299ad5f8c9046c01fa050d7bb09fbfa1e3e026a2b9c18935d82f6ca8e5d087a9",
+    "src/libslic3r/BuildVolume.cpp": "6e7d14211513294749ed3850aded421d9d58ac2bb9655fae329babcda2219923",
+    "src/libslic3r/BuildVolume.hpp": "c57b3c47761762769f4b8e5bed6655f5928e3a3d12daa3770a1788111b823b8d",
+    "src/libslic3r/Geometry/Circle.cpp": "2ddc69b5b9301ab1a51377dffd9a4a70c88219d12410086b964e758869f466a3",
+    "src/libslic3r/Geometry/Circle.hpp": "354e406ab781b21ecdaf224b0da9c8141996403d6b07f1595f869453489cfb34",
+    "src/libslic3r/Model.cpp": "abc47399040b295f1eed8ad53f7ddd7b45eb324616cd8e57ea5d188b7d9ea894",
+    "src/libslic3r/Model.hpp": "c69ed9329d69db4642142844b6108b073517bfcfd37ed1e7e8bfdad798d9eee7",
+    "src/libslic3r/Format/bbs_3mf.cpp": "5f5e14c8e027bd66703e8f62570ffddb6a29a9e3a5c7e979ef3f872db16eb64c",
+    "src/libslic3r/TriangleMesh.cpp": "539fe11223b8479a8da9a25814f66b1d97f524a04fdead11611952d2f3a925f9",
+    "src/libslic3r/GCode/WipeTower.cpp": "15e4e974f902be0c8124301a68a5222d6b8422a41e33be9f8d26847f0fd65110"
+  }
+}

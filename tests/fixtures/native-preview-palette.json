@@ -1,0 +1,189 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "sourceSha256": {
+    "ViewerImpl.cpp": "0f393952652a923a9a2f18072aeebc5819a6d30b8b65dd8d43657697f887b49a",
+    "ExtrusionEntity.cpp": "341f64233ea602ae8081c5281e37c4db3902f8f2795dff312c7f82586ce11d3d"
+  },
+  "roles": [
+    {
+      "nativeRole": "None",
+      "name": "Undefined",
+      "rgb": [
+        230,
+        179,
+        179
+      ]
+    },
+    {
+      "nativeRole": "Perimeter",
+      "name": "Inner wall",
+      "rgb": [
+        255,
+        230,
+        77
+      ]
+    },
+    {
+      "nativeRole": "ExternalPerimeter",
+      "name": "Outer wall",
+      "rgb": [
+        255,
+        125,
+        56
+      ]
+    },
+    {
+      "nativeRole": "OverhangPerimeter",
+      "name": "Overhang wall",
+      "rgb": [
+        31,
+        31,
+        255
+      ]
+    },
+    {
+      "nativeRole": "InternalInfill",
+      "name": "Sparse infill",
+      "rgb": [
+        176,
+        48,
+        41
+      ]
+    },
+    {
+      "nativeRole": "SolidInfill",
+      "name": "Internal solid infill",
+      "rgb": [
+        150,
+        84,
+        204
+      ]
+    },
+    {
+      "nativeRole": "TopSolidInfill",
+      "name": "Top surface",
+      "rgb": [
+        240,
+        64,
+        64
+      ]
+    },
+    {
+      "nativeRole": "Ironing",
+      "name": "Ironing",
+      "rgb": [
+        255,
+        140,
+        105
+      ]
+    },
+    {
+      "nativeRole": "BridgeInfill",
+      "name": "Bridge",
+      "rgb": [
+        77,
+        128,
+        186
+      ]
+    },
+    {
+      "nativeRole": "GapFill",
+      "name": "Gap infill",
+      "rgb": [
+        255,
+        255,
+        255
+      ]
+    },
+    {
+      "nativeRole": "Skirt",
+      "name": "Skirt",
+      "rgb": [
+        0,
+        135,
+        110
+      ]
+    },
+    {
+      "nativeRole": "SupportMaterial",
+      "name": "Support",
+      "rgb": [
+        0,
+        255,
+        0
+      ]
+    },
+    {
+      "nativeRole": "SupportMaterialInterface",
+      "name": "Support interface",
+      "rgb": [
+        0,
+        128,
+        0
+      ]
+    },
+    {
+      "nativeRole": "WipeTower",
+      "name": "Prime tower",
+      "rgb": [
+        179,
+        227,
+        171
+      ]
+    },
+    {
+      "nativeRole": "Custom",
+      "name": "Custom",
+      "rgb": [
+        94,
+        209,
+        148
+      ]
+    },
+    {
+      "nativeRole": "BottomSurface",
+      "name": "Bottom surface",
+      "rgb": [
+        102,
+        92,
+        199
+      ]
+    },
+    {
+      "nativeRole": "InternalBridgeInfill",
+      "name": "Internal Bridge",
+      "rgb": [
+        77,
+        128,
+        186
+      ]
+    },
+    {
+      "nativeRole": "Brim",
+      "name": "Brim",
+      "rgb": [
+        0,
+        59,
+        110
+      ]
+    },
+    {
+      "nativeRole": "SupportTransition",
+      "name": "Support transition",
+      "rgb": [
+        0,
+        64,
+        0
+      ]
+    },
+    {
+      "nativeRole": "Mixed",
+      "name": "Multiple",
+      "rgb": [
+        128,
+        128,
+        128
+      ]
+    }
+  ]
+}

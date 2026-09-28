@@ -1,0 +1,29 @@
+✔ geometry import preserves linked instances, exact meshes, painting and per-layer data while dropping object and part overrides (5.666084ms)
+✔ all source plates merge onto the active plate using native global coordinates without importing plate events (13.180833ms)
+✔ native role order and model-only placement keep outside modifiers from moving the solid off center (6.143875ms)
+✔ geometry material and painted requirements grow current slots without adopting imported materials or replacing existing purge values (8.118334ms)
+✔ painting alone allocates its assigned material while imported extruder zero becomes the native default (3.541625ms)
+✔ repeated imports allocate independent families and preserve existing geometry and native processed cut metadata (3.163083ms)
+✔ locked plate, invalid roles, invalid slots, broken families and exhausted identities reject atomically (9.358125ms)
+✔ geometry-only Open retains material colors, purge tables and native preset context by value (0.114459ms)
+✔ geometry export retains actual linked model references and native painting after import (19.811ms)
+✔ geometry-only placement matches ten compiled native first-instance auto-drop and double-precision centering cases (5.111917ms)
+✔ geometry placement reference has reproducible original-source and generator provenance (1.68425ms)
+✔ geometry-only native text and SVG retain their regeneration frames and embedded vector source through export (113.949625ms)
+✔ geometry-only import retains printable flags, brim attachment positions and processed cut identifiers across export (11.9985ms)
+✔ native multipart predicate respects one ModelObject per family, multiple volumes, first-instance height and epsilon (25.538042ms)
+✔ native ordered multipart decision returns at the first differing height, before a later complex object (0.087167ms)
+✔ Yes preserves stacked native part geometry and painting while No grounds separate objects independently (33.607417ms)
+✔ merged parts use native volume-over-object material priority and discard former object state (7.097917ms)
+✔ multipart conversion expands linked mirrored instances into independent volume copies in one retained model frame (16.679333ms)
+✔ multipart decisions and affine/config/name conversion match original compiled native methods (2.425833ms)
+✔ multipart native reference retains source and generator provenance (2.064459ms)
+✔ multipart warning uses the unmodified installed native asset with pinned attribution (1.09075ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 333.375916

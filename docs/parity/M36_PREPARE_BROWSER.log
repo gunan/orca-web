@@ -1,0 +1,12 @@
+[WebServer] (node:33882) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:33891) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/prepare-performance.spec.js:6:1 › Prepare stops actual GPU submissions when idle and redraws model, camera, selection and layout changes (14.2s)
+  ✓  2 tests/e2e/prepare-performance.spec.js:21:1 › paint hover, clipping and cleared cursors redraw while untouched paint workspaces stay idle (6.0s)
+  ✓  3 tests/e2e/prepare-performance.spec.js:29:1 › variable-layer shader creation, hover uniforms and cleanup submit fresh frames then stop (4.6s)
+
+  3 passed (27.5s)

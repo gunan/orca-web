@@ -1,0 +1,15 @@
+✔ original native mesh statistics retain float rounding and count solids through the first instance only (44.241083ms)
+✔ native filter removes open planar meshes and modifier-only objects while retaining a valid source solid (38.095458ms)
+✔ native source applies zero, meters and inches thresholds in order to float mesh volumes (58.896167ms)
+✔ cut-family checksum and connector count participate in native imperial detection (41.345208ms)
+✔ native determinant uses volume and first-instance scaling and ignores later instances for unit inference (44.556958ms)
+✔ native admission rejects forged identities, mesh indices, roles, matrices and cut IDs (82.939208ms)
+✔ native inspection adapter has a matching original-source build manifest and binary hash (4.28ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 7
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 430.745416

@@ -1,0 +1,49 @@
+
+> orca-web@0.1.0 test:e2e:native
+> playwright test --config playwright.native.config.js --grep native flow specimens|native solids stop
+
+[WebServer] (node:92534) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:92560) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/native-e2e/calibration.spec.js:35:1 › native flow specimens slice through the browser and an explicit result choice saves a new filament (11.9s)
+  ✘  2 tests/native-e2e/preview-performance.spec.js:2:1 › native solids stop idle GPU work and render layer, scalar, camera, size and playback changes (32.7s)
+
+
+  1) tests/native-e2e/preview-performance.spec.js:2:1 › native solids stop idle GPU work and render layer, scalar, camera, size and playback changes 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 20000ms exceeded while waiting on the predicate
+
+      4 |  const errors=[];page.on('pageerror',error=>errors.push(error.message));await page.route('**/api/jobs',route=>route.request().method()==='POST'?route.fulfill({status:202,json:{id:'native-idle-proof',filename:'GUI cube.gcode',status:'ready'}}):route.continue());await page.route('**/api/jobs/native-idle-proof/download',route=>route.fulfill({contentType:'text/plain',body:text}));await page.route('**/api/jobs/native-preview/capabilities',route=>route.fulfill({json:{available:true,engine:data.engine}}));await page.route('**/api/jobs/native-idle-proof/native-preview',route=>route.fulfill({json:data}));await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Choose a 3D model').setInputFiles(path.resolve('tests/fixtures/cube.stl'));await page.getByRole('button',{name:'Slice model',exact:true}).click();const canvas=page.getByRole('img',{name:'3D G-code toolpaths'});await expect(canvas).toHaveAttribute('data-processor','native');
+      5 |  const observations=[];const frames=()=>canvas.evaluate(c=>Number(c.dataset.renderFrames));
+    > 6 |  const idle=async()=>{await expect.poll(async()=>{const before=await frames();await page.waitForTimeout(100);return await frames()===before;},{timeout:20000}).toBe(true);const before=await frames();await page.waitForTimeout(250);expect(await frames()).toBe(before);return before;};
+        |                                                                                                                                                                ^
+      7 |  const redraw=async(action)=>{const before=await idle(),start=Date.now();await action();await expect.poll(frames).toBeGreaterThan(before);const after=await idle();observations.push({frames:after-before,settledMs:Date.now()-start});};
+      8 |  await idle();expect(Number(await canvas.getAttribute('data-visible-volumes'))).toBeGreaterThan(18000);
+      9 |  await redraw(()=>page.getByLabel('Last preview layer').fill('49'));
+        at idle (/private/tmp/orca-implementation/m28-camera-fit-stage/tests/native-e2e/preview-performance.spec.js:6:160)
+        at redraw (/private/tmp/orca-implementation/m28-camera-fit-stage/tests/native-e2e/preview-performance.spec.js:7:157)
+        at /private/tmp/orca-implementation/m28-camera-fit-stage/tests/native-e2e/preview-performance.spec.js:13:2
+
+    Error Context: test-results/native-browser/preview-performance-native-66fd6-a-size-and-playback-changes/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/native-browser/preview-performance-native-66fd6-a-size-and-playback-changes/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/native-browser/preview-performance-native-66fd6-a-size-and-playback-changes/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/native-e2e/preview-performance.spec.js:2:1 › native solids stop idle GPU work and render layer, scalar, camera, size and playback changes 
+  1 passed (55.9s)

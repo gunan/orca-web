@@ -1,0 +1,61 @@
+✔ inspection preserves canonical volume frames, roles and all linked instances, with source plate origins (4.26325ms)
+✔ independent model IDs remain independent even for equal historical source IDs and processed cuts (1.517333ms)
+✔ filtering removes a complete model family while retaining original parts, metadata, plate and preset context (2.485458ms)
+✔ all-empty results carry no stale selected IDs and leave source/history objects untouched (20.211583ms)
+✔ native results must account for every original identity once, in order, at the original zero threshold (1.229458ms)
+✖ non-retained geometry is transformed for native inspection without changing the editable source (6.190709ms)
+✔ empty, excessive, divergent and stale retained geometry is rejected before native admission (8.949042ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 244.766958
+
+✖ failing tests:
+
+test at tests/unit/native-import-inspection.test.js:14:1
+✖ non-retained geometry is transformed for native inspection without changing the editable source (6.190709ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    [
+      [
+  +     -3,
+  +     -7,
+  -     2,
+  -     3,
+        4
+      ],
+      [
+  +     17,
+  +     -7,
+  -     22,
+  -     3,
+        4
+      ],
+      [
+  +     -3,
+  +     23,
+  -     2,
+  -     33,
+        4
+      ]
+    ]
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m48-import-preflight-stage/tests/unit/native-import-inspection.test.js:14:265)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: [ [ -3, -7, 4 ], [ 17, -7, 4 ], [ -3, 23, 4 ] ],
+    expected: [ [ 2, 3, 4 ], [ 22, 3, 4 ], [ 2, 33, 4 ] ],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

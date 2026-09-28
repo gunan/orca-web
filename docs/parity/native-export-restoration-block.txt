@@ -1,0 +1,15 @@
+Owned test-only installed OrcaSlicer2.4.2 export process; one-second macOS sample,2026-09-27.
+All800 main-thread samples followed this blocked path (addresses/system identifiers omitted):
+Slic3r::CLI::run
+glfwInit
+_glfwInitCocoa
+NSApplication::run
+NSApplication::_handleAEOpenEvent
+NSApplication::_reopenWindowsAsNecessaryIncludingRestorableState
+NSPersistentUIManager::promptToIgnorePersistentState
+NSPersistentUIRestorer::promptToIgnorePersistentStateWithCrashHistory
+NSAlert::runModal
+NSApplication::runModalForWindow
+CFRunLoop / mach_msg2_trap
+
+The UI inspection tool independently reports that the Mac is locked and cannot be unlocked automatically. No persistent state or native preferences were changed.

@@ -1,0 +1,35 @@
+{
+  "nativeVersion": "2.4.2",
+  "sourceCommit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "pinnedSourceSha256": {
+    "src/slic3r/GUI/MainFrame.cpp": "6a81a87b25a6710cf0892fe6c8a87ae6a774b4ebc1556e7fc372a19d74beebc6",
+    "src/slic3r/GUI/Preferences.cpp": "2a454ba04fd610f83de57aecce83a17fa82b7dc518b3110becc2fbce5ac71917",
+    "src/slic3r/GUI/GUI_App.cpp": "f6659f81103ca3338fab13b1b061562cf6d7424014994ef36752bc2da22f7da7",
+    "src/libslic3r/AppConfig.cpp": "d6951d3454eec6c7ae24b3135622ee838c0c9125033b9c97426380017801963c",
+    "src/slic3r/GUI/Plater.cpp": "dbeee2a69d8955dd8e42efa8943a553b3c231232ce7f0cf0496575aed78daf3a"
+  },
+  "installedResourceSha256": {
+    "web/homepage/index.html": "7ace40d54f1d9b03aac20cb63e20cb4929477d6b168dfc3725cef29353077a83",
+    "web/homepage/js/home.js": "87a5dd5576fe1ebaf5e0b96e956490975996ffe9d47d6fc236674bac4927c98d",
+    "web/homepage/css/home.css": "4be2cfd7a1718cd07ae59328a545e5311429d884d0111b68f77cdfcd2fec96ca",
+    "web/homepage/css/dark.css": "2c659a3b447db102a9271a0f52e8ef27f170ff42ac0985be6e21417bb6057b35",
+    "web/homepage/css/light.css": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "web/data/text.js": "25b9f398aed64750b718b46ab0a2f6c284718a3e8373ae78ad3d07dd0e9a233b",
+    "web/include/global.css": "48adfc6c4a3aeef02318c90b8c6fefb9455e3500d486788d9bb3b366dd3f28c2"
+  },
+  "observations": [
+    "Home/Prepare default_page options; native default0 selectsHome",
+    "Maximum recent files default18; MainFrame clamps0..999 and prunes immediately",
+    "recent_models default0; preference controls STL/STEP history",
+    "Native Home actionsNew/Open project, recentthumbnail/name/time, Clear all, per-fileClear andOpeninexplorer",
+    "Cloudsidebarshownby providerinformation, distinctOrca/Bambu login/logout; requiresrealintegrations",
+    "Installed English translations: New Project, Create new project, Open Project, Recently opened; action icons56px, buttons253x101px, radius12px.",
+    "Native recent cards184px square, corners8px; Clear all uses24px height,12px corners,13px type and installed regular-button theme colors. Plater recent_models compares true and can include broader successfully loaded model paths despite the STL/STEP label; web model history currently scopes to the labeled STL/STEP formats."
+  ],
+  "limitations": [
+    "Code/resource inspection only; paired active native GUI capture is pending",
+    "Installed resources are separately hashed; their equality to repository blobs was not established",
+    "Web file-input access does not supply unrestricted native filesystem paths",
+    "2026-09-27 CUA inspection still reports the Mac locked; native GUI paired acceptance has not been performed."
+  ]
+}

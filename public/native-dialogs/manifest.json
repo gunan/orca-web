@@ -1,0 +1,15 @@
+{
+  "baseline": "OrcaSlicer2.4.2",
+  "assets": [
+    {
+      "file": "exclamation.svg",
+      "source": "/Applications/OrcaSlicer.app/Contents/Resources/images/exclamation.svg",
+      "sha256": "bd18e96bf70bbbabacc513b0830dc4f2b54bb10fed06e041ee67cba58825bdf5"
+    },
+    {
+      "file": "info.svg",
+      "source": "/Applications/OrcaSlicer.app/Contents/Resources/images/info.svg",
+      "sha256": "ad5535e1ad682a4ad3381c90ebb06e21ab4e9924762ff9e96fbd6777aea969a0"
+    }
+  ]
+}

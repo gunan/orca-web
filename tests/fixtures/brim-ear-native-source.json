@@ -1,0 +1,7 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "files": {
+    "deps_src/clipper/clipper.cpp": "f2fbbd5c2279e02e16f2a3b494a327605573d21a208780bf0c16e0a4d76fe449",
+    "deps_src/clipper/clipper.hpp": "1c0b9b28631c03afc4f8a384e827d749584a49bfd112fda84380ecb08295f001"
+  }
+}

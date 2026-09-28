@@ -1,0 +1,14 @@
+
+> orca-web@0.1.0 test:e2e:native
+> playwright test --config playwright.native.config.js tests/native-e2e/manipulation-units.spec.js
+
+[WebServer] (node:46683) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:46690) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/native-e2e/manipulation-units.spec.js:7:1 › inch position edits export millimeter native geometry and slice it at the requested physical coordinates (5.8s)
+
+  1 passed (13.3s)

@@ -1,0 +1,1 @@
+Native Home action icons and recent-thumbnail placeholder copied unmodified from installed OrcaSlicer2.4.2 web/homepage/img. Copyright OrcaSlicer/Bambu Studio contributors; GNU Affero General Public License version3, see LICENSE.txt. manifest.json retains exact asset hashes.

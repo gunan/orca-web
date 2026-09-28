@@ -1,0 +1,49 @@
+[WebServer] (node:41136) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 2 tests using 1 worker
+
+(node:41140) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/import-transaction.spec.js:86:1 › cancelling Open from Preview preserves the completed job and its download (6.9s)
+(node:41168) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  2 tests/e2e/import-transaction.spec.js:97:1 › a cancelled local read failure cannot replace the status of a later successful import (1.0s)
+
+
+  1) tests/e2e/import-transaction.spec.js:86:1 › cancelling Open from Preview preserves the completed job and its download 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('img', { name: 'Interactive G-code toolpath view', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('img', { name: 'Interactive G-code toolpath view', exact: true }) with timeout 5000ms
+      - waiting for getByRole('img', { name: 'Interactive G-code toolpath view', exact: true })
+
+
+      92 |   await page.getByRole('button',{name:'Cancel import',exact:true}).click();held.release();await page.unrouteAll({behavior:'wait'});
+      93 |   await expect(download).toHaveAttribute('href',href);await expect(page.getByRole('button',{name:'Preview',exact:true})).toHaveClass(/active/);
+    > 94 |   await expect(page.getByRole('img',{name:'Interactive G-code toolpath view',exact:true})).toBeVisible();
+         |                                                                                            ^
+      95 | });
+      96 |
+      97 | test('a cancelled local read failure cannot replace the status of a later successful import',async({page})=>{
+        at /private/tmp/orca-implementation/m37-import-transaction-stage/tests/e2e/import-transaction.spec.js:94:92
+
+    Error Context: test-results/m37-focused/import-transaction-cancell-914ce-pleted-job-and-its-download/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m37-focused/import-transaction-cancell-914ce-pleted-job-and-its-download/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m37-focused/import-transaction-cancell-914ce-pleted-job-and-its-download/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/import-transaction.spec.js:86:1 › cancelling Open from Preview preserves the completed job and its download 
+  1 passed (9.2s)

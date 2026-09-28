@@ -1,0 +1,65 @@
+[WebServer] (node:56145) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 16 tests using 1 worker
+
+(node:56149) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/e2e/camera-fit-orientation.spec.js:10:56 › Prepare Fit and Zoom to bed preserve the current Perspective viewing axes and Undo history (9.3s)
+  ✓   2 tests/e2e/camera-fit-orientation.spec.js:10:56 › Prepare Fit and Zoom to bed preserve the current Orthographic viewing axes and Undo history (9.7s)
+  ✓   3 tests/e2e/camera-fit-orientation.spec.js:15:1 › Fit toolpaths preserves a user orbit and pan while fitting the visible preview without slicing again (8.7s)
+  ✓   4 tests/e2e/prime-tower-camera.spec.js:29:56 › Fit waits for replacement tower bounds in Perspective and retains the chosen view (1.7s)
+  ✓   5 tests/e2e/prime-tower-camera.spec.js:29:56 › Fit waits for replacement tower bounds in Orthographic and retains the chosen view (2.5s)
+  ✓   6 tests/e2e/prime-tower-camera.spec.js:39:45 › a user orbit supersedes a pending Fit without a late camera jump (4.8s)
+  ✓   7 tests/e2e/prime-tower-camera.spec.js:39:45 › a user pan supersedes a pending Fit without a late camera jump (4.2s)
+  ✓   8 tests/e2e/prime-tower-camera.spec.js:39:45 › a user zoom supersedes a pending Fit without a late camera jump (2.0s)
+  ✓   9 tests/e2e/prime-tower-camera.spec.js:44:1 › Zoom to bed supersedes a pending object Fit (1.7s)
+  ✓  10 tests/e2e/prime-tower-camera.spec.js:47:1 › failed preview clears the pending Fit before a later successful refresh (2.2s)
+  ✓  11 tests/e2e/prime-tower-camera.spec.js:50:1 › disabling the tower cancels a pending Fit and its delayed response (2.2s)
+  ✓  12 tests/e2e/prime-tower-camera.spec.js:54:1 › superseded geometry cannot satisfy Fit; the newest valid preview does (2.2s)
+  ✘  13 tests/e2e/prime-tower-camera.spec.js:57:1 › a fit queued for the previous plate cannot impose its view on the next plate (7.2s)
+(node:56312) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  14 tests/e2e/prime-tower-camera.spec.js:60:1 › camera movement before the first tower response also cancels automatic fitting (1.9s)
+  ✓  15 tests/e2e/prime-tower-fit-lifecycle.spec.js:14:43 › Fit uses newly committed tower geometry before passive effects replace the ready scene (609ms)
+  ✓  16 tests/e2e/prime-tower-fit-lifecycle.spec.js:14:43 › Fit uses newly committed tower geometry before passive effects replace the loading scene (748ms)
+
+
+  1) tests/e2e/prime-tower-camera.spec.js:57:1 › a fit queued for the previous plate cannot impose its view on the next plate 
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  getByRole('img', { name: 'Interactive 3D model view', exact: true })
+    Expected: "Isometric"
+    Received: "Front"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" getByRole('img', { name: 'Interactive 3D model view', exact: true }) with timeout 5000ms
+      - waiting for getByRole('img', { name: 'Interactive 3D model view', exact: true })
+        14 × locator resolved to <canvas role="img" width="954" height="417" tabindex="0" data-brim-ears="[]" data-object-count="2" data-selected-ids="[]" data-camera-view="Front" data-painted-facets="{}" data-paint-cursor="null" data-support-segments="0" data-clipping-plane="null" data-engine="three.js r186" data-paint-triangle-count="0" data-paint-fill-preview="null" data-clipping-cap-triangles="0" data-overhang-triangle-count="0" aria-label="Interactive 3D model view" data-camera-target="[105,96.18421053886414,10]" data-prime-towe…></canvas>
+           - unexpected value "Front"
+
+
+      56 | });
+      57 | test('a fit queued for the previous plate cannot impose its view on the next plate',async({page})=>{
+    > 58 |  const control=await start(page,{secondPlate:true});control.defer();await edit(page);await expect.poll(()=>control.pending.length).toBe(1);await page.locator('.scene-views').getByRole('button',{name:'Front',exact:true}).click();await page.locator('.plate-tabs').getByRole('button',{name:'Plate 2',exact:true}).click();await expect.poll(()=>control.pending.length).toBe(2);await control.next();expect((await preview(page)).status).toBe('loading');await control.next();await expect.poll(()=>preview(page)).toMatchObject({status:'ready',visible:true});await expect(canvas(page)).toHaveAttribute('data-camera-view','Isometric');
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ^
+      59 | });
+      60 | test('camera movement before the first tower response also cancels automatic fitting',async({page})=>{
+      61 |  const control=await start(page,{initialDelay:true});await expect.poll(()=>control.pending.length).toBe(1);const box=await canvas(page).boundingBox();await page.mouse.move(box.x+box.width*.2,box.y+box.height*.6);await page.mouse.wheel(0,-160);const before=await settled(page);await control.next();await expect.poll(()=>preview(page)).toMatchObject({status:'ready',visible:true});const after=await settled(page);for(const key of ['position','target'])for(let i=0;i<3;i++)expect(after[key][i]).toBeCloseTo(before[key][i],2);
+        at /private/tmp/orca-implementation/m40-camera-fit-stage/tests/e2e/prime-tower-camera.spec.js:58:577
+
+    Error Context: test-results/m40-focused/prime-tower-camera-a-fit-q-d10f9--its-view-on-the-next-plate/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m40-focused/prime-tower-camera-a-fit-q-d10f9--its-view-on-the-next-plate/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m40-focused/prime-tower-camera-a-fit-q-d10f9--its-view-on-the-next-plate/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/prime-tower-camera.spec.js:57:1 › a fit queued for the previous plate cannot impose its view on the next plate 
+  15 passed (1.1m)

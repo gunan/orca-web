@@ -1,0 +1,41 @@
+
+> orca-web@0.1.0 test:e2e:native
+> playwright test --config playwright.native.config.js tests/native-e2e/manipulation-units.spec.js
+
+[WebServer] (node:45720) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:46489) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/native-e2e/manipulation-units.spec.js:7:1 › inch position edits export millimeter native geometry and slice it at the requested physical coordinates (6.0s)
+
+
+  1) tests/native-e2e/manipulation-units.spec.js:7:1 › inch position edits export millimeter native geometry and slice it at the requested physical coordinates 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: 20
+    Received: 20.04
+
+      23 |  const code=await gcode.text(),walls=parseGcode(code).segments.filter(s=>s.kind==='extrusion'&&/wall/i.test(s.feature));expect(walls.length).toBeGreaterThan(100);
+      24 |  for(let axis=0;axis<2;axis++){const values=walls.flatMap(s=>[s.start[axis],s.end[axis]]),min=Math.min(...values),max=Math.max(...values),start=[25.4,50.8][axis];expect(min).toBeGreaterThan(start-.1);expect(min).toBeLessThan(start+1);expect(max).toBeGreaterThan(start+19);expect(max).toBeLessThan(start+20.1);}
+    > 25 |  const layers=[...code.matchAll(/^;Z:([\d.]+)/gm)].map(m=>Number(m[1]));expect(layers.at(-1)).toBe(20);
+         |                                                                                               ^
+      26 | });
+      27 |
+        at /private/tmp/orca-implementation/m38-transform-units-stage/tests/native-e2e/manipulation-units.spec.js:25:95
+
+    Error Context: test-results/native-browser/manipulation-units-inch-po-16051-uested-physical-coordinates/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/native-browser/manipulation-units-inch-po-16051-uested-physical-coordinates/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/native-browser/manipulation-units-inch-po-16051-uested-physical-coordinates/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/native-e2e/manipulation-units.spec.js:7:1 › inch position edits export millimeter native geometry and slice it at the requested physical coordinates 

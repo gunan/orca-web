@@ -1,0 +1,31 @@
+{
+  "nativeVersion": "2.4.2",
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "files": [
+    {
+      "path": "src/libslic3r/NSVGUtils.cpp",
+      "sha256": "f880e193de5e0da1bec502f3ab65ab75a98c8f4598bb72a732177571cc2b3583"
+    },
+    {
+      "path": "src/libslic3r/NSVGUtils.hpp",
+      "sha256": "96783a39d12b588a962960f63d0256d94628af37504d1aea6b6e66a89f2ff615"
+    },
+    {
+      "path": "src/libslic3r/EmbossShape.hpp",
+      "sha256": "a78bdb0f4c7b156d591af2d94724245ab4cc8252156d9301270e47ebd3c07766"
+    },
+    {
+      "path": "deps_src/nanosvg/nanosvg.h",
+      "sha256": "396338a4fcd577543786e4849797c140901b80b979228eadc3a5f6e4c5fa157e"
+    },
+    {
+      "path": "src/slic3r/GUI/Gizmos/GLGizmoSVG.cpp",
+      "sha256": "4e05c04d547e1e0ab91ca84a575d4188c090911ffbf2780d912490d84e0bb717"
+    },
+    {
+      "path": "src/slic3r/GUI/Jobs/EmbossJob.cpp",
+      "sha256": "804ce36eb9ec9b510b06b15d932013ef3fffa8c273be08f5696c31ff4cc118c1"
+    }
+  ],
+  "implementation": "Compile unmodified pinned NSVGUtils.cpp and NanoSVG. Port GLGizmoSVG select_shape and get_tesselation_tolerance orchestration; use existing native Emboss/CGAL paths. Bounded source bytes replace filesystem paths. No GUI default-placeholder fallback."
+}

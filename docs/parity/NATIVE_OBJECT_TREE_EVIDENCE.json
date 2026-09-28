@@ -1,0 +1,107 @@
+{
+  "nativeVersion": "2.4.2",
+  "sourceRevision": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "referenceCases": 726,
+  "verification": [
+    {
+      "command": "npm test",
+      "passed": 843,
+      "failed": 0,
+      "skipped": 0,
+      "log": "unit-tree-m21-full.log"
+    },
+    {
+      "command": "npx vite build --configLoader runner",
+      "result": "passed",
+      "log": "build-tree-m21.log"
+    },
+    {
+      "command": "npx playwright test tests/e2e/native-object-tree.spec.js tests/e2e/preset-workflow.spec.js tests/e2e/native-instance-cut.spec.js --workers=2",
+      "passed": 12,
+      "failed": 0,
+      "skipped": 0,
+      "log": "browser-tree-m21-focused.log"
+    },
+    {
+      "command": "node --test tests/native/native-object-tree.test.js",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "depositionSegments": 1146,
+      "nativeEntries": "Byte-identical to independent build-item printability edit",
+      "log": "native-tree-first.log"
+    },
+    {
+      "command": "npx playwright test --config playwright.native.config.js tests/native-e2e/native-object-tree.spec.js",
+      "passed": 1,
+      "failed": 0,
+      "skipped": 0,
+      "log": "native-browser-tree-first.log"
+    }
+  ],
+  "history": [
+    {
+      "log": "browser-tree-full-first.log",
+      "passed": 229,
+      "failed": 29,
+      "cause": "Old flat-list selection/count assertions and initial empty-layout selector; corrected to actual hierarchy nodes with original geometry/metadata assertions retained."
+    },
+    {
+      "log": "browser-tree-focused-rerun.log",
+      "passed": 58,
+      "failed": 1,
+      "cause": "Old legacy-text flat-row assertion had already loaded before the on-disk selector fix; preserved as failed run."
+    },
+    {
+      "log": "browser-tree-full-final.log",
+      "passed": 257,
+      "failed": 1,
+      "test": "tests/e2e/preset-workflow.spec.js:34 editing an existing custom printer refreshes the selected bed without changing its ID",
+      "expected": "220 × 180 mm",
+      "actual": "Select a native printer · Nozzle — mm",
+      "timeoutMs": 5000,
+      "resolution": "Rebased latest integrated preset import lifecycle handling; same unchanged preset test passes in final focused 12/12. No new broad run claimed."
+    }
+  ],
+  "logs": {
+    "browser-tree-full-first.log": {
+      "sha256": "8bfd45d1c2d7271ae9b0dd9dae60b963dd8b70b2d872b2e440a83d44463b2321",
+      "stagingPath": "/private/tmp/orca-implementation/m47-native-object-tree/browser-tree-full-first.log"
+    },
+    "browser-tree-focused-rerun.log": {
+      "sha256": "e78a56ad9e73824c4784d7eca9cec2099e462d8c8fb965ff5f19a70d59d86633",
+      "stagingPath": "/private/tmp/orca-implementation/m47-native-object-tree/browser-tree-focused-rerun.log"
+    },
+    "browser-tree-full-final.log": {
+      "sha256": "5699d6ce5a643bda9ef2c65e3267d2ce1de5222a0b6a998a596310b4e48852cd",
+      "stagingPath": "/private/tmp/orca-implementation/m47-native-object-tree/browser-tree-full-final.log"
+    },
+    "unit-tree-m21-full.log": {
+      "sha256": "7b4ca76b501abb416415602fb3cbc6648d3b05139d73063799a28874f903e61d",
+      "stagingPath": "/private/tmp/orca-implementation/m47-native-object-tree/unit-tree-m21-full.log"
+    },
+    "build-tree-m21.log": {
+      "sha256": "45cea7abe3201d02b46172e6ca26e985e70d608cda92c5c2f5a395f197ae49ca",
+      "stagingPath": "/private/tmp/orca-implementation/m47-native-object-tree/build-tree-m21.log"
+    },
+    "browser-tree-m21-focused.log": {
+      "sha256": "97dd3643465bf442a10d3e30e7aaa1ac4341ded457bebebf0951d292a6b43ed1",
+      "stagingPath": "/private/tmp/orca-implementation/m47-native-object-tree/browser-tree-m21-focused.log"
+    },
+    "native-tree-first.log": {
+      "sha256": "bda97e00715e67df187932e9b6a6fb6e463ab2fca128154261843b44c8d3fda7",
+      "stagingPath": "/private/tmp/orca-implementation/m47-native-object-tree/native-tree-first.log"
+    },
+    "native-browser-tree-first.log": {
+      "sha256": "f16d20d9cd65ddde8ef1d0eec01c9ef6ad9c141df6a522aa61adf9ee0317b179",
+      "stagingPath": "/private/tmp/orca-implementation/m47-native-object-tree/native-browser-tree-first.log"
+    }
+  },
+  "limitations": [
+    "Native PartPlate geometric outside/exclusion membership is not implemented by this tree.",
+    "Viewport selection remains restricted to the active plate.",
+    "Full native context menus, drag/reorder/reparent, filament editing and incremental wx node labels remain incomplete.",
+    "No native GUI pixel comparison or physical printer verification.",
+    "Full combined regressions will be performed after integration; feature status remains partial."
+  ]
+}

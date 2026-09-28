@@ -1,0 +1,590 @@
+{
+  "nativeVersion": "2.4.2",
+  "sourceCommit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "sourceSha256": "06b45df9beaaeac6db852d996ff88cd3f57517c2c063f4e9cdae14dc52d53668",
+  "supportSources": {
+    "deps_src/nanosvg/nanosvg.h": "396338a4fcd577543786e4849797c140901b80b979228eadc3a5f6e4c5fa157e",
+    "deps_src/nanosvg/nanosvgrast.h": "7b877b2ac8e210330f12f6a92bb0f5e5f3891a785bdc32f071330924853ed058",
+    "src/slic3r/GUI/Gizmos/GLGizmosManager.cpp": "b2f897fc7991a28650741d85eac332850bbd8ed6d46a5d42bfe3231a9d4b0e70",
+    "src/slic3r/GUI/GLToolbar.cpp": "0123f85641ce8f4cae9c77a6d98188298eae12afa2bb90375dc5ce42f49e2fde"
+  },
+  "methodSha256": "987c1dda282acbc7abd53e6437170e90f911ee76179ae23665f1cd229b0fa205",
+  "referenceSourceSha256": "e6e7f4b0c2169c97c73ca9f3a6f97b058645592c45b615e73d98a5c390afcf9f",
+  "generatorSha256": "a0361ecef610b7ab9ec900fa9e4403eb2eab0fba63e8999baf4a33304f56d44f",
+  "binarySha256": "8cd7a50e6b94b697066697c54c596e2ebe66b09ff45b3931f5bf73dcbee5c69b",
+  "states": [
+    "normal",
+    "hover",
+    "selected",
+    "disabled"
+  ],
+  "icons": [
+    "toolbar_open",
+    "toolbar_move",
+    "toolbar_rotate",
+    "toolbar_scale",
+    "toolbar_flatten",
+    "toolbar_arrange",
+    "toolbar_assemble",
+    "toolbar_cut",
+    "toolbar_text",
+    "toolbar_brimears",
+    "toolbar_variable_layer_height",
+    "toolbar_support",
+    "toolbar_seam",
+    "mmu_segmentation",
+    "toolbar_fuzzy_skin_paint"
+  ],
+  "inputs": {
+    "toolbar_open.svg": "20315a17bee60e75d7d900723481e94c8283fe0a9d28bec9301255be9c36fe35",
+    "toolbar_move.svg": "fff496465fb018195a4f17aed1e3d08d11d2829cfc52ce6b76bb781d93025b0f",
+    "toolbar_rotate.svg": "adf053d68fb56de11d4acd3e9b9f4a25145559356fdbd806b272e22bedfa98e2",
+    "toolbar_scale.svg": "9d0abbe7f8550d62fcb55ad04a91da1161ca8b030abed297121847632969b27d",
+    "toolbar_flatten.svg": "fc7b06ee08ff7b947b5c2c27f35b5f87c9fed55002adb080aafcf82156b80569",
+    "toolbar_arrange.svg": "70429ef69d043b7499348edb50379d5efddf32c6f912c5d696a0d6e9c93cbecb",
+    "toolbar_assemble.svg": "08b5faacb2fda0aec20bf75fccf8b1239c71223338d08aaae5ea38c4bc5edbd4",
+    "toolbar_cut.svg": "83ea3d631fb2623709e8c6c49b70b135c27351789ea1f43148db6e25634fc037",
+    "toolbar_text.svg": "9206890a2cb0b74240ec646c1ffeeee2ed1f77157c997809c6813a80f20676d2",
+    "toolbar_brimears.svg": "d4c66ee64a137e0e83f87e3a20d909564acd88d5bc57a0ab14b73a81c01d23d5",
+    "toolbar_variable_layer_height.svg": "85f12019b39d4799fb3924faf17a411d1d9f646565e252730b3a31a26cbca341",
+    "toolbar_support.svg": "50b4600d6d04a2d61329ce800a204cedf71c7e9a4d25ea3f1a608bb6bbaf0080",
+    "toolbar_seam.svg": "35444b34e06283eecae87ecc3e5c3b7569fe4d04cb53f70480f266533376c425",
+    "mmu_segmentation.svg": "3d1ebe02904a3affa81dafe7969c7419281ad4440b3b3318680f72dff6d21cef",
+    "toolbar_fuzzy_skin_paint.svg": "cf1deeb3d6875f6c8c9996452a93d598fb86505156822cb0a387c233ba861313",
+    "toolbar_open_dark.svg": "39f999502c897a7fb617f10a91a2720a53f98f33141773abb0964f2705eb4ef0",
+    "toolbar_move_dark.svg": "9b9632dfef630594faac187a2db2244ca734c4fdaca2e79e98b8537f356a6c35",
+    "toolbar_rotate_dark.svg": "d4a0365fb72782d9cfa3c69d9bd414447ff6e643dcf8a85268cf86838c739831",
+    "toolbar_scale_dark.svg": "d16c5353bbae13b8f71bcc46097627654129829febf2b2e5fe456acad64f2c51",
+    "toolbar_flatten_dark.svg": "4336d2c0848f0f46445e16381a9029daf45dcfa1e5fb06dad9ae4746d5093dcf",
+    "toolbar_arrange_dark.svg": "3a7da311315f39bacddad3ec9da73a32a37aec573c1079bc531962a616236410",
+    "toolbar_assemble_dark.svg": "7066143a1ab959051b6474a06dcf327c489dd11135db59e68058a22c9ad3fcad",
+    "toolbar_cut_dark.svg": "0a18a793ee074353ecb800aff67dd4b893e48445f479158d1e26d8d8417ae480",
+    "toolbar_text_dark.svg": "0df7dd219f4a0fdcb337af5a90ffca88b78a462ede2bf8c2cb109303c377d690",
+    "toolbar_brimears_dark.svg": "c1fbc23023f200660ed7e5c817e09aafd0b0f140c0b871c3ce29567155190910",
+    "toolbar_variable_layer_height_dark.svg": "325be6156b56289ca5a17e8f59a2ba4591ff78701e63274f5792121c159af95a",
+    "toolbar_support_dark.svg": "6082a48ec0998add2c1d7463dbab53e8d98c481a9d41fdacb013b9152e158889",
+    "toolbar_seam_dark.svg": "74ac894920c47b098ec9329d30c2b6d0beba348e4aad6e36392b0ad5ad83cdbf",
+    "mmu_segmentation_dark.svg": "6bde4646e979273a5c0085ba99be68c60eb0e4dd40746f3138d32b4903768341",
+    "toolbar_fuzzy_skin_paint_dark.svg": "2c91cc81344a7bb191f65c6fc257b20655041bc824626599d54ea088f0481492"
+  },
+  "atlases": [
+    {
+      "file": "light-36.png",
+      "theme": "light",
+      "size": 36,
+      "width": 149,
+      "height": 556,
+      "rgbaSha256": "dd6cb253c4ea0f3e6c912992ae839a70c08b65cba295660aeb5713e7793e835b",
+      "sha256": "44c7e5a83a47ce16e392039a7aa7061e15e14930c1b65ce39cb80b82fba42a34"
+    },
+    {
+      "file": "light-72.png",
+      "theme": "light",
+      "size": 72,
+      "width": 293,
+      "height": 1096,
+      "rgbaSha256": "9ac09e8010f2c27edfe9e743af31b76d2cd7fdc3fb284d9b3a49df644cf1fe47",
+      "sha256": "414da40ca1b1af460fd9687c5896530a0befed65d46c0abb283cc05b0bee9ef5"
+    },
+    {
+      "file": "dark-36.png",
+      "theme": "dark",
+      "size": 36,
+      "width": 149,
+      "height": 556,
+      "rgbaSha256": "12327b284ddfa486fac1452fe498680b4d93eb4e8c6b5e53e6e88a621dfac270",
+      "sha256": "43537f4b6ebc73439910619de59f8571572bf54e06fa14a0f92c3753086a2b59"
+    },
+    {
+      "file": "dark-72.png",
+      "theme": "dark",
+      "size": 72,
+      "width": 293,
+      "height": 1096,
+      "rgbaSha256": "efd4cfb81cfefbe648d6a84d2ee661323c0d07e5694ad63b252852638b18a0c9",
+      "sha256": "b049f93f4cfe516297637336392bb3db6a8c330fa56ec1e263021af32b723bd5"
+    }
+  ],
+  "strips": [
+    {
+      "file": "toolbar_open-light-36.png",
+      "icon": "toolbar_open",
+      "theme": "light",
+      "size": 36,
+      "rgbaSha256": "0dfb358f8bd52020c8c752303363bb6ff639acab758e9c35bd5e74563f290466",
+      "sha256": "54d1755edc659493f4741163db7755efdee78e92a39e849f473c4ffa6f4ca306"
+    },
+    {
+      "file": "toolbar_move-light-36.png",
+      "icon": "toolbar_move",
+      "theme": "light",
+      "size": 36,
+      "rgbaSha256": "d557f1b2cf06e0ce62b4bb08555bdbdd7e3dcf7aa8d948d5f7ec42447b90c723",
+      "sha256": "e640fcfe38a66f86e5dee908697ecc631957b1416c4e00b246e3c76eee684af2"
+    },
+    {
+      "file": "toolbar_rotate-light-36.png",
+      "icon": "toolbar_rotate",
+      "theme": "light",
+      "size": 36,
+      "rgbaSha256": "7ecf2981df584c841779f8f5ccd48230dffd882eae71f51db9d69b822332f734",
+      "sha256": "86bff85dc062ccc1cf9eaad486a7fbfe914019a1300c9f6f8781252a52f5e2ad"
+    },
+    {
+      "file": "toolbar_scale-light-36.png",
+      "icon": "toolbar_scale",
+      "theme": "light",
+      "size": 36,
+      "rgbaSha256": "a1236c612df9d3aba662e8da46a14d4747c18df098dfcc1aa6ae3a19969da10e",
+      "sha256": "4c123be42674f72daf97344ee9b0907cf521256e78b3e7872c6658f18eeba0d8"
+    },
+    {
+      "file": "toolbar_flatten-light-36.png",
+      "icon": "toolbar_flatten",
+      "theme": "light",
+      "size": 36,
+      "rgbaSha256": "3aaec7b794f7bc1167984f5ae8e3bb89ee15b03e395e29358d16c36f915a9250",
+      "sha256": "2c4a17e75e27d883dab1d2e4dee580a928a1a66e81f2ed841bda357e2037f0d7"
+    },
+    {
+      "file": "toolbar_arrange-light-36.png",
+      "icon": "toolbar_arrange",
+      "theme": "light",
+      "size": 36,
+      "rgbaSha256": "84c222d6d69b62efcae0075fd2a1569f0ec75220ded5ed7a409d3277ca564da7",
+      "sha256": "75f10fd12643a46e56ccc996773a9b6b7e93f9692f795d1b260ab28bd64dbb4c"
+    },
+    {
+      "file": "toolbar_assemble-light-36.png",
+      "icon": "toolbar_assemble",
+      "theme": "light",
+      "size": 36,
+      "rgbaSha256": "91982322d196aa19793dd54c4908cb92deea988a9bba1fb1c3241ff5b0b76d84",
+      "sha256": "6105a482c16aa9916ae0657873e9fc265986d8c972fae35c2d5795cebde420ce"
+    },
+    {
+      "file": "toolbar_cut-light-36.png",
+      "icon": "toolbar_cut",
+      "theme": "light",
+      "size": 36,
+      "rgbaSha256": "c88bc0e32761d320d1e6de83140a52c619e750cbd843c8ad29719f06655f6d9d",
+      "sha256": "33ab93e859f74ccabf0b59788ba6b1861d75d5038fb509c97864f53a5f3f76cd"
+    },
+    {
+      "file": "toolbar_text-light-36.png",
+      "icon": "toolbar_text",
+      "theme": "light",
+      "size": 36,
+      "rgbaSha256": "2cad9f63dc339d28cd6b4398097d08ac1761215835eb40cb0ebc319eff503285",
+      "sha256": "cbbbcf743f9eaa6ee77128e261d8767d0b6145fe1ffb7d8493c1e61471e5d263"
+    },
+    {
+      "file": "toolbar_brimears-light-36.png",
+      "icon": "toolbar_brimears",
+      "theme": "light",
+      "size": 36,
+      "rgbaSha256": "4e9b9f720ec52cd302bc52e38be0b160f13aaeb5a44c532673b67475f640b8db",
+      "sha256": "d624301433ac8a5e5440d86155a8a3d85157a09128b558891a3465f3939596a7"
+    },
+    {
+      "file": "toolbar_variable_layer_height-light-36.png",
+      "icon": "toolbar_variable_layer_height",
+      "theme": "light",
+      "size": 36,
+      "rgbaSha256": "6d978114d784645e8388a6e40e6b7ba525e75b8e99cf5071d89c56d36ffaae3f",
+      "sha256": "4bd63a7f62da2c4a8f3424af48d0d80ba9179670b5abd4247d79cbc9bfc27c56"
+    },
+    {
+      "file": "toolbar_support-light-36.png",
+      "icon": "toolbar_support",
+      "theme": "light",
+      "size": 36,
+      "rgbaSha256": "746c4cbb29b0da7f8ef7077e88f5f98a58a3f1a9811c3f127641af1f94136dc2",
+      "sha256": "0c44793ae9f4c6d6ff4806a7662280ddc9d6325ef1763a2f70d217c2058c998d"
+    },
+    {
+      "file": "toolbar_seam-light-36.png",
+      "icon": "toolbar_seam",
+      "theme": "light",
+      "size": 36,
+      "rgbaSha256": "559ac670cc0eab8a4bf25265a98069a312b70877ea67e40e23a9af64b9d84929",
+      "sha256": "67dade381a9d11b5536a1ec9e04809484dee250ee53b1284759583ac0d0bb67b"
+    },
+    {
+      "file": "mmu_segmentation-light-36.png",
+      "icon": "mmu_segmentation",
+      "theme": "light",
+      "size": 36,
+      "rgbaSha256": "00c44f96c5ef7fee404567bd83344c0233dc720c43e528694c7cec8047a034bb",
+      "sha256": "044fef0c6531fc3cf082a7257e069110ea702ac30bc30b257d00d5c18ee51734"
+    },
+    {
+      "file": "toolbar_fuzzy_skin_paint-light-36.png",
+      "icon": "toolbar_fuzzy_skin_paint",
+      "theme": "light",
+      "size": 36,
+      "rgbaSha256": "81b2d5fa3a0e10e92a298e59e9e5a5aade36ec9494da324ea1ff91d289598e99",
+      "sha256": "7dd55539ff2d4953ac066e63ec5e7bd5cbc2167debb75aa006b169b9fd123472"
+    },
+    {
+      "file": "toolbar_open-light-72.png",
+      "icon": "toolbar_open",
+      "theme": "light",
+      "size": 72,
+      "rgbaSha256": "9b144d18eef68a48af6021a0f53553a52b50b8282fc817115403004320fd1873",
+      "sha256": "4bfe26094bcc1556784edf2e2b49bf3bb6422e61b7bca1766c2102b276a17108"
+    },
+    {
+      "file": "toolbar_move-light-72.png",
+      "icon": "toolbar_move",
+      "theme": "light",
+      "size": 72,
+      "rgbaSha256": "1f7d3f898a916056a0f80ab032b096beaa8f8f210741620ef6877629fcfbfb98",
+      "sha256": "9088ef7bfadf529311fb0c30b8b771097cc6115825ad7308f9582c20795e7862"
+    },
+    {
+      "file": "toolbar_rotate-light-72.png",
+      "icon": "toolbar_rotate",
+      "theme": "light",
+      "size": 72,
+      "rgbaSha256": "ccde9e8804c04fd67204fb64a5b43f459d0c9431c7a16b7abe3798385e51153f",
+      "sha256": "ab420a24e76c8706b21043efe278878cfd097b9e903ae05fb17db896bef12080"
+    },
+    {
+      "file": "toolbar_scale-light-72.png",
+      "icon": "toolbar_scale",
+      "theme": "light",
+      "size": 72,
+      "rgbaSha256": "0c3e8f18118e38bbf5bdb89aa217332b817ea88783ed3ba48cd4dcb614ac9669",
+      "sha256": "e309897d333545180ac4e86227ca2c86cfeb43bc397e97c589ef5e3f6b357ec7"
+    },
+    {
+      "file": "toolbar_flatten-light-72.png",
+      "icon": "toolbar_flatten",
+      "theme": "light",
+      "size": 72,
+      "rgbaSha256": "54cdd67159dc1d17e1e398299ff1abe6ed370f066f11cb4a740d5942cbeeb017",
+      "sha256": "75232ee67b69219024f3a215a957d555ba6a8eb87633a8ea15f3f6d895a1061d"
+    },
+    {
+      "file": "toolbar_arrange-light-72.png",
+      "icon": "toolbar_arrange",
+      "theme": "light",
+      "size": 72,
+      "rgbaSha256": "49cf605f043a34a186fcabf2b7e9551189c0a27f2df1aab7bf0534a0d010b42c",
+      "sha256": "ff89ed741b9d35229c7b3aadbd8b9a4fa24a0e0ed135a3223a5280d14c8f489f"
+    },
+    {
+      "file": "toolbar_assemble-light-72.png",
+      "icon": "toolbar_assemble",
+      "theme": "light",
+      "size": 72,
+      "rgbaSha256": "75542fcad4f051f08edcfa14a8ec51ed2d6d7f6a784046a067ebd744720d9f50",
+      "sha256": "30670c9d921a8a96d9232f0e72c8b2a4b21011bc3b3d4b7a48ab0f2ce7ab9721"
+    },
+    {
+      "file": "toolbar_cut-light-72.png",
+      "icon": "toolbar_cut",
+      "theme": "light",
+      "size": 72,
+      "rgbaSha256": "3406366cc4d48a5f8df07e6fa72022599a7215a4eee9393e9d661aa1e9294248",
+      "sha256": "316e42f1bbf20727c151687b33d3821178b3cf3c4c93f15176aea1086586d732"
+    },
+    {
+      "file": "toolbar_text-light-72.png",
+      "icon": "toolbar_text",
+      "theme": "light",
+      "size": 72,
+      "rgbaSha256": "0c0f9aa052873412cc81f6dc3993c74dc60a7e2bb5a6ce2d8cd252ce3c685d15",
+      "sha256": "34e9c42748c5858ad30862bab9820dc64698a38634fbd8c8c4dadbcd231813ad"
+    },
+    {
+      "file": "toolbar_brimears-light-72.png",
+      "icon": "toolbar_brimears",
+      "theme": "light",
+      "size": 72,
+      "rgbaSha256": "262ef5f9b9e43186bb4ca71816ba7cf42bd83de20358aa2563bfe36d792aa64d",
+      "sha256": "df8c90741f7c7553db8f0c3ed655ae5db59bf42a014e9374f339bf2d1cfbf06d"
+    },
+    {
+      "file": "toolbar_variable_layer_height-light-72.png",
+      "icon": "toolbar_variable_layer_height",
+      "theme": "light",
+      "size": 72,
+      "rgbaSha256": "93472723c9a4ab6080132f350dc1b5a884686a44717542a285b9798bab865245",
+      "sha256": "7eac6d95b2f7992ecda8d7ee0e58cd40ff70ce50ccf01ce904101edb6eea45ee"
+    },
+    {
+      "file": "toolbar_support-light-72.png",
+      "icon": "toolbar_support",
+      "theme": "light",
+      "size": 72,
+      "rgbaSha256": "27865e029cf6b7608462a3748535b518f393d488e0dbdc299f96bdf62a91ea7f",
+      "sha256": "7a7230ccaa0f71d992946c06dd2c33d0b35a8affe8dddeefdddd55bf0a139e9d"
+    },
+    {
+      "file": "toolbar_seam-light-72.png",
+      "icon": "toolbar_seam",
+      "theme": "light",
+      "size": 72,
+      "rgbaSha256": "dc52a9e1cf3826384b05516c3f0fb71d737a8086c216b560b3ff68151109a392",
+      "sha256": "7d1f39d236201481cce128540c4cce33c6c423caa129e942d697564f730c4daf"
+    },
+    {
+      "file": "mmu_segmentation-light-72.png",
+      "icon": "mmu_segmentation",
+      "theme": "light",
+      "size": 72,
+      "rgbaSha256": "2c7646b30642df5e6e69fc1b6f8a9d67b2391d90d369a7079feb320a91c81604",
+      "sha256": "ee32bc27ddc6078031d9163bf53f77dc8d1f27f1a1c676c7c42059e6deea6f56"
+    },
+    {
+      "file": "toolbar_fuzzy_skin_paint-light-72.png",
+      "icon": "toolbar_fuzzy_skin_paint",
+      "theme": "light",
+      "size": 72,
+      "rgbaSha256": "c29e03ae90bfc723b25c1c467827c631dfb6ee6b59e5b29a822a2b37b80000ce",
+      "sha256": "e99156c4a5bc53253a7073107fc855848f12666c64af1b5f74145ad3747618ff"
+    },
+    {
+      "file": "toolbar_open-dark-36.png",
+      "icon": "toolbar_open",
+      "theme": "dark",
+      "size": 36,
+      "rgbaSha256": "8d6aad7d96d5b888157f7d177e0748a8fb512a11a1cc0c2f96eaf6566dc8ddd1",
+      "sha256": "0c92a5dbc8e1ac9fd2db81da20fcf0e396f5c061bf750011318fddc640e49d3c"
+    },
+    {
+      "file": "toolbar_move-dark-36.png",
+      "icon": "toolbar_move",
+      "theme": "dark",
+      "size": 36,
+      "rgbaSha256": "89d92cffc42b43d4e09799c745618b7b4310d3379e4216a530310cfa91d06b62",
+      "sha256": "a04faf8b40ca2484b0c84488e0a304e42db737f57650518bd36684cfb6d485a0"
+    },
+    {
+      "file": "toolbar_rotate-dark-36.png",
+      "icon": "toolbar_rotate",
+      "theme": "dark",
+      "size": 36,
+      "rgbaSha256": "8aa2cc6dbdfab1389c05333b00fd5da615d9059ed5cdee553749e5ee67caa027",
+      "sha256": "cda8897369fdc61de5243e0e7e74f0397e7f2799b96c253c20bc2ab2f8f57d39"
+    },
+    {
+      "file": "toolbar_scale-dark-36.png",
+      "icon": "toolbar_scale",
+      "theme": "dark",
+      "size": 36,
+      "rgbaSha256": "b45ef8de7f549a05d2a14dc4565c82dab73d7dde2d3547872b20ba2424a88bdf",
+      "sha256": "728070e64e236ca5a2ab06244bf4c957c9c55aa221a5b63b7cd227ceb8ba6801"
+    },
+    {
+      "file": "toolbar_flatten-dark-36.png",
+      "icon": "toolbar_flatten",
+      "theme": "dark",
+      "size": 36,
+      "rgbaSha256": "053a0cf53c7ac784c32539dcce8af15fcba70df2ffc71034cfc0c4b100e3e26c",
+      "sha256": "389807ed9ad5b8e030e6cb7d1058c87ff9099552ade903ab871ef841b86d0cda"
+    },
+    {
+      "file": "toolbar_arrange-dark-36.png",
+      "icon": "toolbar_arrange",
+      "theme": "dark",
+      "size": 36,
+      "rgbaSha256": "23b5fe1ce64d616b44dd931720b4aa77f448156ca82a80e4344a98801631a9db",
+      "sha256": "37eba5a2d0c2f0ecaa7258756b9b31d368c2d4a94454dc77ead56b0fb84b201c"
+    },
+    {
+      "file": "toolbar_assemble-dark-36.png",
+      "icon": "toolbar_assemble",
+      "theme": "dark",
+      "size": 36,
+      "rgbaSha256": "4ed3b4e857564eb854b4e1b355861d61a4f03a68eb6d304e951f94789c55f140",
+      "sha256": "dd2487c4aa07fa8ad24e307c0c9e8b80f60d446b6a8b0d30ecdc7c77d31fccc5"
+    },
+    {
+      "file": "toolbar_cut-dark-36.png",
+      "icon": "toolbar_cut",
+      "theme": "dark",
+      "size": 36,
+      "rgbaSha256": "26ffd0ffdad21dfd2a78acf8a3bb2d301e1fd4608b3e3dfdaabaa7d8947d5a45",
+      "sha256": "ea80932beef74cbc7e0b1f3348a2cafe3a6b8ab9d0a7932020aa6a2580e94372"
+    },
+    {
+      "file": "toolbar_text-dark-36.png",
+      "icon": "toolbar_text",
+      "theme": "dark",
+      "size": 36,
+      "rgbaSha256": "1bcbc51d2760ea529a1e62cf2df2927faa0ca81c5f742778fb14e20cbec6d0b3",
+      "sha256": "4739d223e342959aba34b3d3c99a9eb37522538129cebb26f740ea69b30fb918"
+    },
+    {
+      "file": "toolbar_brimears-dark-36.png",
+      "icon": "toolbar_brimears",
+      "theme": "dark",
+      "size": 36,
+      "rgbaSha256": "f1288af5b9e672fe2202e85b090764cec030b6569ee84822a3488fdead10ac99",
+      "sha256": "aa0c40ff6efb39a8c3fa227682b95da2a18e2ea93fe8fbc4768a6f6ac060e470"
+    },
+    {
+      "file": "toolbar_variable_layer_height-dark-36.png",
+      "icon": "toolbar_variable_layer_height",
+      "theme": "dark",
+      "size": 36,
+      "rgbaSha256": "dc9d958f6739d588f52dbcb2b003f1e2c9a8d6527f08e64afeea941f174401a9",
+      "sha256": "3d2220441f45489ac0e31d9d51d44999e0963d5093546328db9172c0be6fa4d9"
+    },
+    {
+      "file": "toolbar_support-dark-36.png",
+      "icon": "toolbar_support",
+      "theme": "dark",
+      "size": 36,
+      "rgbaSha256": "30973542258e6c4fa19ec157a9d10245101089d07410888baae6d99ba8ec5ed3",
+      "sha256": "d048e4cf17c41eee99da34f2b87b50a376adfdd0a460d54666130758ea58b557"
+    },
+    {
+      "file": "toolbar_seam-dark-36.png",
+      "icon": "toolbar_seam",
+      "theme": "dark",
+      "size": 36,
+      "rgbaSha256": "a8a886c9a738c11279d4b0b7a3a2c1f377e1f1a9c9443ac6373b1fd2d989f98e",
+      "sha256": "d81ff8beea06eeeda9aad0399373fbd5eddf88938087edbc22d566a298e64657"
+    },
+    {
+      "file": "mmu_segmentation-dark-36.png",
+      "icon": "mmu_segmentation",
+      "theme": "dark",
+      "size": 36,
+      "rgbaSha256": "524a8b721fea1be6b080cde4fd6a0a0ea8b2280abd85c1a642030c36ba53ea18",
+      "sha256": "faa6cacfb39066de72d9c7bfedcca1ae942c22bd155dedf042eca32b13d2674d"
+    },
+    {
+      "file": "toolbar_fuzzy_skin_paint-dark-36.png",
+      "icon": "toolbar_fuzzy_skin_paint",
+      "theme": "dark",
+      "size": 36,
+      "rgbaSha256": "7cfe6e4d5ee90960ef6594a2b50cf2866d0f3d1690d9705fd0ffd7591e40943f",
+      "sha256": "9e196978143a8b57a28af20b45a0da53ad92853579cc68d44989e78b535b05cb"
+    },
+    {
+      "file": "toolbar_open-dark-72.png",
+      "icon": "toolbar_open",
+      "theme": "dark",
+      "size": 72,
+      "rgbaSha256": "e09b8f462492d63b271f554a350ab6898839f95f5c0b2d6d16836219a59a8440",
+      "sha256": "a48a302863373cee50645460f26aec7ed4b80ed2de8470c463aa1dda2ed98003"
+    },
+    {
+      "file": "toolbar_move-dark-72.png",
+      "icon": "toolbar_move",
+      "theme": "dark",
+      "size": 72,
+      "rgbaSha256": "bd5f8c6f4712f0a8837d10d31f851c389021077a7a70c355e04bcb4bf19f7c9f",
+      "sha256": "fca621784d605c9a2cb38fd1706ccc77b44d5467b60e3fe51f6b42303d16e55f"
+    },
+    {
+      "file": "toolbar_rotate-dark-72.png",
+      "icon": "toolbar_rotate",
+      "theme": "dark",
+      "size": 72,
+      "rgbaSha256": "e458983f853d1f970efca61a9d80860ee61bfe239b0bfc6f68c1eb5f6429fb28",
+      "sha256": "3a230c0ddf8f11972cfb9c799f1a61c336a92e9ebddc332b601a26633f98e56a"
+    },
+    {
+      "file": "toolbar_scale-dark-72.png",
+      "icon": "toolbar_scale",
+      "theme": "dark",
+      "size": 72,
+      "rgbaSha256": "9fe08f63d904c9dd3c2e1edb68dbc4759bdd73f45fa111081db40fb2217569e4",
+      "sha256": "6b3c24d2e532bc0f6fe682ddb3d8ac1fbaaecf0884b5b613a53a88b54fb8ecd3"
+    },
+    {
+      "file": "toolbar_flatten-dark-72.png",
+      "icon": "toolbar_flatten",
+      "theme": "dark",
+      "size": 72,
+      "rgbaSha256": "6063ca2222cbf8cf2e37a646f2d9abac8b6dca4159f52430d2b0b8cde3bf1b94",
+      "sha256": "c343aaf63362a6242278351890e1bbc8b7fb5679014d32aa8f3d1854e2e8af29"
+    },
+    {
+      "file": "toolbar_arrange-dark-72.png",
+      "icon": "toolbar_arrange",
+      "theme": "dark",
+      "size": 72,
+      "rgbaSha256": "2aefc46017b481c9c4391e248537fe8f44e1c8cb846d69fe82852650596269bb",
+      "sha256": "dd6f4374412ebe9453d04b083d7cd3b79636e5750d53863629196e980996666f"
+    },
+    {
+      "file": "toolbar_assemble-dark-72.png",
+      "icon": "toolbar_assemble",
+      "theme": "dark",
+      "size": 72,
+      "rgbaSha256": "5024f0c7f2ee9e0a6bac379e4bd7de3df637744f11973581b38804855c2cc2fb",
+      "sha256": "49814c5231ef041a0b22dbb0f26820b4a8b19597853790b21eb65088b3d1af08"
+    },
+    {
+      "file": "toolbar_cut-dark-72.png",
+      "icon": "toolbar_cut",
+      "theme": "dark",
+      "size": 72,
+      "rgbaSha256": "332d484a65c62d28b5c082f380f24f19cd0f3f75521b3b55bfbd1fc94127de39",
+      "sha256": "6af92c54f50ff0d6e1afeeb341101f17fc2479bf4d3479863f922c469f78d5ac"
+    },
+    {
+      "file": "toolbar_text-dark-72.png",
+      "icon": "toolbar_text",
+      "theme": "dark",
+      "size": 72,
+      "rgbaSha256": "00ade3730045e0d5ee8c58d5c3045eab81506f8360af96dbc4f0041186e04eb8",
+      "sha256": "377d16266afcb0724f51510c52c5ff76a0063eb97cdf378e3d9372e0c041650b"
+    },
+    {
+      "file": "toolbar_brimears-dark-72.png",
+      "icon": "toolbar_brimears",
+      "theme": "dark",
+      "size": 72,
+      "rgbaSha256": "9739940201e82c244addce6782cbbb1b59d016b4c40c28374b8291b6536af3c2",
+      "sha256": "13445842e98d4f54447cde31d29eb8009cd40c0c489baaf746c631222b6b9a78"
+    },
+    {
+      "file": "toolbar_variable_layer_height-dark-72.png",
+      "icon": "toolbar_variable_layer_height",
+      "theme": "dark",
+      "size": 72,
+      "rgbaSha256": "30ae5927756deed25cf1c5e3033e78dec7a3a422da28a04a0d26c965b5bdc305",
+      "sha256": "4d9dadf96b888328148e476e2c2dea1135626c39ddba5dc75f69bc807d272bb7"
+    },
+    {
+      "file": "toolbar_support-dark-72.png",
+      "icon": "toolbar_support",
+      "theme": "dark",
+      "size": 72,
+      "rgbaSha256": "b2e21e96949e13499e2534249a4cd4aa15a107a087d3bf96d226714f48b6707b",
+      "sha256": "70edaf2068cf0adb53ad7069f33a5a0cd50543dcc273e31e3560da9d1088219a"
+    },
+    {
+      "file": "toolbar_seam-dark-72.png",
+      "icon": "toolbar_seam",
+      "theme": "dark",
+      "size": 72,
+      "rgbaSha256": "5e2d33dd3a409c4aba59c7434fb3a4cd756f319918a1cdae4ed284f2253873dc",
+      "sha256": "63dbb268c06ade1490560d6f6e863b116ba1bf500809516c5066fdbc8d2b56e6"
+    },
+    {
+      "file": "mmu_segmentation-dark-72.png",
+      "icon": "mmu_segmentation",
+      "theme": "dark",
+      "size": 72,
+      "rgbaSha256": "f5c5f97dab6b8509cb0d9993b2673f25a252239ae934adf31bde2492f0bd8876",
+      "sha256": "c9d90af84d7929d759fa50c342a41c24ca742effed0efffe0beb050827032ad7"
+    },
+    {
+      "file": "toolbar_fuzzy_skin_paint-dark-72.png",
+      "icon": "toolbar_fuzzy_skin_paint",
+      "theme": "dark",
+      "size": 72,
+      "rgbaSha256": "7da9da635f778377d619a00ab94d097ab9ddc4dd0ecc47b2a99ef1f158162eb5",
+      "sha256": "0fdb769e60130c3858005bc8369075d8a775d07ad4dbbdb23682dbad7659913b"
+    }
+  ]
+}

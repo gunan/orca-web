@@ -1,0 +1,13 @@
+# Home and startup page
+
+The browser now starts on Home by default, matching native default_page=0. Preferences offers Home and Prepare; changes take effect at the next startup and do not move the current page. Invalid storage falls back to Home; write failures explain that the previous startup preference will remain. Home navigation preserves the current scene, Undo and ready Preview instead of reloading the document.
+
+Home uses installed2.4.2 i4/i5 PNG assets, English New Project/Create new project/Open Project labels,56px images,253x101 cards and12px corners. The [source/resource audit](HOME_SOURCE_AUDIT.json) separates pinned C++ hashes from installed HTML/CSS/JS and translation hashes. Source baseline is8500fcdccaa10b5099ac20d252af3a7c560046f1. The assets retain provenance and licensing in public/native-home. Initial screenshot review found global editor CSS overriding the12px corners; scoped CSS and computed-style assertions fix this in both themes.
+
+New uses the existing discard/cancel transaction. Open invokes the actual file chooser and supported project importer. Invalid files preserve the current scene. Recent files are explicitly unavailable in this milestone; no fake recent tiles, account logins or cloud state are shown.
+
+Three focused unit checks pass. Seven Home browser tests failed against the previous build and now pass. Existing Prepare-centered browser suites explicitly persist the Prepare startup preference; the new Home suites use empty storage to verify the actual new default. The two legacy tests creating separate browser contexts explicitly navigate to Prepare. Their geometry and feature assertions remain intact. Full1,098 unit/API,361 browser and82 installed-native browser tests pass. The native Home workflow opens the actual GUI-exported cube, slices with installed2.4.2, renders more than100 native path volumes and retains their count and download URL across Home/Preview navigation with only one slice request.
+
+[Baseline failures](M43_HOME_BEFORE.log), [fixed Home tests](M43_HOME_BROWSER.log), [units](M43_STARTUP_UNIT.log), [diagnostics/first screenshots](M43_HOME_DIAGNOSTICS.zip), [light](M43_HOME_LIGHT.png), [dark](M43_HOME_DARK.png), [ready native project retained](M43_NATIVE_HOME.png).
+
+Mac GUI access remained locked on the latest check; these are browser screenshots and native-engine workflows, not paired active desktop UI acceptance. Native chrome, account/provider panels, startup file/deep-link overrides, fonts/localization and platform layout remain incomplete. Recent-file history remains missing here and has separate criteria. Home and affected UI feature entries remain partial.

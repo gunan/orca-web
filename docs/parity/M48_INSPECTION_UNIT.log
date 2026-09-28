@@ -1,0 +1,21 @@
+✔ import inspection API validates the project and sends canonical model data to the bounded worker (52.842084ms)
+✔ unavailable or malformed native inspection is explicit and cannot become a successful filter (19.788167ms)
+✔ import inspection cancellation and service shutdown reach the native worker without committing results (15.982208ms)
+✔ native inspection transport validates replayed model removals and removes request files (174.842084ms)
+✔ inspection transport cancellation reaches active and queued requests and accepts a later valid request (104.19525ms)
+✔ inspection preserves canonical volume frames, roles and all linked instances, with source plate origins (4.05175ms)
+✔ independent model IDs remain independent even for equal historical source IDs and processed cuts (0.624375ms)
+✔ filtering removes a complete model family while retaining original parts, metadata, plate and preset context (1.09075ms)
+✔ all-empty results carry no stale selected IDs and leave source/history objects untouched (16.828583ms)
+✔ native results must account for every original identity once, in order, at the original zero threshold (0.728792ms)
+✔ non-retained geometry retains original coordinates and a separate native volume transform (6.670708ms)
+✔ empty, excessive, divergent and stale retained geometry is rejected before native admission (9.553875ms)
+✔ zero-volume notice uses the original installed information icon with AGPL attribution (6.890416ms)
+ℹ tests 13
+ℹ suites 0
+ℹ pass 13
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 390.575125

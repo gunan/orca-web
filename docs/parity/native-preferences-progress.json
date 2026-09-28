@@ -1,0 +1,128 @@
+{
+  "preferences.use-inches": {
+    "status": "partial",
+    "featureId": "ui.units",
+    "testRefs": [
+      "tests/e2e/native-display-preferences.spec.js",
+      "tests/e2e/manipulation-units.spec.js",
+      "tests/native-e2e/native-display-units.spec.js"
+    ],
+    "scope": "Prepare and Preview display units; remaining native precision, import controls and desktop acceptance are open."
+  },
+  "preferences.camera-orbit-mult": {
+    "status": "partial",
+    "featureId": "ui.camera-preferences",
+    "testRefs": [
+      "tests/unit/native-camera-preferences.test.js",
+      "tests/e2e/camera-preferences.spec.js",
+      "tests/native-e2e/camera-preferences.spec.js"
+    ],
+    "scope": "Mapped gestures, relative orbit speed and wheel reversal are covered. Exact native camera mathematics, remaining input modes and desktop acceptance are open."
+  },
+  "preferences.reverse-mouse-wheel-zoom": {
+    "status": "partial",
+    "featureId": "ui.camera-preferences",
+    "testRefs": [
+      "tests/unit/native-camera-preferences.test.js",
+      "tests/e2e/camera-preferences.spec.js",
+      "tests/native-e2e/camera-preferences.spec.js"
+    ],
+    "scope": "Mapped gestures, relative orbit speed and wheel reversal are covered. Exact native camera mathematics, remaining input modes and desktop acceptance are open."
+  },
+  "preferences.left-mouse-drag-action": {
+    "status": "partial",
+    "featureId": "ui.camera-preferences",
+    "testRefs": [
+      "tests/unit/native-camera-preferences.test.js",
+      "tests/e2e/camera-preferences.spec.js",
+      "tests/native-e2e/camera-preferences.spec.js"
+    ],
+    "scope": "Mapped gestures, relative orbit speed and wheel reversal are covered. Exact native camera mathematics, remaining input modes and desktop acceptance are open."
+  },
+  "preferences.middle-mouse-drag-action": {
+    "status": "partial",
+    "featureId": "ui.camera-preferences",
+    "testRefs": [
+      "tests/unit/native-camera-preferences.test.js",
+      "tests/e2e/camera-preferences.spec.js",
+      "tests/native-e2e/camera-preferences.spec.js"
+    ],
+    "scope": "Mapped gestures, relative orbit speed and wheel reversal are covered. Exact native camera mathematics, remaining input modes and desktop acceptance are open."
+  },
+  "preferences.right-mouse-drag-action": {
+    "status": "partial",
+    "featureId": "ui.camera-preferences",
+    "testRefs": [
+      "tests/unit/native-camera-preferences.test.js",
+      "tests/e2e/camera-preferences.spec.js",
+      "tests/native-e2e/camera-preferences.spec.js"
+    ],
+    "scope": "Mapped gestures, relative orbit speed and wheel reversal are covered. Exact native camera mathematics, remaining input modes and desktop acceptance are open."
+  },
+  "preferences.opengl-fps-cap": {
+    "status": "partial",
+    "featureId": "ui.graphics-preferences",
+    "testRefs": [
+      "tests/unit/native-graphics-preferences.test.js",
+      "tests/unit/preview-render-scheduler.test.js",
+      "tests/e2e/graphics-preferences.spec.js",
+      "tests/native-e2e/graphics-preferences.spec.js",
+      "tests/unit/native-preference-spin.test.js",
+      "tests/e2e/native-preference-spin.spec.js"
+    ],
+    "scope": "Native cap/pacing/statistics references, left arrow assets and400ms/100ms repeats, browser state and actual native Preview workflows pass. wx validation/overflow, double-click event details, physical GPU presentation and paired desktop acceptance remain open."
+  },
+  "preferences.opengl-show-fps-overlay": {
+    "status": "partial",
+    "featureId": "ui.graphics-preferences",
+    "testRefs": [
+      "tests/unit/native-graphics-preferences.test.js",
+      "tests/unit/preview-render-scheduler.test.js",
+      "tests/e2e/graphics-preferences.spec.js",
+      "tests/native-e2e/graphics-preferences.spec.js"
+    ],
+    "scope": "Original-source cap/pacing/statistics references and actual GPU/native Preview workflows pass. GPU presentation, native spin-button details and paired desktop layout acceptance remain open."
+  },
+  "preferences.default-page": {
+    "status": "partial",
+    "featureId": "ui.home",
+    "testRefs": [
+      "tests/unit/native-startup-preferences.test.js",
+      "tests/e2e/home-workspace.spec.js",
+      "tests/native-e2e/home-workspace.spec.js"
+    ],
+    "scope": "Native Home/Prepare default and next-startup persistence are covered. Native launch overrides, cloud state and paired desktop appearance remain open."
+  },
+  "preferences.max-recent-count": {
+    "status": "partial",
+    "featureId": "projects.recent-files",
+    "testRefs": [
+      "tests/unit/recent-files.test.js",
+      "tests/e2e/recent-files.spec.js",
+      "tests/e2e/recent-store.spec.js",
+      "tests/native-e2e/recent-files.spec.js"
+    ],
+    "scope": "Native default limit, effective0..999 bounds, atomic pruning and labeled STL/STEP opt-in apply to browser copies. Native path identity, wx input details and broader model-format inclusion remain open."
+  },
+  "preferences.recent-models": {
+    "status": "partial",
+    "featureId": "projects.recent-files",
+    "testRefs": [
+      "tests/unit/recent-files.test.js",
+      "tests/e2e/recent-files.spec.js",
+      "tests/e2e/recent-store.spec.js",
+      "tests/native-e2e/recent-files.spec.js"
+    ],
+    "scope": "Native default limit, effective0..999 bounds, atomic pruning and labeled STL/STEP opt-in apply to browser copies. Native path identity, wx input details and broader model-format inclusion remain open."
+  },
+  "preferences.project-load-behaviour": {
+    "status": "partial",
+    "featureId": "projects.save-load",
+    "testRefs": [
+      "tests/unit/native-project-load.test.js",
+      "tests/e2e/project-load-preferences.spec.js",
+      "tests/native-e2e/project-load-preferences.spec.js"
+    ],
+    "scope": "Native Open/Add policies, retained structured3MF geometry, zero-volume filtering and multipart choices, preserved current preset/material/purge context, cancellation and real native slicing are covered. Unit conversion, oversize handling, generic/mixed formats, palette cursor, preset-dirty details and paired desktop appearance remain open."
+  }
+}

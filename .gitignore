@@ -8,3 +8,10 @@ playwright-report/
 
 .native-cache/
 native/build/
+
+# Keep test evidence logs, but retain large diagnostic captures locally.
+!docs/parity/*.log
+/docs/parity/*.zip
+**/__pycache__/
+*.pyc
+.DS_Store

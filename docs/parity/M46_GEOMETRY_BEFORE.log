@@ -1,0 +1,124 @@
+[WebServer] (node:97758) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:97864) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 ../m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:13:1 › geometry Add retains linked parts, painting and layer profiles and strips imported overrides in the saved project (7.1s)
+(node:98593) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 ../m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:14:1 › geometry-only Open retains current material colors and purge settings while replacing objects (7.1s)
+(node:98730) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 ../m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:15:1 › repeated geometry Add keeps separate model families and preserves exported paint (6.3s)
+
+
+  1) ../m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:13:1 › geometry Add retains linked parts, painting and layer profiles and strips imported overrides in the saved project 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('[data-tree-kind="object"]')
+    Expected: 2
+    Received: 5
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('[data-tree-kind="object"]') with timeout 5000ms
+      - waiting for locator('[data-tree-kind="object"]')
+        13 × locator resolved to 5 elements
+           - unexpected value "5"
+
+
+      11 | async function save(page){const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Save project',exact:true}).click();return parseProject(await readFile(await(await pending).path(),'utf8'));}
+      12 | async function loadJson(page,p){await page.getByLabel('Open Orca Web project').setInputFiles({name:'Current.orca-web.json',mimeType:'application/json',buffer:Buffer.from(serializeProject(p))});}
+    > 13 | test('geometry Add retains linked parts, painting and layer profiles and strips imported overrides in the saved project',async({page},info)=>{await start(page);await page.getByLabel('Layer height',{exact:true}).fill('0.25');await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const p=await save(page),parts=p.objects.slice(1);expect(parts).toHaveLength(4);expect(new Set(parts.map(o=>o.native.groupId)).size).toBe(2);expect(new Set(parts.map(o=>o.native.instanceFamily)).size).toBe(1);assertInstanceFamilies(parts);for(const o of parts){expect(o.painting.color).toEqual({0:'4'});expect(o.native.objectSettings).toEqual({extruder:'1'});expect(o.native.partSettings).toEqual({extruder:'1'});expect(o.native.layerHeightProfile).toEqual([0,.2,1,.2,10,.2]);expect(o.native.layerConfigRanges[0].settings.layer_height).toBe('0.12');}expect(p.overrides.layer_height).toBe('0.25');await page.screenshot({path:info.outputPath('native-geometry-parts.png')});await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByRole('button',{name:'Redo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);});
+         |                                                                                                                                                                                                                                                                                                                                                                                                                         ^
+      14 | test('geometry-only Open retains current material colors and purge settings while replacing objects',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);const p=await save(page);p.projectOverrides={filament_colour:['#123456'],flush_volumes_matrix:['0'],flush_volumes_vector:['141','142']};p.overrides={layer_height:'0.25'};await loadJson(page,p);await page.getByLabel('Open Orca Web project').setInputFiles(file());await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);const out=await save(page);expect(out.objects).toHaveLength(4);expect(out.projectOverrides).toEqual(p.projectOverrides);expect(out.overrides.layer_height).toBe('0.25');expect(out.ids).toEqual(p.ids);expect(out.nativeSettings).toBeUndefined();});
+      15 | test('repeated geometry Add keeps separate model families and preserves exported paint',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const out=await save(page);expect(out.objects).toHaveLength(8);expect(new Set(out.objects.map(o=>o.native.instanceFamily)).size).toBe(2);assertInstanceFamilies(out.objects);await page.getByRole('button',{name:'Project',exact:true}).click();const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Export native project',exact:true}).click();const round=importNative3MF(await readFile(await(await pending).path()));expect(round.objects).toHaveLength(8);expect(new Set(round.objects.map(o=>o.native.instanceFamily)).size).toBe(2);for(const o of round.objects)expect(o.painting.color).toEqual({0:'4'});});
+      16 | test('failed geometry import and cancelled delayed API response retain the project and Undo history',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('position X',{exact:true}).fill('41');const before=await save(page);let release,arrived;const begun=new Promise(r=>arrived=r);await page.route('**/api/projects/import',async route=>{arrived();await new Promise(r=>release=r);await route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({project:source()})}).catch(()=>{});});await page.getByLabel('Choose a 3D model').setInputFiles(file());await begun;await page.getByRole('dialog',{name:'Importing project'}).getByRole('button',{name:'Cancel import'}).click();release();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);expect((await save(page)).objects).toEqual(before.objects);await page.unroute('**/api/projects/import');await page.route('**/api/projects/import',route=>route.fulfill({status:422,contentType:'application/json',body:JSON.stringify({error:'Reference geometry could not be parsed'})}));await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(page.getByRole('alert')).toContainText('Reference geometry could not be parsed');expect((await save(page)).objects).toEqual(before.objects);await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).not.toHaveValue('41');});
+        at /private/tmp/orca-implementation/m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:13:409
+
+    Error Context: test-results/m46-focused/project-geometry-geometry--06aa2-rrides-in-the-saved-project/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m46-focused/project-geometry-geometry--06aa2-rrides-in-the-saved-project/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m46-focused/project-geometry-geometry--06aa2-rrides-in-the-saved-project/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) ../m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:14:1 › geometry-only Open retains current material colors and purge settings while replacing objects 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('[data-tree-kind="object"]')
+    Expected: 1
+    Received: 4
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('[data-tree-kind="object"]') with timeout 5000ms
+      - waiting for locator('[data-tree-kind="object"]')
+        13 × locator resolved to 4 elements
+           - unexpected value "4"
+
+
+      12 | async function loadJson(page,p){await page.getByLabel('Open Orca Web project').setInputFiles({name:'Current.orca-web.json',mimeType:'application/json',buffer:Buffer.from(serializeProject(p))});}
+      13 | test('geometry Add retains linked parts, painting and layer profiles and strips imported overrides in the saved project',async({page},info)=>{await start(page);await page.getByLabel('Layer height',{exact:true}).fill('0.25');await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const p=await save(page),parts=p.objects.slice(1);expect(parts).toHaveLength(4);expect(new Set(parts.map(o=>o.native.groupId)).size).toBe(2);expect(new Set(parts.map(o=>o.native.instanceFamily)).size).toBe(1);assertInstanceFamilies(parts);for(const o of parts){expect(o.painting.color).toEqual({0:'4'});expect(o.native.objectSettings).toEqual({extruder:'1'});expect(o.native.partSettings).toEqual({extruder:'1'});expect(o.native.layerHeightProfile).toEqual([0,.2,1,.2,10,.2]);expect(o.native.layerConfigRanges[0].settings.layer_height).toBe('0.12');}expect(p.overrides.layer_height).toBe('0.25');await page.screenshot({path:info.outputPath('native-geometry-parts.png')});await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByRole('button',{name:'Redo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);});
+    > 14 | test('geometry-only Open retains current material colors and purge settings while replacing objects',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);const p=await save(page);p.projectOverrides={filament_colour:['#123456'],flush_volumes_matrix:['0'],flush_volumes_vector:['141','142']};p.overrides={layer_height:'0.25'};await loadJson(page,p);await page.getByLabel('Open Orca Web project').setInputFiles(file());await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);const out=await save(page);expect(out.objects).toHaveLength(4);expect(out.projectOverrides).toEqual(p.projectOverrides);expect(out.overrides.layer_height).toBe('0.25');expect(out.ids).toEqual(p.ids);expect(out.nativeSettings).toBeUndefined();});
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     ^
+      15 | test('repeated geometry Add keeps separate model families and preserves exported paint',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const out=await save(page);expect(out.objects).toHaveLength(8);expect(new Set(out.objects.map(o=>o.native.instanceFamily)).size).toBe(2);assertInstanceFamilies(out.objects);await page.getByRole('button',{name:'Project',exact:true}).click();const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Export native project',exact:true}).click();const round=importNative3MF(await readFile(await(await pending).path()));expect(round.objects).toHaveLength(8);expect(new Set(round.objects.map(o=>o.native.instanceFamily)).size).toBe(2);for(const o of round.objects)expect(o.painting.color).toEqual({0:'4'});});
+      16 | test('failed geometry import and cancelled delayed API response retain the project and Undo history',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('position X',{exact:true}).fill('41');const before=await save(page);let release,arrived;const begun=new Promise(r=>arrived=r);await page.route('**/api/projects/import',async route=>{arrived();await new Promise(r=>release=r);await route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({project:source()})}).catch(()=>{});});await page.getByLabel('Choose a 3D model').setInputFiles(file());await begun;await page.getByRole('dialog',{name:'Importing project'}).getByRole('button',{name:'Cancel import'}).click();release();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);expect((await save(page)).objects).toEqual(before.objects);await page.unroute('**/api/projects/import');await page.route('**/api/projects/import',route=>route.fulfill({status:422,contentType:'application/json',body:JSON.stringify({error:'Reference geometry could not be parsed'})}));await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(page.getByRole('alert')).toContainText('Reference geometry could not be parsed');expect((await save(page)).objects).toEqual(before.objects);await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).not.toHaveValue('41');});
+      17 |
+        at /private/tmp/orca-implementation/m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:14:517
+
+    Error Context: test-results/m46-focused/project-geometry-geometry--1c629-ngs-while-replacing-objects/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m46-focused/project-geometry-geometry--1c629-ngs-while-replacing-objects/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m46-focused/project-geometry-geometry--1c629-ngs-while-replacing-objects/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) ../m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:15:1 › repeated geometry Add keeps separate model families and preserves exported paint 
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator:  locator('[data-tree-kind="object"]')
+    Expected: 1
+    Received: 4
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveCount" locator('[data-tree-kind="object"]') with timeout 5000ms
+      - waiting for locator('[data-tree-kind="object"]')
+        14 × locator resolved to 4 elements
+           - unexpected value "4"
+
+
+      13 | test('geometry Add retains linked parts, painting and layer profiles and strips imported overrides in the saved project',async({page},info)=>{await start(page);await page.getByLabel('Layer height',{exact:true}).fill('0.25');await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const p=await save(page),parts=p.objects.slice(1);expect(parts).toHaveLength(4);expect(new Set(parts.map(o=>o.native.groupId)).size).toBe(2);expect(new Set(parts.map(o=>o.native.instanceFamily)).size).toBe(1);assertInstanceFamilies(parts);for(const o of parts){expect(o.painting.color).toEqual({0:'4'});expect(o.native.objectSettings).toEqual({extruder:'1'});expect(o.native.partSettings).toEqual({extruder:'1'});expect(o.native.layerHeightProfile).toEqual([0,.2,1,.2,10,.2]);expect(o.native.layerConfigRanges[0].settings.layer_height).toBe('0.12');}expect(p.overrides.layer_height).toBe('0.25');await page.screenshot({path:info.outputPath('native-geometry-parts.png')});await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByRole('button',{name:'Redo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);});
+      14 | test('geometry-only Open retains current material colors and purge settings while replacing objects',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);const p=await save(page);p.projectOverrides={filament_colour:['#123456'],flush_volumes_matrix:['0'],flush_volumes_vector:['141','142']};p.overrides={layer_height:'0.25'};await loadJson(page,p);await page.getByLabel('Open Orca Web project').setInputFiles(file());await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);const out=await save(page);expect(out.objects).toHaveLength(4);expect(out.projectOverrides).toEqual(p.projectOverrides);expect(out.overrides.layer_height).toBe('0.25');expect(out.ids).toEqual(p.ids);expect(out.nativeSettings).toBeUndefined();});
+    > 15 | test('repeated geometry Add keeps separate model families and preserves exported paint',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const out=await save(page);expect(out.objects).toHaveLength(8);expect(new Set(out.objects.map(o=>o.native.instanceFamily)).size).toBe(2);assertInstanceFamilies(out.objects);await page.getByRole('button',{name:'Project',exact:true}).click();const pending=page.waitForEvent('download');await page.getByRole('button',{name:'Export native project',exact:true}).click();const round=importNative3MF(await readFile(await(await pending).path()));expect(round.objects).toHaveLength(8);expect(new Set(round.objects.map(o=>o.native.instanceFamily)).size).toBe(2);for(const o of round.objects)expect(o.painting.color).toEqual({0:'4'});});
+         |                                                                                                                                                                                                                                                    ^
+      16 | test('failed geometry import and cancelled delayed API response retain the project and Undo history',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('position X',{exact:true}).fill('41');const before=await save(page);let release,arrived;const begun=new Promise(r=>arrived=r);await page.route('**/api/projects/import',async route=>{arrived();await new Promise(r=>release=r);await route.fulfill({status:200,contentType:'application/json',body:JSON.stringify({project:source()})}).catch(()=>{});});await page.getByLabel('Choose a 3D model').setInputFiles(file());await begun;await page.getByRole('dialog',{name:'Importing project'}).getByRole('button',{name:'Cancel import'}).click();release();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);expect((await save(page)).objects).toEqual(before.objects);await page.unroute('**/api/projects/import');await page.route('**/api/projects/import',route=>route.fulfill({status:422,contentType:'application/json',body:JSON.stringify({error:'Reference geometry could not be parsed'})}));await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(page.getByRole('alert')).toContainText('Reference geometry could not be parsed');expect((await save(page)).objects).toEqual(before.objects);await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).not.toHaveValue('41');});
+      17 |
+        at /private/tmp/orca-implementation/m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:15:244
+
+    Error Context: test-results/m46-focused/project-geometry-repeated--b7fc0-nd-preserves-exported-paint/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m46-focused/project-geometry-repeated--b7fc0-nd-preserves-exported-paint/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m46-focused/project-geometry-repeated--b7fc0-nd-preserves-exported-paint/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    ../m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:13:1 › geometry Add retains linked parts, painting and layer profiles and strips imported overrides in the saved project 
+    ../m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:14:1 › geometry-only Open retains current material colors and purge settings while replacing objects 
+    ../m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:15:1 › repeated geometry Add keeps separate model families and preserves exported paint 

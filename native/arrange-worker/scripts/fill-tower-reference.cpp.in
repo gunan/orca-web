@@ -1,0 +1,38 @@
+// Independent GUI viewport footprint oracle. The render size is supplied by
+// the separately compiled original PartPlate oracle, never the production worker.
+namespace viewport_reference {
+using namespace Slic3r;
+using ArrangePolygon=arrangement::ArrangePolygon;
+struct GLVolume {
+ bool is_wipe_tower=true;int index=1000;TriangleMesh mesh;
+ int object_idx()const{return index;}
+ BoundingBoxf3 bounding_box()const{return mesh.bounding_box();}
+};
+struct GLCanvas3D {
+ INFO_CLASS_DEFINITION
+ struct {std::vector<GLVolume*>volumes;}m_volumes;
+ WipeTowerInfo get_wipe_tower_info(int plate_idx)const;
+};
+struct Preset {DynamicPrintConfig config;};
+struct Presets {Preset preset;Preset&get_edited_preset(){return preset;}};
+struct Bundle {DynamicPrintConfig project_config;Presets prints;};
+struct PartPlate {Vec2d size;Vec2d get_size(){return size;}};
+struct PartPlateList {PartPlate plate;PartPlate*get_plate(int){return &plate;}};
+struct Plater {PartPlateList plates;PartPlateList&get_partplate_list(){return plates;}};
+struct App {Bundle bundle;Bundle*preset_bundle=&bundle;Plater p;Plater*plater(){return &p;}};
+static App app;App&wxGetApp(){return app;}
+INFO_FUNCTION_DEFINITION
+ARRANGE_CLASS_DEFINITION
+std::optional<ArrangePolygon> evaluate(const json&render,const DynamicPrintConfig&config,int index,Vec2d plateSize){
+ if(render.is_null()||!render.at("visible").get<bool>())return{};
+ app.bundle.project_config=config;app.bundle.prints.preset.config=config;app.p.plates.plate.size=plateSize;
+ const auto&size=render.at("size");GLVolume volume;volume.index=1000+index;
+ volume.mesh=make_cube(size[0].get<float>(),size[1].get<float>(),size[2].get<float>());
+ GLCanvas3D canvas;canvas.m_volumes.volumes={&volume};ReferenceArrangeTower tower(canvas.get_wipe_tower_info(index));
+ auto polygon=tower.get_arrange_polygon();polygon.bed_idx=0;polygon.setter=nullptr;return polygon;
+}
+json describe(const std::optional<ArrangePolygon>&tower){
+ if(!tower)return nullptr;json points=json::array();for(const auto&p:tower->poly.contour.points)points.push_back({p.x(),p.y()});
+ return{{"polygon",points},{"translation",{tower->translation.x(),tower->translation.y()}},{"rotation",tower->rotation},{"bedIndex",tower->bed_idx},{"priority",tower->priority},{"isVirtual",tower->is_virt_object},{"isWipeTower",tower->is_wipe_tower}};
+}
+}

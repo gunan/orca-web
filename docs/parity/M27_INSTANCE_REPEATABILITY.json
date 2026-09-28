@@ -1,0 +1,71 @@
+{
+  "baseline": "OrcaSlicer 2.4.2",
+  "command": "npm run test:native",
+  "runOrder": [
+    "reference",
+    "reference",
+    "web",
+    "web"
+  ],
+  "runs": [
+    {
+      "name": "reference",
+      "inputSHA256": "c1f946d545ef2f67905249812d82e7cc1f25f15b15e2f8a0c4af9c34dfaaf898",
+      "motionSHA256": "981b4b436332ebbcdcd46258531ae372cfc785845bb7eac503511128f024dc4c",
+      "commandCount": 11057
+    },
+    {
+      "name": "reference",
+      "inputSHA256": "c1f946d545ef2f67905249812d82e7cc1f25f15b15e2f8a0c4af9c34dfaaf898",
+      "motionSHA256": "981b4b436332ebbcdcd46258531ae372cfc785845bb7eac503511128f024dc4c",
+      "commandCount": 11057
+    },
+    {
+      "name": "web",
+      "inputSHA256": "0387e39c3f5bd9dad1f51e93667cb99a4f4b359f861d04fb84401d77fe143c42",
+      "motionSHA256": "8ab5e7612a3ebab9fcc44d944caab37293656d32c2501218e86d08cad21ee170",
+      "commandCount": 11135
+    },
+    {
+      "name": "web",
+      "inputSHA256": "0387e39c3f5bd9dad1f51e93667cb99a4f4b359f861d04fb84401d77fe143c42",
+      "motionSHA256": "981b4b436332ebbcdcd46258531ae372cfc785845bb7eac503511128f024dc4c",
+      "commandCount": 11057
+    }
+  ],
+  "pairwiseMotionDifferences": [
+    {
+      "from": 0,
+      "to": 1,
+      "differentMotionLines": 0
+    },
+    {
+      "from": 0,
+      "to": 2,
+      "differentMotionLines": 10587
+    },
+    {
+      "from": 0,
+      "to": 3,
+      "differentMotionLines": 0
+    },
+    {
+      "from": 1,
+      "to": 2,
+      "differentMotionLines": 10587
+    },
+    {
+      "from": 1,
+      "to": 3,
+      "differentMotionLines": 0
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "differentMotionLines": 10587
+    }
+  ],
+  "archiveSha256": "6646260058641e791d838a506a72067e17a596fe7642586a8dc399300be7580e",
+  "result": "failed",
+  "limitations": "All native-readable archive entries equal independent XML edits. Fixed reference/reference/web/web comparison failed at run 2 with 10587 different motion lines. Byte-identical web inputs produced different motion output. No retry or tolerance selection."
+}

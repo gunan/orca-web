@@ -1,0 +1,153 @@
+[WebServer] (node:40779) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 1 worker
+
+(node:40800) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/import-transaction.spec.js:27:1 › same-project reload blocks edits until the catalog commits, then Drop and Undo preserve the new edit (6.5s)
+(node:40813) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/import-transaction.spec.js:38:1 › cancelled catalog restoration keeps edits, history and preset readiness after the late response (30.2s)
+(node:40819) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 tests/e2e/import-transaction.spec.js:50:1 › failed catalog restoration preserves the previous catalog, project and dirty state (1.5s)
+  ✘  4 tests/e2e/import-transaction.spec.js:60:1 › Escape cancels a native project upload and its late response cannot replace the current project (6.2s)
+(node:40825) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  5 tests/e2e/import-transaction.spec.js:70:1 › cancelled local model read cannot append geometry after a subsequent import completes (6.3s)
+
+
+  1) tests/e2e/import-transaction.spec.js:27:1 › same-project reload blocks edits until the catalog commits, then Drop and Undo preserve the new edit 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog', { name: 'Importing project' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog', { name: 'Importing project' }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Importing project' })
+
+
+      28 |   await load(page);await page.getByLabel('position X',{exact:true}).fill('5');const saved=await save(page),held=await holdCatalog(page);
+      29 |   await page.getByLabel('Open Orca Web project').setInputFiles(saved);await held.seen;
+    > 30 |   await expect(progress(page)).toBeVisible();await expect(page.getByLabel('position Z',{exact:true})).toBeDisabled();
+         |                                ^
+      31 |   await page.keyboard.press('Delete');await page.keyboard.press('Control+z');
+      32 |   expect(await page.locator('.scene-object-row').count()).toBe(1);
+      33 |   held.release();await expect(progress(page)).toHaveCount(0);
+        at /private/tmp/orca-implementation/m37-import-transaction-stage/tests/e2e/import-transaction.spec.js:30:32
+
+    Error Context: test-results/m37-focused/import-transaction-same-pr-206a0--Undo-preserve-the-new-edit/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m37-focused/import-transaction-same-pr-206a0--Undo-preserve-the-new-edit/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m37-focused/import-transaction-same-pr-206a0--Undo-preserve-the-new-edit/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/import-transaction.spec.js:38:1 › cancelled catalog restoration keeps edits, history and preset readiness after the late response 
+
+    Test timeout of 30000ms exceeded.
+
+    Error: locator.click: Test timeout of 30000ms exceeded.
+    Call log:
+      - waiting for getByRole('button', { name: 'Cancel import', exact: true })
+
+
+      40 |   await page.getByLabel('Open Orca Web project').setInputFiles(replacement);
+      41 |   await page.getByRole('button',{name:'Discard changes',exact:true}).click();await held.seen;
+    > 42 |   await page.getByRole('button',{name:'Cancel import',exact:true}).click();await expect(progress(page)).toHaveCount(0);
+         |                                                                    ^
+      43 |   await page.getByLabel('position Z',{exact:true}).fill('7');held.release();await page.unrouteAll({behavior:'wait'});
+      44 |   await expect(page.getByLabel('Object name',{exact:true})).toHaveValue('Original');await expect(page.getByLabel('position X',{exact:true})).toHaveValue('5');
+      45 |   await expect(page.getByRole('button',{name:'Slice model',exact:true})).toBeEnabled();
+        at /private/tmp/orca-implementation/m37-import-transaction-stage/tests/e2e/import-transaction.spec.js:42:68
+
+    Error Context: test-results/m37-focused/import-transaction-cancell-d37eb-ess-after-the-late-response/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m37-focused/import-transaction-cancell-d37eb-ess-after-the-late-response/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m37-focused/import-transaction-cancell-d37eb-ess-after-the-late-response/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests/e2e/import-transaction.spec.js:60:1 › Escape cancels a native project upload and its late response cannot replace the current project 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog', { name: 'Importing project' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog', { name: 'Importing project' }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Importing project' })
+
+
+      63 |   await page.route('**/api/projects/import',async route=>{arrived();await gate;await route.fulfill({json:{project:p,selection:{filamentIds:[]}}});});
+      64 |   await page.getByLabel('Open Orca Web project').setInputFiles(new URL('../fixtures/orca-2.4.2-cube.3mf',import.meta.url).pathname);await seen;
+    > 65 |   await expect(progress(page)).toBeVisible();await page.keyboard.press('Escape');await expect(progress(page)).toHaveCount(0);
+         |                                ^
+      66 |   release();await page.unrouteAll({behavior:'wait'});await page.getByLabel('position X',{exact:true}).fill('9');
+      67 |   await expect(page.getByLabel('Object name',{exact:true})).toHaveValue('Original');await expect(page.getByRole('alert')).toHaveCount(0);
+      68 |   await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).toHaveValue('0');
+        at /private/tmp/orca-implementation/m37-import-transaction-stage/tests/e2e/import-transaction.spec.js:65:32
+
+    Error Context: test-results/m37-focused/import-transaction-Escape--9ab36-replace-the-current-project/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m37-focused/import-transaction-Escape--9ab36-replace-the-current-project/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m37-focused/import-transaction-Escape--9ab36-replace-the-current-project/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests/e2e/import-transaction.spec.js:70:1 › cancelled local model read cannot append geometry after a subsequent import completes 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('dialog', { name: 'Importing models' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('dialog', { name: 'Importing models' }) with timeout 5000ms
+      - waiting for getByRole('dialog', { name: 'Importing models' })
+
+
+      73 |   const stl=await readFile(new URL('../fixtures/cube.stl',import.meta.url));
+      74 |   await page.getByLabel('Choose a 3D model').setInputFiles({name:'late.stl',mimeType:'model/stl',buffer:stl});
+    > 75 |   await expect(page.getByRole('dialog',{name:'Importing models'})).toBeVisible();await page.getByRole('button',{name:'Cancel import',exact:true}).click();
+         |                                                                    ^
+      76 |   await page.getByLabel('Choose a 3D model').setInputFiles({name:'new.stl',mimeType:'model/stl',buffer:stl});
+      77 |   await expect(page.locator('.scene-object-row')).toHaveCount(2);await page.evaluate(()=>window.releaseModelRead());
+      78 |   const saved=JSON.parse((await save(page)).buffer.toString());expect(saved.objects.map(o=>o.name)).toEqual(['Original','new.stl']);
+        at /private/tmp/orca-implementation/m37-import-transaction-stage/tests/e2e/import-transaction.spec.js:75:68
+
+    Error Context: test-results/m37-focused/import-transaction-cancell-d040a-subsequent-import-completes/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m37-focused/import-transaction-cancell-d040a-subsequent-import-completes/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m37-focused/import-transaction-cancell-d040a-subsequent-import-completes/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    tests/e2e/import-transaction.spec.js:27:1 › same-project reload blocks edits until the catalog commits, then Drop and Undo preserve the new edit 
+    tests/e2e/import-transaction.spec.js:38:1 › cancelled catalog restoration keeps edits, history and preset readiness after the late response 
+    tests/e2e/import-transaction.spec.js:60:1 › Escape cancels a native project upload and its late response cannot replace the current project 
+    tests/e2e/import-transaction.spec.js:70:1 › cancelled local model read cannot append geometry after a subsequent import completes 
+  1 passed (54.6s)

@@ -1,0 +1,12 @@
+{
+  "sourceCommit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "sources": {
+    "src/slic3r/GUI/GLCanvas3D.cpp": "a44c6c43ca28690da12b5502eab1a6bdec3f8392da4c0454586e065a43614ddb",
+    "src/slic3r/GUI/GLCanvas3D.hpp": "49e6b6d419039f87143d67e3f782b0fd066511e662b9c525ce8389c03851437a",
+    "src/slic3r/GUI/Jobs/ArrangeJob.cpp": "08a5a7e956788fcbd3eaf1084490326d033f9cb506cda6bb2fd811e5b2bf034c",
+    "src/slic3r/GUI/Jobs/FillBedJob.cpp": "6faedabdf52670e58727cd805b108d05d731bb94ffc1038e16c5d94a107f7578",
+    "src/slic3r/GUI/3DScene.hpp": "702f90a7394c9fa7c4121189ffc9a54de05625541062db6b51d6cfd94fd69b78",
+    "src/slic3r/GUI/3DScene.cpp": "299ad5f8c9046c01fa050d7bb09fbfa1e3e026a2b9c18935d82f6ca8e5d087a9",
+    "src/libslic3r/GCode/WipeTower.cpp": "15e4e974f902be0c8124301a68a5222d6b8422a41e33be9f8d26847f0fd65110"
+  }
+}

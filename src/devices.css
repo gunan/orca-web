@@ -1,0 +1,46 @@
+.device-workspace { flex:1; overflow:auto; padding:18px; background:var(--surface-muted); font-size:12px; }
+.device-heading,.device-title { display:flex; align-items:center; gap:12px; flex-wrap:wrap; }
+.device-heading h2,.device-title>div { margin-right:auto; }
+.device-workspace h2 { margin-top:0; }
+.device-workspace button { background:var(--surface); border:1px solid var(--line); padding:7px 10px; font-size:12px; }
+.device-workspace button.primary,.device-confirm button.primary { background:var(--accent); color:white; }
+.device-layout { display:grid; grid-template-columns:210px 1fr; gap:20px; margin-top:12px; }
+.device-connections { border:1px solid var(--line); padding:12px; background:var(--surface); align-self:start; }
+.device-connections h3 { margin-top:0; }
+.device-connections>button { width:100%; display:grid; gap:6px; text-align:left; margin-bottom:8px; }
+.device-connections>button.selected { border-color:var(--accent); background:color-mix(in srgb,var(--accent) 10%,var(--surface)); }
+.device-connections span { font-size:11px; color:var(--subtle); }
+.device-details { min-width:0; }
+.device-title h3 { margin:0 0 5px; }
+.device-title small { color:var(--subtle); }
+.device-title>[data-testid=printer-state] { padding:6px 10px; background:var(--surface); border:1px solid var(--line); border-radius:20px; }
+.device-cards { display:grid; grid-template-columns:repeat(2,minmax(230px,1fr)); gap:14px; margin-top:15px; }
+.device-card { border:1px solid var(--line); background:var(--surface); padding:16px; border-radius:5px; }
+.device-card h3 { margin:0 0 12px; }
+.device-card p { color:var(--subtle); line-height:1.5; }
+.device-card select { width:100%; padding:7px; }
+.device-card progress { width:100%; accent-color:var(--accent); }
+.device-card input { padding:5px; max-width:90px; }
+.device-buttons { display:flex; gap:7px; flex-wrap:wrap; margin-top:10px; }
+.heater { border-top:1px solid var(--line); padding:10px 0; display:flex; gap:6px; flex-wrap:wrap; }
+.heater label { display:flex; gap:9px; align-items:center; flex-basis:100%; flex-wrap:wrap; }
+.heater span { color:var(--subtle); }
+.motion-inputs { display:flex; gap:10px; }
+.motion-inputs label { display:grid; gap:7px; }
+.printer-camera { display:block; max-width:100%; margin-top:10px; }
+.connection-form { max-width:600px; background:var(--surface); border:1px solid var(--line); padding:20px; }
+.connection-form>label { display:grid; gap:7px; margin:14px 0; }
+.connection-form input,.connection-form select { padding:8px; }
+.connection-form label.inline { display:flex; align-items:center; }
+.connection-form>div { display:flex; gap:8px; }
+.device-error,.device-notice { padding:10px; border:1px solid var(--line); }
+.device-error { background:#fff0ee; color:#9b261c; }
+.device-notice { display:flex; justify-content:space-between; align-items:center; background:#e7f6f2; color:#255848; }
+.device-confirm { max-width:540px; width:90vw; padding:24px; color:var(--text); background:var(--surface); border:1px solid var(--line); border-radius:7px; }
+.device-confirm::backdrop { background:#0005; }
+.device-confirm p { overflow-wrap:anywhere; }
+.device-confirm dl { display:grid; grid-template-columns:100px 1fr; gap:8px; font-size:12px; }
+.device-confirm dd { margin:0; }
+.device-confirm>div { display:flex; justify-content:end; gap:10px; }
+.device-confirm button { border:1px solid var(--line); padding:8px 14px; background:var(--surface); color:var(--text); }
+@media(max-width:1000px) { .device-layout { grid-template-columns:170px 1fr; } .device-cards { grid-template-columns:1fr; } }

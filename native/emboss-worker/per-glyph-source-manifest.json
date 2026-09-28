@@ -1,0 +1,27 @@
+{
+  "nativeVersion": "2.4.2",
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "files": [
+    {
+      "path": "src/slic3r/GUI/TextLines.cpp",
+      "sha256": "c2862a4e884db9532a29babff96bbd18145d3532ab74b30995a842c0a7755017"
+    },
+    {
+      "path": "src/slic3r/GUI/TextLines.hpp",
+      "sha256": "0c8c25ae05eb9a011dc906f29a62f5ba1bb5d906cf7ac47f07ea482b5701c949"
+    },
+    {
+      "path": "src/slic3r/GUI/Jobs/EmbossJob.cpp",
+      "sha256": "804ce36eb9ec9b510b06b15d932013ef3fffa8c273be08f5696c31ff4cc118c1"
+    },
+    {
+      "path": "src/libslic3r/Emboss.cpp",
+      "sha256": "ae958207380da829b5aca7434ece824b1162b4bb7f11e0b58400fef995d743b1"
+    },
+    {
+      "path": "src/libslic3r/TriangleMeshSlicer.cpp",
+      "sha256": "e6bcbe08fe7a3633cf488b6e68e5e1caa53f85c385746ce1f231aa5e8f9ac838"
+    }
+  ],
+  "implementation": "worker/per-glyph.cpp ports GUI orchestration while compiling the unmodified pinned native slicing/sampling/CGAL kernels. ModelVolume and StyleManager are replaced by bounded request data. Empty cross-sections fail explicitly; the GUI render-only torus path is omitted."
+}

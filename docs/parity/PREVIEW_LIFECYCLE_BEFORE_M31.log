@@ -1,0 +1,122 @@
+[WebServer] (node:4454) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 7 tests using 1 worker
+
+(node:4459) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/preview-job-lifecycle.spec.js:37:52 › clearing a native Preview with pending hotend keeps the application usable (5.9s)
+(node:4555) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/preview-job-lifecycle.spec.js:37:52 › clearing a native Preview with missing hotend keeps the application usable (5.9s)
+(node:4587) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 tests/e2e/preview-job-lifecycle.spec.js:37:52 › clearing a native Preview with loaded hotend keeps the application usable (1.1s)
+  ✓  4 tests/e2e/preview-job-lifecycle.spec.js:51:128 › ready to running discards old native Preview and its pending asset (680ms)
+  ✓  5 tests/e2e/preview-job-lifecycle.spec.js:51:128 › ready to failed discards old native Preview and its pending asset (876ms)
+  ✓  6 tests/e2e/preview-job-lifecycle.spec.js:51:128 › ready to cancelled discards old native Preview and its pending asset (840ms)
+  ✘  7 tests/e2e/preview-job-lifecycle.spec.js:62:1 › switching ready jobs never loads a new hotend from the previous job data (747ms)
+
+
+  1) tests/e2e/preview-job-lifecycle.spec.js:37:52 › clearing a native Preview with pending hotend keeps the application usable 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'No slicing result' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'No slicing result' }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'No slicing result' })
+
+
+      39 |  try {
+      40 |   await page.getByRole('button',{name:'Clear result',exact:true}).click();
+    > 41 |   await expect(page.getByRole('heading',{name:'No slicing result'})).toBeVisible();
+         |                                                                      ^
+      42 |   state.releaseHotend();
+      43 |   await page.getByRole('button',{name:'Select second',exact:true}).click();
+      44 |   await expect(page.getByRole('region',{name:'G-code toolpath preview'})).toContainText('Second.gcode');
+        at /private/tmp/orca-implementation/m32-preview-lifecycle-stage/tests/e2e/preview-job-lifecycle.spec.js:41:70
+
+    Error Context: test-results/browser-4177/preview-job-lifecycle-clea-ecb34-eeps-the-application-usable/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/browser-4177/preview-job-lifecycle-clea-ecb34-eeps-the-application-usable/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/browser-4177/preview-job-lifecycle-clea-ecb34-eeps-the-application-usable/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/preview-job-lifecycle.spec.js:37:52 › clearing a native Preview with missing hotend keeps the application usable 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('heading', { name: 'No slicing result' })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('heading', { name: 'No slicing result' }) with timeout 5000ms
+      - waiting for getByRole('heading', { name: 'No slicing result' })
+
+
+      39 |  try {
+      40 |   await page.getByRole('button',{name:'Clear result',exact:true}).click();
+    > 41 |   await expect(page.getByRole('heading',{name:'No slicing result'})).toBeVisible();
+         |                                                                      ^
+      42 |   state.releaseHotend();
+      43 |   await page.getByRole('button',{name:'Select second',exact:true}).click();
+      44 |   await expect(page.getByRole('region',{name:'G-code toolpath preview'})).toContainText('Second.gcode');
+        at /private/tmp/orca-implementation/m32-preview-lifecycle-stage/tests/e2e/preview-job-lifecycle.spec.js:41:70
+
+    Error Context: test-results/browser-4177/preview-job-lifecycle-clea-78539-eeps-the-application-usable/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/browser-4177/preview-job-lifecycle-clea-78539-eeps-the-application-usable/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/browser-4177/preview-job-lifecycle-clea-78539-eeps-the-application-usable/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests/e2e/preview-job-lifecycle.spec.js:62:1 › switching ready jobs never loads a new hotend from the previous job data 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 0
+    + Received  + 1
+
+      Array [
+        "first",
+    +   "second",
+      ]
+
+      65 |   await page.getByRole('button',{name:'Select second',exact:true}).click();
+      66 |   await expect(page.getByRole('heading',{name:'Loading toolpath preview'})).toBeVisible();
+    > 67 |   expect(state.hotendJobs).toEqual(['first']);state.releaseHotend();state.releaseSecond();
+         |                            ^
+      68 |   await expect(page.getByRole('region',{name:'G-code toolpath preview'})).toContainText('Second.gcode');
+      69 |   await expect(page.getByRole('status').filter({hasText:'Unavailable hotend second'})).toBeVisible();
+      70 |   expect(state.hotendJobs).toEqual(['first','second']);expect(state.errors).toEqual([]);
+        at /private/tmp/orca-implementation/m32-preview-lifecycle-stage/tests/e2e/preview-job-lifecycle.spec.js:67:28
+
+    Error Context: test-results/browser-4177/preview-job-lifecycle-swit-af2b8--from-the-previous-job-data/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/browser-4177/preview-job-lifecycle-swit-af2b8--from-the-previous-job-data/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/browser-4177/preview-job-lifecycle-swit-af2b8--from-the-previous-job-data/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    tests/e2e/preview-job-lifecycle.spec.js:37:52 › clearing a native Preview with pending hotend keeps the application usable 
+    tests/e2e/preview-job-lifecycle.spec.js:37:52 › clearing a native Preview with missing hotend keeps the application usable 
+    tests/e2e/preview-job-lifecycle.spec.js:62:1 › switching ready jobs never loads a new hotend from the previous job data 
+  4 passed (20.1s)

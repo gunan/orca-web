@@ -1,0 +1,16 @@
+
+> orca-web@0.1.0 test:e2e:native
+> playwright test --config playwright.native.config.js tests/native-e2e/prime-tower-drag.spec.js
+
+[WebServer] (node:59899) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:59928) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/native-e2e/prime-tower-drag.spec.js:4:36 › native tower body movement survives Undo, native project export and real slicing (6.5s)
+  ✓  2 tests/native-e2e/prime-tower-drag.spec.js:4:36 › native tower X movement survives Undo, native project export and real slicing (6.6s)
+  ✓  3 tests/native-e2e/prime-tower-drag.spec.js:4:36 › native tower Y movement survives Undo, native project export and real slicing (6.6s)
+
+  3 passed (26.2s)

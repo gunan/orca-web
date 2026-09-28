@@ -1,0 +1,837 @@
+{
+  "source": {
+    "file": "src/libslic3r/MaterialType.cpp",
+    "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1"
+  },
+  "unknownNozzle": [
+    190,
+    300
+  ],
+  "materials": [
+    {
+      "name": "ABS",
+      "nozzle": [
+        190,
+        300
+      ],
+      "chamber": [
+        50,
+        65
+      ]
+    },
+    {
+      "name": "ABS-CF",
+      "nozzle": [
+        220,
+        300
+      ],
+      "chamber": [
+        50,
+        65
+      ]
+    },
+    {
+      "name": "ABS-GF",
+      "nozzle": [
+        240,
+        280
+      ],
+      "chamber": [
+        50,
+        65
+      ]
+    },
+    {
+      "name": "ASA",
+      "nozzle": [
+        220,
+        300
+      ],
+      "chamber": [
+        50,
+        65
+      ]
+    },
+    {
+      "name": "ASA-CF",
+      "nozzle": [
+        230,
+        300
+      ],
+      "chamber": [
+        50,
+        65
+      ]
+    },
+    {
+      "name": "ASA-GF",
+      "nozzle": [
+        240,
+        300
+      ],
+      "chamber": [
+        50,
+        65
+      ]
+    },
+    {
+      "name": "ASA-AERO",
+      "nozzle": [
+        240,
+        280
+      ],
+      "chamber": [
+        50,
+        65
+      ]
+    },
+    {
+      "name": "BVOH",
+      "nozzle": [
+        190,
+        240
+      ],
+      "chamber": [
+        0,
+        70
+      ]
+    },
+    {
+      "name": "CoPE",
+      "nozzle": [
+        190,
+        240
+      ],
+      "chamber": [
+        0,
+        45
+      ]
+    },
+    {
+      "name": "EVA",
+      "nozzle": [
+        175,
+        220
+      ],
+      "chamber": [
+        0,
+        50
+      ]
+    },
+    {
+      "name": "FLEX",
+      "nozzle": [
+        210,
+        230
+      ],
+      "chamber": [
+        0,
+        50
+      ]
+    },
+    {
+      "name": "HIPS",
+      "nozzle": [
+        220,
+        270
+      ],
+      "chamber": [
+        50,
+        60
+      ]
+    },
+    {
+      "name": "PA",
+      "nozzle": [
+        235,
+        280
+      ],
+      "chamber": [
+        50,
+        60
+      ]
+    },
+    {
+      "name": "PA-CF",
+      "nozzle": [
+        240,
+        315
+      ],
+      "chamber": [
+        50,
+        60
+      ]
+    },
+    {
+      "name": "PA-GF",
+      "nozzle": [
+        240,
+        290
+      ],
+      "chamber": [
+        50,
+        60
+      ]
+    },
+    {
+      "name": "PA6",
+      "nozzle": [
+        260,
+        300
+      ],
+      "chamber": [
+        50,
+        60
+      ]
+    },
+    {
+      "name": "PA6-CF",
+      "nozzle": [
+        230,
+        300
+      ],
+      "chamber": [
+        50,
+        60
+      ]
+    },
+    {
+      "name": "PA6-GF",
+      "nozzle": [
+        260,
+        300
+      ],
+      "chamber": [
+        50,
+        60
+      ]
+    },
+    {
+      "name": "PA11",
+      "nozzle": [
+        275,
+        295
+      ],
+      "chamber": [
+        50,
+        60
+      ]
+    },
+    {
+      "name": "PA11-CF",
+      "nozzle": [
+        275,
+        295
+      ],
+      "chamber": [
+        50,
+        60
+      ]
+    },
+    {
+      "name": "PA11-GF",
+      "nozzle": [
+        275,
+        295
+      ],
+      "chamber": [
+        50,
+        60
+      ]
+    },
+    {
+      "name": "PA12",
+      "nozzle": [
+        250,
+        270
+      ],
+      "chamber": [
+        50,
+        60
+      ]
+    },
+    {
+      "name": "PA12-CF",
+      "nozzle": [
+        250,
+        300
+      ],
+      "chamber": [
+        50,
+        60
+      ]
+    },
+    {
+      "name": "PA12-GF",
+      "nozzle": [
+        255,
+        270
+      ],
+      "chamber": [
+        50,
+        60
+      ]
+    },
+    {
+      "name": "PAHT",
+      "nozzle": [
+        260,
+        310
+      ],
+      "chamber": [
+        55,
+        65
+      ]
+    },
+    {
+      "name": "PAHT-CF",
+      "nozzle": [
+        270,
+        310
+      ],
+      "chamber": [
+        55,
+        65
+      ]
+    },
+    {
+      "name": "PAHT-GF",
+      "nozzle": [
+        270,
+        310
+      ],
+      "chamber": [
+        55,
+        65
+      ]
+    },
+    {
+      "name": "PC",
+      "nozzle": [
+        240,
+        300
+      ],
+      "chamber": [
+        60,
+        70
+      ]
+    },
+    {
+      "name": "PC-ABS",
+      "nozzle": [
+        230,
+        270
+      ],
+      "chamber": [
+        60,
+        70
+      ]
+    },
+    {
+      "name": "PC-CF",
+      "nozzle": [
+        270,
+        295
+      ],
+      "chamber": [
+        60,
+        70
+      ]
+    },
+    {
+      "name": "PC-PBT",
+      "nozzle": [
+        260,
+        300
+      ],
+      "chamber": [
+        60,
+        70
+      ]
+    },
+    {
+      "name": "PCL",
+      "nozzle": [
+        130,
+        170
+      ],
+      "chamber": [
+        0,
+        45
+      ]
+    },
+    {
+      "name": "PCTG",
+      "nozzle": [
+        220,
+        300
+      ],
+      "chamber": [
+        0,
+        55
+      ]
+    },
+    {
+      "name": "PE",
+      "nozzle": [
+        175,
+        260
+      ],
+      "chamber": [
+        45,
+        60
+      ]
+    },
+    {
+      "name": "PE-CF",
+      "nozzle": [
+        175,
+        260
+      ],
+      "chamber": [
+        45,
+        60
+      ]
+    },
+    {
+      "name": "PE-GF",
+      "nozzle": [
+        230,
+        270
+      ],
+      "chamber": [
+        45,
+        60
+      ]
+    },
+    {
+      "name": "PEI-1010",
+      "nozzle": [
+        370,
+        430
+      ],
+      "chamber": [
+        80,
+        100
+      ]
+    },
+    {
+      "name": "PEI-1010-CF",
+      "nozzle": [
+        380,
+        430
+      ],
+      "chamber": [
+        80,
+        100
+      ]
+    },
+    {
+      "name": "PEI-1010-GF",
+      "nozzle": [
+        380,
+        430
+      ],
+      "chamber": [
+        80,
+        100
+      ]
+    },
+    {
+      "name": "PEI-9085",
+      "nozzle": [
+        350,
+        390
+      ],
+      "chamber": [
+        80,
+        100
+      ]
+    },
+    {
+      "name": "PEI-9085-CF",
+      "nozzle": [
+        365,
+        390
+      ],
+      "chamber": [
+        80,
+        100
+      ]
+    },
+    {
+      "name": "PEI-9085-GF",
+      "nozzle": [
+        370,
+        390
+      ],
+      "chamber": [
+        80,
+        100
+      ]
+    },
+    {
+      "name": "PEEK",
+      "nozzle": [
+        350,
+        460
+      ],
+      "chamber": [
+        80,
+        100
+      ]
+    },
+    {
+      "name": "PEEK-CF",
+      "nozzle": [
+        380,
+        410
+      ],
+      "chamber": [
+        80,
+        100
+      ]
+    },
+    {
+      "name": "PEEK-GF",
+      "nozzle": [
+        375,
+        410
+      ],
+      "chamber": [
+        80,
+        100
+      ]
+    },
+    {
+      "name": "PEKK",
+      "nozzle": [
+        325,
+        400
+      ],
+      "chamber": [
+        80,
+        100
+      ]
+    },
+    {
+      "name": "PEKK-CF",
+      "nozzle": [
+        360,
+        400
+      ],
+      "chamber": [
+        80,
+        100
+      ]
+    },
+    {
+      "name": "PES",
+      "nozzle": [
+        340,
+        390
+      ],
+      "chamber": [
+        80,
+        100
+      ]
+    },
+    {
+      "name": "PET",
+      "nozzle": [
+        200,
+        290
+      ],
+      "chamber": [
+        0,
+        55
+      ]
+    },
+    {
+      "name": "PET-CF",
+      "nozzle": [
+        240,
+        320
+      ],
+      "chamber": [
+        0,
+        55
+      ]
+    },
+    {
+      "name": "PET-GF",
+      "nozzle": [
+        280,
+        320
+      ],
+      "chamber": [
+        0,
+        55
+      ]
+    },
+    {
+      "name": "PETG",
+      "nozzle": [
+        190,
+        260
+      ],
+      "chamber": [
+        0,
+        55
+      ]
+    },
+    {
+      "name": "PETG-CF",
+      "nozzle": [
+        230,
+        290
+      ],
+      "chamber": [
+        0,
+        55
+      ]
+    },
+    {
+      "name": "PETG-GF",
+      "nozzle": [
+        210,
+        270
+      ],
+      "chamber": [
+        0,
+        55
+      ]
+    },
+    {
+      "name": "PHA",
+      "nozzle": [
+        190,
+        250
+      ],
+      "chamber": [
+        0,
+        55
+      ]
+    },
+    {
+      "name": "PI",
+      "nozzle": [
+        390,
+        410
+      ],
+      "chamber": [
+        90,
+        100
+      ]
+    },
+    {
+      "name": "PLA",
+      "nozzle": [
+        180,
+        240
+      ],
+      "chamber": [
+        0,
+        45
+      ]
+    },
+    {
+      "name": "PLA-AERO",
+      "nozzle": [
+        220,
+        270
+      ],
+      "chamber": [
+        0,
+        55
+      ]
+    },
+    {
+      "name": "PLA-CF",
+      "nozzle": [
+        190,
+        250
+      ],
+      "chamber": [
+        0,
+        50
+      ]
+    },
+    {
+      "name": "POM",
+      "nozzle": [
+        210,
+        250
+      ],
+      "chamber": [
+        50,
+        65
+      ]
+    },
+    {
+      "name": "PP",
+      "nozzle": [
+        200,
+        240
+      ],
+      "chamber": [
+        45,
+        60
+      ]
+    },
+    {
+      "name": "PP-CF",
+      "nozzle": [
+        210,
+        250
+      ],
+      "chamber": [
+        45,
+        60
+      ]
+    },
+    {
+      "name": "PP-GF",
+      "nozzle": [
+        220,
+        260
+      ],
+      "chamber": [
+        45,
+        60
+      ]
+    },
+    {
+      "name": "PPA-CF",
+      "nozzle": [
+        260,
+        300
+      ],
+      "chamber": [
+        55,
+        70
+      ]
+    },
+    {
+      "name": "PPA-GF",
+      "nozzle": [
+        260,
+        290
+      ],
+      "chamber": [
+        55,
+        70
+      ]
+    },
+    {
+      "name": "PPS",
+      "nozzle": [
+        300,
+        345
+      ],
+      "chamber": [
+        90,
+        100
+      ]
+    },
+    {
+      "name": "PPS-CF",
+      "nozzle": [
+        295,
+        350
+      ],
+      "chamber": [
+        90,
+        100
+      ]
+    },
+    {
+      "name": "PPSU",
+      "nozzle": [
+        360,
+        420
+      ],
+      "chamber": [
+        90,
+        100
+      ]
+    },
+    {
+      "name": "PSU",
+      "nozzle": [
+        350,
+        380
+      ],
+      "chamber": [
+        90,
+        100
+      ]
+    },
+    {
+      "name": "PVA",
+      "nozzle": [
+        185,
+        250
+      ],
+      "chamber": [
+        0,
+        60
+      ]
+    },
+    {
+      "name": "PVB",
+      "nozzle": [
+        190,
+        250
+      ],
+      "chamber": [
+        0,
+        55
+      ]
+    },
+    {
+      "name": "PVDF",
+      "nozzle": [
+        245,
+        265
+      ],
+      "chamber": [
+        40,
+        60
+      ]
+    },
+    {
+      "name": "SBS",
+      "nozzle": [
+        195,
+        250
+      ],
+      "chamber": [
+        0,
+        55
+      ]
+    },
+    {
+      "name": "TPI",
+      "nozzle": [
+        420,
+        445
+      ],
+      "chamber": [
+        90,
+        100
+      ]
+    },
+    {
+      "name": "TPU",
+      "nozzle": [
+        175,
+        260
+      ],
+      "chamber": [
+        0,
+        50
+      ]
+    }
+  ]
+}

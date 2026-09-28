@@ -1,0 +1,21 @@
+{
+  "sourceCommit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "excerpts": [
+    {
+      "declaration": "void FillBedJob::prepare()",
+      "sha256": "476937803d1683d4f176e6ebe9427c9259974c2b4c54d0f721025913c8f306b9"
+    },
+    {
+      "declaration": "void FillBedJob::process(Ctl &ctl)",
+      "sha256": "95f43d1a55e97fd27208ac7148ca37d29c0f2fe182ceb09c3df90db8fe489965"
+    },
+    {
+      "declaration": "void FillBedJob::finalize(bool canceled, std::exception_ptr &eptr)",
+      "sha256": "3c493a7e1a55f999b8c19e0d4c429ca90f104b1be11f8628bb8785801705fe42"
+    },
+    {
+      "declaration": "std::vector<Vec2f> Plater::get_empty_cells(const Vec2f step)",
+      "sha256": "433e251bf55ad7a82a441735f3e7f2f33110477f7fc3ccb7c465afd729286361"
+    }
+  ]
+}

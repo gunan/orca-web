@@ -1,0 +1,15 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "source": "src/libslic3r/TriangleMesh.cpp",
+  "sourceSha256": "539fe11223b8479a8da9a25814f66b1d97f524a04fdead11611952d2f3a925f9",
+  "function": "void its_merge(indexed_triangle_set &A, const indexed_triangle_set &B)",
+  "functionSha256": "a82fe7b3ac47228af2473c453cd52fff9f39404eb743bd7f36e875fd082a5452",
+  "additionalRanges": [
+    {
+      "start": "// Create a mapping from triangle edge into face.",
+      "end": "// Having the face neighbors available, assign unique edge IDs",
+      "sha256": "5462bbbfd09c5bd6a6d68f875292aab3e89292a780b43e3f3b6cfe8334c1d2da",
+      "purpose": "Exact native mesh edge mapping used by TriangleMeshSlicer per-glyph cross-sections"
+    }
+  ]
+}

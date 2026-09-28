@@ -1,0 +1,770 @@
+{
+  "sourceCommit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "sources": {
+    "src/slic3r/GUI/Gizmos/GLGizmoMove.cpp": "7115ed573dd364e6bf228c0acce1836c94fa1bae57a51cb16153f60d0da40b5f",
+    "src/slic3r/GUI/Gizmos/GLGizmoRotate.cpp": "cfd51c61800cea0ac8a3784223613c99f66a740c194d45048c9aa0c0580cdeab",
+    "src/slic3r/GUI/Gizmos/GLGizmoScale.cpp": "556813404487f228dd6efe936eacb065222db82294fbe5ce2b7a94d6668dfc96"
+  },
+  "methodsSha256": "7143a6111ab1967085dc768e628cc8ac37881d87c660b3f07222fce7e00b9815",
+  "referenceSourceSha256": "fa5a0de176253c785c36cabe300357e175d587483d7c77cbe5cfe639ef3e3f90",
+  "generatorSha256": "81da46eafea63c1d6553ab4f30249f21e26c8b6ec0a2f2bb346a020096595ee4",
+  "binarySha256": "1d118f94ced93f700c6cad1b4d4aa4c4470fd643f7d0e2fb6d14e0dfb585074f",
+  "towerTools": {
+    "axes": [
+      true,
+      true,
+      false
+    ],
+    "move": true,
+    "rotate": false,
+    "scale": false
+  },
+  "cases": [
+    {
+      "name": "axis-0-delta--15.75-snap-False",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          180,
+          160,
+          10
+        ],
+        "ray": [
+          [
+            164.25,
+            160,
+            310
+          ],
+          [
+            164.25,
+            160,
+            -100
+          ]
+        ],
+        "shift": false
+      },
+      "expected": -15.75
+    },
+    {
+      "name": "axis-0-delta--15.75-snap-True",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          180,
+          160,
+          10
+        ],
+        "ray": [
+          [
+            164.25,
+            160,
+            310
+          ],
+          [
+            164.25,
+            160,
+            -100
+          ]
+        ],
+        "shift": true
+      },
+      "expected": -16.0
+    },
+    {
+      "name": "axis-0-delta--0.5-snap-False",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          180,
+          160,
+          10
+        ],
+        "ray": [
+          [
+            179.5,
+            160,
+            310
+          ],
+          [
+            179.5,
+            160,
+            -100
+          ]
+        ],
+        "shift": false
+      },
+      "expected": -0.5
+    },
+    {
+      "name": "axis-0-delta--0.5-snap-True",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          180,
+          160,
+          10
+        ],
+        "ray": [
+          [
+            179.5,
+            160,
+            310
+          ],
+          [
+            179.5,
+            160,
+            -100
+          ]
+        ],
+        "shift": true
+      },
+      "expected": -1.0
+    },
+    {
+      "name": "axis-0-delta-0.5-snap-False",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          180,
+          160,
+          10
+        ],
+        "ray": [
+          [
+            180.5,
+            160,
+            310
+          ],
+          [
+            180.5,
+            160,
+            -100
+          ]
+        ],
+        "shift": false
+      },
+      "expected": 0.5
+    },
+    {
+      "name": "axis-0-delta-0.5-snap-True",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          180,
+          160,
+          10
+        ],
+        "ray": [
+          [
+            180.5,
+            160,
+            310
+          ],
+          [
+            180.5,
+            160,
+            -100
+          ]
+        ],
+        "shift": true
+      },
+      "expected": 1.0
+    },
+    {
+      "name": "axis-0-delta-15.75-snap-False",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          180,
+          160,
+          10
+        ],
+        "ray": [
+          [
+            195.75,
+            160,
+            310
+          ],
+          [
+            195.75,
+            160,
+            -100
+          ]
+        ],
+        "shift": false
+      },
+      "expected": 15.75
+    },
+    {
+      "name": "axis-0-delta-15.75-snap-True",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          180,
+          160,
+          10
+        ],
+        "ray": [
+          [
+            195.75,
+            160,
+            310
+          ],
+          [
+            195.75,
+            160,
+            -100
+          ]
+        ],
+        "shift": true
+      },
+      "expected": 16.0
+    },
+    {
+      "name": "perspective-axis-0-delta--40",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          180,
+          160,
+          10
+        ],
+        "ray": [
+          [
+            400,
+            -300,
+            250
+          ],
+          [
+            140,
+            160,
+            10
+          ]
+        ]
+      },
+      "expected": -31.97149643705464
+    },
+    {
+      "name": "perspective-axis-0-delta--0.75",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          180,
+          160,
+          10
+        ],
+        "ray": [
+          [
+            400,
+            -300,
+            250
+          ],
+          [
+            179.25,
+            160,
+            10
+          ]
+        ]
+      },
+      "expected": -0.6350443266994432
+    },
+    {
+      "name": "perspective-axis-0-delta-30",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          180,
+          160,
+          10
+        ],
+        "ray": [
+          [
+            400,
+            -300,
+            250
+          ],
+          [
+            210,
+            160,
+            10
+          ]
+        ]
+      },
+      "expected": 26.452669505404543
+    },
+    {
+      "name": "axis-1-delta--15.75-snap-False",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          130,
+          210,
+          10
+        ],
+        "ray": [
+          [
+            130,
+            194.25,
+            310
+          ],
+          [
+            130,
+            194.25,
+            -100
+          ]
+        ],
+        "shift": false
+      },
+      "expected": -15.75
+    },
+    {
+      "name": "axis-1-delta--15.75-snap-True",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          130,
+          210,
+          10
+        ],
+        "ray": [
+          [
+            130,
+            194.25,
+            310
+          ],
+          [
+            130,
+            194.25,
+            -100
+          ]
+        ],
+        "shift": true
+      },
+      "expected": -16.0
+    },
+    {
+      "name": "axis-1-delta--0.5-snap-False",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          130,
+          210,
+          10
+        ],
+        "ray": [
+          [
+            130,
+            209.5,
+            310
+          ],
+          [
+            130,
+            209.5,
+            -100
+          ]
+        ],
+        "shift": false
+      },
+      "expected": -0.5
+    },
+    {
+      "name": "axis-1-delta--0.5-snap-True",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          130,
+          210,
+          10
+        ],
+        "ray": [
+          [
+            130,
+            209.5,
+            310
+          ],
+          [
+            130,
+            209.5,
+            -100
+          ]
+        ],
+        "shift": true
+      },
+      "expected": -1.0
+    },
+    {
+      "name": "axis-1-delta-0.5-snap-False",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          130,
+          210,
+          10
+        ],
+        "ray": [
+          [
+            130,
+            210.5,
+            310
+          ],
+          [
+            130,
+            210.5,
+            -100
+          ]
+        ],
+        "shift": false
+      },
+      "expected": 0.5
+    },
+    {
+      "name": "axis-1-delta-0.5-snap-True",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          130,
+          210,
+          10
+        ],
+        "ray": [
+          [
+            130,
+            210.5,
+            310
+          ],
+          [
+            130,
+            210.5,
+            -100
+          ]
+        ],
+        "shift": true
+      },
+      "expected": 1.0
+    },
+    {
+      "name": "axis-1-delta-15.75-snap-False",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          130,
+          210,
+          10
+        ],
+        "ray": [
+          [
+            130,
+            225.75,
+            310
+          ],
+          [
+            130,
+            225.75,
+            -100
+          ]
+        ],
+        "shift": false
+      },
+      "expected": 15.75
+    },
+    {
+      "name": "axis-1-delta-15.75-snap-True",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          130,
+          210,
+          10
+        ],
+        "ray": [
+          [
+            130,
+            225.75,
+            310
+          ],
+          [
+            130,
+            225.75,
+            -100
+          ]
+        ],
+        "shift": true
+      },
+      "expected": 16.0
+    },
+    {
+      "name": "perspective-axis-1-delta--40",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          130,
+          210,
+          10
+        ],
+        "ray": [
+          [
+            400,
+            -300,
+            250
+          ],
+          [
+            130,
+            170,
+            10
+          ]
+        ]
+      },
+      "expected": -14.854866249288648
+    },
+    {
+      "name": "perspective-axis-1-delta--0.75",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          130,
+          210,
+          10
+        ],
+        "ray": [
+          [
+            400,
+            -300,
+            250
+          ],
+          [
+            130,
+            209.25,
+            10
+          ]
+        ]
+      },
+      "expected": -0.251067397166878
+    },
+    {
+      "name": "perspective-axis-1-delta-30",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          130,
+          210,
+          10
+        ],
+        "ray": [
+          [
+            400,
+            -300,
+            250
+          ],
+          [
+            130,
+            240,
+            10
+          ]
+        ]
+      },
+      "expected": 9.27505330490419
+    },
+    {
+      "name": "zero axis",
+      "request": {
+        "center": [
+          10,
+          20,
+          30
+        ],
+        "handle": [
+          10,
+          20,
+          30
+        ],
+        "ray": [
+          [
+            2,
+            4,
+            6
+          ],
+          [
+            3,
+            5,
+            7
+          ]
+        ]
+      },
+      "expected": 0.0
+    },
+    {
+      "name": "parallel axis ray",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          180,
+          160,
+          10
+        ],
+        "ray": [
+          [
+            500,
+            160,
+            10
+          ],
+          [
+            -500,
+            160,
+            10
+          ]
+        ]
+      },
+      "expected": 0.0
+    },
+    {
+      "name": "remote fractional origin",
+      "request": {
+        "center": [
+          96000.333,
+          -48000.777,
+          10
+        ],
+        "handle": [
+          96050.333,
+          -48000.777,
+          10
+        ],
+        "ray": [
+          [
+            96500.3,
+            -48300.2,
+            230
+          ],
+          [
+            96048.24,
+            -48000.91,
+            10
+          ]
+        ]
+      },
+      "expected": -0.8961314543121262
+    },
+    {
+      "name": "configured snap step",
+      "request": {
+        "center": [
+          130,
+          160,
+          10
+        ],
+        "handle": [
+          180,
+          160,
+          10
+        ],
+        "ray": [
+          [
+            185.1,
+            160,
+            300
+          ],
+          [
+            185.1,
+            160,
+            -100
+          ]
+        ],
+        "shift": true,
+        "snapStep": 2.5
+      },
+      "expected": 5.0
+    }
+  ]
+}

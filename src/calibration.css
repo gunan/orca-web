@@ -1,0 +1,12 @@
+.calibration-dialog { width:min(560px,calc(100vw - 40px)); border:1px solid var(--line,#b9bec4); border-radius:8px; padding:22px; background:var(--surface,#fff); color:var(--text,#222); box-shadow:0 12px 60px #0004; }
+.calibration-dialog::backdrop { background:#0005; }
+.calibration-dialog header,.calibration-dialog footer { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+.calibration-dialog h2 { margin:0; font-size:20px; }
+.calibration-dialog p { font-size:13px; line-height:1.5; }
+.calibration-dialog label { display:flex; flex-direction:column; gap:7px; font-size:13px; }
+.calibration-dialog select,.calibration-dialog input { width:100%; box-sizing:border-box; padding:8px; color:inherit; background:var(--surface,#fff); border:1px solid var(--line,#b9bec4); border-radius:4px; }
+.calibration-fields { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px; }
+.calibration-dialog footer { justify-content:flex-end; margin-top:20px; }
+.calibration-dialog button { padding:8px 12px; cursor:pointer; }
+.calibration-dialog button:disabled { cursor:default; opacity:.55; }
+.calibration-dialog [role=alert] { color:#c03434; }

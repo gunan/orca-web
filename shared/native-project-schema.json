@@ -1,0 +1,695 @@
+{
+  "schemaVersion": 1,
+  "provenance": {
+    "repository": "https://github.com/OrcaSlicer/OrcaSlicer",
+    "version": "2.4.2",
+    "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+    "license": "AGPL-3.0",
+    "files": [
+      {
+        "name": "PrintConfig.cpp",
+        "path": "src/libslic3r/PrintConfig.cpp",
+        "sha256": "f635101adb6da3ee657656c6fcaa9449871b7c17446b5e2eb59b560a0eb836aa"
+      },
+      {
+        "name": "Config.hpp",
+        "path": "src/libslic3r/Config.hpp",
+        "sha256": "455eb2c24a4b25cd8f089d3f020991ab6a1ca4d4d952b10b49fd10b3da5702e4"
+      },
+      {
+        "name": "PrintConfigConstants.hpp",
+        "path": "src/libslic3r/PrintConfigConstants.hpp",
+        "sha256": "eaeb335f616e52049a9ce52697fb4aaebefa2129ced4718dfc4c9170d9a550ce"
+      },
+      {
+        "name": "Preset.cpp",
+        "path": "src/libslic3r/Preset.cpp",
+        "sha256": "af50e30fcb9c17d3eb3f9fc579cb710fe616f4a863a02a4e74bc36cd3b395ee2"
+      },
+      {
+        "name": "Tab.cpp",
+        "path": "src/slic3r/GUI/Tab.cpp",
+        "sha256": "2b7c129434f54a85ed657599aa2de3323cdf085b43bc97074d81aa84a92da577"
+      },
+      {
+        "name": "ConfigManipulation.cpp",
+        "path": "src/slic3r/GUI/ConfigManipulation.cpp",
+        "sha256": "be96a01ff8dec298d7624da2f9a3677eb27342f00fbb398580b464336c0c1d66"
+      },
+      {
+        "name": "MaterialType.cpp",
+        "path": "src/libslic3r/MaterialType.cpp",
+        "sha256": "78daadb9c9e923e83ada34c7485306e3249894eeca2ec1cc49c3dcc143b15a1d"
+      }
+    ]
+  },
+  "scope": "Source metadata for additional project settings observed in an OrcaSlicer 2.4.2 native project export; this is not a complete project option membership catalog.",
+  "options": [
+    {
+      "key": "bbl_calib_mark_logo",
+      "nativeType": "coBool",
+      "label": "Show auto-calibration marks",
+      "fullLabel": "Show auto-calibration marks",
+      "category": "",
+      "tooltip": "",
+      "unit": "",
+      "mode": "comAdvanced",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": true,
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 5478
+      }
+    },
+    {
+      "key": "curr_bed_type",
+      "nativeType": "coEnum",
+      "label": "Bed type",
+      "fullLabel": "Bed type",
+      "category": "",
+      "tooltip": "Bed types supported by the printer.",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": "Cool Plate",
+      "options": [
+        {
+          "value": "Cool Plate",
+          "label": "Smooth Cool Plate"
+        },
+        {
+          "value": "Engineering Plate",
+          "label": "Engineering Plate"
+        },
+        {
+          "value": "High Temp Plate",
+          "label": "Smooth High Temp Plate"
+        },
+        {
+          "value": "Textured PEI Plate",
+          "label": "Textured PEI Plate"
+        },
+        {
+          "value": "Textured Cool Plate",
+          "label": "Textured Cool Plate"
+        },
+        {
+          "value": "Supertack Plate",
+          "label": "Cool Plate (SuperTack)"
+        }
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 1080
+      }
+    },
+    {
+      "key": "extruder_ams_count",
+      "nativeType": "coStrings",
+      "label": "Extruder AMS count",
+      "fullLabel": "Extruder AMS count",
+      "category": "",
+      "tooltip": "AMS counts per extruder.",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": [],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 5379
+      }
+    },
+    {
+      "key": "filament_colour",
+      "nativeType": "coStrings",
+      "label": "Color",
+      "fullLabel": "Color",
+      "category": "",
+      "tooltip": "Only used as a visual help on UI.",
+      "unit": "",
+      "mode": "comAdvanced",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": [
+        "#F2754E"
+      ],
+      "guiType": "color",
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 2455
+      }
+    },
+    {
+      "key": "filament_colour_type",
+      "nativeType": "coStrings",
+      "label": "",
+      "fullLabel": "",
+      "category": "",
+      "tooltip": "",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": [
+        "1"
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 2477
+      }
+    },
+    {
+      "key": "filament_multi_colour",
+      "nativeType": "coStrings",
+      "label": "",
+      "fullLabel": "",
+      "category": "",
+      "tooltip": "",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": [
+        ""
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 2473
+      }
+    },
+    {
+      "key": "filament_ids",
+      "nativeType": "coStrings",
+      "label": "",
+      "fullLabel": "",
+      "category": "",
+      "tooltip": "",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": [],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 2938
+      }
+    },
+    {
+      "key": "filament_map",
+      "nativeType": "coInts",
+      "label": "Filament map to extruder",
+      "fullLabel": "Filament map to extruder",
+      "category": "",
+      "tooltip": "Filament map to extruder.",
+      "unit": "",
+      "mode": "comDevelop",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": [
+        1
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 2489
+      }
+    },
+    {
+      "key": "filament_map_mode",
+      "nativeType": "coEnum",
+      "label": "filament mapping mode",
+      "fullLabel": "filament mapping mode",
+      "category": "",
+      "tooltip": "Filament mapping mode used as plate param.",
+      "unit": "",
+      "mode": "comAdvanced",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": "Auto For Flush",
+      "options": [
+        {
+          "value": "Auto For Flush",
+          "label": "Auto For Flush"
+        },
+        {
+          "value": "Auto For Match",
+          "label": "Auto For Match"
+        },
+        {
+          "value": "Manual",
+          "label": "Manual"
+        },
+        {
+          "value": "Default",
+          "label": "Default"
+        }
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 2502
+      }
+    },
+    {
+      "key": "filament_self_index",
+      "nativeType": "coInts",
+      "label": "Filament self index",
+      "fullLabel": "Filament self index",
+      "category": "",
+      "tooltip": "Filament self index.",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": [
+        1
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 5432
+      }
+    },
+    {
+      "key": "filament_settings_id",
+      "nativeType": "coStrings",
+      "label": "",
+      "fullLabel": "",
+      "category": "",
+      "tooltip": "",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": [
+        ""
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 2933
+      }
+    },
+    {
+      "key": "first_layer_print_sequence",
+      "nativeType": "coInts",
+      "label": "First layer print sequence",
+      "fullLabel": "First layer print sequence",
+      "category": "",
+      "tooltip": "",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": 0,
+      "max": 16,
+      "ratioOver": "",
+      "default": [
+        0
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 1109
+      }
+    },
+    {
+      "key": "flush_multiplier",
+      "nativeType": "coFloats",
+      "label": "Flush multiplier",
+      "fullLabel": "Flush multiplier",
+      "category": "",
+      "tooltip": "The actual flushing volumes is equal to the flush multiplier multiplied by the flushing volumes in the table.",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": [
+        0.3
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 6845
+      }
+    },
+    {
+      "key": "flush_volumes_matrix",
+      "nativeType": "coFloats",
+      "label": "Purging volumes",
+      "fullLabel": "Purging volumes",
+      "category": "",
+      "tooltip": "",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": [
+        0,
+        280,
+        280,
+        280,
+        280,
+        0,
+        280,
+        280,
+        280,
+        280,
+        0,
+        280,
+        280,
+        280,
+        280,
+        0
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 6835
+      }
+    },
+    {
+      "key": "flush_volumes_vector",
+      "nativeType": "coFloats",
+      "label": "Purging volumes - load/unload volumes",
+      "fullLabel": "Purging volumes - load/unload volumes",
+      "category": "",
+      "tooltip": "",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": [
+        140,
+        140,
+        140,
+        140,
+        140,
+        140,
+        140,
+        140
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 6825
+      }
+    },
+    {
+      "key": "has_scarf_joint_seam",
+      "nativeType": "coBool",
+      "label": "",
+      "fullLabel": "",
+      "category": "",
+      "tooltip": "",
+      "unit": "",
+      "mode": "comAdvanced",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": false,
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 4493
+      }
+    },
+    {
+      "key": "nozzle_volume_type",
+      "nativeType": "coEnums",
+      "label": "Nozzle Volume Type",
+      "fullLabel": "Nozzle Volume Type",
+      "category": "",
+      "tooltip": "Nozzle volume type for extruders.",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": [
+        "Standard"
+      ],
+      "options": [
+        {
+          "value": "Standard",
+          "label": "Standard"
+        },
+        {
+          "value": "High Flow",
+          "label": "High Flow"
+        }
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 5348
+      }
+    },
+    {
+      "key": "other_layers_print_sequence",
+      "nativeType": "coInts",
+      "label": "Other layers print sequence",
+      "fullLabel": "Other layers print sequence",
+      "category": "",
+      "tooltip": "",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": 0,
+      "max": 16,
+      "ratioOver": "",
+      "default": [
+        0
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 1115
+      }
+    },
+    {
+      "key": "other_layers_print_sequence_nums",
+      "nativeType": "coInt",
+      "label": "The number of other layers print sequence",
+      "fullLabel": "The number of other layers print sequence",
+      "category": "",
+      "tooltip": "",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": 0,
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 1121
+      }
+    },
+    {
+      "key": "start_end_points",
+      "nativeType": "coPoints",
+      "label": "Start end points",
+      "fullLabel": "Start end points",
+      "category": "",
+      "tooltip": "The start and end points which is from cutter area to garbage can.",
+      "unit": "",
+      "mode": "comDevelop",
+      "nullable": false,
+      "readOnly": true,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": [
+        [
+          30,
+          -3
+        ],
+        [
+          54,
+          245
+        ]
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 4945
+      }
+    },
+    {
+      "key": "wipe_tower_x",
+      "nativeType": "coFloats",
+      "label": "",
+      "fullLabel": "",
+      "category": "",
+      "tooltip": "",
+      "unit": "",
+      "mode": "comDevelop",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": [
+        15
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 6860
+      }
+    },
+    {
+      "key": "wipe_tower_y",
+      "nativeType": "coFloats",
+      "label": "",
+      "fullLabel": "",
+      "category": "",
+      "tooltip": "",
+      "unit": "",
+      "mode": "comDevelop",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": [
+        220
+      ],
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 6868
+      }
+    },
+    {
+      "key": "print_settings_id",
+      "nativeType": "coString",
+      "label": "",
+      "fullLabel": "",
+      "category": "",
+      "tooltip": "",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": "",
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 5111
+      }
+    },
+    {
+      "key": "printer_settings_id",
+      "nativeType": "coString",
+      "label": "",
+      "fullLabel": "",
+      "category": "",
+      "tooltip": "",
+      "unit": "",
+      "mode": "comSimple",
+      "nullable": false,
+      "readOnly": false,
+      "multiline": false,
+      "min": -3.4028234663852886e+38,
+      "max": 3.4028234663852886e+38,
+      "ratioOver": "",
+      "default": "",
+      "unresolved": [],
+      "source": {
+        "file": "PrintConfig.cpp",
+        "line": 5116
+      }
+    }
+  ],
+  "coverage": {
+    "definitions": 24,
+    "unresolved": []
+  }
+}

@@ -1,0 +1,156 @@
+{
+  "nativeVersion": "2.4.2",
+  "sourceCommit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "capturedAt": "2026-09-27T11:31:32.360638+00:00",
+  "fixture": "tests/fixtures/native-text-surface-2.4.2.3mf",
+  "fixtureSha256": "eeb52886adc21b1e4026895fb42372433361d4cb96458f643928033ec7effb96",
+  "purpose": "Diagnostic evidence only; not a native GUI regeneration equivalence certificate.",
+  "variants": {
+    "production-two-threads": {
+      "runs": 8,
+      "vertexSetHashes": [
+        "f8ae62825216a7ab1d36ecebde09f9e958bd908fc592859a8fe4d7645fcf72d6"
+      ],
+      "orientedTriangleSetHashes": [
+        "15ef8e596128ec2ef294c7fce14a5b484c7098d7dcd7dfb346546c11ac0eea52",
+        "ca5f51768753cc02418cea2984453bf257dfd22dc3450f8d68af5346e880c8e2",
+        "fc8751cef64ebf4886392ca0ca9b6acecf215f7b0cfebb062b521bd268c43855"
+      ],
+      "vertices": 288,
+      "edges": 858,
+      "triangles": 572,
+      "connectedComponents": 2,
+      "eulerCharacteristic": 2,
+      "surfaceAreaRangeMm2": [
+        115.56212391023742,
+        115.56212391023743
+      ],
+      "signedVolumeRangeMm3": [
+        29.249874825395477,
+        29.24987482539548
+      ],
+      "maximumChangedCapTriangles": 20,
+      "maximumSignedCapAreaDifferenceMm2": 0,
+      "allEdgesTwoOppositelyOrientedIncidences": true,
+      "allChangedTrianglesCoplanarAndSameFacing": true,
+      "allChangedRegionsHaveEqualOrientedBoundaries": true
+    },
+    "single-thread/": {
+      "runs": 8,
+      "vertexSetHashes": [
+        "f8ae62825216a7ab1d36ecebde09f9e958bd908fc592859a8fe4d7645fcf72d6"
+      ],
+      "orientedTriangleSetHashes": [
+        "15ef8e596128ec2ef294c7fce14a5b484c7098d7dcd7dfb346546c11ac0eea52",
+        "ca5f51768753cc02418cea2984453bf257dfd22dc3450f8d68af5346e880c8e2",
+        "fc8751cef64ebf4886392ca0ca9b6acecf215f7b0cfebb062b521bd268c43855"
+      ],
+      "vertices": 288,
+      "edges": 858,
+      "triangles": 572,
+      "connectedComponents": 2,
+      "eulerCharacteristic": 2,
+      "surfaceAreaRangeMm2": [
+        115.56212391023742,
+        115.56212391023743
+      ],
+      "signedVolumeRangeMm3": [
+        29.249874825395477,
+        29.24987482539548
+      ],
+      "maximumChangedCapTriangles": 20,
+      "maximumSignedCapAreaDifferenceMm2": 0,
+      "allEdgesTwoOppositelyOrientedIncidences": true,
+      "allChangedTrianglesCoplanarAndSameFacing": true,
+      "allChangedRegionsHaveEqualOrientedBoundaries": true
+    },
+    "address-independent/": {
+      "runs": 8,
+      "vertexSetHashes": [
+        "f8ae62825216a7ab1d36ecebde09f9e958bd908fc592859a8fe4d7645fcf72d6"
+      ],
+      "orientedTriangleSetHashes": [
+        "15ef8e596128ec2ef294c7fce14a5b484c7098d7dcd7dfb346546c11ac0eea52",
+        "bfd2c822871a1b5c12e26ed302e6f1ec869556558f9f78dd34f222bbd69a394a",
+        "d658282116b2d44f9fe31dbcc14c6918d0fbcc06bab981a00e7fa69f3262f6b0",
+        "e4ab78f03d5d851536cb334f44dd2695378543cc9d41f62f531fe54110b6d34a",
+        "ebc46eca80e21f040f9287ba85bf506c73a11f359dfed4a1612a18544094d423"
+      ],
+      "vertices": 288,
+      "edges": 858,
+      "triangles": 572,
+      "connectedComponents": 2,
+      "eulerCharacteristic": 2,
+      "surfaceAreaRangeMm2": [
+        115.56212391023742,
+        115.56212391023743
+      ],
+      "signedVolumeRangeMm3": [
+        29.249874825395473,
+        29.249874825395477
+      ],
+      "maximumChangedCapTriangles": 58,
+      "maximumSignedCapAreaDifferenceMm2": 0,
+      "allEdgesTwoOppositelyOrientedIncidences": true,
+      "allChangedTrianglesCoplanarAndSameFacing": true,
+      "allChangedRegionsHaveEqualOrientedBoundaries": true
+    }
+  },
+  "controlledGcodeIsolation": {
+    "referenceCommands": 12030,
+    "triangulation-only": {
+      "commands": 12030,
+      "firstDifference": 10979,
+      "expected": "G1 X105.319 Y111.798 Z20.6 F18000",
+      "actual": "G1 X105.396 Y111.85 Z20.6 F18000"
+    },
+    "coordinates-only": {
+      "commands": 12030,
+      "firstDifference": 11337,
+      "expected": "G1 X110.055 Y105.839 E.01681",
+      "actual": "G1 X110.054 Y105.838 E.01678"
+    },
+    "both": {
+      "commands": 12030,
+      "firstDifference": 10979,
+      "expected": "G1 X105.319 Y111.798 Z20.6 F18000",
+      "actual": "G1 X105.396 Y111.85 Z20.6 F18000"
+    }
+  },
+  "diagnosticPatch": {
+    "originalHeaderSha256": "9a39d254df316161a4d18848a79757dbc18e0afd7254a4fc57e459ce1ecd276d",
+    "modifiedHeaderSha256": "af6e5e79cb4eff99821467574c0d03860ad5919c07a41cdb56fe0703b217441b",
+    "change": "ID_FROM_BOX_ADDRESS -> ID_EXPLICIT",
+    "callbackOriginalSha256": "060bc5dc71e3e741b7156ecf7cc72b32635e913d447972bef312482ebd1e0db3",
+    "callbackModifiedSha256": "e05b1922a55d12edefcf0bfbb5ec9f26e42f17fb661ff66f0fefb6510785aca4",
+    "productionChange": false,
+    "purpose": "Isolate process-address-dependent corefinement traversal; do not distribute as native-equivalent implementation."
+  },
+  "productionModified": false,
+  "inputOutputHashes": {
+    "address-independent/same-request-0.json": "28217923906ce29f41ba6e172a18622152de4edd22712014f4472db1fc8084e0",
+    "address-independent/same-request-1.json": "d61aff9eba8a20c6912c40b65526393eedfd27465c690cc48ded34219060ad0c",
+    "address-independent/same-request-2.json": "28217923906ce29f41ba6e172a18622152de4edd22712014f4472db1fc8084e0",
+    "address-independent/same-request-3.json": "261e20b080fdc4732e87d231c40558a813a8ef1dc8d0389935fb3cf879ded414",
+    "address-independent/same-request-4.json": "28217923906ce29f41ba6e172a18622152de4edd22712014f4472db1fc8084e0",
+    "address-independent/same-request-5.json": "327885618590930ca2b44ffa2890ae2a963e957ffe67c82ea543ee2501a01483",
+    "address-independent/same-request-6.json": "28217923906ce29f41ba6e172a18622152de4edd22712014f4472db1fc8084e0",
+    "address-independent/same-request-7.json": "7c536ee96582c8de4c067a3111782e768c285a76490d2da6d5099da94bad7df5",
+    "same-request-0.json": "c2d2e2dcded6f4e810a2288b7925c58e047143b2d3bc39954c4be774d1ea3614",
+    "same-request-1.json": "c2d2e2dcded6f4e810a2288b7925c58e047143b2d3bc39954c4be774d1ea3614",
+    "same-request-2.json": "78849ba368b10bb2d32036a331b39d2fa2f8369cfac52a2d0496d36ae684885c",
+    "same-request-3.json": "28217923906ce29f41ba6e172a18622152de4edd22712014f4472db1fc8084e0",
+    "same-request-4.json": "781c07d09f4d2afa65800c5e944f06bea3a194515d1f9d6ef5c9a3298fba7ae9",
+    "same-request-5.json": "28217923906ce29f41ba6e172a18622152de4edd22712014f4472db1fc8084e0",
+    "same-request-6.json": "781c07d09f4d2afa65800c5e944f06bea3a194515d1f9d6ef5c9a3298fba7ae9",
+    "same-request-7.json": "28217923906ce29f41ba6e172a18622152de4edd22712014f4472db1fc8084e0",
+    "single-thread/same-request-0.json": "c2d2e2dcded6f4e810a2288b7925c58e047143b2d3bc39954c4be774d1ea3614",
+    "single-thread/same-request-1.json": "78849ba368b10bb2d32036a331b39d2fa2f8369cfac52a2d0496d36ae684885c",
+    "single-thread/same-request-2.json": "c2d2e2dcded6f4e810a2288b7925c58e047143b2d3bc39954c4be774d1ea3614",
+    "single-thread/same-request-3.json": "28217923906ce29f41ba6e172a18622152de4edd22712014f4472db1fc8084e0",
+    "single-thread/same-request-4.json": "78849ba368b10bb2d32036a331b39d2fa2f8369cfac52a2d0496d36ae684885c",
+    "single-thread/same-request-5.json": "78849ba368b10bb2d32036a331b39d2fa2f8369cfac52a2d0496d36ae684885c",
+    "single-thread/same-request-6.json": "28217923906ce29f41ba6e172a18622152de4edd22712014f4472db1fc8084e0",
+    "single-thread/same-request-7.json": "781c07d09f4d2afa65800c5e944f06bea3a194515d1f9d6ef5c9a3298fba7ae9"
+  }
+}

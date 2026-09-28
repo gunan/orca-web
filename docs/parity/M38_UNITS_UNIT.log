@@ -1,0 +1,18 @@
+✔ native manipulation conversion: metric-0-valid (0.711666ms)
+✔ native manipulation conversion: metric-1-valid (0.070208ms)
+✔ native manipulation conversion: metric-2-valid (0.048291ms)
+✔ native manipulation conversion: metric-3-valid (0.536916ms)
+✔ native manipulation conversion: imperial-0-valid (0.076334ms)
+✔ native manipulation conversion: imperial-1-valid (0.045417ms)
+✔ native manipulation conversion: imperial-2-valid (0.051167ms)
+✔ native manipulation conversion: imperial-3-valid (0.042ms)
+✔ conversion reference records pinned unchanged methods and generator provenance (1.130334ms)
+✔ unit conversions reject invalid numeric values and unknown manipulation fields (0.716459ms)
+ℹ tests 10
+ℹ suites 0
+ℹ pass 10
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 52.480416

@@ -1,0 +1,609 @@
+
+> orca-web@0.1.0 test:native
+> node --test --test-concurrency=2 tests/native/*.test.js
+
+✔ native height painting matches independently encoded object height-range filament assignments (337.003166ms)
+ℹ 400 outer-wall paths and material slots equal independent native height-range configuration.
+✔ native gap-filled subfacet islands remove the second material and match an unpainted reference (424.036458ms)
+ℹ Native 6.78 mm second-material island disappears after source-rule gap fill; 400 outer-wall paths match the unpainted reference.
+✔ native overhang-angle support painting equals explicitly annotated downward faces (340.838792ms)
+ℹ 1207 support deposition paths equal independent explicit face annotations.
+✔ native automatic brim ears match C++ corner references: overlapping grouped parts (371.389ms)
+ℹ 6 ears, 469 adhesion segments, 22709 exact native motion matches.
+✔ native automatic brim ears match C++ corner references: mirrored concave negative hole (484.027209ms)
+ℹ 6 ears, 526 adhesion segments, 53770 exact native motion matches.
+✔ native painted brim ears add localized first-layer adhesion and move with the chosen corner (651.276958ms)
+ℹ 110 left-ear and 109 right-ear native adhesion segments; none without ears or with ears above the bed.
+✔ a sparse native capsule stroke paints a continuous material strip between pointer endpoints (275.246833ms)
+ℹ 322 second-material wall segments cover 66 consecutive layers between two sparse brush samples; 55.55 mm deposited in the swept strip.
+✔ real native bundled ZIP64 flow-calibration archives retain named geometry within ordinary import limits (514.762375ms)
+✔ native-normalized X1C temperature calibration preserves source scalar meaning through preparation, validation and actual output (6651.163875ms)
+ℹ temperature: actual bundled scalar array ['50','50'] becomes native scalar50; generated calibration output and bound project/token validation pass. No printer contacted.
+✔ native-normalized X1C pressure-advance calibration preserves source scalar meaning through preparation, validation and actual output (5271.021125ms)
+ℹ pressure-advance: actual bundled scalar array ['50','50'] becomes native scalar50; generated calibration output and bound project/token validation pass. No printer contacted.
+✔ native-normalized X1C flow-ratio calibration preserves source scalar meaning through preparation, validation and actual output (5637.96475ms)
+ℹ flow-ratio: actual bundled scalar array ['50','50'] becomes native scalar50; generated calibration output and bound project/token validation pass. No printer contacted.
+✔ real native temperature measurement persists a source-compatible custom filament and affects its next ordinary slice (6252.515542ms)
+ℹ temperature: generated native model, explicit result 225, durable custom preset reload and ordinary native slice verified. No physical measurement or printer contact.
+✔ real native pressure-advance measurement persists a source-compatible custom filament and affects its next ordinary slice (1743.252167ms)
+ℹ pressure-advance: generated native model, explicit result 0.002, durable custom preset reload and ordinary native slice verified. No physical measurement or printer contact.
+✔ real native retraction measurement persists a source-compatible custom filament and affects its next ordinary slice (2141.427ms)
+ℹ retraction: generated native model, explicit result 0.4, durable custom preset reload and ordinary native slice verified. No physical measurement or printer contact.
+✔ real native max-volumetric-speed measurement persists a source-compatible custom filament and affects its next ordinary slice (1990.149875ms)
+ℹ max-volumetric-speed: generated native model, explicit result 6, durable custom preset reload and ordinary native slice verified. No physical measurement or printer contact.
+✔ native shrinkage temperature calibration schedules the actual compensated layers (7951.16225ms)
+ℹ temperature: 102 real compensated layers, 102 independently checked native schedule commands; one published target output.
+✔ native shrinkage pressure-advance calibration schedules the actual compensated layers (5886.122958ms)
+ℹ pressure-advance: 56 real compensated layers, 56 independently checked native schedule commands; one published target output.
+✔ native project flow calibration retains all independent flow ratios with shrinkage initialization (5896.948333ms)
+ℹ All 9 labelled specimens preserve effective independent wall E/mm ratios within 0.3%; warmup target only is published.
+✔ real OrcaSlicer 2.4.2 temperature resource becomes a sliced calibration with an effective layer schedule (5366.90375ms)
+ℹ temperature: 6436 closed triangles, 44.499 × 10.000 × 19.998 mm, 100 layers with actual calibration commands. No printer was contacted.
+✔ real OrcaSlicer 2.4.2 pressure-advance resource becomes a sliced calibration with an effective layer schedule (3874.323708ms)
+ℹ pressure-advance: 52 closed triangles, 70.000 × 70.000 × 3.000 mm, 15 layers with actual calibration commands. No printer was contacted.
+✔ real OrcaSlicer 2.4.2 input-shaping-frequency resource becomes a sliced calibration with an effective layer schedule (3882.895708ms)
+ℹ input-shaping-frequency: 1344 closed triangles, 40.020 × 40.019 × 60.000 mm, 301 layers with actual calibration commands. No printer was contacted.
+✔ real OrcaSlicer 2.4.2 input-shaping-damping resource becomes a sliced calibration with an effective layer schedule (3859.415792ms)
+ℹ input-shaping-damping: 3504 closed triangles, 120.000 × 120.000 × 60.000 mm, 301 layers with actual calibration commands. No printer was contacted.
+✔ real native cornering tower has effective junction-deviation commands without competing role overrides (4637.988208ms)
+ℹ junction-deviation: 1344 closed triangles, 40.020 × 40.019 × 60.000 mm, 300 native schedule layers plus closing pass. No printer contacted.
+✔ real native cornering tower has effective jerk commands without competing role overrides (5152.835875ms)
+ℹ jerk: 2368 closed triangles, 81.964 × 67.000 × 100.000 mm, 500 native schedule layers plus closing pass. No printer contacted.
+✔ custom material active edits, reset, clone and reload preserve inactive native variants and selected slot identity (10263.96375ms)
+✔ custom H2D machine active nozzle and normal/silent edits preserve all other native alternatives (3943.526583ms)
+✔ actual native slice and re-export retain a saved material’s complete variants while using its selected limits (3755.096208ms)
+✔ native variant correction replay changes only the reviewed active material and rejects wrong edit dimensions (5359.553833ms)
+✔ native selected material inherits the intact source variant value with separate physical nozzle context (1784.336916ms)
+✔ default, H2D and legacy J1 contexts open all native scopes and J1 process saves retain native identity metadata (8199.039042ms)
+✔ real OrcaSlicer honors saved custom machine, process, and filament presets (4052.942416ms)
+✔ native plug prism circle cut matches independent source geometry and preserves editable connectors (816.521416ms)
+ℹ 12849 exact native motion commands against C++-mesh reference; 1910 upper-body extrusion moves avoid the connector void; 2 connector volumes survive native re-export.
+✔ native plug frustum triangle cut matches independent source geometry and preserves editable connectors (459.623417ms)
+ℹ 11076 exact native motion commands against C++-mesh reference; 1366 upper-body extrusion moves avoid the connector void; 2 connector volumes survive native re-export.
+✔ native dowel prism square cut matches independent source geometry and preserves editable connectors (512.537458ms)
+ℹ 13414 exact native motion commands against C++-mesh reference; 1341 upper-body extrusion moves avoid the connector void; 3 connector volumes survive native re-export.
+✔ native dowel frustum hexagon cut matches independent source geometry and preserves editable connectors (527.906083ms)
+ℹ 13368 exact native motion commands against C++-mesh reference; 1487 upper-body extrusion moves avoid the connector void; 3 connector volumes survive native re-export.
+✔ native snap prism circle cut matches independent source geometry and preserves editable connectors (650.924291ms)
+ℹ 13174 exact native motion commands against C++-mesh reference; 1910 upper-body extrusion moves avoid the connector void; 2 connector volumes survive native re-export.
+✔ installed native slicer preserves cut families and every connector type without changing geometry toolpaths (886.09375ms)
+ℹ Native re-export preserves a >2^53 cut identity and plug/dowel/snap flags on all six volumes; 66576 motion commands exactly match the same geometry without cut metadata.
+✔ native retraction tower cuts at exact source heights produce closed retained meshes and slice successfully (1630.642584ms)
+ℹ Exact 3.3999 mm cut: both halves closed, volume drift -1.265e-5 mm³, native final layer 3.4 mm.
+ℹ Exact 21.3999 mm cut: both halves closed, volume drift -3.048e-6 mm³, native final layer 21.32 mm.
+✔ original native cut_mesh and instance reset match exactly across seven ordinary, linked, mirrored and modifier cases (89.45375ms)
+ℹ Original cap triangulation and Float32 vertices agree exactly; the previous mirrored Z discrepancy is removed without tolerance changes.
+✔ native kernel rejects malformed frames, identity, role and triangle requests (52.951041ms)
+✖ Cut to parts native slicing matches original cut_mesh output in four fixed translation-only runs (4455.53975ms)
+✔ actual native slicing preserves holes in capped upper/lower surfaces and mirrored cut output (294.591083ms)
+ℹ Native 2.4.2 sliced both capped cavity halves and a mirrored half; the opening remains free of deposited extrusion.
+✔ actual native cut-group slicing retains negative volumes and per-part modifiers on both sides (404.023333ms)
+ℹ Native cut groups retain capped negative volumes and effective density modifiers (1973.62 vs 1924.77 mm filament).
+✔ real native dovetail basic slices mating surfaces identically to compiled source-plane reference (485.127875ms)
+ℹ basic: 5 individually closed fragments, two cut groups, 17139 exact native motion commands against independent C++ planes; 71 socket-layer moves avoid central mating cavities; cut identity survives complete native project re-import. GUI byte-identity and physical fit remain unverified.
+✔ real native dovetail repeated slices mating surfaces identically to compiled source-plane reference (544.190084ms)
+ℹ repeated: 8 individually closed fragments, two cut groups, 17809 exact native motion commands against independent C++ planes; 97 socket-layer moves avoid central mating cavities; cut identity survives complete native project re-import. GUI byte-identity and physical fit remain unverified.
+✔ real native dovetail tapered slices mating surfaces identically to compiled source-plane reference (457.232125ms)
+ℹ tapered: 5 individually closed fragments, two cut groups, 17139 exact native motion commands against independent C++ planes; 70 socket-layer moves avoid central mating cavities; cut identity survives complete native project re-import. GUI byte-identity and physical fit remain unverified.
+✔ OrcaSlicer 2.4.2 API and direct CLI produce identical cube motion/extrusion with the same native settings (4684.237042ms)
+ℹ Matched all 10989 motion/extrusion commands with OrcaSlicer-2.4.2; {"layer_height":0.16,"outer_wall_speed":70}.
+✔ expanded native process enums, percentages, accelerations and vectors survive real API/CLI slicing (4697.53125ms)
+ℹ Matched all 9433 motion/extrusion commands with OrcaSlicer-2.4.2; {"layer_height":0.2,"outer_wall_line_width":"125%","ironing_type":"topmost","bottom_surface_pattern":"concentric","initial_layer_acceleration":500,"small_area_infill_flow_compensation_model":["0,0\n0.2,0.4444"]}.
+✔ native remap of paint and two part base slots equals independent reference assignments (419.610917ms)
+ℹ 1305 native outer-wall segments and both filament consumptions exactly match independent painted/base assignments.
+✔ native per-plate custom filament order controls first layer, interval order and later overlap priority (240.700584ms)
+ℹ All 10 native layers use requested first/interval ordering, later overlapping ranges win; reversing first-layer order changes the first deposited tool.
+✔ installed bundled legacy vector settings flatten into a valid native project and slice through embedded mode (4177.354875ms)
+ℹ Installed Prusa MK4/Standard/Generic PLA bundled defaults normalize then prepare and slice through the strict embedded project path.
+✔ real native coarse flow calibration retains independent effective ratios and saves a durable result (8092.577042ms)
+ℹ coarse: 9 closed labelled native objects; measured relative wall extrusion matches each planned multiplier within 0.3%; selected result 0.882 persisted and reloaded. No printer contacted.
+✔ real native fine flow calibration retains independent effective ratios and saves a durable result (3723.825ms)
+ℹ fine: 10 closed labelled native objects; measured relative wall extrusion matches each planned multiplier within 0.3%; selected result 0.9702 persisted and reloaded. No printer contacted.
+✔ real native yolo flow calibration retains independent effective ratios and saves a durable result (4294.220375ms)
+ℹ yolo: 11 closed labelled native objects; measured relative wall extrusion matches each planned multiplier within 0.3%; selected result 0.97 persisted and reloaded. No printer contacted.
+✔ real native yolo-fine flow calibration retains independent effective ratios and saves a durable result (5138.803083ms)
+ℹ yolo-fine: 16 closed labelled native objects; measured relative wall extrusion matches each planned multiplier within 0.3%; selected result 0.975 persisted and reloaded. No printer contacted.
+✔ real OrcaSlicer loads and slices a watertight API-uploaded OBJ (4679.720875ms)
+✔ real OrcaSlicer rejects malformed STL and the API offers no download (4106.026917ms)
+✔ native transformed STL and exported 3MF preserve asymmetric scale, rotation and placement (4140.941333ms)
+ℹ STL and exported 3MF match 6100 native motion commands at X55–65, Y55–85, Z0–15 mm.
+✔ native 3MF preserves multiple arranged object footprints without automatic recentering (3785.948875ms)
+ℹ Both separate native objects retain their arranged positions and 10 mm clearance.
+✔ fresh GUI-exported 2.4.2 project retains every GUI motion through web import and validated export (4726.459042ms)
+ℹ Fresh actual GUI output: 10989 native motion commands match after validated web roundtrip. Thumbnails, pixels and all project metadata are separate acceptance.
+✔ native overlapping height ranges match independently sliced wall-speed references per layer (545.309375ms)
+ℹ 400 native wall moves match three independent fixed-speed slices. 4–8 mm takes 30 mm/s; overlap trims the 55 mm/s range to 8–12 mm; gaps use 70 mm/s.
+✔ native ranged layer heights preserve the first layer, change interior increments, and restore default heights in gaps (358.245917ms)
+ℹ 135 native layers; fixed 0.2 mm first layer, 0.1/0.25 mm interior ranges, and 0.2 mm gaps.
+✔ native height ranges override ordinary part settings while modifiers retain final priority (199.881791ms)
+ℹ 152 native ranged outer-wall segments include 30 mm/s range and 45 mm/s modifier speeds; ordinary 90 mm/s part speed is overridden.
+✔ native range filament assignment changes material only inside its Z interval (174.41075ms)
+ℹ 80 ranged wall segments use second filament; 320 outside segments retain first filament. Native material usage [1125.15,236.43] mm.
+▶ real browser AMF, SVG extrusion and STEP worker generate surfaces accepted by OrcaSlicer 2.4.2
+  ✔ AMF browser surfaces match native AMF toolpaths and compressed AMF retains units (208.21775ms)
+  ✔ SVG dimensions, holes, physical units and extrusion depth survive native slicing (91.416833ms)
+  ✔ official STEP browser worker loads local WASM, preserves mm units and yields printable geometry (231.523375ms)
+✔ real browser AMF, SVG extrusion and STEP worker generate surfaces accepted by OrcaSlicer 2.4.2 (5328.06325ms)
+ℹ AMF import matches 8869 direct native motion commands.
+✔ legacy STL preserved placement receives native second-apply shrinkage (243.383083ms)
+ℹ stl preserved XY:102layers Z20.4; bounds 60.2,70.2 to 79.8,89.8.
+✔ legacy STL native automatic placement receives native second-apply shrinkage (256.789709ms)
+ℹ stl native automatic placement:102layers Z20.4; bounds 115.2,95.2 to 134.8,114.8.
+✔ legacy OBJ preserved placement receives native second-apply shrinkage (201.411417ms)
+ℹ obj preserved XY:102layers Z20.4; bounds 60.2,70.2 to 79.8,89.8.
+✔ legacy OBJ native automatic placement receives native second-apply shrinkage (249.939833ms)
+ℹ obj native automatic placement:102layers Z20.4; bounds 115.2,95.2 to 134.8,114.8.
+✔ native placement STL export retains unscaled20mm vertices at100% and98% before initialization (153.327167ms)
+ℹ Both100% and98% native placement exports have identical raw mesh bounds {"min":[115,95,0],"max":[135,115,20],"size":[20,20,20],"center":[125,105,10]}. Wall-centerline19.6mm is nozzle offset, not mesh scaling.
+✔ legacy preserved STL initialization matches all GUI reference motions for both98% axes (188.586958ms)
+✔ real native volumetric standard matches independently sliced band speeds, geometry and extrusion (6518.305916ms)
+ℹ standard: 5592 closed native triangles; 3440 effective outer-wall moves match 9 independent constant-speed native slices, including terminal spiral pass. No printer contacted.
+✔ real native volumetric narrow-bed matches independently sliced band speeds, geometry and extrusion (2104.455125ms)
+ℹ narrow-bed: 5592 closed native triangles; 2861 effective outer-wall moves match 9 independent constant-speed native slices, including terminal spiral pass. No printer contacted.
+✔ real native volumetric larger-nozzle matches independently sliced band speeds, geometry and extrusion (1373.32175ms)
+ℹ larger-nozzle: 5592 closed native triangles; 2504 effective outer-wall moves match 6 independent constant-speed native slices, including terminal spiral pass. No printer contacted.
+✔ real native volumetric native-ceiling matches independently sliced band speeds, geometry and extrusion (1706.97575ms)
+ℹ native-ceiling: 5516 closed native triangles; 2492 effective outer-wall moves match 8 independent constant-speed native slices, including terminal spiral pass. No printer contacted.
+✔ multiple object transforms preserve native geometry and cutouts against independent analytic world coordinates (507.747292ms)
+ℹ 40835 motion commands match independently positioned native geometry exactly.
+✔ multiple part transforms preserve native geometry and cutouts against independent analytic world coordinates (434.661125ms)
+ℹ 42350 motion commands match independently positioned native geometry exactly.
+✔ native-commands all-plate totals match independent compiled original source over actual native processor results (34.209583ms)
+ℹ 84 real native vertices across two plate results; no installed slicer launch.
+✔ native-gui all-plate totals match independent compiled original source over actual native processor results (202.909042ms)
+ℹ 58042 real native vertices across two plate results; no installed slicer launch.
+✔ all-plate and native model extruder oracle source files remain hash-bound to original captures (2.162625ms)
+✔ native arrangement build identity and independent source fixture provenance match the pinned release (62.78175ms)
+✔ original compiled Arrange/ModelArrange exact comparison: fixed-selection (10.073334ms)
+✔ original compiled Arrange/ModelArrange exact comparison: spacing-7.5 (8.636958ms)
+✔ original compiled Arrange/ModelArrange exact comparison: spacing-30 (8.815792ms)
+✔ original compiled Arrange/ModelArrange exact comparison: normal-support (8.285334ms)
+✔ original compiled Arrange/ModelArrange exact comparison: tree-support (8.718375ms)
+✔ original compiled Arrange/ModelArrange exact comparison: sequential-short (9.298084ms)
+✔ original compiled Arrange/ModelArrange exact comparison: sequential-tall (9.010208ms)
+✔ original compiled Arrange/ModelArrange exact comparison: gui-y-alignment (8.532459ms)
+✔ original compiled Arrange/ModelArrange exact comparison: rotation-enabled (9.934125ms)
+✔ original compiled Arrange/ModelArrange exact comparison: excluded-center (9.032917ms)
+✔ original compiled Arrange/ModelArrange exact comparison: wrapping-concave (8.451042ms)
+✔ original compiled Arrange/ModelArrange exact comparison: skirt-explicit-width (8.735916ms)
+✔ original compiled Arrange/ModelArrange exact comparison: estimated-rib-tower (8.776833ms)
+✔ original compiled Arrange/ModelArrange exact comparison: estimated-rectangle-tower (8.975791ms)
+✔ original compiled Arrange/ModelArrange exact comparison: estimated-tower-rotation-ignored (8.653083ms)
+✔ original compiled Arrange/ModelArrange exact comparison: estimated-tower-auto-brim-and-clamp (8.331833ms)
+✔ installed OrcaSlicer arrangement and 3MF roundtrip: fresh GUI cube (164.699167ms)
+ℹ 1 named parts: all transformed triangle corners match native export within 0.00003 mm and survive web-native reload.
+✔ installed OrcaSlicer arrangement and 3MF roundtrip: three cube placements (150.784667ms)
+ℹ 3 named parts: all transformed triangle corners match native export within 0.00003 mm and survive web-native reload.
+✔ installed OrcaSlicer arrangement and 3MF roundtrip: rotated rectangles with rotation disabled (144.687708ms)
+ℹ 3 named parts: all transformed triangle corners match native export within 0.00003 mm and survive web-native reload.
+✔ installed OrcaSlicer arrangement and 3MF roundtrip: native automatic rotation (148.173208ms)
+ℹ 3 named parts: all transformed triangle corners match native export within 0.00003 mm and survive web-native reload.
+✔ installed OrcaSlicer arrangement and 3MF roundtrip: baked reflected rectangles (143.377ms)
+ℹ 3 named parts: all transformed triangle corners match native export within 0.00003 mm and survive web-native reload.
+✔ installed OrcaSlicer arrangement and 3MF roundtrip: grouped negative and modifier volumes outside the normal footprint (149.631791ms)
+ℹ 5 named parts: all transformed triangle corners match native export within 0.00003 mm and survive web-native reload.
+✔ installed OrcaSlicer arrangement and 3MF roundtrip: combined skirt with explicit 0.48mm width (147.387542ms)
+ℹ 3 named parts: all transformed triangle corners match native export within 0.00003 mm and survive web-native reload.
+✔ installed OrcaSlicer arrangement and 3MF roundtrip: normal support safety margin (137.9595ms)
+ℹ 3 named parts: all transformed triangle corners match native export within 0.00003 mm and survive web-native reload.
+✔ installed OrcaSlicer arrangement and 3MF roundtrip: central excluded region (140.21725ms)
+ℹ 3 named parts: all transformed triangle corners match native export within 0.00003 mm and survive web-native reload.
+✔ installed OrcaSlicer arrangement and 3MF roundtrip: central wrapping region (151.036875ms)
+ℹ 3 named parts: all transformed triangle corners match native export within 0.00003 mm and survive web-native reload.
+✔ installed OrcaSlicer arrangement and 3MF roundtrip: sequential 65.001mm clearance (147.838ms)
+ℹ 3 named parts: all transformed triangle corners match native export within 0.00003 mm and survive web-native reload.
+✔ native selected-object arrangement keeps fixed parts and other plates byte-identical (13.500208ms)
+✔ native bounded-input validation rejects invalid geometry, identities, transforms and outside-workspace objects (76.147208ms)
+✔ installed native slicing and re-export retain project attachments and model attribution without changing captured GUI motions (4456.966708ms)
+ℹ 10989 exact GUI motion commands; two opaque attachments, Unicode names and native attribution survive installed-native re-export. GUI attachment editing remains separate acceptance.
+✔ native clipboard matches original C++ nearest-cell ties, fallback, grouping, component centering and repeated part paste (115.765666ms)
+ℹ 16 exact original-source C++ placement comparisons; no GUI placement capture claimed.
+✔ native clipboard rejects bounds, bad indices, fractional copies and an unrepresentable float grid (36.321917ms)
+✔ native cloned GUI cube preserves source geometry through web/native roundtrip and slices two distinct footprints (4254.519791ms)
+ℹ Native cloned centers [[10,10,10],[31,10,10]]; 2 object labels sliced.
+✔ exact native preset loader handles scalar numeric tokens, legacy enums, metadata and separate active variants (4270.055917ms)
+✔ native H2D/J1 slices agree between complete archive and selected settings; re-export preserves all inactive variants (1163.939125ms)
+ℹ Bambu Lab H2D 0.4 nozzle Standard/Standard: 582 matching motion lines; native re-export retains full variants
+ℹ Bambu Lab H2D 0.4 nozzle Standard/High Flow: 582 matching motion lines; native re-export retains full variants
+ℹ Snapmaker J1 (0.4 nozzle) Standard/Standard: 615 matching motion lines; native re-export retains full variants
+✖ native XL manual mapping rejects its unchanged default printable mask on physical nozzle three (288.179959ms)
+✔ native Prusa import expands a selected H2D material with all source variants and preserves native part roles (147.467958ms)
+✔ regenerated native planar text survives validated web export with all original GUI motion commands (4616.431542ms)
+ℹ 13,743 exact normalized native motion commands after actual pinned worker regeneration and production native project preparation.
+✔ regenerated native surface text changes closed geometry and produces actual raised deposition after native export (4087.476375ms)
+ℹ 384 regenerated manifold triangles; native raised deposition reaches 21 mm. Exact unchanged surface command ordering is not asserted; its independently checked CGAL cap triangulation may change path starts.
+✔ pinned native worker regenerates captured GUI planar mesh using native font/CGAL geometry (78.491917ms)
+ℹ 584 corresponding vertices; 1176 triangles; maximum saved-coordinate error 5.021462741671472e-8 mm.
+✔ pinned native worker regenerates captured GUI surface mesh using native font/CGAL geometry (46.543084ms)
+ℹ 48 triangles differ only by native CGAL cap triangulation; oriented boundaries and covered area match.
+ℹ 288 corresponding vertices; 572 triangles; maximum saved-coordinate error 2.471515581705882e-7 mm.
+✔ real native worker applies native typography and extrusion options and rejects unavailable collection or missing per-glyph sources (51.915792ms)
+✔ real native font parser reports collection metrics for the captured Helvetica file (16.677667ms)
+✔ native GUI planar text retains exact printable motions through validated web JSON and native 3MF roundtrip (4676.721125ms)
+ℹ planar: 13743 exact native motion commands; 1176 glyph triangles, top layer 21 mm. CLI slices retained glyph meshes; this does not test text regeneration.
+✔ native GUI surface text retains exact printable motions through validated web JSON and native 3MF roundtrip (4115.338042ms)
+ℹ surface: 12030 exact native motion commands; 572 glyph triangles, top layer 21 mm. CLI slices retained glyph meshes; this does not test text regeneration.
+✔ retained genuine GUI export Filament and Summary match original C++ color streams and material calculations (211.120458ms)
+ℹ 58042 native vertex colors match original-source RGB streams.
+✔ native two-filament model/support/flushed/tower accounting matches commanded filament and compiled GUI calculations (21.033209ms)
+✔ bounded native color-change palette rejects excess entries instead of emitting unvalidated colors (17.752333ms)
+✔ native standalone palettes match the compiled original provider for no events, pause-only and color changes (36.617917ms)
+✔ native Fill matches unchanged original GUI prepare/process/finalize and float-grid reference in 12 cases (120.594625ms)
+✔ native Fill rejects candidate/output limits, malformed frames and unimplemented viewport-dependent inputs (47.742625ms)
+✔ Fill tower oracle uses pinned original viewport/Fill source and matching adapter provenance (19.368041ms)
+✔ native Fill tower matches original GUI footprint, packing and every instance: two materials with double brim (14.75175ms)
+✔ native Fill tower matches original GUI footprint, packing and every instance: larger prime volume (11.997084ms)
+✔ native Fill tower matches original GUI footprint, packing and every instance: zero brim (13.021708ms)
+✔ native Fill tower matches original GUI footprint, packing and every instance: automatic brim from native shell height (11.655042ms)
+✔ native Fill tower matches original GUI footprint, packing and every instance: edge placement clamps raw coordinates (12.421959ms)
+✔ native Fill tower matches original GUI footprint, packing and every instance: native Fill deliberately ignores tower rotation (12.838708ms)
+✔ native Fill tower matches original GUI footprint, packing and every instance: second plate retains native zero obstacle bed index (11.519916ms)
+✔ native Fill tower matches original GUI footprint, packing and every instance: sequential plate hides a two-instance tower (9.534792ms)
+✔ native Fill tower matches original GUI footprint, packing and every instance: single used material hides tower (11.486292ms)
+✔ native Fill tower matches original GUI footprint, packing and every instance: single material smooth timelapse still reserves tower (13.5755ms)
+✔ native Fill tower matches original GUI footprint, packing and every instance: wrapping detection still reserves single-material tower (12.9445ms)
+✔ native Fill tower matches original GUI footprint, packing and every instance: tool change adds third native filament (11.788625ms)
+✔ native Fill tower matches original GUI footprint, packing and every instance: native float grid retains tower only in candidate budgeting (10.475833ms)
+✔ native Arrange retains the existing original viewport obstacle: two materials with double brim (11.45525ms)
+✔ native Arrange retains the existing original viewport obstacle: larger prime volume (9.09ms)
+✔ native Arrange retains the existing original viewport obstacle: zero brim (8.981625ms)
+✔ native Arrange retains the existing original viewport obstacle: automatic brim from native shell height (9.043292ms)
+✔ native Arrange retains the existing original viewport obstacle: edge placement clamps raw coordinates (8.885458ms)
+✔ native Arrange retains the existing original viewport obstacle: native Fill deliberately ignores tower rotation (9.038292ms)
+✔ native Arrange retains the existing original viewport obstacle: second plate retains native zero obstacle bed index (9.006333ms)
+✔ native Arrange retains the existing original viewport obstacle: sequential plate hides a two-instance tower (8.288125ms)
+✔ native Arrange retains the existing original viewport obstacle: single used material hides tower (7.766875ms)
+✔ native Arrange retains the existing original viewport obstacle: single material smooth timelapse still reserves tower (8.1875ms)
+✔ native Arrange retains the existing original viewport obstacle: wrapping detection still reserves single-material tower (8.245709ms)
+✔ native Arrange retains the existing original viewport obstacle: tool change adds third native filament (8.907917ms)
+✔ native Arrange retains the existing original viewport obstacle: native float grid retains tower only in candidate budgeting (8.630542ms)
+✔ native Fill rejects malformed, missing and oversized tower context before packing (40.453625ms)
+✔ full pinned native processor matches native GUI estimates and all 6,896 independent fallback scalar rows (169.457875ms)
+✔ native processing retains actual arc subdivisions, stationary events and source line IDs and is deterministic (22.876292ms)
+✔ real processor HTTP endpoint hashes an owned ready file and clears native cache on deletion (248.288084ms)
+✔ installed native model index resolves actual vendor and default mesh bytes without fixture fallback (4012.444625ms)
+✔ pinned native wx cover generator center-crops a wide RGB image to the three native project sizes (55.8595ms)
+✔ native cover decoding supports BMP and preserves uniform partial alpha while downscaling PNG (166.823875ms)
+✖ generated native covers survive web/native export relationships and installed Orca re-export (64274.858166ms)
+✔ native JPEG decoder processes the installed Orca homepage raster through the cover API (142.473958ms)
+✔ original native mesh statistics retain float rounding and count solids through the first instance only (33.720167ms)
+✔ native filter removes open planar meshes and modifier-only objects while retaining a valid source solid (30.956375ms)
+✔ native source applies zero, meters and inches thresholds in order to float mesh volumes (56.488875ms)
+✔ cut-family checksum and connector count participate in native imperial detection (32.653334ms)
+✔ native determinant uses volume and first-instance scaling and ignores later instances for unit inference (26.098416ms)
+✔ native admission rejects forged identities, mesh indices, roles, matrices and cut IDs (50.403791ms)
+✔ native inspection adapter has a matching original-source build manifest and binary hash (3.530542ms)
+✔ native Cut instance frames exactly match unchanged pinned CutUtils and real Model bed placement in eleven independent C++ cases (202.668584ms)
+✔ native Cut input validation rejects malformed transforms, missing selection, flags, excessive counts and invalid triangle data (70.661417ms)
+✔ native linked Cut exports two real build instances and installed 2.4.2 slices the retained surfaces at both footprints (4086.018333ms)
+ℹ Original native reset yields one linked upper family, two build items and 25 native layers across both expected footprints.
+✔ linked dovetail results preserve two shared families and closed processed surfaces through native instance reset (64.748125ms)
+✔ rotated and mirrored linked edits preserve every native-read entry against independent component/config XML edits (7542.582833ms)
+✔ translation-only linked edits match four fixed native runs, including same-input repeatability controls (3586.268167ms)
+ℹ All four fixed translation-only runs agree exactly: 11057 motion commands; rotated CLI path determinism remains unverified.
+✔ all 21,026 GUI-file motion solids preserve original native endpoint HWA, bias, positions and IDs, including 1,820 travels and 430 wipes (186.887959ms)
+✔ tree instance printability is native build metadata and real slicing excludes only the selected instance (4001.020333ms)
+ℹ 1146 deposition segments remain only inside the first instance footprint.
+✔ native per-glyph letters use contour tangents, while Use surface follows the analytic cylinder with native overlap (37.677875ms)
+ℹ 88 tangent glyph triangles; 256 curved triangles; analytical cylinder envelope 19.974291749527314…21 mm.
+✔ native per-glyph rejects missing cross-sections and retains layout under common rigid source transforms (58.435ms)
+✔ new per-glyph native surface part survives web/native export and produces raised cylindrical deposition (4388.671083ms)
+ℹ 252 regenerated triangles; 370 raised outer-wall moves; max deposited radius 20.800209422022647 mm.
+✔ native user diff and parent-relative reset survive restart and control actual installed slicing (7202.466875ms)
+ℹ Imported child: 166 layers; parent reset after restart: 100 layers. No native GUI export or printer connection.
+✔ native commands editor totals and event time/lookup exactly match independent compiled original GUI formulas (20.43175ms)
+ℹ 42 real native vertices; original double editor cost includes 12.5/h machine time.
+✔ native gui editor totals and event time/lookup exactly match independent compiled original GUI formulas (107.615916ms)
+ℹ 29021 real native vertices; original double editor cost includes 12.5/h machine time.
+✔ native editor event palette is project-owned even when G-code contains different color-change metadata (25.045792ms)
+✔ native helper rejects snapshot/G-code filament mismatch and cleans all temporary context files (15.198541ms)
+✔ direct native executable rejects fractional event IDs independently of the JavaScript validator (20.340917ms)
+✔ source fixture retains exact pinned function provenance and no installed slicer is required (0.606375ms)
+✔ real GUI G-code native geometry/event/tick IDs match seven original C++ range captures (124.367084ms)
+✔ real native processing retains all seven stationary event types, including source-line reordering by the Z corrector (22.18325ms)
+✔ real GUI G-code scalar ranges and every vertex color match original C++ for all seven modes and four visibility combinations (481.74625ms)
+ℹ 812588 original native vertex colors across28 mode/visibility streams match byte-for-byte.
+✔ native PA ranges remain unavailable without an explicit PA command and begin at the determined value when one appears (21.364625ms)
+✔ prime tower reference and production helper match pinned original source and paired build provenance (8.17075ms)
+✔ original native tower containment, assignments and sizing: two-material rectangle (17.735875ms)
+✔ original native tower containment, assignments and sizing: tower disabled (15.003042ms)
+✔ original native tower containment, assignments and sizing: single palette (14.82825ms)
+✔ original native tower containment, assignments and sizing: single used filament (15.199875ms)
+✔ original native tower containment, assignments and sizing: single smooth timelapse (15.149209ms)
+✔ original native tower containment, assignments and sizing: single wrapping detection (15.093125ms)
+✔ original native tower containment, assignments and sizing: sequential two printable (15.164667ms)
+✔ original native tower containment, assignments and sizing: sequential one nonprintable (15.362292ms)
+✔ original native tower containment, assignments and sizing: outside second object (15.203667ms)
+✔ original native tower containment, assignments and sizing: overheight second object (15.224958ms)
+✔ original native tower containment, assignments and sizing: excluded second object (15.135875ms)
+✔ original native tower containment, assignments and sizing: sinking exclusion original limitation (14.745917ms)
+✔ original native tower containment, assignments and sizing: sinking partly outside bed (14.847959ms)
+✔ original native tower containment, assignments and sizing: nonrectangular native nonsinking bounds (15.129542ms)
+✔ original native tower containment, assignments and sizing: nonrectangular sinking exact volume (14.6325ms)
+✔ original native tower containment, assignments and sizing: linked first instance on another plate (14.370875ms)
+✔ original native tower containment, assignments and sizing: linked remote instance extends native height (14.5685ms)
+✔ original native tower containment, assignments and sizing: ranges and support assignments (14.450958ms)
+✔ original native tower containment, assignments and sizing: painted second filament (14.940792ms)
+✔ original native tower containment, assignments and sizing: tool change third filament (15.01925ms)
+✔ original native tower containment, assignments and sizing: rib wall tall tower (14.900208ms)
+✔ original native tower containment, assignments and sizing: dual nozzle change volume (15.293208ms)
+✔ original native tower containment, assignments and sizing: float narrowed rotated offset (14.92475ms)
+✔ original native tower containment, assignments and sizing: empty model ignores tool events (14.660875ms)
+✔ original native tower containment, assignments and sizing: second plate native origins (15.45975ms)
+✔ original native tower containment, assignments and sizing: native default single exclusion sentinel (15.064958ms)
+✔ original native tower containment, assignments and sizing: native trailing exclusion points ignored (15.213167ms)
+✔ native tower rejects malformed painting and plate/assignment bounds before invoking unsafe native readers (60.906959ms)
+✔ validated project preparation preserves native motions and applies explicit catalog process changes (4297.3715ms)
+ℹ Server-validated embedded project keeps exact native motions; catalog mode produces 0.24 mm / 55 mm/s settings.
+✔ validated multi-filament project preparation slices just the requested plate and retains part semantics (4000.979584ms)
+ℹ Server preparation yields one G-code output per selected plate, with a native through-hole, effective density modifier and filament usage [1916.52,1169.79] / [0,1377.13] mm.
+✔ native process settings Paste matches twelve independently compiled original ObjectList cases (216.551291ms)
+ℹ 12 exact original ObjectList comparisons, including typed equality, preserved destination extruders, parent compensation and reuse across multiple destinations.
+✔ native settings Paste rejects excessive/unknown inputs and retains method types through validated API service (40.119334ms)
+✖ native process and height-range clipboard preserve settings through installed slicing and re-export (90065.036334ms)
+✔ native SVG dimensions, even-odd holes and filled outline volume match independent analytic geometry (37.101ms)
+ℹ Rectangle volume 399.9998502060906; ring volume 599.9997753091358 mm³; native centered bounds [[-9.999998092651367,9.999998092651367],[-4.999999046325684,4.999999046325684],[-0.014999999664723873,1.9850000143051147]].
+✔ native SVG 96 dpi units, stroke caps, dashes and curves retain native semantics (173.598084ms)
+✔ native SVG rejects empty/oversized geometry without producing a placeholder (32.521584ms)
+✔ native SVG surface creation, regeneration and both project roundtrips produce raised hollow deposition (4021.913875ms)
+ℹ 920 raised deposition moves, zero in the central hole; regenerated 40 triangles, maximum deposited Z 21.96.
+✔ native GUI tool properties and compressed actual-speed profiles match original compiled C++ (147.287875ms)
+ℹ 21463 original property rows and 446 native profile points matched; 312 views retained explicit unknown initial PA.
+✔ tower drag reference preserves original-source provenance and matching helper adapter (5.67375ms)
+✔ native tower drag context: two-material rectangle (18.704041ms)
+✔ native tower drag context: single smooth timelapse (15.165208ms)
+✔ native tower drag context: single wrapping detection (14.954042ms)
+✔ native tower drag context: sequential one nonprintable (15.378917ms)
+✔ native tower drag context: sinking exclusion original limitation (15.648042ms)
+✔ native tower drag context: nonrectangular native nonsinking bounds (15.311083ms)
+✔ native tower drag context: linked remote instance extends native height (18.33725ms)
+✔ native tower drag context: ranges and support assignments (15.844542ms)
+✔ native tower drag context: painted second filament (15.091417ms)
+✔ native tower drag context: tool change third filament (15.121833ms)
+✔ native tower drag context: rib wall tall tower (14.830375ms)
+✔ native tower drag context: dual nozzle change volume (16.949042ms)
+✔ native tower drag context: float narrowed rotated offset (14.72175ms)
+✔ native tower drag context: second plate native origins (14.94675ms)
+✔ native tower drag context: native default single exclusion sentinel (14.573875ms)
+✔ native tower drag context: brim 0 (15.690625ms)
+✔ native tower drag context: brim 0.1 (14.641708ms)
+✔ native tower drag context: brim 0.333333333333 (14.567959ms)
+✔ native tower drag context: brim 20 (16.000375ms)
+✔ native tower drag context: brim 1000 (14.951416ms)
+✔ native tower drag context: shared extruder printable area (15.873584ms)
+✔ native tower drag context: oversize or exact edge width 193 (14.8635ms)
+✔ native tower drag context: oversize or exact edge width 194 (15.019584ms)
+✔ native tower drag context: oversize or exact edge width 250 (14.766708ms)
+✔ native tower drag context: remote fractional origin [240, -240, 0] (15.148208ms)
+✔ native tower drag context: remote fractional origin [96000.333, -48000.777, 0] (14.965084ms)
+✔ legal identities retain the exact original two-material tower: family token equals a standalone group key (21.626375ms)
+✔ legal identities retain the exact original two-material tower: standalone group precedes a colliding family token (16.34125ms)
+✔ legal identities retain the exact original two-material tower: long plate and object IDs compose beyond the worker bound (15.655375ms)
+✔ legal identities retain the exact original two-material tower: escaped group IDs exceed the bound only after JSON encoding (15.202333ms)
+✔ legal identities retain the exact original two-material tower: multibyte group IDs exceed the worker byte bound (15.100333ms)
+✔ legal identities retain the exact original two-material tower: multibyte family token exceeds the worker byte bound (15.197416ms)
+✔ legal identities retain the exact original two-material tower: user family token collides with an allocated worker ID (15.012834ms)
+✔ legal identities retain the exact original two-material tower: allocated worker ID skips an existing user family token (15.222125ms)
+✔ real native PA line session preserves source fixture commands, macros and result binding (labels, relative E) (6260.899ms)
+ℹ Native 2.4.2 converted/sliced 2532-triangle source asset. All 324 source fixture calls match exported XYZ/E/F/PA; 255 generated moves. Native GUI export and physical results remain unverified.
+✔ real native PA line session preserves source fixture commands, macros and result binding (no labels, absolute E) (2386.148334ms)
+ℹ Native 2.4.2 converted/sliced 2532-triangle source asset. All 90 source fixture calls match exported XYZ/E/F/PA; 54 generated moves. Native GUI export and physical results remain unverified.
+✔ real native PA pattern 3MF session slices exact four-layer generated commands (single-relative) (6500.548583ms)
+ℹ 1 source handle cubes; four native layers; 644 generated moves; fixed PA result saved. Source fixtures are independent C++ geometry evidence, not native GUI export or physical measurements.
+✔ real native PA pattern 3MF session slices exact four-layer generated commands (single-absolute) (2705.671583ms)
+ℹ 1 source handle cubes; four native layers; 2281 generated moves; fixed PA result saved. Source fixtures are independent C++ geometry evidence, not native GUI export or physical measurements.
+✔ real native PA pattern 3MF session slices exact four-layer generated commands (batch-two-by-two) (2669.036792ms)
+ℹ 4 source handle cubes; four native layers; 2578 generated moves; fixed PA result saved. Source fixtures are independent C++ geometry evidence, not native GUI export or physical measurements.
+✔ real 2.4.2 slices every automatically added PA plate after complete archive re-import with exact source commands (7015.408875ms)
+ℹ 2 complete generated plates (6 + 2 patterns), 8 source handles, four layers per selected native slice, 18200 verified source-generated moves; independent compiled C++ reference matches all commands for the 80 mm/s, 1000 mm/s² pattern. No printer contacted.
+✔ native object-wide height painting on two normal volumes matches an independent native region assignment (384.783542ms)
+ℹ 800 native outer-wall paths and material slots match native range assignment over both grouped normal parts.
+✔ native support and seam facet annotations change support paths and preferred wall starts (673.112458ms)
+ℹ 1207 support extrusion segments replace zero; 100 layers move the preferred seam from X<1 to X>19.
+✔ native fuzzy painted-only mode changes only the selected side and color paint uses actual filament slots (428.976ms)
+ℹ Painted fuzzy side expands 400 to 5499 outer-wall segments; color painting uses 1264.69/449.92 mm of two filaments.
+✔ mirrored asymmetric native subfacets match an independently transformed native archive (323.297667ms)
+ℹ 296 second-filament wall segments and both filament consumptions exactly match a native build-matrix reflection of the original two-edge painted facet.
+✔ native fresh-load CLI shrinkage discrepancy stays explicit instead of claiming source texture matches output (287.954125ms)
+ℹ Observed engine discrepancy: source-derived texture has 102 layers, fresh-load CLI outputs 100 through Z20. 8869 native motions are identical when the unused slot is changed from XY97% to XY98%. This is diagnostic evidence, not positive active-shrinkage parity.
+✔ native part mixed-XY/equal-Z case matches neutral output and the source-disabled preview (357.426625ms)
+ℹ part: 100 native layers and 18583 motions equal neutral shrinkage reference; preview reports mixed-material compensation disabled.
+✔ native paint mixed-XY/equal-Z case matches neutral output and the source-disabled preview (337.592708ms)
+ℹ paint: 100 native layers and 15918 motions equal neutral shrinkage reference; preview reports mixed-material compensation disabled.
+✔ native height-range mixed-XY/equal-Z case matches neutral output and the source-disabled preview (268.48475ms)
+ℹ height-range: 100 native layers and 8890 motions equal neutral shrinkage reference; preview reports mixed-material compensation disabled.
+✔ native support mixed-XY/equal-Z case matches neutral output and the source-disabled preview (258.243834ms)
+ℹ support: 100 native layers and 8869 motions equal neutral shrinkage reference; preview reports mixed-material compensation disabled.
+✔ native preservePosition keeps baked STL XY coordinates and uses native bed placement for Z (5145.094625ms)
+✔ pinned native compatibility predicates match independently linked original predicates (417.439708ms)
+✔ native compatibility rejects malformed and oversized metadata without generic macro execution (82.866ms)
+✔ installed Prusa expression profiles are offered and admission rechecks changed hardware (4666.45625ms)
+✔ native alias derivation retains C++ whitespace and empty-prefix fallback semantics (53.786042ms)
+✔ compatibility-only metadata cannot change archived/effective native configuration (60.417292ms)
+✔ native profile editor fallback selects expression-compatible defaults when no selection was supplied (806.242833ms)
+✖ installed native export supplies dimension/diameter metadata but no per-move or per-role times through slice-info or slice-data (90087.06775ms)
+✔ prime tower position changes native deposited tower paths by the requested displacement without moving model extrusion (4799.535041ms)
+ℹ 45198 native prime-tower extrusion segments moved exactly 30 mm in X; model walls did not move.
+✔ pinned GUI Prusa importer preserves material/negative parts and all painting channels with exact native slice motions (4446.051167ms)
+ℹ 29750 identical native motion commands;100layers;tools0,1;3separateparts.
+✔ raw Prusa API jobs retain both materials and negative geometry at unity and98%, and project import preserves inactive carriers (6198.510583ms)
+ℹ Raw100%:100layers;raw98%:102layers;both tools and negative volume retained;project source bytes and full embedded vectors roundtrip.
+✔ actual pinned Prusa importer expands current two-nozzle material tables without altering existing vectors or native scopes (77.909084ms)
+✖ native 2.4.2 uses each physical nozzle matrix and multiplier independently and retains them in native re-export (60085.147417ms)
+✖ native slicing retains both old nozzle tables after imported-material expansion (60081.823667ms)
+✔ raw native 3MF with selected98% profiles matches the captured GUI motions (5231.408541ms)
+✔ raw native merged settings retain an active embedded second material when selected slot1 is100% (4630.945792ms)
+✔ raw painted mixed material XY mismatch disables all shrinkage after exact native merge (4092.038292ms)
+✔ raw native negative parts, modifier settings, material slots and custom layer events survive initialization (4492.452875ms)
+✖ geometry-only3MF receives native automatic placement and keeps independent native objects (120023.451125ms)
+✔ raw native initialization leaves printer bed adaptation authoritative (9621.292833ms)
+✖ generic3MF color resources retain native material assignments during normalization (120013.747709ms)
+✖ 3MF carrying native object settings without project globals preserves part overrides through normalization (120018.132083ms)
+✔ real native retraction positive-wipe-hop changes paired E and matches native wipe/deposition/travel paths (5660.922ms)
+ℹ /var/folders/j6/8sftlpwx3lvcphslp6_bn6rw0000gn/T/orca-retraction-native-iskWNK
+ℹ positive-wipe-hop: 2196 closed triangles, 39 balanced retraction cycles, 2462 preserved native XYZ/E/F movements, 39 matched native wipe cycles across 4 constant-length slices. No printer contacted.
+✔ real native retraction zero-wipe-nohop changes paired E and matches native wipe/deposition/travel paths (1037.578833ms)
+ℹ /var/folders/j6/8sftlpwx3lvcphslp6_bn6rw0000gn/T/orca-retraction-native-gdgRLd
+ℹ zero-wipe-nohop: 2196 closed triangles, 39 balanced retraction cycles, 2393 preserved native XYZ/E/F movements, 39 matched native wipe cycles across 5 constant-length slices. No printer contacted.
+✔ real native retraction absolute-no-wipe changes paired E and matches native wipe/deposition/travel paths (920.757125ms)
+ℹ /var/folders/j6/8sftlpwx3lvcphslp6_bn6rw0000gn/T/orca-retraction-native-eEAst7
+ℹ absolute-no-wipe: 2196 closed triangles, 39 balanced retraction cycles, 2308 preserved native XYZ/E/F movements, 0 matched native wipe cycles across 4 constant-length slices. No printer contacted.
+✔ native slicing keeps negative volumes aligned after grouped scale, rotation, duplication and arrangement (326.611791ms)
+ℹ Both independently duplicated native groups preserve transformed cutouts across 39724 deposited motion segments.
+✔ project and legacy upload APIs publish only correctly initialized target plate G-code (5909.584542ms)
+✔ second native apply matches all captured positive-shrinkage GUI motions without changing vertices (335.046333ms)
+ℹ 9,217 installed-CLI motion commands exactly match the captured native GUI reference; cold CLI retains the independently observed 100-layer discrepancy.
+✔ native xy-only initialization preserves source-used materials and expected compensated geometry (294.1455ms)
+ℹ xy-only: 100 layers; bounds 20.008×20.008mm; source-used slots 1. GUI reference for this variant remains pending.
+✔ native z-only initialization preserves source-used materials and expected compensated geometry (285.50175ms)
+ℹ z-only: 102 layers; bounds 19.600×19.600mm; source-used slots 1. GUI reference for this variant remains pending.
+✔ native unused-slot initialization preserves source-used materials and expected compensated geometry (289.49325ms)
+ℹ unused-slot: 102 layers; bounds 20.008×20.008mm; source-used slots 1. GUI reference for this variant remains pending.
+✔ native paint-same initialization preserves source-used materials and expected compensated geometry (393.404042ms)
+ℹ paint-same: 102 layers; bounds 20.058×20.096mm; source-used slots 1,2. GUI reference for this variant remains pending.
+✔ native range-same initialization preserves source-used materials and expected compensated geometry (297.611875ms)
+ℹ range-same: 102 layers; bounds 20.008×20.008mm; source-used slots 1,2. GUI reference for this variant remains pending.
+✔ native brim initialization preserves source-used materials and expected compensated geometry (284.578667ms)
+ℹ brim: 102 layers; bounds 20.008×20.008mm; source-used slots 1. GUI reference for this variant remains pending.
+✔ native support-slot initialization preserves source-used materials and expected compensated geometry (278.740459ms)
+ℹ support-slot: 102 layers; bounds 20.008×20.008mm; source-used slots 1,2. GUI reference for this variant remains pending.
+✔ native mixed-xy initialization preserves source-used materials and expected compensated geometry (350.3925ms)
+✔ changing a single imported volume material overrides stale parent metadata in real native slicing (331.4235ms)
+✔ real OrcaSlicer slices an API-uploaded STL with native presets and honors process overrides (6248.017166ms)
+✔ sliced support preview consists of real native support paths and responds to manual facet enforcement (285.803ms)
+ℹ 1207 actual native support/interface deposition paths across 33 layers, zero without manual paint.
+✔ installed native slicer deposits raised text with a counter and preserves engraved letter cavities (583.865916ms)
+ℹ 1882 raised-text deposition segments preserve O's counter; 202 baseline samples occupy the removed engraved ink. Filament 1377.13 → emboss 1422.08, engrave 1437.53 mm.
+✔ native manual layer brush increase matches independent source profile toolpaths (268.6015ms)
+ℹ increase: 103 native layers and 8967 motion commands exactly match the independent C++ brush profile.
+✔ native manual layer brush decrease matches independent source profile toolpaths (260.78775ms)
+ℹ decrease: 103 native layers and 9114 motion commands exactly match the independent C++ brush profile.
+✔ native manual layer brush reduce matches independent source profile toolpaths (230.055167ms)
+ℹ reduce: 103 native layers and 9107 motion commands exactly match the independent C++ brush profile.
+✔ native manual layer brush smooth matches independent source profile toolpaths (228.661458ms)
+ℹ smooth: 103 native layers and 9129 motion commands exactly match the independent C++ brush profile.
+✔ native variable layers cube quality 0.5 match independent native C++ profile (239.628125ms)
+ℹ 67 layers and 6115 native motion commands match independent compiled-source profile exactly.
+✔ native variable layers pyramid quality 0 match independent native C++ profile (258.286167ms)
+ℹ 121 layers and 7396 native motion commands match independent compiled-source profile exactly.
+✔ native variable layers pyramid quality 0.25 match independent native C++ profile (232.874208ms)
+ℹ 70 layers and 4898 native motion commands match independent compiled-source profile exactly.
+✔ native variable layers pyramid quality 0 smoothed match independent native C++ profile (259.606208ms)
+ℹ 121 layers and 7396 native motion commands match independent compiled-source profile exactly.
+✔ real native VFA unlimited matches independently sliced band speeds, geometry and extrusion (5970.006791ms)
+ℹ unlimited: 6110 closed native triangles; 7765 effective outer-wall moves match four independent constant-speed native slices, including terminal spiral pass. No printer contacted.
+✔ real native VFA flow-capped matches independently sliced band speeds, geometry and extrusion (2044.606542ms)
+ℹ flow-capped: 6110 closed native triangles; 7765 effective outer-wall moves match four independent constant-speed native slices, including terminal spiral pass. No printer contacted.
+✔ real native VFA slowdown-ramp matches independently sliced band speeds, geometry and extrusion (2099.414709ms)
+ℹ slowdown-ramp: 6110 closed native triangles; 7765 effective outer-wall moves match four independent constant-speed native slices, including terminal spiral pass. No printer contacted.
+ℹ tests 340
+ℹ suites 0
+ℹ pass 330
+ℹ fail 7
+ℹ cancelled 3
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 718647.210375
+
+✖ failing tests:
+
+test at tests/native/cut-to-parts.test.js:15:1
+✖ Cut to parts native slicing matches original cut_mesh output in four fixed translation-only runs (4455.53975ms)
+  AssertionError [ERR_ASSERTION]: Fixed run 1: [{"index":184,"expected":"G1 X95.2 Y35.2 E.27934","actual":"G1 X95.2 Y35.383 E.27402"},{"index":185,"expected":"G1 X104.8 Y35.2 E.27934","actual":"G1 X95.383 Y35.2 E.00752"},{"index":186,"expected":"G1 X104.8 Y44.76 E.27817","actual":"G1 X104.8 Y35.2 E.27402"},{"index":187,"expected":"G1 E-.62353 F1800","actual":"G1 X104.8 Y44.76 E.27817"}]
+  
+  4272 !== 0
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m48-import-preflight-stage/tests/native/cut-to-parts.test.js:19:243)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 4272,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/native/native-config.test.js:30:1
+✖ native XL manual mapping rejects its unchanged default printable mask on physical nozzle three (288.179959ms)
+  AssertionError [ERR_ASSERTION]: The input did not match the regular expression /exited 188/. Input:
+  
+  'OrcaSlicer exited SIGBUS: No diagnostic output'
+  
+      at Object.<anonymous> (file:///private/tmp/orca-implementation/m48-import-preflight-stage/tests/native/native-config.test.js:32:144)
+      at expectedException (node:assert:576:17)
+      at expectsError (node:assert:701:21)
+      at strict.rejects (node:assert:767:3)
+      at async TestContext.<anonymous> (file:///private/tmp/orca-implementation/m48-import-preflight-stage/tests/native/native-config.test.js:32:89)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'OrcaSlicer exited SIGBUS: No diagnostic output',
+    expected: /exited 188/,
+    operator: 'match',
+    diff: 'simple'
+  }
+
+test at tests/native/native-images.test.js:9:1
+✖ generated native covers survive web/native export relationships and installed Orca re-export (64274.858166ms)
+  Error: OrcaSlicer exceeded 60000 ms timeout
+      at ChildProcess.<anonymous> (file:///private/tmp/orca-implementation/m48-import-preflight-stage/server/slicer.js:50:33)
+      at Object.onceWrapper (node:events:623:26)
+      at ChildProcess.emit (node:events:508:28)
+      at maybeClose (node:internal/child_process:1101:16)
+      at Socket.<anonymous> (node:internal/child_process:457:11)
+      at Socket.emit (node:events:508:28)
+      at Pipe.<anonymous> (node:net:346:12)
+
+test at tests/native/native-settings-clipboard.test.js:12:1
+✖ native process and height-range clipboard preserve settings through installed slicing and re-export (90065.036334ms)
+  Error: OrcaSlicer exceeded 90000 ms timeout
+      at ChildProcess.<anonymous> (file:///private/tmp/orca-implementation/m48-import-preflight-stage/server/slicer.js:50:33)
+      at Object.onceWrapper (node:events:623:26)
+      at ChildProcess.emit (node:events:508:28)
+      at maybeClose (node:internal/child_process:1101:16)
+      at Socket.<anonymous> (node:internal/child_process:457:11)
+      at Socket.emit (node:events:508:28)
+      at Pipe.<anonymous> (node:net:346:12)
+
+test at tests/native/preview-scalars.test.js:14:1
+✖ installed native export supplies dimension/diameter metadata but no per-move or per-role times through slice-info or slice-data (90087.06775ms)
+  Error: OrcaSlicer exceeded 90000 ms timeout
+      at ChildProcess.<anonymous> (file:///private/tmp/orca-implementation/m48-import-preflight-stage/server/slicer.js:50:33)
+      at Object.onceWrapper (node:events:623:26)
+      at ChildProcess.emit (node:events:508:28)
+      at maybeClose (node:internal/child_process:1101:16)
+      at Socket.<anonymous> (node:internal/child_process:457:11)
+      at Socket.emit (node:events:508:28)
+      at Pipe.<anonymous> (node:net:346:12)
+
+test at tests/native/purge-nozzles.test.js:15:1
+✖ native 2.4.2 uses each physical nozzle matrix and multiplier independently and retains them in native re-export (60085.147417ms)
+  Error: OrcaSlicer exceeded 60000 ms timeout
+      at ChildProcess.<anonymous> (file:///private/tmp/orca-implementation/m48-import-preflight-stage/server/slicer.js:50:33)
+      at Object.onceWrapper (node:events:623:26)
+      at ChildProcess.emit (node:events:508:28)
+      at maybeClose (node:internal/child_process:1101:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:305:5)
+
+test at tests/native/purge-nozzles.test.js:20:1
+✖ native slicing retains both old nozzle tables after imported-material expansion (60081.823667ms)
+  Error: OrcaSlicer exceeded 60000 ms timeout
+      at ChildProcess.<anonymous> (file:///private/tmp/orca-implementation/m48-import-preflight-stage/server/slicer.js:50:33)
+      at Object.onceWrapper (node:events:623:26)
+      at ChildProcess.emit (node:events:508:28)
+      at maybeClose (node:internal/child_process:1101:16)
+      at ChildProcess._handle.onexit (node:internal/child_process:305:5)
+
+test at tests/native/raw3mf-shrinkage.test.js:25:1
+✖ geometry-only3MF receives native automatic placement and keeps independent native objects (120023.451125ms)
+  'test timed out after 120000ms'
+
+test at tests/native/raw3mf-shrinkage.test.js:40:1
+✖ generic3MF color resources retain native material assignments during normalization (120013.747709ms)
+  'test timed out after 120000ms'
+
+test at tests/native/raw3mf-shrinkage.test.js:46:1
+✖ 3MF carrying native object settings without project globals preserves part overrides through normalization (120018.132083ms)
+  'test timed out after 120000ms'

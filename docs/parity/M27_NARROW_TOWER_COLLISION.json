@@ -1,0 +1,26 @@
+{
+  "baseline": "OrcaSlicer 2.4.2",
+  "sourceCommit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "nativeExit": 155,
+  "nativeDefinition": "CLI_GCODE_PATH_CONFLICTS = -101",
+  "input": {
+    "plateSize": [
+      100,
+      100
+    ],
+    "towerWidth": 20,
+    "primeVolume": 20,
+    "flushVolumes": [
+      0,
+      280,
+      280,
+      0
+    ],
+    "flushMultiplier": 0.3
+  },
+  "nativeDiagnostic": "gcode path conflicts found between WipeTower and model.stl",
+  "archive": "M27_NARROW_TOWER_COLLISION.zip",
+  "archiveSha256": "f87d1333f851d37c724adcc4442d90042289c8e388dbaaa06834c8515f7d20c2",
+  "result": "Native rejects overlapping actual tower/model toolpaths after the source-matched pre-slice estimate and placement. This is a retained rejection regression, not successful slice acceptance.",
+  "limitation": "Estimated geometry does not certify the actual post-slice tower footprint; native desktop visual acceptance remains pending."
+}

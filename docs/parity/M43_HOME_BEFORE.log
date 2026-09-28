@@ -1,0 +1,277 @@
+[WebServer] (node:79882) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 7 tests using 1 worker
+
+(node:79886) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/home-workspace.spec.js:10:1 › native Home is the startup default; saved page choices apply only at the next startup (1.8s)
+(node:79900) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/home-workspace.spec.js:11:1 › Home navigation preserves edited geometry and Undo without reloading the page (2.0s)
+(node:79908) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/e2e/home-workspace.spec.js:12:1 › Home New project retains the existing discard decision and cancel leaves the old project intact (2.0s)
+(node:79916) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 tests/e2e/home-workspace.spec.js:13:1 › Home Open project invokes the real file chooser and an invalid file preserves existing geometry (2.0s)
+(node:79926) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  5 tests/e2e/home-workspace.spec.js:14:1 › invalid startup storage falls back to Home and failed writes explain the next launch behavior (2.1s)
+(node:79934) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  6 tests/e2e/home-workspace.spec.js:15:37 › native Home action assets and compact light layout are readable and keyboard operable (2.0s)
+(node:79956) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  7 tests/e2e/home-workspace.spec.js:15:37 › native Home action assets and compact dark layout are readable and keyboard operable (2.0s)
+
+
+  1) tests/e2e/home-workspace.spec.js:10:1 › native Home is the startup default; saved page choices apply only at the next startup 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('main', { name: 'Home', exact: true })
+    Expected: visible
+    Timeout: 1500ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('main', { name: 'Home', exact: true }) with timeout 1500ms
+      - waiting for getByRole('main', { name: 'Home', exact: true })
+
+
+       5 | test.use({storageState:{cookies:[],origins:[]}});
+       6 | const home=page=>page.getByRole('main',{name:'Home',exact:true});
+    >  7 | async function open(page){await page.goto('/');await expect(home(page)).toBeVisible({timeout:1500});}
+         |                                                                         ^
+       8 | async function preferences(page,change){await page.getByRole('button',{name:'Preferences',exact:true}).click();const dialog=page.getByRole('dialog',{name:'Preferences'});await change(dialog);await dialog.getByRole('button',{name:'Close',exact:true}).click();}
+       9 | async function model(page){await open(page);await home(page).getByRole('button',{name:'New project',exact:true}).click();await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await expect(page.locator('.scene-object-row')).toHaveCount(1);}
+      10 | test('native Home is the startup default; saved page choices apply only at the next startup',async({page})=>{await open(page);await expect(page.getByRole('button',{name:'Home',exact:true})).toHaveAttribute('aria-pressed','true');await preferences(page,async d=>{const select=d.getByLabel('Default page');await expect(select.locator('option')).toHaveText(['Home','Prepare']);await expect(select).toHaveValue('0');await select.selectOption('1');});await expect(home(page)).toBeVisible();await page.reload();await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await expect(home(page)).toHaveCount(0);await preferences(page,d=>d.getByLabel('Default page').selectOption('0'));await expect(page.getByLabel('Layer height',{exact:true})).toBeVisible();await page.reload();await expect(home(page)).toBeVisible();});
+        at open (/private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:7:73)
+        at /private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:10:110
+
+    Error Context: test-results/m43-focused/home-workspace-native-Home-7a86a-ly-only-at-the-next-startup/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m43-focused/home-workspace-native-Home-7a86a-ly-only-at-the-next-startup/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m43-focused/home-workspace-native-Home-7a86a-ly-only-at-the-next-startup/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/home-workspace.spec.js:11:1 › Home navigation preserves edited geometry and Undo without reloading the page 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('main', { name: 'Home', exact: true })
+    Expected: visible
+    Timeout: 1500ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('main', { name: 'Home', exact: true }) with timeout 1500ms
+      - waiting for getByRole('main', { name: 'Home', exact: true })
+
+
+       5 | test.use({storageState:{cookies:[],origins:[]}});
+       6 | const home=page=>page.getByRole('main',{name:'Home',exact:true});
+    >  7 | async function open(page){await page.goto('/');await expect(home(page)).toBeVisible({timeout:1500});}
+         |                                                                         ^
+       8 | async function preferences(page,change){await page.getByRole('button',{name:'Preferences',exact:true}).click();const dialog=page.getByRole('dialog',{name:'Preferences'});await change(dialog);await dialog.getByRole('button',{name:'Close',exact:true}).click();}
+       9 | async function model(page){await open(page);await home(page).getByRole('button',{name:'New project',exact:true}).click();await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await expect(page.locator('.scene-object-row')).toHaveCount(1);}
+      10 | test('native Home is the startup default; saved page choices apply only at the next startup',async({page})=>{await open(page);await expect(page.getByRole('button',{name:'Home',exact:true})).toHaveAttribute('aria-pressed','true');await preferences(page,async d=>{const select=d.getByLabel('Default page');await expect(select.locator('option')).toHaveText(['Home','Prepare']);await expect(select).toHaveValue('0');await select.selectOption('1');});await expect(home(page)).toBeVisible();await page.reload();await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await expect(home(page)).toHaveCount(0);await preferences(page,d=>d.getByLabel('Default page').selectOption('0'));await expect(page.getByLabel('Layer height',{exact:true})).toBeVisible();await page.reload();await expect(home(page)).toBeVisible();});
+        at open (/private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:7:73)
+        at model (/private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:9:28)
+        at /private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:11:102
+
+    Error Context: test-results/m43-focused/home-workspace-Home-naviga-04cd2--without-reloading-the-page/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m43-focused/home-workspace-Home-naviga-04cd2--without-reloading-the-page/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m43-focused/home-workspace-Home-naviga-04cd2--without-reloading-the-page/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests/e2e/home-workspace.spec.js:12:1 › Home New project retains the existing discard decision and cancel leaves the old project intact 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('main', { name: 'Home', exact: true })
+    Expected: visible
+    Timeout: 1500ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('main', { name: 'Home', exact: true }) with timeout 1500ms
+      - waiting for getByRole('main', { name: 'Home', exact: true })
+
+
+       5 | test.use({storageState:{cookies:[],origins:[]}});
+       6 | const home=page=>page.getByRole('main',{name:'Home',exact:true});
+    >  7 | async function open(page){await page.goto('/');await expect(home(page)).toBeVisible({timeout:1500});}
+         |                                                                         ^
+       8 | async function preferences(page,change){await page.getByRole('button',{name:'Preferences',exact:true}).click();const dialog=page.getByRole('dialog',{name:'Preferences'});await change(dialog);await dialog.getByRole('button',{name:'Close',exact:true}).click();}
+       9 | async function model(page){await open(page);await home(page).getByRole('button',{name:'New project',exact:true}).click();await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await expect(page.locator('.scene-object-row')).toHaveCount(1);}
+      10 | test('native Home is the startup default; saved page choices apply only at the next startup',async({page})=>{await open(page);await expect(page.getByRole('button',{name:'Home',exact:true})).toHaveAttribute('aria-pressed','true');await preferences(page,async d=>{const select=d.getByLabel('Default page');await expect(select.locator('option')).toHaveText(['Home','Prepare']);await expect(select).toHaveValue('0');await select.selectOption('1');});await expect(home(page)).toBeVisible();await page.reload();await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await expect(home(page)).toHaveCount(0);await preferences(page,d=>d.getByLabel('Default page').selectOption('0'));await expect(page.getByLabel('Layer height',{exact:true})).toBeVisible();await page.reload();await expect(home(page)).toBeVisible();});
+        at open (/private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:7:73)
+        at model (/private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:9:28)
+        at /private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:12:120
+
+    Error Context: test-results/m43-focused/home-workspace-Home-New-pr-a9658-aves-the-old-project-intact/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m43-focused/home-workspace-Home-New-pr-a9658-aves-the-old-project-intact/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m43-focused/home-workspace-Home-New-pr-a9658-aves-the-old-project-intact/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests/e2e/home-workspace.spec.js:13:1 › Home Open project invokes the real file chooser and an invalid file preserves existing geometry 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('main', { name: 'Home', exact: true })
+    Expected: visible
+    Timeout: 1500ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('main', { name: 'Home', exact: true }) with timeout 1500ms
+      - waiting for getByRole('main', { name: 'Home', exact: true })
+
+
+       5 | test.use({storageState:{cookies:[],origins:[]}});
+       6 | const home=page=>page.getByRole('main',{name:'Home',exact:true});
+    >  7 | async function open(page){await page.goto('/');await expect(home(page)).toBeVisible({timeout:1500});}
+         |                                                                         ^
+       8 | async function preferences(page,change){await page.getByRole('button',{name:'Preferences',exact:true}).click();const dialog=page.getByRole('dialog',{name:'Preferences'});await change(dialog);await dialog.getByRole('button',{name:'Close',exact:true}).click();}
+       9 | async function model(page){await open(page);await home(page).getByRole('button',{name:'New project',exact:true}).click();await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await expect(page.locator('.scene-object-row')).toHaveCount(1);}
+      10 | test('native Home is the startup default; saved page choices apply only at the next startup',async({page})=>{await open(page);await expect(page.getByRole('button',{name:'Home',exact:true})).toHaveAttribute('aria-pressed','true');await preferences(page,async d=>{const select=d.getByLabel('Default page');await expect(select.locator('option')).toHaveText(['Home','Prepare']);await expect(select).toHaveValue('0');await select.selectOption('1');});await expect(home(page)).toBeVisible();await page.reload();await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await expect(home(page)).toHaveCount(0);await preferences(page,d=>d.getByLabel('Default page').selectOption('0'));await expect(page.getByLabel('Layer height',{exact:true})).toBeVisible();await page.reload();await expect(home(page)).toBeVisible();});
+        at open (/private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:7:73)
+        at model (/private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:9:28)
+        at /private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:13:120
+
+    Error Context: test-results/m43-focused/home-workspace-Home-Open-p-d3c0a-preserves-existing-geometry/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m43-focused/home-workspace-Home-Open-p-d3c0a-preserves-existing-geometry/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m43-focused/home-workspace-Home-Open-p-d3c0a-preserves-existing-geometry/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  5) tests/e2e/home-workspace.spec.js:14:1 › invalid startup storage falls back to Home and failed writes explain the next launch behavior 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('main', { name: 'Home', exact: true })
+    Expected: visible
+    Timeout: 1500ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('main', { name: 'Home', exact: true }) with timeout 1500ms
+      - waiting for getByRole('main', { name: 'Home', exact: true })
+
+
+       5 | test.use({storageState:{cookies:[],origins:[]}});
+       6 | const home=page=>page.getByRole('main',{name:'Home',exact:true});
+    >  7 | async function open(page){await page.goto('/');await expect(home(page)).toBeVisible({timeout:1500});}
+         |                                                                         ^
+       8 | async function preferences(page,change){await page.getByRole('button',{name:'Preferences',exact:true}).click();const dialog=page.getByRole('dialog',{name:'Preferences'});await change(dialog);await dialog.getByRole('button',{name:'Close',exact:true}).click();}
+       9 | async function model(page){await open(page);await home(page).getByRole('button',{name:'New project',exact:true}).click();await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await expect(page.locator('.scene-object-row')).toHaveCount(1);}
+      10 | test('native Home is the startup default; saved page choices apply only at the next startup',async({page})=>{await open(page);await expect(page.getByRole('button',{name:'Home',exact:true})).toHaveAttribute('aria-pressed','true');await preferences(page,async d=>{const select=d.getByLabel('Default page');await expect(select.locator('option')).toHaveText(['Home','Prepare']);await expect(select).toHaveValue('0');await select.selectOption('1');});await expect(home(page)).toBeVisible();await page.reload();await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await expect(home(page)).toHaveCount(0);await preferences(page,d=>d.getByLabel('Default page').selectOption('0'));await expect(page.getByLabel('Layer height',{exact:true})).toBeVisible();await page.reload();await expect(home(page)).toBeVisible();});
+        at open (/private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:7:73)
+        at /private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:14:376
+
+    Error Context: test-results/m43-focused/home-workspace-invalid-sta-f79b3-in-the-next-launch-behavior/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m43-focused/home-workspace-invalid-sta-f79b3-in-the-next-launch-behavior/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m43-focused/home-workspace-invalid-sta-f79b3-in-the-next-launch-behavior/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  6) tests/e2e/home-workspace.spec.js:15:37 › native Home action assets and compact light layout are readable and keyboard operable 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('main', { name: 'Home', exact: true })
+    Expected: visible
+    Timeout: 1500ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('main', { name: 'Home', exact: true }) with timeout 1500ms
+      - waiting for getByRole('main', { name: 'Home', exact: true })
+
+
+       5 | test.use({storageState:{cookies:[],origins:[]}});
+       6 | const home=page=>page.getByRole('main',{name:'Home',exact:true});
+    >  7 | async function open(page){await page.goto('/');await expect(home(page)).toBeVisible({timeout:1500});}
+         |                                                                         ^
+       8 | async function preferences(page,change){await page.getByRole('button',{name:'Preferences',exact:true}).click();const dialog=page.getByRole('dialog',{name:'Preferences'});await change(dialog);await dialog.getByRole('button',{name:'Close',exact:true}).click();}
+       9 | async function model(page){await open(page);await home(page).getByRole('button',{name:'New project',exact:true}).click();await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await expect(page.locator('.scene-object-row')).toHaveCount(1);}
+      10 | test('native Home is the startup default; saved page choices apply only at the next startup',async({page})=>{await open(page);await expect(page.getByRole('button',{name:'Home',exact:true})).toHaveAttribute('aria-pressed','true');await preferences(page,async d=>{const select=d.getByLabel('Default page');await expect(select.locator('option')).toHaveText(['Home','Prepare']);await expect(select).toHaveValue('0');await select.selectOption('1');});await expect(home(page)).toBeVisible();await page.reload();await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await expect(home(page)).toHaveCount(0);await preferences(page,d=>d.getByLabel('Default page').selectOption('0'));await expect(page.getByLabel('Layer height',{exact:true})).toBeVisible();await page.reload();await expect(home(page)).toBeVisible();});
+        at open (/private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:7:73)
+        at /private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:15:289
+
+    Error Context: test-results/m43-focused/home-workspace-native-Home-4bfa4-dable-and-keyboard-operable/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m43-focused/home-workspace-native-Home-4bfa4-dable-and-keyboard-operable/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m43-focused/home-workspace-native-Home-4bfa4-dable-and-keyboard-operable/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7) tests/e2e/home-workspace.spec.js:15:37 › native Home action assets and compact dark layout are readable and keyboard operable 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('main', { name: 'Home', exact: true })
+    Expected: visible
+    Timeout: 1500ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('main', { name: 'Home', exact: true }) with timeout 1500ms
+      - waiting for getByRole('main', { name: 'Home', exact: true })
+
+
+       5 | test.use({storageState:{cookies:[],origins:[]}});
+       6 | const home=page=>page.getByRole('main',{name:'Home',exact:true});
+    >  7 | async function open(page){await page.goto('/');await expect(home(page)).toBeVisible({timeout:1500});}
+         |                                                                         ^
+       8 | async function preferences(page,change){await page.getByRole('button',{name:'Preferences',exact:true}).click();const dialog=page.getByRole('dialog',{name:'Preferences'});await change(dialog);await dialog.getByRole('button',{name:'Close',exact:true}).click();}
+       9 | async function model(page){await open(page);await home(page).getByRole('button',{name:'New project',exact:true}).click();await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Choose a 3D model').setInputFiles(new URL('../fixtures/cube.stl',import.meta.url).pathname);await expect(page.locator('.scene-object-row')).toHaveCount(1);}
+      10 | test('native Home is the startup default; saved page choices apply only at the next startup',async({page})=>{await open(page);await expect(page.getByRole('button',{name:'Home',exact:true})).toHaveAttribute('aria-pressed','true');await preferences(page,async d=>{const select=d.getByLabel('Default page');await expect(select.locator('option')).toHaveText(['Home','Prepare']);await expect(select).toHaveValue('0');await select.selectOption('1');});await expect(home(page)).toBeVisible();await page.reload();await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await expect(home(page)).toHaveCount(0);await preferences(page,d=>d.getByLabel('Default page').selectOption('0'));await expect(page.getByLabel('Layer height',{exact:true})).toBeVisible();await page.reload();await expect(home(page)).toBeVisible();});
+        at open (/private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:7:73)
+        at /private/tmp/orca-implementation/m43-home-stage/tests/e2e/home-workspace.spec.js:15:289
+
+    Error Context: test-results/m43-focused/home-workspace-native-Home-b20bc-dable-and-keyboard-operable/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m43-focused/home-workspace-native-Home-b20bc-dable-and-keyboard-operable/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m43-focused/home-workspace-native-Home-b20bc-dable-and-keyboard-operable/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  7 failed
+    tests/e2e/home-workspace.spec.js:10:1 › native Home is the startup default; saved page choices apply only at the next startup 
+    tests/e2e/home-workspace.spec.js:11:1 › Home navigation preserves edited geometry and Undo without reloading the page 
+    tests/e2e/home-workspace.spec.js:12:1 › Home New project retains the existing discard decision and cancel leaves the old project intact 
+    tests/e2e/home-workspace.spec.js:13:1 › Home Open project invokes the real file chooser and an invalid file preserves existing geometry 
+    tests/e2e/home-workspace.spec.js:14:1 › invalid startup storage falls back to Home and failed writes explain the next launch behavior 
+    tests/e2e/home-workspace.spec.js:15:37 › native Home action assets and compact light layout are readable and keyboard operable 
+    tests/e2e/home-workspace.spec.js:15:37 › native Home action assets and compact dark layout are readable and keyboard operable 

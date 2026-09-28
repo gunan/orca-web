@@ -1,0 +1,199 @@
+✖ tower lost capture discards preview displacement, restores controls, and closes the gesture (9.13ms)
+✖ tower window blur discards preview displacement, restores controls, and closes the gesture (3.214084ms)
+✖ tower hidden page discards preview displacement, restores controls, and closes the gesture (0.51275ms)
+✖ tower preview replacement discards preview displacement, restores controls, and closes the gesture (1.433292ms)
+✖ tower tool switch discards preview displacement, restores controls, and closes the gesture (0.953875ms)
+✖ tower released button discards preview displacement, restores controls, and closes the gesture (1.28625ms)
+✖ foreign pointer events cannot move, replace or commit an active tower gesture (1.1775ms)
+✖ normal release commits once despite synchronous lost capture and retains prior control availability (0.943792ms)
+✔ disposal cancels movement and removes interruption listeners without selecting into an unmounted owner (1.800083ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 1
+ℹ fail 8
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 161.905417
+
+✖ failing tests:
+
+test at tests/unit/prime-tower-interruption.test.js:20:120
+✖ tower lost capture discards preview displacement, restores controls, and closes the gesture (9.13ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m33-tower-interruption-stage/tests/unit/prime-tower-interruption.test.js:28:9)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.start (node:internal/test_runner/test:1003:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/unit/prime-tower-interruption.test.js:20:120
+✖ tower window blur discards preview displacement, restores controls, and closes the gesture (3.214084ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m33-tower-interruption-stage/tests/unit/prime-tower-interruption.test.js:28:9)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/unit/prime-tower-interruption.test.js:20:120
+✖ tower hidden page discards preview displacement, restores controls, and closes the gesture (0.51275ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m33-tower-interruption-stage/tests/unit/prime-tower-interruption.test.js:28:9)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/unit/prime-tower-interruption.test.js:20:120
+✖ tower preview replacement discards preview displacement, restores controls, and closes the gesture (1.433292ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      details: {
+  +     dragging: true
+  -     dragging: false
+      },
+      plate: 'plate-1'
+    }
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m33-tower-interruption-stage/tests/unit/prime-tower-interruption.test.js:28:244)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { plate: 'plate-1', details: { dragging: true } },
+    expected: { plate: 'plate-1', details: { dragging: false } },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/unit/prime-tower-interruption.test.js:20:120
+✖ tower tool switch discards preview displacement, restores controls, and closes the gesture (0.953875ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly deep-equal:
+  + actual - expected
+  
+    {
+      details: {
+  +     dragging: true
+  -     dragging: false
+      },
+      plate: 'plate-1'
+    }
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m33-tower-interruption-stage/tests/unit/prime-tower-interruption.test.js:28:244)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: { plate: 'plate-1', details: { dragging: true } },
+    expected: { plate: 'plate-1', details: { dragging: false } },
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }
+
+test at tests/unit/prime-tower-interruption.test.js:20:120
+✖ tower released button discards preview displacement, restores controls, and closes the gesture (1.28625ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m33-tower-interruption-stage/tests/unit/prime-tower-interruption.test.js:28:9)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/unit/prime-tower-interruption.test.js:31:1
+✖ foreign pointer events cannot move, replace or commit an active tower gesture (1.1775ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  false !== true
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m33-tower-interruption-stage/tests/unit/prime-tower-interruption.test.js:32:246)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
+
+test at tests/unit/prime-tower-interruption.test.js:34:1
+✖ normal release commits once despite synchronous lost capture and retains prior control availability (0.943792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m33-tower-interruption-stage/tests/unit/prime-tower-interruption.test.js:35:285)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

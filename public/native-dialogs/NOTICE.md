@@ -1,0 +1,1 @@
+Warning and information icons copied unmodified from installed OrcaSlicer2.4.2 images/exclamation.svg and images/info.svg. Copyright OrcaSlicer/Bambu Studio contributors; GNU Affero General Public License version3, see LICENSE.txt. manifest.json retains asset source and hash.

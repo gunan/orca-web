@@ -1,0 +1,12 @@
+import {createHash} from 'node:crypto';
+import {realpath,readdir,stat} from 'node:fs/promises';
+import path from 'node:path';
+/** Extend the existing bundled-font IDs with installed fonts in administrator-
+ * configured directories. Requests cannot name a directory, filename or URL. */
+export function createNativeFontResolver({fontService,systemDirectories=process.platform==='darwin'?['/System/Library/Fonts','/System/Library/Fonts/Supplemental','/Library/Fonts']:[]}={}){
+ let records;
+ async function catalog(){if(records)return records;const result=new Map();try{for(const [id,font] of (await fontService.catalog()).records)result.set(id,{...font,source:'Bundled OrcaSlicer font'});}catch(error){if(!systemDirectories.length)throw error;}
+ for(const configured of systemDirectories){let directory;try{directory=await realpath(configured);if(!(await stat(directory)).isDirectory())continue;}catch{continue;}const entries=await readdir(directory,{withFileTypes:true});for(const entry of entries){if(result.size>=1024)throw new Error('Installed font catalog exceeds 1,024 files');if(!entry.isFile()||!/\.(ttf|otf|ttc)$/i.test(entry.name))continue;const filename=await realpath(path.join(directory,entry.name));if(path.dirname(filename)!==directory)continue;const info=await stat(filename);if(info.size<12||info.size>32*1024*1024)continue;const id='native-'+createHash('sha256').update(filename).digest('hex').slice(0,20);result.set(id,{id,name:entry.name.replace(/\.[^.]+$/,'').replaceAll('_',' '),filename,bytes:info.size,extension:path.extname(entry.name),source:'Installed system font',directory});}}
+ if(!result.size)throw new Error('No bundled or configured installed fonts are available');records=result;return records;}
+ return{async list(){return[...(await catalog()).values()].map(({id,name,bytes,extension,source})=>({id,name,bytes,collection:extension.toLowerCase()==='.ttc',source})).sort((a,b)=>a.name.localeCompare(b.name));},async resolve(id){const font=(await catalog()).get(id);if(!font)throw new Error('Native font ID was not found in the trusted installed catalog');const canonical=await realpath(font.filename),info=await stat(canonical);if(canonical!==font.filename||font.directory&&path.dirname(canonical)!==font.directory||!info.isFile()||info.size<12||info.size>32*1024*1024)throw new Error('Native font changed outside its allowed path or size');return{...font,bytes:info.size,mtimeMs:info.mtimeMs};}};
+}

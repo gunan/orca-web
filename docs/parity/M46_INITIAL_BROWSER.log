@@ -1,0 +1,136 @@
+[WebServer] (node:96135) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:96139) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/project-geometry.spec.js:13:1 › geometry Add retains linked parts, painting and layer profiles and strips imported overrides in the saved project (1.0s)
+(node:96153) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/project-geometry.spec.js:14:1 › geometry-only Open retains current material colors and purge settings while replacing objects (1.2s)
+(node:96161) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/e2e/project-geometry.spec.js:15:1 › repeated geometry Add keeps separate model families and preserves exported paint (874ms)
+(node:96167) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  4 tests/e2e/project-geometry.spec.js:16:1 › failed geometry import and cancelled delayed API response retain the project and Undo history (1.1s)
+
+
+  1) tests/e2e/project-geometry.spec.js:13:1 › geometry Add retains linked parts, painting and layer profiles and strips imported overrides in the saved project 
+
+    Error: Variable layer profiles need 3–100000 Z/height pairs
+
+       at ../../shared/variable-layers.js:16
+
+      14 | export function layerProfileMembers(objects,selectedId){const selected=objects.find(o=>o.id===selectedId);if(!selected)throw new Error('Select an object to edit variable layers');return objects.filter(o=>o.plateId===selected.plateId&&groupId(o)===groupId(selected));}
+      15 | export function normalizeLayerHeightProfile(value=[],context){
+    > 16 |  if(!Array.isArray(value)||value.length>MAX_POINTS*2||value.length%2||value.length>0&&value.length<6)throw new Error('Variable layer profiles need 3–100000 Z/height pairs');
+         |                                                                                                            ^
+      17 |  if(!value.length)return[];
+      18 |  const result=[...value];for(let i=0;i<result.length;i+=2){const z=result[i],height=result[i+1];if(typeof z!=='number'||!Number.isFinite(z)||z<0||z>1e7||typeof height!=='number'||!Number.isFinite(height)||height<=0||height>1e7)throw new Error('Variable layer profile coordinates and heights must be finite and positive (Z may be zero)');if(i&&z<result[i-2])throw new Error('Variable layer profile Z coordinates must be in ascending order');}
+      19 |  if(result[0]!==0||result.at(-2)<=0)throw new Error('Variable layer profiles must start at Z=0 and end above zero');
+        at normalizeLayerHeightProfile (/private/tmp/orca-implementation/m46-geometry-import-stage/shared/variable-layers.js:16:108)
+        at exportNative3MF (/private/tmp/orca-implementation/m46-geometry-import-stage/shared/native-project.js:403:19)
+        at file (/private/tmp/orca-implementation/m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:10:93)
+        at /private/tmp/orca-implementation/m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:13:345
+
+    Error Context: test-results/m46-focused/project-geometry-geometry--06aa2-rrides-in-the-saved-project/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m46-focused/project-geometry-geometry--06aa2-rrides-in-the-saved-project/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m46-focused/project-geometry-geometry--06aa2-rrides-in-the-saved-project/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/project-geometry.spec.js:14:1 › geometry-only Open retains current material colors and purge settings while replacing objects 
+
+    Error: Variable layer profiles need 3–100000 Z/height pairs
+
+       at ../../shared/variable-layers.js:16
+
+      14 | export function layerProfileMembers(objects,selectedId){const selected=objects.find(o=>o.id===selectedId);if(!selected)throw new Error('Select an object to edit variable layers');return objects.filter(o=>o.plateId===selected.plateId&&groupId(o)===groupId(selected));}
+      15 | export function normalizeLayerHeightProfile(value=[],context){
+    > 16 |  if(!Array.isArray(value)||value.length>MAX_POINTS*2||value.length%2||value.length>0&&value.length<6)throw new Error('Variable layer profiles need 3–100000 Z/height pairs');
+         |                                                                                                            ^
+      17 |  if(!value.length)return[];
+      18 |  const result=[...value];for(let i=0;i<result.length;i+=2){const z=result[i],height=result[i+1];if(typeof z!=='number'||!Number.isFinite(z)||z<0||z>1e7||typeof height!=='number'||!Number.isFinite(height)||height<=0||height>1e7)throw new Error('Variable layer profile coordinates and heights must be finite and positive (Z may be zero)');if(i&&z<result[i-2])throw new Error('Variable layer profile Z coordinates must be in ascending order');}
+      19 |  if(result[0]!==0||result.at(-2)<=0)throw new Error('Variable layer profiles must start at Z=0 and end above zero');
+        at normalizeLayerHeightProfile (/private/tmp/orca-implementation/m46-geometry-import-stage/shared/variable-layers.js:16:108)
+        at exportNative3MF (/private/tmp/orca-implementation/m46-geometry-import-stage/shared/native-project.js:403:19)
+        at file (/private/tmp/orca-implementation/m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:10:93)
+        at /private/tmp/orca-implementation/m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:14:453
+
+    Error Context: test-results/m46-focused/project-geometry-geometry--1c629-ngs-while-replacing-objects/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m46-focused/project-geometry-geometry--1c629-ngs-while-replacing-objects/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m46-focused/project-geometry-geometry--1c629-ngs-while-replacing-objects/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests/e2e/project-geometry.spec.js:15:1 › repeated geometry Add keeps separate model families and preserves exported paint 
+
+    Error: Variable layer profiles need 3–100000 Z/height pairs
+
+       at ../../shared/variable-layers.js:16
+
+      14 | export function layerProfileMembers(objects,selectedId){const selected=objects.find(o=>o.id===selectedId);if(!selected)throw new Error('Select an object to edit variable layers');return objects.filter(o=>o.plateId===selected.plateId&&groupId(o)===groupId(selected));}
+      15 | export function normalizeLayerHeightProfile(value=[],context){
+    > 16 |  if(!Array.isArray(value)||value.length>MAX_POINTS*2||value.length%2||value.length>0&&value.length<6)throw new Error('Variable layer profiles need 3–100000 Z/height pairs');
+         |                                                                                                            ^
+      17 |  if(!value.length)return[];
+      18 |  const result=[...value];for(let i=0;i<result.length;i+=2){const z=result[i],height=result[i+1];if(typeof z!=='number'||!Number.isFinite(z)||z<0||z>1e7||typeof height!=='number'||!Number.isFinite(height)||height<=0||height>1e7)throw new Error('Variable layer profile coordinates and heights must be finite and positive (Z may be zero)');if(i&&z<result[i-2])throw new Error('Variable layer profile Z coordinates must be in ascending order');}
+      19 |  if(result[0]!==0||result.at(-2)<=0)throw new Error('Variable layer profiles must start at Z=0 and end above zero');
+        at normalizeLayerHeightProfile (/private/tmp/orca-implementation/m46-geometry-import-stage/shared/variable-layers.js:16:108)
+        at exportNative3MF (/private/tmp/orca-implementation/m46-geometry-import-stage/shared/native-project.js:403:19)
+        at file (/private/tmp/orca-implementation/m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:10:93)
+        at /private/tmp/orca-implementation/m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:15:180
+
+    Error Context: test-results/m46-focused/project-geometry-repeated--b7fc0-nd-preserves-exported-paint/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m46-focused/project-geometry-repeated--b7fc0-nd-preserves-exported-paint/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m46-focused/project-geometry-repeated--b7fc0-nd-preserves-exported-paint/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests/e2e/project-geometry.spec.js:16:1 › failed geometry import and cancelled delayed API response retain the project and Undo history 
+
+    Error: Variable layer profiles need 3–100000 Z/height pairs
+
+       at ../../shared/variable-layers.js:16
+
+      14 | export function layerProfileMembers(objects,selectedId){const selected=objects.find(o=>o.id===selectedId);if(!selected)throw new Error('Select an object to edit variable layers');return objects.filter(o=>o.plateId===selected.plateId&&groupId(o)===groupId(selected));}
+      15 | export function normalizeLayerHeightProfile(value=[],context){
+    > 16 |  if(!Array.isArray(value)||value.length>MAX_POINTS*2||value.length%2||value.length>0&&value.length<6)throw new Error('Variable layer profiles need 3–100000 Z/height pairs');
+         |                                                                                                            ^
+      17 |  if(!value.length)return[];
+      18 |  const result=[...value];for(let i=0;i<result.length;i+=2){const z=result[i],height=result[i+1];if(typeof z!=='number'||!Number.isFinite(z)||z<0||z>1e7||typeof height!=='number'||!Number.isFinite(height)||height<=0||height>1e7)throw new Error('Variable layer profile coordinates and heights must be finite and positive (Z may be zero)');if(i&&z<result[i-2])throw new Error('Variable layer profile Z coordinates must be in ascending order');}
+      19 |  if(result[0]!==0||result.at(-2)<=0)throw new Error('Variable layer profiles must start at Z=0 and end above zero');
+        at normalizeLayerHeightProfile (/private/tmp/orca-implementation/m46-geometry-import-stage/shared/variable-layers.js:16:108)
+        at exportNative3MF (/private/tmp/orca-implementation/m46-geometry-import-stage/shared/native-project.js:403:19)
+        at file (/private/tmp/orca-implementation/m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:10:93)
+        at /private/tmp/orca-implementation/m46-geometry-import-stage/tests/e2e/project-geometry.spec.js:16:624
+
+    Error Context: test-results/m46-focused/project-geometry-failed-ge-1b6c3-he-project-and-Undo-history/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m46-focused/project-geometry-failed-ge-1b6c3-he-project-and-Undo-history/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m46-focused/project-geometry-failed-ge-1b6c3-he-project-and-Undo-history/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    tests/e2e/project-geometry.spec.js:13:1 › geometry Add retains linked parts, painting and layer profiles and strips imported overrides in the saved project 
+    tests/e2e/project-geometry.spec.js:14:1 › geometry-only Open retains current material colors and purge settings while replacing objects 
+    tests/e2e/project-geometry.spec.js:15:1 › repeated geometry Add keeps separate model families and preserves exported paint 
+    tests/e2e/project-geometry.spec.js:16:1 › failed geometry import and cancelled delayed API response retain the project and Undo history 

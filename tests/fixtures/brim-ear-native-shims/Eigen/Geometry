@@ -1,0 +1,5 @@
+#pragma once
+namespace Eigen { constexpr int DontAlign=0;
+template<class T,int N,int M,int O=0> struct Matrix { T v[N]{}; Matrix()=default;Matrix(T x,T y):v{x,y}{} T&x(){return v[0];}T&y(){return v[1];}T x()const{return v[0];}T y()const{return v[1];} };
+template<class T,int N,int M,int O> bool operator==(const Matrix<T,N,M,O>&a,const Matrix<T,N,M,O>&b){return a.x()==b.x()&&a.y()==b.y();}
+}

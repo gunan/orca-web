@@ -1,0 +1,353 @@
+{
+  "provenance": {
+    "revision": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+    "source": "src/slic3r/GUI/GUI_ObjectList.cpp",
+    "sourceSha256": "026e51a48aa0d6c51d9f8818da699f622b9e438ac9c239be0e2d619de582389d",
+    "methodSha256": "9cdd40bd487f8f56bd8b616b1d5a1762cafa13bfebb662258ada1a434a2514e5"
+  },
+  "cases": [
+    {
+      "name": "object-replace-preserves-extruder",
+      "clipboard": {
+        "wall_loops": "7",
+        "extruder": "1"
+      },
+      "targets": [
+        {
+          "kind": "object",
+          "settings": {
+            "wall_loops": "3",
+            "sparse_infill_density": "20%",
+            "extruder": "2"
+          },
+          "parentSettings": {}
+        }
+      ],
+      "globalSettings": {},
+      "expected": [
+        {
+          "extruder": "2",
+          "wall_loops": "7"
+        }
+      ]
+    },
+    {
+      "name": "empty-object-cache-clears-overrides",
+      "clipboard": {},
+      "targets": [
+        {
+          "kind": "object",
+          "settings": {
+            "wall_loops": "3",
+            "extruder": "2"
+          },
+          "parentSettings": {}
+        }
+      ],
+      "globalSettings": {},
+      "expected": [
+        {
+          "extruder": "2"
+        }
+      ]
+    },
+    {
+      "name": "copied-extruder-not-invented",
+      "clipboard": {
+        "wall_loops": "7",
+        "extruder": "2"
+      },
+      "targets": [
+        {
+          "kind": "object",
+          "settings": {
+            "sparse_infill_density": "20%"
+          },
+          "parentSettings": {}
+        }
+      ],
+      "globalSettings": {},
+      "expected": [
+        {
+          "wall_loops": "7"
+        }
+      ]
+    },
+    {
+      "name": "matching-parent-values-stay-inherited",
+      "clipboard": {
+        "wall_loops": "4",
+        "sparse_infill_density": "30%"
+      },
+      "targets": [
+        {
+          "kind": "part",
+          "settings": {
+            "wall_loops": "8"
+          },
+          "parentSettings": {
+            "wall_loops": "4"
+          }
+        }
+      ],
+      "globalSettings": {
+        "wall_loops": "2",
+        "sparse_infill_density": "15%"
+      },
+      "expected": [
+        {
+          "sparse_infill_density": "30%"
+        }
+      ]
+    },
+    {
+      "name": "native-equality-ignores-lexical-float-format",
+      "clipboard": {
+        "sparse_infill_density": "30.00%",
+        "outer_wall_speed": "50.00"
+      },
+      "targets": [
+        {
+          "kind": "part",
+          "settings": {},
+          "parentSettings": {
+            "outer_wall_speed": "50.0"
+          }
+        }
+      ],
+      "globalSettings": {
+        "sparse_infill_density": "30%"
+      },
+      "expected": [
+        {}
+      ]
+    },
+    {
+      "name": "part-compensates-unmatched-parent-object-options",
+      "clipboard": {
+        "wall_loops": "4",
+        "layer_height": "0.16"
+      },
+      "targets": [
+        {
+          "kind": "part",
+          "settings": {
+            "extruder": "2"
+          },
+          "parentSettings": {
+            "layer_height": "0.12",
+            "wall_loops": "3"
+          }
+        }
+      ],
+      "globalSettings": {
+        "layer_height": "0.2",
+        "wall_loops": "2"
+      },
+      "expected": [
+        {
+          "extruder": "2",
+          "layer_height": "0.2",
+          "wall_loops": "4"
+        }
+      ]
+    },
+    {
+      "name": "part-copies-region-only-despite-object-cache",
+      "clipboard": {
+        "wall_loops": "4",
+        "layer_height": "0.16",
+        "support_material_style": "snug"
+      },
+      "targets": [
+        {
+          "kind": "part",
+          "settings": {},
+          "parentSettings": {}
+        }
+      ],
+      "globalSettings": {
+        "wall_loops": "2"
+      },
+      "expected": [
+        {
+          "wall_loops": "4"
+        }
+      ]
+    },
+    {
+      "name": "multiple-parts-share-first-destination-comparison",
+      "clipboard": {
+        "wall_loops": "4",
+        "sparse_infill_density": "30%"
+      },
+      "targets": [
+        {
+          "kind": "part",
+          "settings": {},
+          "parentSettings": {
+            "wall_loops": "4"
+          }
+        },
+        {
+          "kind": "part",
+          "settings": {
+            "extruder": "2"
+          },
+          "parentSettings": {
+            "wall_loops": "7"
+          }
+        }
+      ],
+      "globalSettings": {
+        "wall_loops": "2",
+        "sparse_infill_density": "15%"
+      },
+      "expected": [
+        {
+          "sparse_infill_density": "30%"
+        },
+        {
+          "extruder": "2",
+          "sparse_infill_density": "30%",
+          "wall_loops": "4"
+        }
+      ]
+    },
+    {
+      "name": "multiple-part-parent-compensation-is-reused",
+      "clipboard": {
+        "wall_loops": "4",
+        "outer_wall_speed": "70"
+      },
+      "targets": [
+        {
+          "kind": "part",
+          "settings": {},
+          "parentSettings": {
+            "wall_loops": "3",
+            "layer_height": ".12"
+          }
+        },
+        {
+          "kind": "part",
+          "settings": {},
+          "parentSettings": {
+            "outer_wall_speed": "40"
+          }
+        }
+      ],
+      "globalSettings": {
+        "wall_loops": "2",
+        "layer_height": ".2",
+        "outer_wall_speed": "60"
+      },
+      "expected": [
+        {
+          "layer_height": "0.2",
+          "outer_wall_speed": "70",
+          "wall_loops": "4"
+        },
+        {
+          "layer_height": "0.2",
+          "outer_wall_speed": "70",
+          "wall_loops": "4"
+        }
+      ]
+    },
+    {
+      "name": "float-and-percentage-values-remain-distinct",
+      "clipboard": {
+        "sparse_infill_anchor": "30%"
+      },
+      "targets": [
+        {
+          "kind": "part",
+          "settings": {},
+          "parentSettings": {
+            "sparse_infill_anchor": "30"
+          }
+        }
+      ],
+      "globalSettings": {
+        "sparse_infill_anchor": "400%"
+      },
+      "expected": [
+        {
+          "infill_anchor": "30%"
+        }
+      ]
+    },
+    {
+      "name": "range-paste-retains-its-extruder",
+      "clipboard": {
+        "layer_height": ".1",
+        "wall_loops": "5",
+        "extruder": "1"
+      },
+      "targets": [
+        {
+          "kind": "range",
+          "settings": {
+            "layer_height": ".3",
+            "extruder": "2"
+          },
+          "parentSettings": {
+            "wall_loops": "3"
+          }
+        }
+      ],
+      "globalSettings": {
+        "layer_height": ".2",
+        "wall_loops": "2"
+      },
+      "expected": [
+        {
+          "extruder": "2",
+          "wall_loops": "5"
+        }
+      ]
+    },
+    {
+      "name": "object-array-preserves-independent-destination-filaments",
+      "clipboard": {
+        "wall_loops": "5"
+      },
+      "targets": [
+        {
+          "kind": "object",
+          "settings": {
+            "extruder": "2"
+          },
+          "parentSettings": {}
+        },
+        {
+          "kind": "object",
+          "settings": {
+            "extruder": "0"
+          },
+          "parentSettings": {}
+        },
+        {
+          "kind": "object",
+          "settings": {},
+          "parentSettings": {}
+        }
+      ],
+      "globalSettings": {},
+      "expected": [
+        {
+          "extruder": "2",
+          "wall_loops": "5"
+        },
+        {
+          "extruder": "0",
+          "wall_loops": "5"
+        },
+        {
+          "wall_loops": "5"
+        }
+      ]
+    }
+  ]
+}

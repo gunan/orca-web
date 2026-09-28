@@ -1,0 +1,44 @@
+{
+  "nativeVersion": "2.4.2",
+  "revision": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "sources": {
+    "src/libslic3r/Model.cpp": "abc47399040b295f1eed8ad53f7ddd7b45eb324616cd8e57ea5d188b7d9ea894",
+    "src/libslic3r/Model.hpp": "c69ed9329d69db4642142844b6108b073517bfcfd37ed1e7e8bfdad798d9eee7",
+    "src/libslic3r/TriangleMesh.cpp": "539fe11223b8479a8da9a25814f66b1d97f524a04fdead11611952d2f3a925f9",
+    "src/libslic3r/ObjectID.hpp": "ba6c5419869d7161f45609d43900b98611cb314d00cbc3dbfe93b48dc18e8831",
+    "src/slic3r/GUI/Plater.cpp": "dbeee2a69d8955dd8e42efa8943a553b3c231232ce7f0cf0496575aed78daf3a",
+    "src/slic3r/GUI/MsgDialog.cpp": "3beedcfe6e7be14163cea31aae0e7308668f7125d960b3bf7394ab8f9f6f2dba"
+  },
+  "observations": [
+    {
+      "source": "src/slic3r/GUI/Plater.cpp:6685",
+      "behavior": "Geometry loads remove zero-volume models before small-unit detection and multipart detection; project settings loads skip this path. load_old_project is initialized false and has no assignments in this pinned source."
+    },
+    {
+      "source": "src/libslic3r/Model.cpp:2448",
+      "behavior": "Model statistics use a float volume accumulator and normal-part mesh volumes times the absolute determinant of each volume matrix and the first instance matrix. Later instances do not multiply model volume."
+    },
+    {
+      "source": "src/libslic3r/Model.cpp:896",
+      "behavior": "Original removed_objects_with_zero_volume removes ModelObjects whose volume is strictly below1e-10, preserving surviving order."
+    },
+    {
+      "source": "src/libslic3r/Model.cpp:830",
+      "behavior": "Native unit detection uses8 mm3 for inches and0.008 mm3 for meters; meters wins. Imperial detection checks all cut relatives with matching ID/checksum/connector count."
+    },
+    {
+      "source": "src/slic3r/GUI/MsgDialog.cpp:214",
+      "behavior": "Native information dialog selects info.svg at64px; title The volume of the object is zero, message Objects with zero volume removed, one OK button."
+    }
+  ],
+  "implementationScope": "Structured Orca/Prusa3MF geometry loads call the pinned original Model/TriangleMesh worker, acknowledge removal before committing, and retain the current document on all-empty/cancel/failure. Unit classification is available to the next implementation step, but unit-conversion UI is not yet wired.",
+  "remaining": [
+    "Generic3MF/STL/OBJ/AMF/STEP and mixed-file filtering routes",
+    "Native unit conversion prompts and explicit imperial import",
+    "Oversize fit decisions",
+    "Native archive repair/orientation preprocessing and all nonmanifold inputs",
+    "Full native GUI comparison and exact platform dialog chrome",
+    "The web API currently limits inspection to256 model families and500000 vertices/triangles within64MiB; native desktop limits differ",
+    "All-empty geometry Open preserves the existing web document; full native reset timing remains to be compared"
+  ]
+}

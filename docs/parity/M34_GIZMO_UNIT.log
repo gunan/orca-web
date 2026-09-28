@@ -1,0 +1,36 @@
+✔ tower gizmo reference is bound to original source and native movement restrictions (8.825458ms)
+✔ native move projection: axis-0-delta--15.75-snap-False (0.295042ms)
+✔ native move projection: axis-0-delta--15.75-snap-True (0.051834ms)
+✔ native move projection: axis-0-delta--0.5-snap-False (0.047084ms)
+✔ native move projection: axis-0-delta--0.5-snap-True (0.043041ms)
+✔ native move projection: axis-0-delta-0.5-snap-False (0.109667ms)
+✔ native move projection: axis-0-delta-0.5-snap-True (0.118583ms)
+✔ native move projection: axis-0-delta-15.75-snap-False (0.069458ms)
+✔ native move projection: axis-0-delta-15.75-snap-True (0.097584ms)
+✔ native move projection: perspective-axis-0-delta--40 (0.122375ms)
+✔ native move projection: perspective-axis-0-delta--0.75 (0.049459ms)
+✔ native move projection: perspective-axis-0-delta-30 (0.044792ms)
+✔ native move projection: axis-1-delta--15.75-snap-False (0.025542ms)
+✔ native move projection: axis-1-delta--15.75-snap-True (0.02025ms)
+✔ native move projection: axis-1-delta--0.5-snap-False (0.018166ms)
+✔ native move projection: axis-1-delta--0.5-snap-True (0.018084ms)
+✔ native move projection: axis-1-delta-0.5-snap-False (0.024333ms)
+✔ native move projection: axis-1-delta-0.5-snap-True (0.017834ms)
+✔ native move projection: axis-1-delta-15.75-snap-False (0.018458ms)
+✔ native move projection: axis-1-delta-15.75-snap-True (0.017458ms)
+✔ native move projection: perspective-axis-1-delta--40 (0.01775ms)
+✔ native move projection: perspective-axis-1-delta--0.75 (0.02125ms)
+✔ native move projection: perspective-axis-1-delta-30 (0.018417ms)
+✔ native move projection: zero axis (0.015792ms)
+✔ native move projection: parallel axis ray (0.023125ms)
+✔ native move projection: remote fractional origin (0.019542ms)
+✔ native move projection: configured snap step (0.020833ms)
+✔ invalid or degenerate camera rays are rejected (0.11925ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 126.095667

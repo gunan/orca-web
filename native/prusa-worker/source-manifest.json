@@ -1,0 +1,15 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "sources": {
+    "src/libslic3r/Model.cpp": "abc47399040b295f1eed8ad53f7ddd7b45eb324616cd8e57ea5d188b7d9ea894",
+    "src/libslic3r/Model.hpp": "c69ed9329d69db4642142844b6108b073517bfcfd37ed1e7e8bfdad798d9eee7",
+    "src/libslic3r/Format/3mf.cpp": "e1a5838a3d57b3c4f577b206685bd31acd7fbe165b719316ddd2f409fa1a6289",
+    "src/libslic3r/Format/bbs_3mf.cpp": "5f5e14c8e027bd66703e8f62570ffddb6a29a9e3a5c7e979ef3f872db16eb64c",
+    "src/libslic3r/GCode/Thumbnails.cpp": "b6ee3ef7f5f06bceaea881ab4b5ce16bc6a53fe5597c8289371b072bd51aadcd",
+    "src/libslic3r/Format/STEP.hpp": "c5b56ad5cd64c0d00829505c064c7533ae48cc3e895f31a06977195d5de52adb",
+    "src/slic3r/GUI/Plater.cpp": "dbeee2a69d8955dd8e42efa8943a553b3c231232ce7f0cf0496575aed78daf3a",
+    "src/libslic3r/PresetBundle.cpp": "e02e8ac7b0d5c81a8453cab664d1f2009b22ee4559626d1f1462185bbace1378"
+  },
+  "generatedModelSha256": "63103dac469ce2ec032a357a7b7a30a6704badaca15b8592e1416130c6cdbbbb",
+  "generatedThumbnailSha256": "00544abd13cfb9dfe0b0094ee5e09ba5be498f12d784359f9ae308ece7052223"
+}

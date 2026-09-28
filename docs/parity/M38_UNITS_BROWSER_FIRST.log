@@ -1,0 +1,126 @@
+[WebServer] (node:44235) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 6 tests using 1 worker
+
+(node:44240) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/manipulation-units.spec.js:8:1 › Prepare positions and dimensions switch units without changing geometry, settings or Undo (6.6s)
+(node:44262) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/manipulation-units.spec.js:17:1 › inch position edits commit millimeters, leave angle and scale units unchanged, and survive save/reopen and Undo (7.4s)
+(node:44284) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  3 tests/e2e/manipulation-units.spec.js:27:1 › inch edits of a joint selection preserve millimeter spacing and native-sized saved geometry (1.9s)
+(node:44301) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  4 tests/e2e/native-display-preferences.spec.js:4:1 › native Units labels apply immediately, persist after reload, and leave project settings intact (1.7s)
+  ✓  5 tests/e2e/native-display-preferences.spec.js:13:1 › invalid stored Units fall back to metric and storage failures retain a visible session-only change (1.0s)
+  ✓  6 tests/e2e/native-display-preferences.spec.js:17:1 › Preferences shortcut respects focused text inputs and an already open dialog (971ms)
+
+
+  1) tests/e2e/manipulation-units.spec.js:8:1 › Prepare positions and dimensions switch units without changing geometry, settings or Undo 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  getByLabel('position X', { exact: true })
+    Expected: "0"
+    Received: "115"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('position X', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('position X', { exact: true })
+        14 × locator resolved to <input step=".1" value="115" type="number" aria-label="position X"/>
+           - unexpected value "115"
+
+
+      12 |  const imperial=await save(page);expect(imperial).toEqual(metric);
+      13 |  await units(page,'0');await expect(page.getByLabel('position X',{exact:true})).toHaveValue('25.4');
+    > 14 |  await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).toHaveValue('0');
+         |                                                                                                                           ^
+      15 | });
+      16 |
+      17 | test('inch position edits commit millimeters, leave angle and scale units unchanged, and survive save/reopen and Undo',async({page})=>{
+        at /private/tmp/orca-implementation/m38-transform-units-stage/tests/e2e/manipulation-units.spec.js:14:123
+
+    Error Context: test-results/m38-focused/manipulation-units-Prepare-2dbc1-g-geometry-settings-or-Undo/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m38-focused/manipulation-units-Prepare-2dbc1-g-geometry-settings-or-Undo/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m38-focused/manipulation-units-Prepare-2dbc1-g-geometry-settings-or-Undo/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/manipulation-units.spec.js:17:1 › inch position edits commit millimeters, leave angle and scale units unchanged, and survive save/reopen and Undo 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  getByLabel('position Z', { exact: true })
+    Expected: "0"
+    Received: "0.394"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('position Z', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('position Z', { exact: true })
+        14 × locator resolved to <input step=".01" type="number" value="0.394" aria-label="position Z"/>
+           - unexpected value "0.394"
+
+
+      21 |  await page.getByLabel('Open Orca Web project').setInputFiles({name:'Inches.json',mimeType:'application/json',buffer:Buffer.from(JSON.stringify(saved))});await expect(page.getByRole('dialog',{name:'Importing project'})).toHaveCount(0);
+      22 |  await expect(page.getByLabel('position X',{exact:true})).toHaveValue('1.25');await page.getByLabel('position Z',{exact:true}).fill('0.25');
+    > 23 |  await page.getByRole('button',{name:'Drop to bed',exact:true}).click();await expect(page.getByLabel('position Z',{exact:true})).toHaveValue('0');
+         |                                                                                                                                  ^
+      24 |  await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position Z',{exact:true})).toHaveValue('0.25');expect((await save(page)).objects[0].position[2]).toBe(6.35);
+      25 | });
+      26 |
+        at /private/tmp/orca-implementation/m38-transform-units-stage/tests/e2e/manipulation-units.spec.js:23:130
+
+    Error Context: test-results/m38-focused/manipulation-units-inch-po-94ed7-urvive-save-reopen-and-Undo/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m38-focused/manipulation-units-inch-po-94ed7-urvive-save-reopen-and-Undo/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m38-focused/manipulation-units-inch-po-94ed7-urvive-save-reopen-and-Undo/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests/e2e/manipulation-units.spec.js:27:1 › inch edits of a joint selection preserve millimeter spacing and native-sized saved geometry 
+
+    Error: expect(received).toBeCloseTo(expected, precision)
+
+    Expected: 25.4
+    Received: 25.399993896484375
+
+    Expected precision:    8
+    Expected difference: < 0.000000005
+    Received difference:   0.0000061035156235789145
+
+      29 |  const before=await save(page),centers=before.objects.map(o=>meshBounds(o).center);
+      30 |  await units(page,'1');await page.getByLabel('position X',{exact:true}).fill('1');const after=await save(page);
+    > 31 |  for(let i=0;i<after.objects.length;i++)expect(meshBounds(after.objects[i]).center[0]-centers[i][0]).toBeCloseTo(25.4,8);
+         |                                                                                                      ^
+      32 |  await page.getByRole('button',{name:'Undo',exact:true}).click();expect((await save(page)).objects).toEqual(before.objects);
+      33 | });
+      34 |
+        at /private/tmp/orca-implementation/m38-transform-units-stage/tests/e2e/manipulation-units.spec.js:31:102
+
+    Error Context: test-results/m38-focused/manipulation-units-inch-ed-3e7c2-native-sized-saved-geometry/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m38-focused/manipulation-units-inch-ed-3e7c2-native-sized-saved-geometry/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m38-focused/manipulation-units-inch-ed-3e7c2-native-sized-saved-geometry/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3 failed
+    tests/e2e/manipulation-units.spec.js:8:1 › Prepare positions and dimensions switch units without changing geometry, settings or Undo 
+    tests/e2e/manipulation-units.spec.js:17:1 › inch position edits commit millimeters, leave angle and scale units unchanged, and survive save/reopen and Undo 
+    tests/e2e/manipulation-units.spec.js:27:1 › inch edits of a joint selection preserve millimeter spacing and native-sized saved geometry 
+  3 passed (22.8s)

@@ -1,0 +1,44 @@
+[WebServer] (node:40907) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:40911) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/import-transaction.spec.js:50:1 › failed catalog restoration preserves the previous catalog, project and dirty state (2.7s)
+
+
+  1) tests/e2e/import-transaction.spec.js:50:1 › failed catalog restoration preserves the previous catalog, project and dirty state 
+
+    Error: expect(received).toEqual(expected) // deep equality
+
+    - Expected  - 2
+    + Received  + 1
+
+      Array [
+    -   "Test Printer A",
+    -   "Test Printer B",
+    +   "Unavailable preset — select a replacement",
+      ]
+
+      56 |   await page.getByLabel('Open Orca Web project').setInputFiles(await projectFile('Replacement'));
+      57 |   await page.getByRole('button',{name:'Discard changes',exact:true}).click();await expect(page.getByRole('alert')).toContainText('Catalog deliberately unavailable');
+    > 58 |   await expect(progress(page)).toHaveCount(0);expect(await page.getByLabel('Printer',{exact:true}).locator('option').allTextContents()).toEqual(printers);
+         |                                                                                                                                         ^
+      59 |   await expect(page.getByLabel('Object name',{exact:true})).toHaveValue('Original');
+      60 |   await expect(page.getByLabel('position X',{exact:true})).toHaveValue('5');await expect(page.getByRole('button',{name:'Slice model',exact:true})).toBeEnabled();
+      61 |   await page.getByRole('button',{name:'File',exact:true}).click();await page.getByRole('menuitem',{name:'New project',exact:true}).click();
+        at /private/tmp/orca-implementation/m37-import-transaction-stage/tests/e2e/import-transaction.spec.js:58:137
+
+    Error Context: test-results/m37-focused/import-transaction-failed--b9716-log-project-and-dirty-state/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m37-focused/import-transaction-failed--b9716-log-project-and-dirty-state/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m37-focused/import-transaction-failed--b9716-log-project-and-dirty-state/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/e2e/import-transaction.spec.js:50:1 › failed catalog restoration preserves the previous catalog, project and dirty state 

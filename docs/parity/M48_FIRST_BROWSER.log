@@ -1,0 +1,87 @@
+[WebServer] (node:18049) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:18053) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/zero-volume-import.spec.js:14:1 › zero-volume notice precedes insertion, uses native information icon, and surviving geometry is one Undo action (1.7s)
+  ✘  2 tests/e2e/zero-volume-import.spec.js:15:1 › all-empty geometry Open reports the removal and retains the previous document and edit history (6.4s)
+(node:18081) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 tests/e2e/zero-volume-import.spec.js:16:1 › dismissal acknowledges the information and imports only surviving models (1.1s)
+  ✘  4 tests/e2e/zero-volume-import.spec.js:17:1 › failed or cancelled inspection leaves existing geometry and Undo intact, including a late response (6.4s)
+
+
+  1) tests/e2e/zero-volume-import.spec.js:15:1 › all-empty geometry Open reports the removal and retains the previous document and edit history 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  getByLabel('position X', { exact: true })
+    Expected: "0"
+    Received: "115"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('position X', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('position X', { exact: true })
+        14 × locator resolved to <input step=".1" value="115" type="number" aria-label="position X"/>
+           - unexpected value "115"
+
+
+      13 | async function replay(page,{allEmpty=false,fail=false,hold}={}){await page.route('**/api/geometry/inspect-import',async route=>{const prepared=prepareNativeImportInspection(route.request().postDataJSON().project);if(hold)await hold;const volumes=prepared.request.objects.map((o,i)=>allEmpty||i?0:8000);const json={format:'orca-native-import-inspection',version:1,sourceRevision:IMPORT_INSPECTION_REVISION,objects:prepared.request.objects.map((o,i)=>({id:o.id,volume:volumes[i]})),retainedIds:prepared.request.objects.filter((o,i)=>volumes[i]>0).map(o=>o.id),removedCount:volumes.filter(v=>v===0).length,unitSuggestion:'none'};await route.fulfill({status:fail?503:200,json:fail?{error:'Native inspection unavailable'}:json});});}
+      14 | test('zero-volume notice precedes insertion, uses native information icon, and surviving geometry is one Undo action',async({page},info)=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);await replay(page);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toContainText('Objects with zero volume removed');await expect(page.getByRole('dialog')).toHaveCount(1);await expect(dialog(page).getByRole('img',{name:'Information'})).toHaveAttribute('src','/native-dialogs/info.svg');await expect(dialog(page).getByRole('button',{name:'OK',exact:true})).toBeFocused();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.screenshot({path:info.outputPath('zero-volume-notice.png')});await dialog(page).getByRole('button',{name:'OK',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);const p=await save(page);expect(p.objects).toHaveLength(2);expect(p.objects.some(o=>o.name==='Flat sheet')).toBe(false);await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.getByRole('button',{name:'Redo',exact:true}).click();await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(2);});
+    > 15 | test('all-empty geometry Open reports the removal and retains the previous document and edit history',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('position X',{exact:true}).fill('5');const before=await save(page);await replay(page,{allEmpty:true});await page.getByLabel('Open Orca Web project').setInputFiles(file(true));await dialog(page).getByRole('button',{name:'OK',exact:true}).click();await expect(page.getByRole('alert')).toContainText('no nonzero-volume objects');const after=await save(page);expect(after.objects).toEqual(before.objects);await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).toHaveValue('0');});
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^
+      16 | test('dismissal acknowledges the information and imports only surviving models',async({page})=>{await start(page);await replay(page);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toBeVisible();await page.keyboard.press('Escape');await expect(dialog(page)).toHaveCount(0);await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);expect((await save(page)).objects).toHaveLength(1);});
+      17 | test('failed or cancelled inspection leaves existing geometry and Undo intact, including a late response',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('position X',{exact:true}).fill('7');await replay(page,{fail:true});await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(page.getByRole('alert')).toContainText('Native inspection unavailable');await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.unrouteAll({behavior:'wait'});let release;const hold=new Promise(r=>release=r);await replay(page,{hold});const arrived=page.waitForRequest('**/api/geometry/inspect-import');await page.getByLabel('Choose a 3D model').setInputFiles(file());await arrived;await page.getByRole('button',{name:'Cancel import',exact:true}).click();release();await page.unrouteAll({behavior:'wait'});await expect(dialog(page)).toHaveCount(0);await expect(page.getByLabel('position X',{exact:true})).toHaveValue('7');await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).toHaveValue('0');});
+      18 |
+        at /private/tmp/orca-implementation/m48-import-preflight-stage/tests/e2e/zero-volume-import.spec.js:15:744
+
+    Error Context: test-results/m48-focused/zero-volume-import-all-emp-5056c-s-document-and-edit-history/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m48-focused/zero-volume-import-all-emp-5056c-s-document-and-edit-history/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m48-focused/zero-volume-import-all-emp-5056c-s-document-and-edit-history/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/zero-volume-import.spec.js:17:1 › failed or cancelled inspection leaves existing geometry and Undo intact, including a late response 
+
+    Error: expect(locator).toHaveValue(expected) failed
+
+    Locator:  getByLabel('position X', { exact: true })
+    Expected: "0"
+    Received: "115"
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveValue" getByLabel('position X', { exact: true }) with timeout 5000ms
+      - waiting for getByLabel('position X', { exact: true })
+        14 × locator resolved to <input step=".1" value="115" type="number" aria-label="position X"/>
+           - unexpected value "115"
+
+
+      15 | test('all-empty geometry Open reports the removal and retains the previous document and edit history',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('position X',{exact:true}).fill('5');const before=await save(page);await replay(page,{allEmpty:true});await page.getByLabel('Open Orca Web project').setInputFiles(file(true));await dialog(page).getByRole('button',{name:'OK',exact:true}).click();await expect(page.getByRole('alert')).toContainText('no nonzero-volume objects');const after=await save(page);expect(after.objects).toEqual(before.objects);await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).toHaveValue('0');});
+      16 | test('dismissal acknowledges the information and imports only surviving models',async({page})=>{await start(page);await replay(page);await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(dialog(page)).toBeVisible();await page.keyboard.press('Escape');await expect(dialog(page)).toHaveCount(0);await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);expect((await save(page)).objects).toHaveLength(1);});
+    > 17 | test('failed or cancelled inspection leaves existing geometry and Undo intact, including a late response',async({page})=>{await start(page);await page.getByLabel('Choose a 3D model').setInputFiles(cube);await page.getByLabel('position X',{exact:true}).fill('7');await replay(page,{fail:true});await page.getByLabel('Choose a 3D model').setInputFiles(file());await expect(page.getByRole('alert')).toContainText('Native inspection unavailable');await expect(page.locator('[data-tree-kind="object"]')).toHaveCount(1);await page.unrouteAll({behavior:'wait'});let release;const hold=new Promise(r=>release=r);await replay(page,{hold});const arrived=page.waitForRequest('**/api/geometry/inspect-import');await page.getByLabel('Choose a 3D model').setInputFiles(file());await arrived;await page.getByRole('button',{name:'Cancel import',exact:true}).click();release();await page.unrouteAll({behavior:'wait'});await expect(dialog(page)).toHaveCount(0);await expect(page.getByLabel('position X',{exact:true})).toHaveValue('7');await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.getByLabel('position X',{exact:true})).toHaveValue('0');});
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   ^
+      18 |
+        at /private/tmp/orca-implementation/m48-import-preflight-stage/tests/e2e/zero-volume-import.spec.js:17:1139
+
+    Error Context: test-results/m48-focused/zero-volume-import-failed--a5a4b-t-including-a-late-response/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m48-focused/zero-volume-import-failed--a5a4b-t-including-a-late-response/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m48-focused/zero-volume-import-failed--a5a4b-t-including-a-late-response/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests/e2e/zero-volume-import.spec.js:15:1 › all-empty geometry Open reports the removal and retains the previous document and edit history 
+    tests/e2e/zero-volume-import.spec.js:17:1 › failed or cancelled inspection leaves existing geometry and Undo intact, including a late response 
+  2 passed (17.3s)

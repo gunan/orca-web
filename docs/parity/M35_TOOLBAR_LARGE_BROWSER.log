@@ -1,0 +1,14 @@
+[WebServer] (node:30052) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 5 tests using 1 worker
+
+(node:30056) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/native-layout.spec.js:2:1 › Prepare presents one material selector, native icon controls and a settings panel that uses available height (1.3s)
+  ✓  2 tests/e2e/native-toolbar-states.spec.js:19:62 › native Move states remain visible and match source pixels in light at 1x (3.7s)
+  ✓  3 tests/e2e/native-toolbar-states.spec.js:19:62 › native Move states remain visible and match source pixels in light at 2x (25.8s)
+  ✓  4 tests/e2e/native-toolbar-states.spec.js:19:62 › native Move states remain visible and match source pixels in dark at 1x (4.0s)
+  ✓  5 tests/e2e/native-toolbar-states.spec.js:19:62 › native Move states remain visible and match source pixels in dark at 2x (26.7s)
+
+  5 passed (1.0m)

@@ -1,0 +1,16 @@
+
+> orca-web@0.1.0 test:e2e:native
+> playwright test --config playwright.native.config.js tests/native-e2e/native-fill-tower.spec.js tests/native-e2e/prime-tower-preview.spec.js
+
+[WebServer] (node:87102) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 3 tests using 1 worker
+
+(node:87105) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/native-e2e/native-fill-tower.spec.js:6:28 › real two-material Fill retains native tower width 20, Undo and export; native slicing reports its actual conflict (7.0s)
+  ✓  2 tests/native-e2e/native-fill-tower.spec.js:6:28 › real two-material Fill retains native tower width 60, Undo and export; native slicing completes (5.7s)
+  ✓  3 tests/native-e2e/prime-tower-preview.spec.js:4:1 › installed-native project resolves a two-material tower, updates native placement and removes its bands when disabled (4.0s)
+
+  3 passed (22.1s)

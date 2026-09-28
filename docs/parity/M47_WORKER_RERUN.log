@@ -1,0 +1,11 @@
+✔ arrangement transport validates identity/results and always removes isolated request files (178.878292ms)
+✔ arrangement input/output/console bounds and whole-operation deadlines reject stalled helpers (385.816291ms)
+✔ active/queued cancellation, overflow and shutdown do not retain geometry or processes (103.091708ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 774.51275

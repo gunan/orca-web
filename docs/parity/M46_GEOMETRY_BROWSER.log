@@ -1,0 +1,13 @@
+[WebServer] (node:3097) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:3101) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/project-geometry.spec.js:13:1 › geometry Add retains linked parts, painting and layer profiles and strips imported overrides in the saved project (1.5s)
+  ✓  2 tests/e2e/project-geometry.spec.js:14:1 › geometry-only Open retains current material colors and purge settings while replacing objects (2.2s)
+  ✓  3 tests/e2e/project-geometry.spec.js:15:1 › repeated geometry Add keeps separate model families and preserves exported paint (1.2s)
+  ✓  4 tests/e2e/project-geometry.spec.js:16:1 › failed geometry import and cancelled delayed API response retain the project and Undo history (1.3s)
+
+  4 passed (7.2s)

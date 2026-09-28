@@ -1,0 +1,28 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {mkdtemp,mkdir,readFile,writeFile,rm} from 'node:fs/promises';
+import {tmpdir} from 'node:os';
+import path from 'node:path';
+import {createHash} from 'node:crypto';
+import {inspectSlicer,runSlicer} from '../../server/slicer.js';
+import {createNativeProjectService} from '../../server/native-projects.js';
+import {createPresetCatalog} from '../../server/presets.js';
+const binary=process.env.ORCA_SLICER_BIN||'/Applications/OrcaSlicer.app/Contents/MacOS/OrcaSlicer';
+const moves=code=>code.split(/\r?\n/).map(line=>line.split(';',1)[0].trim()).filter(line=>/^G[0123]\b/.test(line));
+test('fresh GUI-exported 2.4.2 project retains every GUI motion through web import and validated export',{timeout:120000},async t=>{
+ const engine=await inspectSlicer(binary);assert.equal(engine.available,true,engine.error);assert.match(engine.version,/^OrcaSlicer-2\.4\.2\b/);
+ const bytes=await readFile(new URL('../fixtures/native-gui-cube-2.4.2.3mf',import.meta.url));
+ const reference=await readFile(new URL('../fixtures/native-gui-cube-2.4.2.gcode',import.meta.url),'utf8');
+ assert.equal(createHash('sha256').update(reference).digest('hex'),'807589cc0cb94d56e69ebe0ff7fff3a132a071cd1370cda39d29755be160062b');
+ assert.equal(createHash('sha256').update(bytes).digest('hex'),'6e0a3018b7d021917d16572171210d630d2ba166b8ee4a6855160adc9a987c9a');
+ const service=createNativeProjectService({catalog:await createPresetCatalog({binary})}),imported=await service.importArchive(bytes);
+ assert.equal(imported.project.objects.length,1);assert.equal(imported.project.nativeSettings.layer_height,'0.16');
+ const prepared=await service.prepare({project:imported.project,useEmbeddedSettings:true});
+ const root=await mkdtemp(path.join(tmpdir(),'orca-gui-roundtrip-'));t.after(()=>rm(root,{recursive:true,force:true}));
+ await mkdir(path.join(root,'config'));await mkdir(path.join(root,'output'));await writeFile(path.join(root,'project.3mf'),prepared.bytes);
+ await runSlicer(binary,['--slice','0','--arrange','0','--orient','0','--datadir',path.join(root,'config'),'--outputdir',path.join(root,'output'),path.join(root,'project.3mf')],{cwd:root,timeoutMs:60000,signal:t.signal});
+ const actual=await readFile(path.join(root,'output','plate_1.gcode'),'utf8');
+ assert.ok(moves(reference).length>5000);assert.deepEqual(moves(actual),moves(reference));
+ assert.deepEqual([...actual.matchAll(/^;Z:([\d.]+)/gm)].map(m=>m[1]),[...reference.matchAll(/^;Z:([\d.]+)/gm)].map(m=>m[1]));
+ t.diagnostic(`Fresh actual GUI output: ${moves(actual).length} native motion commands match after validated web roundtrip. Thumbnails, pixels and all project metadata are separate acceptance.`);
+});

@@ -1,0 +1,12 @@
+✔ native 3MF preference decisions distinguish explicit Open from adding to a nonempty model (0.915208ms)
+✔ project-load preferences persist exact native keys and reject corrupt storage without silently accepting writes (0.198041ms)
+✔ opening geometry preserves effective presets but clears model, plates, attachments and calibration state (0.118458ms)
+✔ native project-load reference retains source and reproducible generator provenance (0.506625ms)
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 46.163167

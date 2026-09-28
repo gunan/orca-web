@@ -1,0 +1,153 @@
+
+> orca-web@0.1.0 test:e2e:native
+> playwright test --config playwright.native.config.js
+
+[WebServer] (node:88221) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 72 tests using 1 worker
+
+(node:88289) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 tests/native-e2e/brim-ears.spec.js:2:1 › browser brim-ear editor exports points in the native object frame and generates localized adhesion (8.5s)
+  ✓   2 tests/native-e2e/calibration-results.spec.js:2:1 › an explicitly entered browser calibration result persists and controls a subsequent ordinary native slice (12.3s)
+  ✓   3 tests/native-e2e/calibration.spec.js:2:1 › browser-generated temperature calibration reaches the real native job pipeline with an effective layer schedule (11.1s)
+  ✘   4 tests/native-e2e/calibration.spec.js:35:1 › native flow specimens slice through the browser and an explicit result choice saves a new filament (7.6s)
+(node:88461) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   5 tests/native-e2e/calibration.spec.js:56:51 › browser vfa creates a bound model and runs the native speed schedule (8.4s)
+  ✓   6 tests/native-e2e/calibration.spec.js:56:51 › browser max-volumetric-speed creates a bound model and runs the native speed schedule (7.5s)
+  ✓   7 tests/native-e2e/custom-preset-variants.spec.js:9:1 › real native filament editor switches explicit variants and saves/exports inactive values unchanged (35.6s)
+  ✓   8 tests/native-e2e/custom-preset-variants.spec.js:15:1 › real native machine editor labels motion modes and preserves all four stored nozzle variants (21.2s)
+  ✓   9 tests/native-e2e/custom-preset-variants.spec.js:19:1 › editing the second material slot uses its own physical nozzle and preserves the first slot variant (33.9s)
+  ✓  10 tests/native-e2e/cut-to-parts.spec.js:2:1 › actual native Cut to parts keeps a linked object family and slices both combined instances at full height (12.4s)
+  ✓  11 tests/native-e2e/height-ranges.spec.js:2:1 › browser height-range edits drive native layer increments only within their interval (6.0s)
+  ✓  12 tests/native-e2e/native-all-plate-preview.spec.js:4:1 › all-plate dialog displays actual native aggregated materials, cost and time with native table precision (2.8s)
+  ✓  13 tests/native-e2e/native-all-plate-preview.spec.js:5:1 › incomplete plate results show real missing counts and update only after the remaining completed result is available (5.7s)
+  ✓  14 tests/native-e2e/native-all-plate-preview.spec.js:6:1 › native request failure remains an explicit error and Retry replaces it with real completed statistics (3.5s)
+  ✓  15 tests/native-e2e/native-all-plate-preview.spec.js:7:1 › single-plate projects do not offer the native all-plate action (3.1s)
+  ✓  16 tests/native-e2e/native-arrangement.spec.js:2:1 › actual native arrangement updates browser placement, exports the positioned mesh and reaches real slicing (8.9s)
+  ✓  17 tests/native-e2e/native-clipboard.spec.js:3:1 › real native model Clone and part Copy/Paste preserve project data, undo atomically, export and slice two objects (10.5s)
+  ✓  18 tests/native-e2e/native-config.spec.js:6:1 › browser uses native active configuration while embedded exports and slot edits retain inactive H2D alternatives (12.3s)
+  ✓  19 tests/native-e2e/native-config.spec.js:14:1 › catalog H2D selection resolves source scalar shapes and slices through the ordinary upload endpoint (9.2s)
+  ✓  20 tests/native-e2e/native-created-volume-family.spec.js:6:34 › actual native text attachment on imported native cube retains object identity and slices (16.3s)
+  ✓  21 tests/native-e2e/native-created-volume-family.spec.js:6:34 › actual native SVG attachment on imported native cube retains object identity and slices (14.4s)
+  ✓  22 tests/native-e2e/native-cut-clipboard.spec.js:3:1 › actual native Cut and Paste preserve editable cube geometry through Undo, native export and installed slicing (7.5s)
+  ✓  23 tests/native-e2e/native-display-units.spec.js:22:1 › Units converts native material tables, summary and Feature rows without reprocessing job data (5.2s)
+  ✓  24 tests/native-e2e/native-display-units.spec.js:33:1 › all-plate statistics request and render the current native display units on each opening (3.1s)
+  ✓  25 tests/native-e2e/native-filament-preview.spec.js:5:1 › native two-filament usage stays whole-file through range changes and Feature reentry restores role visibility (3.9s)
+  ✓  26 tests/native-e2e/native-filament-preview.spec.js:6:1 › genuine GUI file Summary shows file metadata and native cost/time without changing the color geometry path (4.3s)
+  ✓  27 tests/native-e2e/native-filament-preview.spec.js:7:1 › older native helper retains filament colors and explicitly disables unavailable material Summary (3.3s)
+  ✓  28 tests/native-e2e/native-filament-preview.spec.js:8:1 › source fallback never presents native material/summary controls as available (2.8s)
+  ✓  29 tests/native-e2e/native-fill-bed.spec.js:2:1 › real native Fill, automatic Arrange, two undo steps, shared-instance export and native slicing (8.9s)
+  ✓  30 tests/native-e2e/native-fill-tower.spec.js:6:28 › real two-material Fill retains native tower width 20, Undo and export; native slicing reports its actual conflict (9.7s)
+  ✓  31 tests/native-e2e/native-fill-tower.spec.js:6:28 › real two-material Fill retains native tower width 60, Undo and export; native slicing completes (12.7s)
+  ✓  32 tests/native-e2e/native-gcode-preview.spec.js:12:1 › real native GUI G-code drives actual-flow geometry, role time/material, layer timing and raw cursor from native vertex IDs (6.4s)
+  ✓  33 tests/native-e2e/native-gcode-preview.spec.js:18:1 › mismatched native source is rejected and unavailable native data never enables timing modes (3.2s)
+  ✓  34 tests/native-e2e/native-gcode-preview.spec.js:19:1 › missing native helper leaves a usable explicit source-only preview (3.2s)
+  ✓  35 tests/native-e2e/native-hotend-assets.spec.js:2:1 › actual native vendor mesh and provenance change with the immutable ready job, including older default and missing assets (17.4s)
+  ✓  36 tests/native-e2e/native-instance-cut.spec.js:2:1 › actual browser Cut resets every native instance, exports linked frames and slices the retained half @native (12.0s)
+  ✓  37 tests/native-e2e/native-instance-edits.spec.js:2:1 › real browser propagates linked part edit, exports one shared native object and slices both instances @native (9.5s)
+  ✓  38 tests/native-e2e/native-motion-solids.spec.js:3:1 › real native Travel and Wipe paths render as native solids and share range, option, tool-color and source identity controls (6.2s)
+  ✓  39 tests/native-e2e/native-object-tree.spec.js:2:1 › native hierarchy excludes one linked instance, exports its flag and slices only the printable footprint (9.0s)
+  ✓  40 tests/native-e2e/native-preview-context.spec.js:4:1 › job editor palette, original summary formula and active custom G-code overview render exact native values (3.6s)
+  ✓  41 tests/native-e2e/native-preview-context.spec.js:5:1 › native viewer choice and options survive Prepare remount and same-category new job; category change resets native smart default (6.6s)
+  ✓  42 tests/native-e2e/native-preview-context.spec.js:6:1 › native hidden feature choice survives ordinary Preview remount without invoking explicit Feature reset (6.0s)
+  ✓  43 tests/native-e2e/native-preview-context.spec.js:7:1 › legacy helper warning never presents unavailable editor totals as current project values (2.7s)
+  ✓  44 tests/native-e2e/native-preview-range.spec.js:5:1 › native top-layer playback retains lower layers and exact event markers; full endpoint restores role colors (5.5s)
+  ✓  45 tests/native-e2e/native-preview-range.spec.js:6:1 › hidden retraction ticks remain inspectable and become visible with their exact native vertex IDs (6.8s)
+  ✓  46 tests/native-e2e/native-preview-scalars.spec.js:5:1 › real native scalar modes update all four visibility ranges and retain raw native command values (11.0s)
+  ✓  47 tests/native-e2e/native-preview-scalars.spec.js:14:1 › older helper output keeps supported native modes and disables unavailable scalar modes (4.1s)
+  ✓  48 tests/native-e2e/native-project.spec.js:10:1 › browser native project edits and layer events produce actual native G-code (6.4s)
+  ✓  49 tests/native-e2e/native-project.spec.js:18:1 › browser native part overrides and two filament slots reach the installed engine (7.8s)
+  ✓  50 tests/native-e2e/native-settings-clipboard.spec.js:3:1 › real browser process and height-range Paste survive native export and installed slicing (16.9s)
+  ✓  51 tests/native-e2e/native-slicing.spec.js:4:1 › browser workflow uses installed OrcaSlicer 2.4.2 and native presets to generate real toolpaths (6.6s)
+  ✓  52 tests/native-e2e/native-svg.spec.js:2:1 › real native SVG surface editor preserves embedded source and frame through JSON and native project export (10.8s)
+  ✓  53 tests/native-e2e/native-text.spec.js:3:1 › real native worker edits imported surface text, preserves native project data and exports changed geometry (4.5s)
+  ✓  54 tests/native-e2e/native-text.spec.js:5:1 › real native worker creates new per-glyph surface text with preserved native editing data (5.6s)
+  ✓  55 tests/native-e2e/native-tool-position.spec.js:4:1 › native scrubber hotend, exact properties, seam semantics and actual-speed profile retain command identity (3.8s)
+  ✓  56 tests/native-e2e/native-tool-position.spec.js:11:1 › unavailable native hotend asset preserves native position data with an explicit geometry notice (3.0s)
+  ✓  57 tests/native-e2e/native-tool-position.spec.js:12:1 › old helper output keeps exact speed-profile samples without inventing its missing plot domain (3.3s)
+  ✓  58 tests/native-e2e/pa-line.spec.js:7:1 › browser PA lines reach the real engine and match every independently compiled native-source command (4.2s)
+  ✓  59 tests/native-e2e/pa-pattern.spec.js:8:1 › browser PA pattern download and re-import retain all source commands through actual native slicing (6.1s)
+  ✓  60 tests/native-e2e/prepare-keyboard.spec.js:2:1 › native number-key material assignment drives the actual compensated native slice (5.6s)
+  ✓  61 tests/native-e2e/preset-compatibility.spec.js:2:1 › native expression process is selectable, refreshes material compatibility, and slices real geometry (11.1s)
+  ✓  62 tests/native-e2e/preset-compatibility.spec.js:9:1 › expression-based native process can be edited and saved as an explicit custom preset (19.1s)
+  ✘  63 tests/native-e2e/preview-performance.spec.js:2:1 › native solids stop idle GPU work and render layer, scalar, camera, size and playback changes (35.4s)
+(node:92058) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  64 tests/native-e2e/preview-shortcuts.spec.js:2:1 › native shortcut command steps traverse a complete acceleration subdivision group and preserve native source IDs (5.3s)
+  ✓  65 tests/native-e2e/prime-tower-preview.spec.js:4:1 › installed-native project resolves a two-material tower, updates native placement and removes its bands when disabled (7.3s)
+  ✓  66 tests/native-e2e/project-cover.spec.js:2:1 › browser generates all three covers through the real pinned worker and saves native cover relationships (5.0s)
+  ✓  67 tests/native-e2e/prusa-project.spec.js:7:1 › Open project routes Prusa through the pinned importer and retains selected and embedded contexts (11.3s)
+  ✓  68 tests/native-e2e/shrinkage.spec.js:7:1 › a user-selected custom shrinkage filament slices an ordinary STL exactly like the captured native GUI (22.0s)
+  ✓  69 tests/native-e2e/single-volume-material.spec.js:2:1 › the object filament selector updates a single imported native volume in exported and sliced output (16.4s)
+  ✓  70 tests/native-e2e/support-preview.spec.js:4:35 › native sliced support preview renders support paint (11.1s)
+  ✓  71 tests/native-e2e/support-preview.spec.js:4:35 › native sliced support preview preserves disabled supports (12.4s)
+  ✓  72 tests/native-e2e/variable-layers.spec.js:3:1 › browser adaptive-layer generation changes the actual installed-native layer heights (11.3s)
+
+
+  1) tests/native-e2e/calibration.spec.js:35:1 › native flow specimens slice through the browser and an explicit result choice saves a new filament 
+
+    Error: apiRequestContext.get: read ECONNRESET
+    Call log:
+      - → GET http://127.0.0.1:4174/api/jobs/bfbc1b99-3db5-4208-9fb3-304cc37fd9ac/download
+        - user-agent: Playwright/1.63.0 (arm64; macOS 26.6) node/24.7
+        - accept: */*
+        - accept-encoding: gzip,deflate,br
+
+
+      43 |   const submitting=page.waitForResponse(response=>response.url().endsWith('/api/jobs/calibration'));
+      44 |   await page.getByRole('button',{name:'Slice model',exact:true}).click();const submitted=await submitting;expect(submitted.status(),await submitted.text()).toBe(202);const job=await submitted.json();expect(job.calibration.mode).toBe('flow-ratio');expect(job.nativeProject.objectCount).toBe(9);
+    > 45 |   await expect(page.getByText('Ready to print')).toBeVisible({timeout:90000});const gcode=await(await request.get(`/api/jobs/${job.id}/download`)).text();expect(gcode).toMatch(/generated by OrcaSlicer/i);expect(gcode).not.toMatch(/test adapter|test fixture/i);expect(gcode).toContain('flowrate_');expect(gcode).toMatch(/^G1 .*E[0-9]/m);
+         |                                                                                                               ^
+      46 |   const ready=await(await request.get(`/api/jobs/${job.id}`)).json();expect(ready.calibrationSummary.mode).toBe('flow-ratio');await page.screenshot({path:testInfo.outputPath('flow-ratio-preview.png')});
+      47 |   // This exercises an explicit fixture choice; it is not a physical measurement.
+      48 |   await page.getByRole('button',{name:'Calibration',exact:true}).click();await page.getByRole('menuitem',{name:'Save calibration result…',exact:true}).click();const dialog=page.getByRole('dialog',{name:'Save flow calibration result'});
+        at /private/tmp/orca-implementation/m28-camera-fit-stage/tests/native-e2e/calibration.spec.js:45:111
+
+    Error Context: test-results/native-browser/calibration-native-flow-sp-e5833-choice-saves-a-new-filament/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/native-browser/calibration-native-flow-sp-e5833-choice-saves-a-new-filament/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/native-browser/calibration-native-flow-sp-e5833-choice-saves-a-new-filament/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/native-e2e/preview-performance.spec.js:2:1 › native solids stop idle GPU work and render layer, scalar, camera, size and playback changes 
+
+    Error: expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+    Call Log:
+    - Timeout 20000ms exceeded while waiting on the predicate
+
+      4 |  const errors=[];page.on('pageerror',error=>errors.push(error.message));await page.route('**/api/jobs',route=>route.request().method()==='POST'?route.fulfill({status:202,json:{id:'native-idle-proof',filename:'GUI cube.gcode',status:'ready'}}):route.continue());await page.route('**/api/jobs/native-idle-proof/download',route=>route.fulfill({contentType:'text/plain',body:text}));await page.route('**/api/jobs/native-preview/capabilities',route=>route.fulfill({json:{available:true,engine:data.engine}}));await page.route('**/api/jobs/native-idle-proof/native-preview',route=>route.fulfill({json:data}));await page.goto('/');await expect(page.getByLabel('Layer height',{exact:true})).toBeEnabled();await page.getByLabel('Choose a 3D model').setInputFiles(path.resolve('tests/fixtures/cube.stl'));await page.getByRole('button',{name:'Slice model',exact:true}).click();const canvas=page.getByRole('img',{name:'3D G-code toolpaths'});await expect(canvas).toHaveAttribute('data-processor','native');
+      5 |  const observations=[];const frames=()=>canvas.evaluate(c=>Number(c.dataset.renderFrames));
+    > 6 |  const idle=async()=>{await expect.poll(async()=>{const before=await frames();await page.waitForTimeout(100);return await frames()===before;},{timeout:20000}).toBe(true);const before=await frames();await page.waitForTimeout(250);expect(await frames()).toBe(before);return before;};
+        |                                                                                                                                                                ^
+      7 |  const redraw=async(action)=>{const before=await idle(),start=Date.now();await action();await expect.poll(frames).toBeGreaterThan(before);const after=await idle();observations.push({frames:after-before,settledMs:Date.now()-start});};
+      8 |  await idle();expect(Number(await canvas.getAttribute('data-visible-volumes'))).toBeGreaterThan(18000);
+      9 |  await redraw(()=>page.getByLabel('Last preview layer').fill('49'));
+        at idle (/private/tmp/orca-implementation/m28-camera-fit-stage/tests/native-e2e/preview-performance.spec.js:6:160)
+        at redraw (/private/tmp/orca-implementation/m28-camera-fit-stage/tests/native-e2e/preview-performance.spec.js:7:157)
+        at /private/tmp/orca-implementation/m28-camera-fit-stage/tests/native-e2e/preview-performance.spec.js:13:2
+
+    Error Context: test-results/native-browser/preview-performance-native-66fd6-a-size-and-playback-changes/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/native-browser/preview-performance-native-66fd6-a-size-and-playback-changes/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/native-browser/preview-performance-native-66fd6-a-size-and-playback-changes/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2 failed
+    tests/native-e2e/calibration.spec.js:35:1 › native flow specimens slice through the browser and an explicit result choice saves a new filament 
+    tests/native-e2e/preview-performance.spec.js:2:1 › native solids stop idle GPU work and render layer, scalar, camera, size and playback changes 
+  70 passed (11.5m)

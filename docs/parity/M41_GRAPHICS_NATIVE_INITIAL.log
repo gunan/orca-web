@@ -1,0 +1,38 @@
+
+> orca-web@0.1.0 test:e2e:native
+> playwright test --config playwright.native.config.js graphics-preferences.spec.js
+
+[WebServer] (node:67336) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:67351) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/native-e2e/graphics-preferences.spec.js:4:1 › installed-native Preview obeys the graphics frame cap without changing native paths or submitting a new slice (2.0m)
+
+
+  1) tests/native-e2e/graphics-preferences.spec.js:4:1 › installed-native Preview obeys the graphics frame cap without changing native paths or submitting a new slice 
+
+    Error: Test timeout of 120000ms exceeded
+
+       7 |  await page.getByLabel('Open Orca Web project').setInputFiles(new URL('../fixtures/native-gui-cube-2.4.2.3mf',import.meta.url).pathname);await expect(page.getByText('Embedded native presets',{exact:true})).toBeVisible();await page.getByRole('button',{name:'Slice model',exact:true}).click();await expect(page.getByText('Ready to print')).toBeVisible({timeout:90000});const canvas=page.getByRole('img',{name:'3D G-code toolpaths'});await expect(canvas).toHaveAttribute('data-processor','native');await cappedIdle(page,canvas,5);
+       8 |  const range=await canvas.getAttribute('data-native-range'),volumes=await canvas.getAttribute('data-visible-volumes');expect(Number(volumes)).toBeGreaterThan(100);const times=await exerciseCappedCamera(page,canvas,5,{steps:85});await cappedIdle(page,canvas,5);await expect(page.getByLabel('Viewport FPS',{exact:true})).toBeVisible();await expect(canvas).toHaveAttribute('data-native-range',range);await expect(canvas).toHaveAttribute('data-visible-volumes',volumes);expect(slices).toBe(1);await info.attach('native-capped-frame-clears',{body:JSON.stringify(times),contentType:'application/json'});await page.screenshot({path:info.outputPath('native-preview-fps.png')});
+    >  9 |  await preferences(page,async dialog=>{await dialog.getByLabel('FPS cap',{exact:true}).fill('0');await dialog.getByLabel('FPS cap',{exact:true}).press('Enter');await dialog.getByLabel('Show FPS overlay').uncheck();});await expect(page.getByLabel('Viewport FPS',{exact:true})).toBeHidden();const before=(await frameClears(canvas)).length;await page.getByLabel('Last preview layer').fill('30');await expect.poll(async()=>(await frameClears(canvas)).length).toBeGreaterThan(before);expect(slices).toBe(1);
+         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ^
+      10 | });
+      11 |
+        at /private/tmp/orca-implementation/m41-graphics-preferences-stage/tests/native-e2e/graphics-preferences.spec.js:9:456
+
+    Error Context: test-results/native-browser/graphics-preferences-insta-0f931-s-or-submitting-a-new-slice/error-context.md
+
+    attachment #3: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/native-browser/graphics-preferences-insta-0f931-s-or-submitting-a-new-slice/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/native-browser/graphics-preferences-insta-0f931-s-or-submitting-a-new-slice/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  1 failed
+    tests/native-e2e/graphics-preferences.spec.js:4:1 › installed-native Preview obeys the graphics frame cap without changing native paths or submitting a new slice 

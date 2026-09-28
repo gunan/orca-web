@@ -1,0 +1,35 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "baseline": "OrcaSlicer 2.4.2 macOS",
+  "sourceSha256": {
+    "src/slic3r/GUI/Plater.cpp": "dbeee2a69d8955dd8e42efa8943a553b3c231232ce7f0cf0496575aed78daf3a",
+    "src/libslic3r/Model.cpp": "abc47399040b295f1eed8ad53f7ddd7b45eb324616cd8e57ea5d188b7d9ea894",
+    "src/libslic3r/Model.hpp": "c69ed9329d69db4642142844b6108b073517bfcfd37ed1e7e8bfdad798d9eee7",
+    "src/libslic3r/Format/bbs_3mf.cpp": "5f5e14c8e027bd66703e8f62570ffddb6a29a9e3a5c7e979ef3f872db16eb64c",
+    "src/libslic3r/ObjectID.hpp": "ba6c5419869d7161f45609d43900b98611cb314d00cbc3dbfe93b48dc18e8831"
+  },
+  "observations": [
+    {
+      "file": "src/slic3r/GUI/Plater.cpp",
+      "lines": "5970\u20136044,6193\u20136218,6735\u20136810,7035\u20137100",
+      "behavior": "Geometry LoadModel omits global presets; retains extruder-only object/volume config, grows current filaments for assignments and facet states, grounds instances, centers combined normal geometry, sorts volumes and grounds again during insertion. Multipart and oversized model prompts are separate outstanding work."
+    },
+    {
+      "file": "src/libslic3r/Model.cpp",
+      "lines": "503\u2013513,1128\u20131142,1366\u20131380,1470\u20131503,1607\u20131624,1721\u20131753,704\u2013725",
+      "behavior": "Native clone assigns object IDs, defaults object extruder1, copies processed cut identity. ModelVolumeType orders blocker before enforcer. min_z uses first instance; ensure_on_bed(false) translates auto_drop instances only. center_instances uses all model-part bounds and1e-4 threshold."
+    },
+    {
+      "file": "src/libslic3r/Format/bbs_3mf.cpp",
+      "lines": "1856\u20131938",
+      "behavior": "LoadModel without LoadConfig skips global settings and embedded presets but still reads model config, layer profiles/ranges, brim ears and processed cut metadata."
+    }
+  ],
+  "reference": "tests/fixtures/native-geometry-import-reference.json",
+  "limits": [
+    "Extracted placement reference uses axis-aligned normal-volume bounds adapters; no native GUI or arbitrary rotation acceptance.",
+    "Native material palette cursor is session-global; current geometry import begins palette at first color each call.",
+    "Multi-file policies, multipart conversion, oversized prompts, standard3MF without Orca project config and exact native preset-reset behavior remain incomplete.",
+    "Paired desktop acceptance awaits unlocked macOS session."
+  ]
+}

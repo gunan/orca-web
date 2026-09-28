@@ -1,0 +1,45 @@
+✔ tower gizmo reference is bound to original source and native movement restrictions (5.732792ms)
+✔ native move projection: axis-0-delta--15.75-snap-False (0.345916ms)
+✔ native move projection: axis-0-delta--15.75-snap-True (0.077833ms)
+✔ native move projection: axis-0-delta--0.5-snap-False (0.07875ms)
+✔ native move projection: axis-0-delta--0.5-snap-True (0.075833ms)
+✔ native move projection: axis-0-delta-0.5-snap-False (0.056916ms)
+✔ native move projection: axis-0-delta-0.5-snap-True (0.052375ms)
+✔ native move projection: axis-0-delta-15.75-snap-False (0.052459ms)
+✔ native move projection: axis-0-delta-15.75-snap-True (0.074834ms)
+✔ native move projection: perspective-axis-0-delta--40 (0.159375ms)
+✔ native move projection: perspective-axis-0-delta--0.75 (0.079125ms)
+✔ native move projection: perspective-axis-0-delta-30 (0.07575ms)
+✔ native move projection: axis-1-delta--15.75-snap-False (0.042167ms)
+✔ native move projection: axis-1-delta--15.75-snap-True (0.038458ms)
+✔ native move projection: axis-1-delta--0.5-snap-False (0.036208ms)
+✔ native move projection: axis-1-delta--0.5-snap-True (0.036458ms)
+✔ native move projection: axis-1-delta-0.5-snap-False (0.034125ms)
+✔ native move projection: axis-1-delta-0.5-snap-True (0.038959ms)
+✔ native move projection: axis-1-delta-15.75-snap-False (0.03675ms)
+✔ native move projection: axis-1-delta-15.75-snap-True (0.037ms)
+✔ native move projection: perspective-axis-1-delta--40 (0.04325ms)
+✔ native move projection: perspective-axis-1-delta--0.75 (0.04325ms)
+✔ native move projection: perspective-axis-1-delta-30 (0.035542ms)
+✔ native move projection: zero axis (0.03425ms)
+✔ native move projection: parallel axis ray (0.03975ms)
+✔ native move projection: remote fractional origin (0.041584ms)
+✔ native move projection: configured snap step (0.042958ms)
+✔ invalid or degenerate camera rays are rejected (0.264792ms)
+✔ tower lost capture discards preview displacement, restores controls, and closes the gesture (4.27675ms)
+✔ tower window blur discards preview displacement, restores controls, and closes the gesture (1.807333ms)
+✔ tower hidden page discards preview displacement, restores controls, and closes the gesture (0.576083ms)
+✔ tower preview replacement discards preview displacement, restores controls, and closes the gesture (0.484709ms)
+✔ tower tool switch discards preview displacement, restores controls, and closes the gesture (0.443125ms)
+✔ tower released button discards preview displacement, restores controls, and closes the gesture (0.346791ms)
+✔ foreign pointer events cannot move, replace or commit an active tower gesture (0.4055ms)
+✔ normal release commits once despite synchronous lost capture and retains prior control availability (0.364959ms)
+✔ disposal cancels movement and removes interruption listeners without selecting into an unmounted owner (0.340833ms)
+ℹ tests 37
+ℹ suites 0
+ℹ pass 37
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 89.963791

@@ -1,0 +1,135 @@
+[WebServer] (node:53168) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 9 tests using 1 worker
+
+(node:53172) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  1 tests/e2e/camera-preferences.spec.js:9:1 › native default middle drag pans; remapped None and Rotate actions persist without changing project history (8.1s)
+(node:53212) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✘  2 tests/e2e/camera-preferences.spec.js:18:1 › reverse mouse wheel applies immediately in perspective and orthographic Prepare (2.2s)
+(node:53234) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  3 tests/e2e/camera-preferences.spec.js:23:1 › orbit speed clamps and commits on Enter or blur; invalid drafts preserve the existing camera setting (1.4s)
+  ✘  4 tests/e2e/camera-preferences.spec.js:27:1 › malformed camera preferences recover to native defaults and storage failures retain explicit session-only changes (1.7s)
+(node:53240) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  5 tests/e2e/camera-preferences.spec.js:32:1 › camera settings propagate to painting workspaces without converting a left brush stroke into a camera gesture (7.7s)
+  ✘  6 tests/e2e/camera-preferences.spec.js:37:1 › Preview shares native middle pan and reverse wheel preferences across workspace remounts (5.3s)
+(node:53266) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  7 tests/e2e/native-display-preferences.spec.js:4:1 › native Units labels apply immediately, persist after reload, and leave project settings intact (1.3s)
+  ✓  8 tests/e2e/native-display-preferences.spec.js:13:1 › invalid stored Units fall back to metric and storage failures retain a visible session-only change (712ms)
+  ✓  9 tests/e2e/native-display-preferences.spec.js:17:1 › Preferences shortcut respects focused text inputs and an already open dialog (693ms)
+
+
+  1) tests/e2e/camera-preferences.spec.js:9:1 › native default middle drag pans; remapped None and Rotate actions persist without changing project history 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 1e-8
+    Received:   6.456835055486519
+
+      11 |  await preferences(page,async dialog=>{for(const [button,value] of [['Left','2'],['Middle','1'],['Right','1']]){await expect(dialog.getByLabel(`${button} Mouse Drag`)).toHaveValue(value);await expect(dialog.getByLabel(`${button} Mouse Drag`).locator('option')).toHaveText(['None','Pan','Rotate']);}await dialog.getByLabel('Middle Mouse Drag').selectOption('0');await dialog.getByLabel('Right Mouse Drag').selectOption('2');await dialog.screenshot({path:info.outputPath('native-camera-preferences.png')});});
+      12 |  const before=await frame(canvas);await cameraDrag(page,canvas);expect(await frame(canvas)).toEqual(before);
+    > 13 |  await cameraDrag(page,canvas,'right',['Control']);const rotated=await frame(canvas);expect(vectorDistance(rotated.position,before.position)).toBeGreaterThan(1);expect(vectorDistance(rotated.target,before.target)).toBeLessThan(1e-8);
+         |                                                                                                                                                                                                                       ^
+      14 |  expect(await save(page)).toEqual(saved);await page.getByRole('button',{name:'Project',exact:true}).click();await page.getByRole('button',{name:'Prepare',exact:true}).click();await gpuIdle(page,canvas);const remounted=await frame(canvas);await cameraDrag(page,canvas);expect(await frame(canvas)).toEqual(remounted);
+      15 |  await page.getByRole('button',{name:'Undo',exact:true}).click();await expect(page.locator('.scene-object-row')).toHaveCount(0);
+      16 |  await page.reload();await preferences(page,async dialog=>{await expect(dialog.getByLabel('Middle Mouse Drag')).toHaveValue('0');await expect(dialog.getByLabel('Right Mouse Drag')).toHaveValue('2');});
+        at /private/tmp/orca-implementation/m39-camera-preferences-stage/tests/e2e/camera-preferences.spec.js:13:215
+
+    Error Context: test-results/m39-focused/camera-preferences-native--32e11-ut-changing-project-history/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m39-focused/camera-preferences-native--32e11-ut-changing-project-history/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m39-focused/camera-preferences-native--32e11-ut-changing-project-history/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) tests/e2e/camera-preferences.spec.js:18:1 › reverse mouse wheel applies immediately in perspective and orthographic Prepare 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 82.54860229672737
+    Received:   86.8932655755024
+
+      18 | test('reverse mouse wheel applies immediately in perspective and orthographic Prepare',async({page})=>{
+      19 |  const canvas=await open(page),before=await frame(canvas);await cameraWheel(page,canvas);const normal=await frame(canvas);expect(distance(normal)).toBeGreaterThan(distance(before));
+    > 20 |  await preferences(page,dialog=>dialog.getByLabel('Reverse mouse zoom').check());await cameraWheel(page,canvas);expect(distance(await frame(canvas))).toBeLessThan(distance(normal));
+         |                                                                                                                                                       ^
+      21 |  await page.locator('.scene-views').getByRole('button',{name:'Perspective',exact:true}).click();await gpuIdle(page,canvas);const ortho=await frame(canvas);expect(ortho.projection).toBe('Orthographic');await cameraWheel(page,canvas);expect((await frame(canvas)).projectionMatrix[0]).toBeGreaterThan(ortho.projectionMatrix[0]);
+      22 | });
+      23 | test('orbit speed clamps and commits on Enter or blur; invalid drafts preserve the existing camera setting',async({page})=>{
+        at /private/tmp/orca-implementation/m39-camera-preferences-stage/tests/e2e/camera-preferences.spec.js:20:151
+
+    Error Context: test-results/m39-focused/camera-preferences-reverse-81a7e-ve-and-orthographic-Prepare/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m39-focused/camera-preferences-reverse-81a7e-ve-and-orthographic-Prepare/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m39-focused/camera-preferences-reverse-81a7e-ve-and-orthographic-Prepare/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) tests/e2e/camera-preferences.spec.js:27:1 › malformed camera preferences recover to native defaults and storage failures retain explicit session-only changes 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 78.42117218189105
+    Received:   82.54860229672737
+
+      28 |  await page.addInitScript(k=>{localStorage.setItem(k,'{"version":9}');const original=Storage.prototype.setItem;Storage.prototype.setItem=function(name,value){if(name===k)throw new DOMException('Storage disabled','QuotaExceededError');return original.call(this,name,value);};},key);
+      29 |  const canvas=await open(page);await preferences(page,async dialog=>{await expect(dialog.getByLabel('Middle Mouse Drag')).toHaveValue('1');await dialog.getByLabel('Reverse mouse zoom').check();await expect(dialog.getByRole('alert')).toHaveText('Camera controls changed for this session, but browser storage could not save them.');});
+    > 30 |  const before=await frame(canvas);await cameraWheel(page,canvas);expect(distance(await frame(canvas))).toBeLessThan(distance(before));
+         |                                                                                                        ^
+      31 | });
+      32 | test('camera settings propagate to painting workspaces without converting a left brush stroke into a camera gesture',async({page})=>{
+      33 |  await open(page);await preferences(page,dialog=>dialog.getByLabel('Middle Mouse Drag').selectOption('2'));await page.getByRole('button',{name:'Paint supports',exact:true}).click();const dialog=page.getByRole('dialog',{name:'Paint facets'}),canvas=dialog.getByRole('img',{name:'Interactive 3D model view'});await gpuIdle(page,canvas);
+        at /private/tmp/orca-implementation/m39-camera-preferences-stage/tests/e2e/camera-preferences.spec.js:30:104
+
+    Error Context: test-results/m39-focused/camera-preferences-malform-3cd54-plicit-session-only-changes/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m39-focused/camera-preferences-malform-3cd54-plicit-session-only-changes/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m39-focused/camera-preferences-malform-3cd54-plicit-session-only-changes/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) tests/e2e/camera-preferences.spec.js:37:1 › Preview shares native middle pan and reverse wheel preferences across workspace remounts 
+
+    Error: expect(received).toBeLessThan(expected)
+
+    Expected: < 41.2121612918193
+    Received:   43.38122241244137
+
+      40 |  await page.route('**/api/jobs/native-preview/capabilities',route=>route.fulfill({json:{available:false,error:'Source-only camera fixture'}}));
+      41 |  await open(page);await preferences(page,dialog=>dialog.getByLabel('Reverse mouse zoom').check());await page.getByRole('button',{name:'Slice model',exact:true}).click();const canvas=page.getByRole('img',{name:'3D G-code toolpaths'});await gpuIdle(page,canvas);await expectPan(page,canvas);
+    > 42 |  const before=await frame(canvas);await cameraWheel(page,canvas);expect(distance(await frame(canvas))).toBeLessThan(distance(before));await page.getByRole('button',{name:'Prepare',exact:true}).click();await page.getByRole('button',{name:'Preview',exact:true}).click();await gpuIdle(page,canvas);await expectPan(page,canvas);
+         |                                                                                                        ^
+      43 | });
+      44 |
+        at /private/tmp/orca-implementation/m39-camera-preferences-stage/tests/e2e/camera-preferences.spec.js:42:104
+
+    Error Context: test-results/m39-focused/camera-preferences-Preview-9029a-s-across-workspace-remounts/error-context.md
+
+    attachment #2: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/m39-focused/camera-preferences-Preview-9029a-s-across-workspace-remounts/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/m39-focused/camera-preferences-Preview-9029a-s-across-workspace-remounts/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    tests/e2e/camera-preferences.spec.js:9:1 › native default middle drag pans; remapped None and Rotate actions persist without changing project history 
+    tests/e2e/camera-preferences.spec.js:18:1 › reverse mouse wheel applies immediately in perspective and orthographic Prepare 
+    tests/e2e/camera-preferences.spec.js:27:1 › malformed camera preferences recover to native defaults and storage failures retain explicit session-only changes 
+    tests/e2e/camera-preferences.spec.js:37:1 › Preview shares native middle pan and reverse wheel preferences across workspace remounts 
+  5 passed (31.8s)

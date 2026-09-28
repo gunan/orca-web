@@ -1,0 +1,129 @@
+{
+  "baseline": "OrcaSlicer-2.4.2",
+  "sourceRevision": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "date": "2026-09-27",
+  "command": "node --test tests/native/cut-to-parts.test.js",
+  "result": "failed",
+  "runs": [
+    {
+      "run": 0,
+      "input": "reference",
+      "inputSha256": "0fc6264aa1f790787007569614e4a7d830d4ac1bbe22e901bf14afe5a0705870",
+      "gcodeSha256": "78a1035e0e9988f789d5e408ead12cc83fadac45f33cd47af3a9b13bb1369198",
+      "layers": 50,
+      "motionCommands": 4513,
+      "motionSha256": "2917299f3d9d1bf27d8c1531f789a27811ebdbe693da48cecb02a4b3273652fa"
+    },
+    {
+      "run": 1,
+      "input": "reference",
+      "inputSha256": "0fc6264aa1f790787007569614e4a7d830d4ac1bbe22e901bf14afe5a0705870",
+      "gcodeSha256": "a08a7e1f0a4c5869965dcb15facac70bdc3b514cea9bd05deba3386a2631a800",
+      "layers": 50,
+      "motionCommands": 4409,
+      "motionSha256": "bd56fcf5e11f4c7e4ed1aef9905005ffa06cbeae37e83e3899489ca6731feac2"
+    },
+    {
+      "run": 2,
+      "input": "web",
+      "inputSha256": "1d766ce412e07842ec68458247f6558d3c066ebddee2e3bbecdbcd125f05be47",
+      "gcodeSha256": "a08a7e1f0a4c5869965dcb15facac70bdc3b514cea9bd05deba3386a2631a800",
+      "layers": 50,
+      "motionCommands": 4409,
+      "motionSha256": "bd56fcf5e11f4c7e4ed1aef9905005ffa06cbeae37e83e3899489ca6731feac2"
+    },
+    {
+      "run": 3,
+      "input": "web",
+      "inputSha256": "1d766ce412e07842ec68458247f6558d3c066ebddee2e3bbecdbcd125f05be47",
+      "gcodeSha256": "a08a7e1f0a4c5869965dcb15facac70bdc3b514cea9bd05deba3386a2631a800",
+      "layers": 50,
+      "motionCommands": 4409,
+      "motionSha256": "bd56fcf5e11f4c7e4ed1aef9905005ffa06cbeae37e83e3899489ca6731feac2"
+    }
+  ],
+  "comparisons": [
+    {
+      "referenceRun": 0,
+      "comparisonRun": 1,
+      "differentCommands": 1080,
+      "firstDifferences": [
+        {
+          "index": 3405,
+          "expected": "G1 X103.279 Y36.017 E.23496",
+          "actual": "G1 X103.983 Y36.017 E.25775"
+        },
+        {
+          "index": 3406,
+          "expected": "G1 X103.983 Y36.721 E.03222",
+          "actual": "G1 X103.983 Y43.943 E.25646"
+        },
+        {
+          "index": 3407,
+          "expected": "G1 X103.983 Y43.943 E.23367",
+          "actual": "G1 X104.38 Y44.38 F18000"
+        },
+        {
+          "index": 3408,
+          "expected": "G1 X104.38 Y44.38 F18000",
+          "actual": "G1 F9251.216"
+        }
+      ]
+    },
+    {
+      "referenceRun": 0,
+      "comparisonRun": 2,
+      "differentCommands": 1080,
+      "firstDifferences": [
+        {
+          "index": 3405,
+          "expected": "G1 X103.279 Y36.017 E.23496",
+          "actual": "G1 X103.983 Y36.017 E.25775"
+        },
+        {
+          "index": 3406,
+          "expected": "G1 X103.983 Y36.721 E.03222",
+          "actual": "G1 X103.983 Y43.943 E.25646"
+        },
+        {
+          "index": 3407,
+          "expected": "G1 X103.983 Y43.943 E.23367",
+          "actual": "G1 X104.38 Y44.38 F18000"
+        },
+        {
+          "index": 3408,
+          "expected": "G1 X104.38 Y44.38 F18000",
+          "actual": "G1 F9251.216"
+        }
+      ]
+    },
+    {
+      "referenceRun": 0,
+      "comparisonRun": 3,
+      "differentCommands": 1080,
+      "firstDifferences": [
+        {
+          "index": 3405,
+          "expected": "G1 X103.279 Y36.017 E.23496",
+          "actual": "G1 X103.983 Y36.017 E.25775"
+        },
+        {
+          "index": 3406,
+          "expected": "G1 X103.983 Y36.721 E.03222",
+          "actual": "G1 X103.983 Y43.943 E.25646"
+        },
+        {
+          "index": 3407,
+          "expected": "G1 X103.983 Y43.943 E.23367",
+          "actual": "G1 X104.38 Y44.38 F18000"
+        },
+        {
+          "index": 3408,
+          "expected": "G1 X104.38 Y44.38 F18000",
+          "actual": "G1 F9251.216"
+        }
+      ]
+    }
+  ],
+  "limitation": "The strict comparison fails between two native slices of identical original-reference input. Native kernel geometry equality does not establish exact slicing repeatability."
+}

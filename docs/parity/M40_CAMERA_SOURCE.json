@@ -1,0 +1,13 @@
+{
+  "commit": "8500fcdccaa10b5099ac20d252af3a7c560046f1",
+  "sourceSha256": {
+    "src/slic3r/GUI/Camera.cpp": "e89cc263c2bc53149c52949f734dcc230c742de92fdf928a106ce40b81ef60d5",
+    "src/slic3r/GUI/GLCanvas3D.cpp": "a44c6c43ca28690da12b5502eab1a6bdec3f8392da4c0454586e065a43614ddb"
+  },
+  "methods": [
+    "Camera::zoom_to_box",
+    "Camera::zoom_to_volumes",
+    "Camera::calc_zoom_to_bounding_box_factor"
+  ],
+  "scope": "Code inspection establishes orientation preservation. The web frustum fit does not claim to reproduce all native zoom/projection arithmetic."
+}

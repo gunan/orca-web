@@ -1,0 +1,34 @@
+✔ original native mesh statistics retain float rounding and count solids through the first instance only (46.368292ms)
+✔ native filter removes open planar meshes and modifier-only objects while retaining a valid source solid (37.293875ms)
+✔ native source applies zero, meters and inches thresholds in order to float mesh volumes (58.58175ms)
+✖ cut-family checksum and connector count participate in native imperial detection (26.072792ms)
+✔ native determinant uses volume and first-instance scaling and ignores later instances for unit inference (33.158875ms)
+✔ native admission rejects forged identities, mesh indices, roles, matrices and cut IDs (70.915542ms)
+✔ native inspection adapter has a matching original-source build manifest and binary hash (5.393667ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 415.362166
+
+✖ failing tests:
+
+test at tests/native/native-import-inspection.test.js:16:1
+✖ cut-family checksum and connector count participate in native imperial detection (26.072792ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  'none' !== 'inches'
+  
+      at TestContext.<anonymous> (file:///private/tmp/orca-implementation/m48-import-preflight-stage/tests/native/native-import-inspection.test.js:16:378)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'none',
+    expected: 'inches',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

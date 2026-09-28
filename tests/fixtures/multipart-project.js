@@ -1,0 +1,3 @@
+import {readFileSync} from 'node:fs';
+import {importNative3MF} from '../../shared/native-project.js';
+export function multipartFixture(){const p=importNative3MF(readFileSync(new URL('./native-gui-cube-2.4.2.3mf',import.meta.url)));const first=p.objects[0];for(const key of ['instanceFamily','groupTransform'])delete first.native[key];first.name='Bottom';first.native.objectName='Bottom';first.native.groupId='bottom';const upper={...structuredClone(first),id:'upper',name:'Top',position:[0,0,20],native:{...structuredClone(first.native),groupId:'upper',objectName:'Top'}};p.objects=[first,upper];return p;}

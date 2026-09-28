@@ -1,0 +1,13 @@
+[WebServer] (node:71933) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 4 tests using 1 worker
+
+(node:71950) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 tests/e2e/native-preference-spin.spec.js:8:1 › native FPS arrow presses use the committed value while keyboard arrows use the current draft (423ms)
+  ✓  2 tests/e2e/native-preference-spin.spec.js:9:1 › native held arrows wait400ms then repeat every100ms and retain pointer capture until release (213ms)
+  ✓  3 tests/e2e/native-preference-spin.spec.js:10:1 › loss of focus and dialog disposal stop held repeats without later preference changes (240ms)
+  ✓  4 tests/e2e/native-preference-spin.spec.js:11:1 › native orbit text and FPS spin fields do not add browser-native wheel stepping (251ms)
+
+  4 passed (2.6s)

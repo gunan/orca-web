@@ -1,0 +1,50 @@
+[
+  {
+    "name": "cgal",
+    "url": "https://github.com/CGAL/cgal/releases/download/v5.6.3/CGAL-5.6.3.zip",
+    "sha256": "5d577acb4a9918ccb960491482da7a3838f8d363aff47e14d703f19fd84733d4",
+    "sourceRecipe": "OrcaSlicer 8500fcd deps/CGAL"
+  },
+  {
+    "name": "eigen",
+    "url": "https://gitlab.com/libeigen/eigen/-/archive/5.0.1/eigen-5.0.1.zip",
+    "sha256": "0dbb1f9e3aaad66f352c03227d8c983f6f0b49e0b07e71a7300f4abcc01aee12",
+    "sourceRecipe": "OrcaSlicer 8500fcd deps/Eigen"
+  },
+  {
+    "name": "boost",
+    "url": "https://github.com/boostorg/boost/releases/download/boost-1.84.0/boost-1.84.0.tar.gz",
+    "sha256": "4d27e9efed0f6f152dc28db6430b9d3dfb40c0345da7342eaa5a987dde57bd95",
+    "sourceRecipe": "OrcaSlicer 8500fcd deps/Boost"
+  },
+  {
+    "name": "tbb",
+    "url": "https://github.com/oneapi-src/oneTBB/archive/refs/tags/v2021.5.0.zip",
+    "sha256": "83ea786c964a384dd72534f9854b419716f412f9d43c0be88d41874763e7bb47",
+    "sourceRecipe": "OrcaSlicer 8500fcd deps/TBB"
+  },
+  {
+    "name": "gmp",
+    "url": "https://github.com/SoftFever/OrcaSlicer_deps/releases/download/gmp-6.2.1/gmp-6.2.1.tar.bz2",
+    "sha256": "eae9326beb4158c386e39a356818031bd28f3124cf915f8c5b1dc4c7a36b4d7c",
+    "sourceRecipe": "OrcaSlicer 8500fcd deps/GMP"
+  },
+  {
+    "name": "mpfr",
+    "url": "https://ftp.gnu.org/gnu/mpfr/mpfr-4.2.2.tar.bz2",
+    "sha256": "9ad62c7dc910303cd384ff8f1f4767a655124980bb6d8650fe62c815a231bb7b",
+    "sourceRecipe": "OrcaSlicer 8500fcd deps/MPFR"
+  },
+  {
+    "name": "cereal",
+    "url": "https://github.com/USCiLab/cereal/archive/refs/tags/v1.3.0.zip",
+    "sha256": "71642cb54658e98c8f07a0f0d08bf9766f1c3771496936f6014169d3726d9657",
+    "sourceRecipe": "OrcaSlicer 8500fcd deps/Cereal"
+  },
+  {
+    "name": "cmake",
+    "version": "3.31.6",
+    "url": "https://pypi.org/project/cmake/3.31.6/",
+    "sha256": "da9d4fd9abd571fd016ddb27da0428b10277010b23bb21e3678f8b9e96e1686e"
+  }
+]

@@ -1,0 +1,35 @@
+.native-home{flex:1;min-height:0;overflow:auto;padding:14px 40px;background:#fff;color:#323a3d;font-family:system-ui,"Segoe UI",sans-serif;font-size:16px;line-height:20px}
+.native-home-actions{min-height:140px;display:flex;align-items:center;gap:16px}
+.editor-app .native-home-actions>button{width:253px;height:101px;display:flex;align-items:center;flex-shrink:0;gap:1em;padding:0 20px;text-align:left;border:1px solid #d7d7d7;border-radius:12px;background:transparent;cursor:pointer;color:inherit}
+.editor-app .native-home-actions>button:hover{border-color:#009688;background:#e7f4f0}
+.editor-app .native-home-actions>button:focus-visible{outline:2px solid #009688;outline-offset:3px}
+.native-home-actions img{width:56px;height:56px;object-fit:contain}
+.editor-app .native-home-actions strong,.editor-app .native-home-actions small{display:block;font-size:16px;font-weight:400;line-height:24px}
+.editor-app .native-home-actions small{color:#a8a8a8}
+.native-home-recent{margin-top:10px}
+.native-home-recent h2{font-size:16px;font-weight:400;margin:0;padding:6px 0}
+.native-home-recent p{font-size:14px;color:#777;margin-top:24px}
+[data-theme=dark] .native-home{background:#242428;color:#efeff0}
+[data-theme=dark] .editor-app .native-home-actions>button{border-color:#3e3e45}
+[data-theme=dark] .editor-app .native-home-actions>button:hover{border-color:#00675b;background:#223c3c}
+[data-theme=dark] .native-home-recent p{color:#b3b3b5}
+.editor-app button.brand{background:transparent;border:0;border-right:1px solid #667277;padding:0;cursor:pointer}
+.editor-app button.brand[aria-pressed=true]{background:var(--accent)}
+@media(max-width:800px){.editor-app button.brand{display:flex}.native-home{padding:14px 20px}.native-home-actions{flex-wrap:wrap;padding:16px 0}.editor-app .native-home-actions>button{flex:1;min-width:210px}}
+.native-home-recent>header{display:flex;align-items:center;gap:20px}
+.native-home-recent p.recent-storage-description{margin:6px 0 12px;font-size:12px}
+.native-recent-files{display:flex;flex-wrap:wrap;gap:16px}
+.native-recent-file{width:184px;min-width:0;position:relative}
+.editor-app .native-recent-file .recent-open{display:block;border:0;padding:0;width:184px;background:transparent;color:inherit;text-align:left}
+.native-recent-file .recent-open img{display:block;width:184px;height:184px;object-fit:cover;background:#e4e4e4;border-radius:8px}
+.native-recent-file .recent-open span{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:14px;margin-top:6px}
+.native-recent-file time{display:block;color:#777;font-size:12px}
+.editor-app .native-recent-file .recent-remove{display:block;margin:4px 0 0 auto}
+[data-theme=dark] .native-recent-file .recent-open img{background:#3e3e45}
+[data-theme=dark] .native-recent-file time{color:#b3b3b5}
+.recent-menu-group{position:relative}.command-menu.recent-submenu{left:100%;top:0;max-height:70vh;overflow:auto;max-width:400px}.recent-submenu button{overflow:hidden;text-overflow:ellipsis}
+.editor-app .native-home-recent>header>button,.editor-app .native-recent-file .recent-remove{border:0;border-radius:12px;padding:0 11px;min-width:36px;height:24px;line-height:23px;font-size:13px;background:#dfdfdf;color:#262e30;cursor:pointer}
+.editor-app .native-home-recent>header>button:hover,.editor-app .native-recent-file .recent-remove:hover{background:#d4d4d4}
+[data-theme=dark] .editor-app .native-home-recent>header>button,[data-theme=dark] .editor-app .native-recent-file .recent-remove{background:#3e3e45;color:#efeff0}
+[data-theme=dark] .editor-app .native-home-recent>header>button:hover,[data-theme=dark] .editor-app .native-recent-file .recent-remove:hover{background:#4d4d54}
+.native-home-recent button:focus-visible{outline:2px solid #009688;outline-offset:3px}
